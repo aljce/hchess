@@ -14,48 +14,6 @@
   (major1) == 4 && (major2) <  8 || \
   (major1) == 4 && (major2) == 8 && (minor) <= 1)
 
-/* package comonad-4.2.7.2 */
-#define VERSION_comonad "4.2.7.2"
-#define MIN_VERSION_comonad(major1,major2,minor) (\
-  (major1) <  4 || \
-  (major1) == 4 && (major2) <  2 || \
-  (major1) == 4 && (major2) == 2 && (minor) <= 7)
-
-/* package containers-0.5.6.2 */
-#define VERSION_containers "0.5.6.2"
-#define MIN_VERSION_containers(major1,major2,minor) (\
-  (major1) <  0 || \
-  (major1) == 0 && (major2) <  5 || \
-  (major1) == 0 && (major2) == 5 && (minor) <= 6)
-
-/* package recursion-schemes-4.1.2 */
-#define VERSION_recursion_schemes "4.1.2"
-#define MIN_VERSION_recursion_schemes(major1,major2,minor) (\
-  (major1) <  4 || \
-  (major1) == 4 && (major2) <  1 || \
-  (major1) == 4 && (major2) == 1 && (minor) <= 2)
-
-/* package text-1.2.1.3 */
-#define VERSION_text "1.2.1.3"
-#define MIN_VERSION_text(major1,major2,minor) (\
-  (major1) <  1 || \
-  (major1) == 1 && (major2) <  2 || \
-  (major1) == 1 && (major2) == 2 && (minor) <= 1)
-
-/* package vector-0.11.0.0 */
-#define VERSION_vector "0.11.0.0"
-#define MIN_VERSION_vector(major1,major2,minor) (\
-  (major1) <  0 || \
-  (major1) == 0 && (major2) <  11 || \
-  (major1) == 0 && (major2) == 11 && (minor) <= 0)
-
-/* package vector-th-unbox-0.2.1.3 */
-#define VERSION_vector_th_unbox "0.2.1.3"
-#define MIN_VERSION_vector_th_unbox(major1,major2,minor) (\
-  (major1) <  0 || \
-  (major1) == 0 && (major2) <  2 || \
-  (major1) == 0 && (major2) == 2 && (minor) <= 1)
-
 /* tool gcc-4.9.2 */
 #define TOOL_VERSION_gcc "4.9.2"
 #define MIN_TOOL_VERSION_gcc(major1,major2,minor) (\
@@ -112,5 +70,5 @@
   (major1) == 2 && (major2) <  25 || \
   (major1) == 2 && (major2) == 25 && (minor) <= 0)
 
-#define CURRENT_PACKAGE_KEY "hches_DCOOKx5aUDOAR8ciXX95kw"
+#define CURRENT_PACKAGE_KEY "hches_Bhj8Zs6NN71G5bJDf5pne0"
 

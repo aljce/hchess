@@ -1,64 +1,66 @@
-{-# LANGUAGE BangPatterns #-}
 module Board where 
 
-import Data.IntMap.Strict hiding (map,foldr)
-import qualified Data.IntMap.Strict as I
-import Data.Attoparsec.Text
-import Control.Applicative ((<|>))
-import Data.Char (toUpper)
+import Prelude hiding (takeWhile)
 
-data PieceType = PieceType {-# UNPACK #-} !Int deriving(Eq,Ord,Show)
+import Data.Word
+import Data.Attoparsec.ByteString.Char8
+import Control.Applicative
 
-type Color = Bool
+data Board = Board {-# UNPACK #-} !Word64 --Black Piece Set 
+                   {-# UNPACK #-} !Word64 --White Piece Set
+                   {-# UNPACK #-} !Word64 --Pawns
+                   {-# UNPACK #-} !Word64 --Rooks 
+                   {-# UNPACK #-} !Word64 --Knights 
+                   {-# UNPACK #-} !Word64 --Bishops
+                   {-# UNPACK #-} !Word64 --Queens 
+                   {-# UNPACK #-} !Word64 --Kings
+                   deriving (Show)
 
-data Piece = Piece !Color {-# UNPACK #-} !PieceType deriving(Eq,Ord,Show) 
+type Turn = Bool --Should this be a Word8 so it can be unpacked?
 
-allPieceTypes :: [PieceType]
-allPieceTypes@[pawn,rook,knight,bishop,queen,king] = fmap PieceType [1..6]
+data Castling = Castling {
+        kingSideW  :: Bool,
+        queenSideW :: Bool,
+        kingSideB  :: Bool,
+        queenSideB :: Bool
+} deriving (Show)
 
-type Board = IntMap Piece
+data FEN = FEN {
+        board          :: Board,
+        turn           :: Turn,
+        castlingRights :: Castling,
+        enPassant      :: Maybe Word64,
+        halfMoveClock  :: Int,
+        fullMoveClock  :: Int
+} deriving (Show)
 
-{-# INLINE flattenFileRank #-}
-flattenFileRank :: Int -> Int -> Int
-flattenFileRank !file !rank = 8*(rank - 1) + file 
+parseFEN :: Parser FEN
+parseFEN = do
+        board <- parseBoard 
+        char ' '
+        turn <- parseTurn
+        char ' '
+        castlingRights <- parseCastling 
+        char ' '
+        enPassant <- parseEnPassant
+        char ' '
+        halfMoveClock <- decimal
+        char ' '
+        fullMoveClock <- decimal
+        return (FEN board turn castlingRights enPassant halfMoveClock fullMoveClock)
 
-startingBoard :: Board
-startingBoard = fromDistinctAscList board
-        where board = backLine True 1 ++ pawnLine True 2 ++ pawnLine False 7 ++ backLine False 8
-              backLine color r = zipWith (\pt f -> (flattenFileRank f r, Piece color pt))
-                [rook,knight,bishop,queen,king,bishop,knight,rook] [1..8]
-              pawnLine color r = fmap (\f -> (flattenFileRank f r, Piece color pawn)) [1..8]
+parseBoard :: Parser Board
+parseBoard = takeWhile (/= ' ') *> pure (Board 0 0 0 0 0 0 0 0)
 
-{-# INLINABLE pieceChar #-}
-pieceChar :: Piece -> Char
-pieceChar (Piece c pt) = if c then toUpper letter else letter
-        where letter
-                | pt == pawn = 'p'
-                | pt == rook = 'r'
-                | pt == knight = 'n'
-                | pt == bishop = 'b'
-                | pt == queen = 'q'
-                | otherwise = 'k'
+parseTurn :: Parser Turn
+parseTurn = True <$ char 'w' <|> False <$ char 'b' 
 
-showBoard :: Board -> String
-showBoard board = "*--------*\n" ++ centerText ++ "*--------*\n"
-        where centerText = foldr (\line accum -> '|' : line ++ "|\n" ++ accum) [] stringRep 
-              stringRep = (reverse . cutEvery8) (snd <$> toList boardWithBlanks)
-              cutEvery8 [] = []
-              cutEvery8 xs = let (first, second) = splitAt 8 xs in first : cutEvery8 second
-              boardWithBlanks = I.map pieceChar board `union` fromDistinctAscList blanks
-              blanks = zip [1..64] (repeat ' ')
+parseCastling = dash <|> noDash 
+        where noDash = Castling <$> charToBool 'K' <*> charToBool 'Q' 
+                                <*> charToBool 'k' <*> charToBool 'q'
+              dash = Castling False False False False <$ char '-'
 
-parsePiece :: Color -> Parser Piece
-parsePiece color = Piece color <$> parsePieceType 
+charToBool :: Char -> Parser Bool
+charToBool c = True <$ char c <|> pure False 
 
-parsePieceType :: Parser PieceType 
-parsePieceType = letterToPieceType <$> satisfy letters <|> pure pawn
-        where letterToPieceType c
-                | c == 'N'  = knight
-                | c == 'B'  = bishop
-                | c == 'R'  = rook
-                | c == 'Q'  = queen 
-                | otherwise = king 
-              letters c = c == 'N' || c == 'B' || c == 'R' || c == 'Q' || c == 'K'
-
+parseEnPassant = Nothing <$ char '-' <|> pure (Just 0) 
