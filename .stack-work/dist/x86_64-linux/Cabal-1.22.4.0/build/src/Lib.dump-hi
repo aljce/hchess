@@ -1,0 +1,88 @@
+
+==================== FINAL INTERFACE ====================
+2015-12-07 17:24:10.939865 UTC
+
+interface hches_DCOOKx5aUDOAR8ciXX95kw:Lib 7102
+  interface hash: e40c6dde30a9ebd2fc2d42b1c8b3c056
+  ABI hash: ddd0fa1bdbee429f583141a2eda2c1d4
+  export-list hash: 2319aec3d1c295ffceea572b26560d8e
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: 1177ed9910be22cb08b17094c1021b20
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Lib.someFunc
+module dependencies: Board SlowBoard UI
+package dependencies: array-0.5.1.0@array_E0sTtauuKsGDLZoT7lTbgZ
+                      attoparsec-0.13.0.1@attop_969x13NRo2w1GLFNqu19TU base-4.8.1.0
+                      binary-0.7.5.0@binar_IvYoLp9H6Xy3zEH13MmZwd
+                      bytestring-0.10.6.0@bytes_6elQVSg5cWdFrvRnfxTUrH
+                      containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN
+                      deepseq-1.4.1.1@deeps_LbCWUlehDDeLxurARKDH5o ghc-prim-0.4.0.0
+                      hashable-1.2.3.3@hasha_2GTZqecVp8NJZrNuKzGxfy integer-gmp-1.0.0.0
+                      primitive-0.6.1.0@primi_5Jnw7oEuYtM9dmKXelGXVb
+                      scientific-0.3.4.2@scien_1UL7hJs0dy8BYuo3rFsz84
+                      text-1.2.1.3@text_1l1AN4I48k37RaQ6fm6CEh
+                      transformers-0.4.2.0@trans_3eG64VdP2vzGjP6wJiCp5X
+                      vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF
+orphans: attoparsec-0.13.0.1@attop_969x13NRo2w1GLFNqu19TU:Data.Attoparsec.Text.Internal
+         base-4.8.1.0:GHC.Base base-4.8.1.0:GHC.Float
+         binary-0.7.5.0@binar_IvYoLp9H6Xy3zEH13MmZwd:Data.Binary.Generic
+         bytestring-0.10.6.0@bytes_6elQVSg5cWdFrvRnfxTUrH:Data.ByteString.Builder
+         hashable-1.2.3.3@hasha_2GTZqecVp8NJZrNuKzGxfy:Data.Hashable.Generic
+         text-1.2.1.3@text_1l1AN4I48k37RaQ6fm6CEh:Data.Text
+         text-1.2.1.3@text_1l1AN4I48k37RaQ6fm6CEh:Data.Text.Lazy
+         text-1.2.1.3@text_1l1AN4I48k37RaQ6fm6CEh:Data.Text.Show
+         transformers-0.4.2.0@trans_3eG64VdP2vzGjP6wJiCp5X:Control.Monad.Trans.Error
+         vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Fusion.Bundle
+family instance modules: attoparsec-0.13.0.1@attop_969x13NRo2w1GLFNqu19TU:Data.Attoparsec.Internal.Types
+                         base-4.8.1.0:Control.Applicative base-4.8.1.0:Data.Either
+                         base-4.8.1.0:Data.Functor.Identity base-4.8.1.0:Data.Monoid
+                         base-4.8.1.0:Data.Type.Equality base-4.8.1.0:Data.Void
+                         base-4.8.1.0:GHC.Exts base-4.8.1.0:GHC.Generics
+                         containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN:Data.IntMap.Base
+                         containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN:Data.IntSet.Base
+                         containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN:Data.Map.Base
+                         containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN:Data.Sequence
+                         containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN:Data.Set.Base
+                         primitive-0.6.1.0@primi_5Jnw7oEuYtM9dmKXelGXVb:Control.Monad.Primitive
+                         text-1.2.1.3@text_1l1AN4I48k37RaQ6fm6CEh:Data.Text
+                         text-1.2.1.3@text_1l1AN4I48k37RaQ6fm6CEh:Data.Text.Lazy
+                         vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector
+import  -/  base-4.8.1.0:Prelude 518f762991bc287d78f21a73c974da1f
+import  -/  base-4.8.1.0:System.IO d541b8bdf18c04de3ab7ea0277c4eba3
+import  -/  ghc-prim-0.4.0.0:GHC.Types 6b27fb3fdbd0e3f0925a4496c66513bb
+import  -/  Board 97fbdfc85727bac4b1b597f6c6289a32
+  exports: 3d7f70012ff23dff8c8c460ebe35f709
+import  -/  SlowBoard ce7513b0beb8554b9dcce3ff6a4c9e68
+  exports: 11caa119561b82684d737de6150d83f8
+import  -/  UI 69d4cbae1c5453dfd7977e4c8d448641
+  exports: 546ab221fdcb2699b44e2cdf2f189bb0
+b52bd144c3c5d75ce0cb3d5f35c747a5
+  someFunc :: GHC.Types.IO ()
+  {- Arity: 1, Strictness: <L,U>,
+     Unfolding: InlineRule (0, True, True)
+                Lib.someFunc1 `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)) -}
+c53f467abe1a68da0bf5abcc7f71aa61
+  someFunc1 ::
+    GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+  {- Arity: 1, Strictness: <L,U>,
+     Unfolding: (\ eta :: GHC.Prim.State# GHC.Prim.RealWorld[OneShot] ->
+                 GHC.IO.Handle.Text.hPutStr2
+                   GHC.IO.Handle.FD.stdout
+                   Lib.someFunc2
+                   GHC.Types.True
+                   eta) -}
+d9a7f774f4fce90c52e4aabdf84eb799
+  someFunc2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "someFunc"#) -}
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: none
+require own pkg trusted: False
+

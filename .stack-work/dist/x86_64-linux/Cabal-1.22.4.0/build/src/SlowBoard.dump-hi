@@ -1,0 +1,3158 @@
+
+==================== FINAL INTERFACE ====================
+2015-12-07 17:24:09.918413 UTC
+
+interface hches_DCOOKx5aUDOAR8ciXX95kw:SlowBoard 7102
+  interface hash: 0644d754733e883db094f3ce9d8f8177
+  ABI hash: ce7513b0beb8554b9dcce3ff6a4c9e68
+  export-list hash: 11caa119561b82684d737de6150d83f8
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: 1177ed9910be22cb08b17094c1021b20
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  SlowBoard.pieceChar
+  SlowBoard.showBoard
+  SlowBoard.startingBoard
+  SlowBoard.Board
+  SlowBoard.Color{SlowBoard.Black SlowBoard.White}
+  SlowBoard.File{SlowBoard.FA SlowBoard.FB SlowBoard.FC SlowBoard.FD SlowBoard.FE SlowBoard.FF SlowBoard.FG SlowBoard.FH}
+  SlowBoard.Piece{SlowBoard.Piece}
+  SlowBoard.PieceType{SlowBoard.Bishop SlowBoard.King SlowBoard.Knight SlowBoard.Pawn SlowBoard.Queen SlowBoard.Rook}
+  SlowBoard.Rank{SlowBoard.R1 SlowBoard.R2 SlowBoard.R3 SlowBoard.R4 SlowBoard.R5 SlowBoard.R6 SlowBoard.R7 SlowBoard.R8}
+  SlowBoard.Turn
+module dependencies:
+package dependencies: array-0.5.1.0@array_E0sTtauuKsGDLZoT7lTbgZ
+                      base-4.8.1.0 containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN
+                      deepseq-1.4.1.1@deeps_LbCWUlehDDeLxurARKDH5o ghc-prim-0.4.0.0
+                      integer-gmp-1.0.0.0 primitive-0.6.1.0@primi_5Jnw7oEuYtM9dmKXelGXVb
+                      transformers-0.4.2.0@trans_3eG64VdP2vzGjP6wJiCp5X
+                      vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF
+orphans: base-4.8.1.0:GHC.Base base-4.8.1.0:GHC.Float
+         transformers-0.4.2.0@trans_3eG64VdP2vzGjP6wJiCp5X:Control.Monad.Trans.Error
+         vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Fusion.Bundle
+family instance modules: base-4.8.1.0:Control.Applicative
+                         base-4.8.1.0:Data.Either base-4.8.1.0:Data.Functor.Identity
+                         base-4.8.1.0:Data.Monoid base-4.8.1.0:Data.Type.Equality
+                         base-4.8.1.0:Data.Void base-4.8.1.0:GHC.Exts
+                         base-4.8.1.0:GHC.Generics
+                         containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN:Data.Sequence
+                         primitive-0.6.1.0@primi_5Jnw7oEuYtM9dmKXelGXVb:Control.Monad.Primitive
+                         vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector
+import  -/  base-4.8.1.0:Data.Char ba93ec4ca3776f6d9a8c8a6223b2fb26
+import  -/  base-4.8.1.0:Data.Foldable 2e5acb797cfda6b3b7fabd7052abe290
+import  -/  base-4.8.1.0:Data.List 2a4f5f92892d432e7113f64cd9dcca53
+import  -/  base-4.8.1.0:GHC.Base 1db77db5dae73d8c424c85b09fbadb89
+import  -/  base-4.8.1.0:GHC.Enum d0db4d619cd8916cc7a23444816222af
+import  -/  base-4.8.1.0:GHC.List f31ed8784b3e05f1397195751f7d74ea
+import  -/  base-4.8.1.0:GHC.Num 9f42750c866f5832ca565146bd660c60
+import  -/  base-4.8.1.0:GHC.Show b8c65ca3124f92a166c9f05120382442
+import  -/  base-4.8.1.0:GHC.Unicode bed09d5db094d4196c8520e6b25efaa4
+import  -/  base-4.8.1.0:Prelude 518f762991bc287d78f21a73c974da1f
+import  -/  containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN:Data.Tree e33891ec517a2187c3a19c6180dc8acf
+import  -/  ghc-prim-0.4.0.0:GHC.Classes e1f4ff80f7b5262008a595d29986fb18
+import  -/  ghc-prim-0.4.0.0:GHC.Types 6b27fb3fdbd0e3f0925a4496c66513bb
+import  -/  vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector 4610cc52ce9b78f79b9be7be941ffbe2
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fEnumColor :: GHC.Enum.Enum SlowBoard.Color
+  DFunId[0]
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ SlowBoard.Color
+                  SlowBoard.$fEnumColor_$csucc
+                  SlowBoard.$fEnumColor_$cpred
+                  SlowBoard.$fEnumColor_$ctoEnum
+                  SlowBoard.$fEnumColor_$cfromEnum
+                  SlowBoard.$fEnumColor_$cenumFrom
+                  SlowBoard.$fEnumColor_$cenumFromThen
+                  SlowBoard.$fEnumColor_$cenumFromTo
+                  SlowBoard.$fEnumColor_$cenumFromThenTo -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fEnumColor1 :: GHC.Prim.Int# -> SlowBoard.Color
+  {- Arity: 1, Strictness: <L,U>b -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fEnumColor2 :: [SlowBoard.Color]
+  {- Unfolding: (SlowBoard.$fEnumColor_go2 1) -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fEnumColor3 :: [SlowBoard.Color]
+  {- Unfolding: (SlowBoard.$fEnumColor_go3 0) -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fEnumColor4 :: SlowBoard.Color
+  {- Strictness: b -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fEnumColor5 :: SlowBoard.Color
+  {- Strictness: b -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fEnumColor_$cenumFrom :: SlowBoard.Color -> [SlowBoard.Color]
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: (\ a :: SlowBoard.Color ->
+                 case a of wild {
+                   SlowBoard.Black -> SlowBoard.$fEnumColor3
+                   SlowBoard.White -> SlowBoard.$fEnumColor2 }) -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fEnumColor_$cenumFromThen ::
+    SlowBoard.Color -> SlowBoard.Color -> [SlowBoard.Color]
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ a :: SlowBoard.Color b :: SlowBoard.Color ->
+                 let {
+                   $j :: GHC.Prim.Int# -> [SlowBoard.Color]
+                     {- Arity: 1, Strictness: <L,U> -}
+                   = \ a# :: GHC.Prim.Int#[OneShot] ->
+                     let {
+                       $j1 :: GHC.Prim.Int# -> [SlowBoard.Color]
+                         {- Arity: 1, Strictness: <L,U> -}
+                       = \ b# :: GHC.Prim.Int#[OneShot] ->
+                         let {
+                           $j2 :: GHC.Prim.Int# -> [SlowBoard.Color]
+                             {- Arity: 1, Strictness: <L,U> -}
+                           = \ y :: GHC.Prim.Int#[OneShot] ->
+                             case GHC.Prim.tagToEnum#
+                                    @ GHC.Types.Bool
+                                    (GHC.Prim.>=# b# a#) of wild {
+                               GHC.Types.False
+                               -> GHC.Enum.efdtIntDnFB
+                                    @ [SlowBoard.Color]
+                                    SlowBoard.$fEnumColor_c1
+                                    (GHC.Types.[] @ SlowBoard.Color)
+                                    a#
+                                    b#
+                                    y
+                               GHC.Types.True
+                               -> GHC.Enum.efdtIntUpFB
+                                    @ [SlowBoard.Color]
+                                    SlowBoard.$fEnumColor_c1
+                                    (GHC.Types.[] @ SlowBoard.Color)
+                                    a#
+                                    b#
+                                    y }
+                         } in
+                         case GHC.Prim.tagToEnum#
+                                @ GHC.Types.Bool
+                                (GHC.Prim.># a# b#) of wild {
+                           GHC.Types.False -> $j2 1 GHC.Types.True -> $j2 0 }
+                     } in
+                     case b of wild {
+                       SlowBoard.Black -> $j1 0 SlowBoard.White -> $j1 1 }
+                 } in
+                 case a of wild {
+                   SlowBoard.Black -> $j 0 SlowBoard.White -> $j 1 }) -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fEnumColor_$cenumFromThenTo ::
+    SlowBoard.Color
+    -> SlowBoard.Color -> SlowBoard.Color -> [SlowBoard.Color]
+  {- Arity: 3, Strictness: <S,1*U><S,1*U><S,1*U>,
+     Unfolding: (\ x1 :: SlowBoard.Color
+                   x2 :: SlowBoard.Color
+                   y :: SlowBoard.Color ->
+                 let {
+                   $j :: GHC.Prim.Int# -> [SlowBoard.Color]
+                     {- Arity: 1, Strictness: <L,U> -}
+                   = \ x4 :: GHC.Prim.Int#[OneShot] ->
+                     let {
+                       $j1 :: GHC.Prim.Int# -> [SlowBoard.Color]
+                         {- Arity: 1, Strictness: <L,U> -}
+                       = \ x5 :: GHC.Prim.Int#[OneShot] ->
+                         case y of wild {
+                           SlowBoard.Black
+                           -> case GHC.Prim.tagToEnum#
+                                     @ GHC.Types.Bool
+                                     (GHC.Prim.>=# x5 x4) of wild1 {
+                                GHC.Types.False
+                                -> GHC.Enum.efdtIntDnFB
+                                     @ [SlowBoard.Color]
+                                     SlowBoard.$fEnumColor_c
+                                     (GHC.Types.[] @ SlowBoard.Color)
+                                     x4
+                                     x5
+                                     0
+                                GHC.Types.True
+                                -> GHC.Enum.efdtIntUpFB
+                                     @ [SlowBoard.Color]
+                                     SlowBoard.$fEnumColor_c
+                                     (GHC.Types.[] @ SlowBoard.Color)
+                                     x4
+                                     x5
+                                     0 }
+                           SlowBoard.White
+                           -> case GHC.Prim.tagToEnum#
+                                     @ GHC.Types.Bool
+                                     (GHC.Prim.>=# x5 x4) of wild1 {
+                                GHC.Types.False
+                                -> GHC.Enum.efdtIntDnFB
+                                     @ [SlowBoard.Color]
+                                     SlowBoard.$fEnumColor_c
+                                     (GHC.Types.[] @ SlowBoard.Color)
+                                     x4
+                                     x5
+                                     1
+                                GHC.Types.True
+                                -> GHC.Enum.efdtIntUpFB
+                                     @ [SlowBoard.Color]
+                                     SlowBoard.$fEnumColor_c
+                                     (GHC.Types.[] @ SlowBoard.Color)
+                                     x4
+                                     x5
+                                     1 } }
+                     } in
+                     case x2 of wild {
+                       SlowBoard.Black -> $j1 0 SlowBoard.White -> $j1 1 }
+                 } in
+                 case x1 of wild {
+                   SlowBoard.Black -> $j 0 SlowBoard.White -> $j 1 }) -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fEnumColor_$cenumFromTo ::
+    SlowBoard.Color -> SlowBoard.Color -> [SlowBoard.Color]
+  {- Arity: 2, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ x1 :: SlowBoard.Color y :: SlowBoard.Color ->
+                 let {
+                   $j :: GHC.Prim.Int# -> [SlowBoard.Color]
+                     {- Arity: 1, Strictness: <L,U> -}
+                   = \ x2 :: GHC.Prim.Int#[OneShot] ->
+                     case y of wild {
+                       SlowBoard.Black
+                       -> case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.># x2 0) of wild1 {
+                            GHC.Types.False -> SlowBoard.$fEnumColor_go1 x2
+                            GHC.Types.True -> GHC.Types.[] @ SlowBoard.Color }
+                       SlowBoard.White
+                       -> case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.># x2 1) of wild1 {
+                            GHC.Types.False -> SlowBoard.$fEnumColor_go x2
+                            GHC.Types.True -> GHC.Types.[] @ SlowBoard.Color } }
+                 } in
+                 case x1 of wild {
+                   SlowBoard.Black -> $j 0 SlowBoard.White -> $j 1 }) -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fEnumColor_$cfromEnum :: SlowBoard.Color -> GHC.Types.Int
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ a :: SlowBoard.Color ->
+                 case a of wild {
+                   SlowBoard.Black -> GHC.Types.I# 0
+                   SlowBoard.White -> GHC.Types.I# 1 }) -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fEnumColor_$cpred :: SlowBoard.Color -> SlowBoard.Color
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ a :: SlowBoard.Color ->
+                 case a of wild {
+                   SlowBoard.Black -> SlowBoard.$fEnumColor4
+                   SlowBoard.White -> SlowBoard.Black }) -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fEnumColor_$csucc :: SlowBoard.Color -> SlowBoard.Color
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ a :: SlowBoard.Color ->
+                 case a of wild {
+                   SlowBoard.Black -> SlowBoard.White
+                   SlowBoard.White -> SlowBoard.$fEnumColor5 }) -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fEnumColor_$ctoEnum :: GHC.Types.Int -> SlowBoard.Color
+  {- Arity: 1, Strictness: <S,1*U(U)>, Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ w :: GHC.Types.Int ->
+                 case w of ww { GHC.Types.I# ww1 -> SlowBoard.$w$ctoEnum ww1 }) -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fEnumColor_c ::
+    GHC.Types.Int -> [SlowBoard.Color] -> [SlowBoard.Color]
+  {- Arity: 2, Strictness: <L,1*U(U)><L,U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ x1 :: GHC.Types.Int ys :: [SlowBoard.Color] ->
+                 GHC.Types.:
+                   @ SlowBoard.Color
+                   (SlowBoard.$fEnumColor_$ctoEnum x1)
+                   ys) -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fEnumColor_c1 ::
+    GHC.Types.Int -> [SlowBoard.Color] -> [SlowBoard.Color]
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,1*U(U)><L,U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ x1 :: GHC.Types.Int ys :: [SlowBoard.Color] ->
+                 GHC.Types.:
+                   @ SlowBoard.Color
+                   (case x1 of wild { GHC.Types.I# a ->
+                    GHC.Prim.tagToEnum# @ SlowBoard.Color a })
+                   ys) -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fEnumColor_go :: GHC.Prim.Int# -> [SlowBoard.Color]
+  {- Arity: 1, Strictness: <L,U> -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fEnumColor_go1 :: GHC.Prim.Int# -> [SlowBoard.Color]
+  {- Arity: 1, Strictness: <L,U> -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fEnumColor_go2 :: GHC.Prim.Int# -> [SlowBoard.Color]
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fEnumColor_go3 :: GHC.Prim.Int# -> [SlowBoard.Color]
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile :: GHC.Enum.Enum SlowBoard.File
+  DFunId[0]
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ SlowBoard.File
+                  SlowBoard.$fEnumFile_$csucc
+                  SlowBoard.$fEnumFile_$cpred
+                  SlowBoard.$fEnumFile_$ctoEnum
+                  SlowBoard.$fEnumFile_$cfromEnum
+                  SlowBoard.$fEnumFile_$cenumFrom
+                  SlowBoard.$fEnumFile_$cenumFromThen
+                  SlowBoard.$fEnumFile_$cenumFromTo
+                  SlowBoard.$fEnumFile_$cenumFromThenTo -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile1 :: [SlowBoard.File]
+  {- Unfolding: (SlowBoard.$fEnumFile_go8 7) -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile10 :: SlowBoard.File
+  {- Strictness: b -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile11 :: SlowBoard.File
+  {- Strictness: b -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile2 :: [SlowBoard.File]
+  {- Unfolding: (SlowBoard.$fEnumFile_go9 6) -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile3 :: [SlowBoard.File]
+  {- Unfolding: (SlowBoard.$fEnumFile_go10 5) -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile4 :: [SlowBoard.File]
+  {- Unfolding: (SlowBoard.$fEnumFile_go11 4) -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile5 :: [SlowBoard.File]
+  {- Unfolding: (SlowBoard.$fEnumFile_go12 3) -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile6 :: [SlowBoard.File]
+  {- Unfolding: (SlowBoard.$fEnumFile_go13 2) -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile7 :: [SlowBoard.File]
+  {- Unfolding: (SlowBoard.$fEnumFile_go14 1) -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile8 :: [SlowBoard.File]
+  {- Unfolding: (SlowBoard.$fEnumFile_go15 0) -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile9 :: GHC.Prim.Int# -> SlowBoard.File
+  {- Arity: 1, Strictness: <L,U>b -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile_$cenumFrom :: SlowBoard.File -> [SlowBoard.File]
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: (\ a :: SlowBoard.File ->
+                 case a of wild {
+                   SlowBoard.FA -> SlowBoard.$fEnumFile8
+                   SlowBoard.FB -> SlowBoard.$fEnumFile7
+                   SlowBoard.FC -> SlowBoard.$fEnumFile6
+                   SlowBoard.FD -> SlowBoard.$fEnumFile5
+                   SlowBoard.FE -> SlowBoard.$fEnumFile4
+                   SlowBoard.FF -> SlowBoard.$fEnumFile3
+                   SlowBoard.FG -> SlowBoard.$fEnumFile2
+                   SlowBoard.FH -> SlowBoard.$fEnumFile1 }) -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile_$cenumFromThen ::
+    SlowBoard.File -> SlowBoard.File -> [SlowBoard.File]
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ a :: SlowBoard.File b :: SlowBoard.File ->
+                 let {
+                   $j :: GHC.Prim.Int# -> [SlowBoard.File]
+                     {- Arity: 1, Strictness: <L,U> -}
+                   = \ a# :: GHC.Prim.Int#[OneShot] ->
+                     let {
+                       $j1 :: GHC.Prim.Int# -> [SlowBoard.File]
+                         {- Arity: 1, Strictness: <L,U> -}
+                       = \ b# :: GHC.Prim.Int#[OneShot] ->
+                         let {
+                           $j2 :: GHC.Prim.Int# -> [SlowBoard.File]
+                             {- Arity: 1, Strictness: <L,U> -}
+                           = \ y :: GHC.Prim.Int#[OneShot] ->
+                             case GHC.Prim.tagToEnum#
+                                    @ GHC.Types.Bool
+                                    (GHC.Prim.>=# b# a#) of wild {
+                               GHC.Types.False
+                               -> GHC.Enum.efdtIntDnFB
+                                    @ [SlowBoard.File]
+                                    SlowBoard.$fEnumFile_c
+                                    (GHC.Types.[] @ SlowBoard.File)
+                                    a#
+                                    b#
+                                    y
+                               GHC.Types.True
+                               -> GHC.Enum.efdtIntUpFB
+                                    @ [SlowBoard.File]
+                                    SlowBoard.$fEnumFile_c
+                                    (GHC.Types.[] @ SlowBoard.File)
+                                    a#
+                                    b#
+                                    y }
+                         } in
+                         case GHC.Prim.tagToEnum#
+                                @ GHC.Types.Bool
+                                (GHC.Prim.># a# b#) of wild {
+                           GHC.Types.False -> $j2 7 GHC.Types.True -> $j2 0 }
+                     } in
+                     case b of wild {
+                       SlowBoard.FA -> $j1 0
+                       SlowBoard.FB -> $j1 1
+                       SlowBoard.FC -> $j1 2
+                       SlowBoard.FD -> $j1 3
+                       SlowBoard.FE -> $j1 4
+                       SlowBoard.FF -> $j1 5
+                       SlowBoard.FG -> $j1 6
+                       SlowBoard.FH -> $j1 7 }
+                 } in
+                 case a of wild {
+                   SlowBoard.FA -> $j 0
+                   SlowBoard.FB -> $j 1
+                   SlowBoard.FC -> $j 2
+                   SlowBoard.FD -> $j 3
+                   SlowBoard.FE -> $j 4
+                   SlowBoard.FF -> $j 5
+                   SlowBoard.FG -> $j 6
+                   SlowBoard.FH -> $j 7 }) -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile_$cenumFromThenTo ::
+    SlowBoard.File
+    -> SlowBoard.File -> SlowBoard.File -> [SlowBoard.File]
+  {- Arity: 3, Strictness: <S,1*U><S,1*U><S,1*U> -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile_$cenumFromTo ::
+    SlowBoard.File -> SlowBoard.File -> [SlowBoard.File]
+  {- Arity: 2, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ x1 :: SlowBoard.File y :: SlowBoard.File ->
+                 let {
+                   $j :: GHC.Prim.Int# -> [SlowBoard.File]
+                     {- Arity: 1, Strictness: <L,U> -}
+                   = \ x2 :: GHC.Prim.Int#[OneShot] ->
+                     case y of wild {
+                       SlowBoard.FA
+                       -> case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.># x2 0) of wild1 {
+                            GHC.Types.False -> SlowBoard.$fEnumFile_go7 x2
+                            GHC.Types.True -> GHC.Types.[] @ SlowBoard.File }
+                       SlowBoard.FB
+                       -> case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.># x2 1) of wild1 {
+                            GHC.Types.False -> SlowBoard.$fEnumFile_go6 x2
+                            GHC.Types.True -> GHC.Types.[] @ SlowBoard.File }
+                       SlowBoard.FC
+                       -> case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.># x2 2) of wild1 {
+                            GHC.Types.False -> SlowBoard.$fEnumFile_go5 x2
+                            GHC.Types.True -> GHC.Types.[] @ SlowBoard.File }
+                       SlowBoard.FD
+                       -> case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.># x2 3) of wild1 {
+                            GHC.Types.False -> SlowBoard.$fEnumFile_go4 x2
+                            GHC.Types.True -> GHC.Types.[] @ SlowBoard.File }
+                       SlowBoard.FE
+                       -> case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.># x2 4) of wild1 {
+                            GHC.Types.False -> SlowBoard.$fEnumFile_go3 x2
+                            GHC.Types.True -> GHC.Types.[] @ SlowBoard.File }
+                       SlowBoard.FF
+                       -> case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.># x2 5) of wild1 {
+                            GHC.Types.False -> SlowBoard.$fEnumFile_go2 x2
+                            GHC.Types.True -> GHC.Types.[] @ SlowBoard.File }
+                       SlowBoard.FG
+                       -> case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.># x2 6) of wild1 {
+                            GHC.Types.False -> SlowBoard.$fEnumFile_go1 x2
+                            GHC.Types.True -> GHC.Types.[] @ SlowBoard.File }
+                       SlowBoard.FH
+                       -> case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.># x2 7) of wild1 {
+                            GHC.Types.False -> SlowBoard.$fEnumFile_go x2
+                            GHC.Types.True -> GHC.Types.[] @ SlowBoard.File } }
+                 } in
+                 case x1 of wild {
+                   SlowBoard.FA -> $j 0
+                   SlowBoard.FB -> $j 1
+                   SlowBoard.FC -> $j 2
+                   SlowBoard.FD -> $j 3
+                   SlowBoard.FE -> $j 4
+                   SlowBoard.FF -> $j 5
+                   SlowBoard.FG -> $j 6
+                   SlowBoard.FH -> $j 7 }) -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile_$cfromEnum :: SlowBoard.File -> GHC.Types.Int
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>m, Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ w :: SlowBoard.File ->
+                 case w of wild {
+                   SlowBoard.FA -> GHC.Types.I# 0
+                   SlowBoard.FB -> GHC.Types.I# 1
+                   SlowBoard.FC -> GHC.Types.I# 2
+                   SlowBoard.FD -> GHC.Types.I# 3
+                   SlowBoard.FE -> GHC.Types.I# 4
+                   SlowBoard.FF -> GHC.Types.I# 5
+                   SlowBoard.FG -> GHC.Types.I# 6
+                   SlowBoard.FH -> GHC.Types.I# 7 }) -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile_$cpred :: SlowBoard.File -> SlowBoard.File
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ a :: SlowBoard.File ->
+                 case a of wild {
+                   SlowBoard.FA -> SlowBoard.$fEnumFile10
+                   SlowBoard.FB -> SlowBoard.FA
+                   SlowBoard.FC -> SlowBoard.FB
+                   SlowBoard.FD -> SlowBoard.FC
+                   SlowBoard.FE -> SlowBoard.FD
+                   SlowBoard.FF -> SlowBoard.FE
+                   SlowBoard.FG -> SlowBoard.FF
+                   SlowBoard.FH -> SlowBoard.FG }) -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile_$csucc :: SlowBoard.File -> SlowBoard.File
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ a :: SlowBoard.File ->
+                 case a of wild {
+                   SlowBoard.FA -> SlowBoard.FB
+                   SlowBoard.FB -> SlowBoard.FC
+                   SlowBoard.FC -> SlowBoard.FD
+                   SlowBoard.FD -> SlowBoard.FE
+                   SlowBoard.FE -> SlowBoard.FF
+                   SlowBoard.FF -> SlowBoard.FG
+                   SlowBoard.FG -> SlowBoard.FH
+                   SlowBoard.FH -> SlowBoard.$fEnumFile11 }) -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile_$ctoEnum :: GHC.Types.Int -> SlowBoard.File
+  {- Arity: 1, Strictness: <S,1*U(U)>, Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ w :: GHC.Types.Int ->
+                 case w of ww { GHC.Types.I# ww1 -> SlowBoard.$w$ctoEnum1 ww1 }) -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile_c ::
+    GHC.Types.Int -> [SlowBoard.File] -> [SlowBoard.File]
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,1*U(U)><L,U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ x1 :: GHC.Types.Int ys :: [SlowBoard.File] ->
+                 GHC.Types.:
+                   @ SlowBoard.File
+                   (case x1 of wild { GHC.Types.I# a ->
+                    GHC.Prim.tagToEnum# @ SlowBoard.File a })
+                   ys) -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile_go :: GHC.Prim.Int# -> [SlowBoard.File]
+  {- Arity: 1, Strictness: <L,U> -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile_go1 :: GHC.Prim.Int# -> [SlowBoard.File]
+  {- Arity: 1, Strictness: <L,U> -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile_go10 :: GHC.Prim.Int# -> [SlowBoard.File]
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile_go11 :: GHC.Prim.Int# -> [SlowBoard.File]
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile_go12 :: GHC.Prim.Int# -> [SlowBoard.File]
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile_go13 :: GHC.Prim.Int# -> [SlowBoard.File]
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile_go14 :: GHC.Prim.Int# -> [SlowBoard.File]
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile_go15 :: GHC.Prim.Int# -> [SlowBoard.File]
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile_go2 :: GHC.Prim.Int# -> [SlowBoard.File]
+  {- Arity: 1, Strictness: <L,U> -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile_go3 :: GHC.Prim.Int# -> [SlowBoard.File]
+  {- Arity: 1, Strictness: <L,U> -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile_go4 :: GHC.Prim.Int# -> [SlowBoard.File]
+  {- Arity: 1, Strictness: <L,U> -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile_go5 :: GHC.Prim.Int# -> [SlowBoard.File]
+  {- Arity: 1, Strictness: <L,U> -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile_go6 :: GHC.Prim.Int# -> [SlowBoard.File]
+  {- Arity: 1, Strictness: <L,U> -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile_go7 :: GHC.Prim.Int# -> [SlowBoard.File]
+  {- Arity: 1, Strictness: <L,U> -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile_go8 :: GHC.Prim.Int# -> [SlowBoard.File]
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
+182e785c545cfdca083d124686f78432
+  $fEnumFile_go9 :: GHC.Prim.Int# -> [SlowBoard.File]
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEnumPieceType :: GHC.Enum.Enum SlowBoard.PieceType
+  DFunId[0]
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ SlowBoard.PieceType
+                  SlowBoard.$fEnumPieceType_$csucc
+                  SlowBoard.$fEnumPieceType_$cpred
+                  SlowBoard.$fEnumPieceType_$ctoEnum
+                  SlowBoard.$fEnumPieceType_$cfromEnum
+                  SlowBoard.$fEnumPieceType_$cenumFrom
+                  SlowBoard.$fEnumPieceType_$cenumFromThen
+                  SlowBoard.$fEnumPieceType_$cenumFromTo
+                  SlowBoard.$fEnumPieceType_$cenumFromThenTo -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEnumPieceType1 :: [SlowBoard.PieceType]
+  {- Unfolding: (SlowBoard.$fEnumPieceType_go6 5) -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEnumPieceType2 :: [SlowBoard.PieceType]
+  {- Unfolding: (SlowBoard.$fEnumPieceType_go7 4) -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEnumPieceType3 :: [SlowBoard.PieceType]
+  {- Unfolding: (SlowBoard.$fEnumPieceType_go8 3) -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEnumPieceType4 :: [SlowBoard.PieceType]
+  {- Unfolding: (SlowBoard.$fEnumPieceType_go9 2) -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEnumPieceType5 :: [SlowBoard.PieceType]
+  {- Unfolding: (SlowBoard.$fEnumPieceType_go10 1) -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEnumPieceType6 :: [SlowBoard.PieceType]
+  {- Unfolding: (SlowBoard.$fEnumPieceType_go11 0) -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEnumPieceType7 :: GHC.Prim.Int# -> SlowBoard.PieceType
+  {- Arity: 1, Strictness: <L,U>b -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEnumPieceType8 :: SlowBoard.PieceType
+  {- Strictness: b -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEnumPieceType9 :: SlowBoard.PieceType
+  {- Strictness: b -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEnumPieceType_$cenumFrom ::
+    SlowBoard.PieceType -> [SlowBoard.PieceType]
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: (\ a :: SlowBoard.PieceType ->
+                 case a of wild {
+                   SlowBoard.Pawn -> SlowBoard.$fEnumPieceType6
+                   SlowBoard.Rook -> SlowBoard.$fEnumPieceType5
+                   SlowBoard.Knight -> SlowBoard.$fEnumPieceType4
+                   SlowBoard.Bishop -> SlowBoard.$fEnumPieceType3
+                   SlowBoard.Queen -> SlowBoard.$fEnumPieceType2
+                   SlowBoard.King -> SlowBoard.$fEnumPieceType1 }) -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEnumPieceType_$cenumFromThen ::
+    SlowBoard.PieceType -> SlowBoard.PieceType -> [SlowBoard.PieceType]
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ a :: SlowBoard.PieceType b :: SlowBoard.PieceType ->
+                 let {
+                   $j :: GHC.Prim.Int# -> [SlowBoard.PieceType]
+                     {- Arity: 1, Strictness: <L,U> -}
+                   = \ a# :: GHC.Prim.Int#[OneShot] ->
+                     let {
+                       $j1 :: GHC.Prim.Int# -> [SlowBoard.PieceType]
+                         {- Arity: 1, Strictness: <L,U> -}
+                       = \ b# :: GHC.Prim.Int#[OneShot] ->
+                         let {
+                           $j2 :: GHC.Prim.Int# -> [SlowBoard.PieceType]
+                             {- Arity: 1, Strictness: <L,U> -}
+                           = \ y :: GHC.Prim.Int#[OneShot] ->
+                             case GHC.Prim.tagToEnum#
+                                    @ GHC.Types.Bool
+                                    (GHC.Prim.>=# b# a#) of wild {
+                               GHC.Types.False
+                               -> GHC.Enum.efdtIntDnFB
+                                    @ [SlowBoard.PieceType]
+                                    SlowBoard.$fEnumPieceType_c
+                                    (GHC.Types.[] @ SlowBoard.PieceType)
+                                    a#
+                                    b#
+                                    y
+                               GHC.Types.True
+                               -> GHC.Enum.efdtIntUpFB
+                                    @ [SlowBoard.PieceType]
+                                    SlowBoard.$fEnumPieceType_c
+                                    (GHC.Types.[] @ SlowBoard.PieceType)
+                                    a#
+                                    b#
+                                    y }
+                         } in
+                         case GHC.Prim.tagToEnum#
+                                @ GHC.Types.Bool
+                                (GHC.Prim.># a# b#) of wild {
+                           GHC.Types.False -> $j2 5 GHC.Types.True -> $j2 0 }
+                     } in
+                     case b of wild {
+                       SlowBoard.Pawn -> $j1 0
+                       SlowBoard.Rook -> $j1 1
+                       SlowBoard.Knight -> $j1 2
+                       SlowBoard.Bishop -> $j1 3
+                       SlowBoard.Queen -> $j1 4
+                       SlowBoard.King -> $j1 5 }
+                 } in
+                 case a of wild {
+                   SlowBoard.Pawn -> $j 0
+                   SlowBoard.Rook -> $j 1
+                   SlowBoard.Knight -> $j 2
+                   SlowBoard.Bishop -> $j 3
+                   SlowBoard.Queen -> $j 4
+                   SlowBoard.King -> $j 5 }) -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEnumPieceType_$cenumFromThenTo ::
+    SlowBoard.PieceType
+    -> SlowBoard.PieceType
+    -> SlowBoard.PieceType
+    -> [SlowBoard.PieceType]
+  {- Arity: 3, Strictness: <S,1*U><S,1*U><S,1*U> -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEnumPieceType_$cenumFromTo ::
+    SlowBoard.PieceType -> SlowBoard.PieceType -> [SlowBoard.PieceType]
+  {- Arity: 2, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ x1 :: SlowBoard.PieceType y :: SlowBoard.PieceType ->
+                 let {
+                   $j :: GHC.Prim.Int# -> [SlowBoard.PieceType]
+                     {- Arity: 1, Strictness: <L,U> -}
+                   = \ x2 :: GHC.Prim.Int#[OneShot] ->
+                     case y of wild {
+                       SlowBoard.Pawn
+                       -> case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.># x2 0) of wild1 {
+                            GHC.Types.False -> SlowBoard.$fEnumPieceType_go5 x2
+                            GHC.Types.True -> GHC.Types.[] @ SlowBoard.PieceType }
+                       SlowBoard.Rook
+                       -> case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.># x2 1) of wild1 {
+                            GHC.Types.False -> SlowBoard.$fEnumPieceType_go4 x2
+                            GHC.Types.True -> GHC.Types.[] @ SlowBoard.PieceType }
+                       SlowBoard.Knight
+                       -> case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.># x2 2) of wild1 {
+                            GHC.Types.False -> SlowBoard.$fEnumPieceType_go3 x2
+                            GHC.Types.True -> GHC.Types.[] @ SlowBoard.PieceType }
+                       SlowBoard.Bishop
+                       -> case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.># x2 3) of wild1 {
+                            GHC.Types.False -> SlowBoard.$fEnumPieceType_go2 x2
+                            GHC.Types.True -> GHC.Types.[] @ SlowBoard.PieceType }
+                       SlowBoard.Queen
+                       -> case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.># x2 4) of wild1 {
+                            GHC.Types.False -> SlowBoard.$fEnumPieceType_go1 x2
+                            GHC.Types.True -> GHC.Types.[] @ SlowBoard.PieceType }
+                       SlowBoard.King
+                       -> case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.># x2 5) of wild1 {
+                            GHC.Types.False -> SlowBoard.$fEnumPieceType_go x2
+                            GHC.Types.True -> GHC.Types.[] @ SlowBoard.PieceType } }
+                 } in
+                 case x1 of wild {
+                   SlowBoard.Pawn -> $j 0
+                   SlowBoard.Rook -> $j 1
+                   SlowBoard.Knight -> $j 2
+                   SlowBoard.Bishop -> $j 3
+                   SlowBoard.Queen -> $j 4
+                   SlowBoard.King -> $j 5 }) -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEnumPieceType_$cfromEnum :: SlowBoard.PieceType -> GHC.Types.Int
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>m, Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ w :: SlowBoard.PieceType ->
+                 case w of wild {
+                   SlowBoard.Pawn -> GHC.Types.I# 0
+                   SlowBoard.Rook -> GHC.Types.I# 1
+                   SlowBoard.Knight -> GHC.Types.I# 2
+                   SlowBoard.Bishop -> GHC.Types.I# 3
+                   SlowBoard.Queen -> GHC.Types.I# 4
+                   SlowBoard.King -> GHC.Types.I# 5 }) -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEnumPieceType_$cpred ::
+    SlowBoard.PieceType -> SlowBoard.PieceType
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ a :: SlowBoard.PieceType ->
+                 case a of wild {
+                   SlowBoard.Pawn -> SlowBoard.$fEnumPieceType8
+                   SlowBoard.Rook -> SlowBoard.Pawn
+                   SlowBoard.Knight -> SlowBoard.Rook
+                   SlowBoard.Bishop -> SlowBoard.Knight
+                   SlowBoard.Queen -> SlowBoard.Bishop
+                   SlowBoard.King -> SlowBoard.Queen }) -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEnumPieceType_$csucc ::
+    SlowBoard.PieceType -> SlowBoard.PieceType
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ a :: SlowBoard.PieceType ->
+                 case a of wild {
+                   SlowBoard.Pawn -> SlowBoard.Rook
+                   SlowBoard.Rook -> SlowBoard.Knight
+                   SlowBoard.Knight -> SlowBoard.Bishop
+                   SlowBoard.Bishop -> SlowBoard.Queen
+                   SlowBoard.Queen -> SlowBoard.King
+                   SlowBoard.King -> SlowBoard.$fEnumPieceType9 }) -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEnumPieceType_$ctoEnum :: GHC.Types.Int -> SlowBoard.PieceType
+  {- Arity: 1, Strictness: <S,1*U(U)>, Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ w :: GHC.Types.Int ->
+                 case w of ww { GHC.Types.I# ww1 -> SlowBoard.$w$ctoEnum2 ww1 }) -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEnumPieceType_c ::
+    GHC.Types.Int -> [SlowBoard.PieceType] -> [SlowBoard.PieceType]
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,1*U(U)><L,U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ x1 :: GHC.Types.Int ys :: [SlowBoard.PieceType] ->
+                 GHC.Types.:
+                   @ SlowBoard.PieceType
+                   (case x1 of wild { GHC.Types.I# a ->
+                    GHC.Prim.tagToEnum# @ SlowBoard.PieceType a })
+                   ys) -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEnumPieceType_go :: GHC.Prim.Int# -> [SlowBoard.PieceType]
+  {- Arity: 1, Strictness: <L,U> -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEnumPieceType_go1 :: GHC.Prim.Int# -> [SlowBoard.PieceType]
+  {- Arity: 1, Strictness: <L,U> -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEnumPieceType_go10 :: GHC.Prim.Int# -> [SlowBoard.PieceType]
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEnumPieceType_go11 :: GHC.Prim.Int# -> [SlowBoard.PieceType]
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEnumPieceType_go2 :: GHC.Prim.Int# -> [SlowBoard.PieceType]
+  {- Arity: 1, Strictness: <L,U> -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEnumPieceType_go3 :: GHC.Prim.Int# -> [SlowBoard.PieceType]
+  {- Arity: 1, Strictness: <L,U> -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEnumPieceType_go4 :: GHC.Prim.Int# -> [SlowBoard.PieceType]
+  {- Arity: 1, Strictness: <L,U> -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEnumPieceType_go5 :: GHC.Prim.Int# -> [SlowBoard.PieceType]
+  {- Arity: 1, Strictness: <L,U> -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEnumPieceType_go6 :: GHC.Prim.Int# -> [SlowBoard.PieceType]
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEnumPieceType_go7 :: GHC.Prim.Int# -> [SlowBoard.PieceType]
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEnumPieceType_go8 :: GHC.Prim.Int# -> [SlowBoard.PieceType]
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEnumPieceType_go9 :: GHC.Prim.Int# -> [SlowBoard.PieceType]
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank :: GHC.Enum.Enum SlowBoard.Rank
+  DFunId[0]
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ SlowBoard.Rank
+                  SlowBoard.$fEnumRank_$csucc
+                  SlowBoard.$fEnumRank_$cpred
+                  SlowBoard.$fEnumRank_$ctoEnum
+                  SlowBoard.$fEnumRank_$cfromEnum
+                  SlowBoard.$fEnumRank_$cenumFrom
+                  SlowBoard.$fEnumRank_$cenumFromThen
+                  SlowBoard.$fEnumRank_$cenumFromTo
+                  SlowBoard.$fEnumRank_$cenumFromThenTo -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank1 :: [SlowBoard.Rank]
+  {- Unfolding: (SlowBoard.$fEnumRank_go8 7) -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank10 :: SlowBoard.Rank
+  {- Strictness: b -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank11 :: SlowBoard.Rank
+  {- Strictness: b -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank2 :: [SlowBoard.Rank]
+  {- Unfolding: (SlowBoard.$fEnumRank_go9 6) -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank3 :: [SlowBoard.Rank]
+  {- Unfolding: (SlowBoard.$fEnumRank_go10 5) -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank4 :: [SlowBoard.Rank]
+  {- Unfolding: (SlowBoard.$fEnumRank_go11 4) -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank5 :: [SlowBoard.Rank]
+  {- Unfolding: (SlowBoard.$fEnumRank_go12 3) -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank6 :: [SlowBoard.Rank]
+  {- Unfolding: (SlowBoard.$fEnumRank_go13 2) -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank7 :: [SlowBoard.Rank]
+  {- Unfolding: (SlowBoard.$fEnumRank_go14 1) -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank8 :: [SlowBoard.Rank]
+  {- Unfolding: (SlowBoard.$fEnumRank_go15 0) -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank9 :: GHC.Prim.Int# -> SlowBoard.Rank
+  {- Arity: 1, Strictness: <L,U>b -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank_$cenumFrom :: SlowBoard.Rank -> [SlowBoard.Rank]
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: (\ a :: SlowBoard.Rank ->
+                 case a of wild {
+                   SlowBoard.R1 -> SlowBoard.$fEnumRank8
+                   SlowBoard.R2 -> SlowBoard.$fEnumRank7
+                   SlowBoard.R3 -> SlowBoard.$fEnumRank6
+                   SlowBoard.R4 -> SlowBoard.$fEnumRank5
+                   SlowBoard.R5 -> SlowBoard.$fEnumRank4
+                   SlowBoard.R6 -> SlowBoard.$fEnumRank3
+                   SlowBoard.R7 -> SlowBoard.$fEnumRank2
+                   SlowBoard.R8 -> SlowBoard.$fEnumRank1 }) -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank_$cenumFromThen ::
+    SlowBoard.Rank -> SlowBoard.Rank -> [SlowBoard.Rank]
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ a :: SlowBoard.Rank b :: SlowBoard.Rank ->
+                 let {
+                   $j :: GHC.Prim.Int# -> [SlowBoard.Rank]
+                     {- Arity: 1, Strictness: <L,U> -}
+                   = \ a# :: GHC.Prim.Int#[OneShot] ->
+                     let {
+                       $j1 :: GHC.Prim.Int# -> [SlowBoard.Rank]
+                         {- Arity: 1, Strictness: <L,U> -}
+                       = \ b# :: GHC.Prim.Int#[OneShot] ->
+                         let {
+                           $j2 :: GHC.Prim.Int# -> [SlowBoard.Rank]
+                             {- Arity: 1, Strictness: <L,U> -}
+                           = \ y :: GHC.Prim.Int#[OneShot] ->
+                             case GHC.Prim.tagToEnum#
+                                    @ GHC.Types.Bool
+                                    (GHC.Prim.>=# b# a#) of wild {
+                               GHC.Types.False
+                               -> GHC.Enum.efdtIntDnFB
+                                    @ [SlowBoard.Rank]
+                                    SlowBoard.$fEnumRank_c
+                                    (GHC.Types.[] @ SlowBoard.Rank)
+                                    a#
+                                    b#
+                                    y
+                               GHC.Types.True
+                               -> GHC.Enum.efdtIntUpFB
+                                    @ [SlowBoard.Rank]
+                                    SlowBoard.$fEnumRank_c
+                                    (GHC.Types.[] @ SlowBoard.Rank)
+                                    a#
+                                    b#
+                                    y }
+                         } in
+                         case GHC.Prim.tagToEnum#
+                                @ GHC.Types.Bool
+                                (GHC.Prim.># a# b#) of wild {
+                           GHC.Types.False -> $j2 7 GHC.Types.True -> $j2 0 }
+                     } in
+                     case b of wild {
+                       SlowBoard.R1 -> $j1 0
+                       SlowBoard.R2 -> $j1 1
+                       SlowBoard.R3 -> $j1 2
+                       SlowBoard.R4 -> $j1 3
+                       SlowBoard.R5 -> $j1 4
+                       SlowBoard.R6 -> $j1 5
+                       SlowBoard.R7 -> $j1 6
+                       SlowBoard.R8 -> $j1 7 }
+                 } in
+                 case a of wild {
+                   SlowBoard.R1 -> $j 0
+                   SlowBoard.R2 -> $j 1
+                   SlowBoard.R3 -> $j 2
+                   SlowBoard.R4 -> $j 3
+                   SlowBoard.R5 -> $j 4
+                   SlowBoard.R6 -> $j 5
+                   SlowBoard.R7 -> $j 6
+                   SlowBoard.R8 -> $j 7 }) -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank_$cenumFromThenTo ::
+    SlowBoard.Rank
+    -> SlowBoard.Rank -> SlowBoard.Rank -> [SlowBoard.Rank]
+  {- Arity: 3, Strictness: <S,1*U><S,1*U><S,1*U> -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank_$cenumFromTo ::
+    SlowBoard.Rank -> SlowBoard.Rank -> [SlowBoard.Rank]
+  {- Arity: 2, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ x1 :: SlowBoard.Rank y :: SlowBoard.Rank ->
+                 let {
+                   $j :: GHC.Prim.Int# -> [SlowBoard.Rank]
+                     {- Arity: 1, Strictness: <L,U> -}
+                   = \ x2 :: GHC.Prim.Int#[OneShot] ->
+                     case y of wild {
+                       SlowBoard.R1
+                       -> case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.># x2 0) of wild1 {
+                            GHC.Types.False -> SlowBoard.$fEnumRank_go7 x2
+                            GHC.Types.True -> GHC.Types.[] @ SlowBoard.Rank }
+                       SlowBoard.R2
+                       -> case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.># x2 1) of wild1 {
+                            GHC.Types.False -> SlowBoard.$fEnumRank_go6 x2
+                            GHC.Types.True -> GHC.Types.[] @ SlowBoard.Rank }
+                       SlowBoard.R3
+                       -> case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.># x2 2) of wild1 {
+                            GHC.Types.False -> SlowBoard.$fEnumRank_go5 x2
+                            GHC.Types.True -> GHC.Types.[] @ SlowBoard.Rank }
+                       SlowBoard.R4
+                       -> case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.># x2 3) of wild1 {
+                            GHC.Types.False -> SlowBoard.$fEnumRank_go4 x2
+                            GHC.Types.True -> GHC.Types.[] @ SlowBoard.Rank }
+                       SlowBoard.R5
+                       -> case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.># x2 4) of wild1 {
+                            GHC.Types.False -> SlowBoard.$fEnumRank_go3 x2
+                            GHC.Types.True -> GHC.Types.[] @ SlowBoard.Rank }
+                       SlowBoard.R6
+                       -> case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.># x2 5) of wild1 {
+                            GHC.Types.False -> SlowBoard.$fEnumRank_go2 x2
+                            GHC.Types.True -> GHC.Types.[] @ SlowBoard.Rank }
+                       SlowBoard.R7
+                       -> case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.># x2 6) of wild1 {
+                            GHC.Types.False -> SlowBoard.$fEnumRank_go1 x2
+                            GHC.Types.True -> GHC.Types.[] @ SlowBoard.Rank }
+                       SlowBoard.R8
+                       -> case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim.># x2 7) of wild1 {
+                            GHC.Types.False -> SlowBoard.$fEnumRank_go x2
+                            GHC.Types.True -> GHC.Types.[] @ SlowBoard.Rank } }
+                 } in
+                 case x1 of wild {
+                   SlowBoard.R1 -> $j 0
+                   SlowBoard.R2 -> $j 1
+                   SlowBoard.R3 -> $j 2
+                   SlowBoard.R4 -> $j 3
+                   SlowBoard.R5 -> $j 4
+                   SlowBoard.R6 -> $j 5
+                   SlowBoard.R7 -> $j 6
+                   SlowBoard.R8 -> $j 7 }) -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank_$cfromEnum :: SlowBoard.Rank -> GHC.Types.Int
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>m, Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ w :: SlowBoard.Rank ->
+                 case w of wild {
+                   SlowBoard.R1 -> GHC.Types.I# 0
+                   SlowBoard.R2 -> GHC.Types.I# 1
+                   SlowBoard.R3 -> GHC.Types.I# 2
+                   SlowBoard.R4 -> GHC.Types.I# 3
+                   SlowBoard.R5 -> GHC.Types.I# 4
+                   SlowBoard.R6 -> GHC.Types.I# 5
+                   SlowBoard.R7 -> GHC.Types.I# 6
+                   SlowBoard.R8 -> GHC.Types.I# 7 }) -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank_$cpred :: SlowBoard.Rank -> SlowBoard.Rank
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ a :: SlowBoard.Rank ->
+                 case a of wild {
+                   SlowBoard.R1 -> SlowBoard.$fEnumRank10
+                   SlowBoard.R2 -> SlowBoard.R1
+                   SlowBoard.R3 -> SlowBoard.R2
+                   SlowBoard.R4 -> SlowBoard.R3
+                   SlowBoard.R5 -> SlowBoard.R4
+                   SlowBoard.R6 -> SlowBoard.R5
+                   SlowBoard.R7 -> SlowBoard.R6
+                   SlowBoard.R8 -> SlowBoard.R7 }) -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank_$csucc :: SlowBoard.Rank -> SlowBoard.Rank
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ a :: SlowBoard.Rank ->
+                 case a of wild {
+                   SlowBoard.R1 -> SlowBoard.R2
+                   SlowBoard.R2 -> SlowBoard.R3
+                   SlowBoard.R3 -> SlowBoard.R4
+                   SlowBoard.R4 -> SlowBoard.R5
+                   SlowBoard.R5 -> SlowBoard.R6
+                   SlowBoard.R6 -> SlowBoard.R7
+                   SlowBoard.R7 -> SlowBoard.R8
+                   SlowBoard.R8 -> SlowBoard.$fEnumRank11 }) -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank_$ctoEnum :: GHC.Types.Int -> SlowBoard.Rank
+  {- Arity: 1, Strictness: <S,1*U(U)>, Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ w :: GHC.Types.Int ->
+                 case w of ww { GHC.Types.I# ww1 -> SlowBoard.$w$ctoEnum3 ww1 }) -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank_c ::
+    GHC.Types.Int -> [SlowBoard.Rank] -> [SlowBoard.Rank]
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,1*U(U)><L,U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ x1 :: GHC.Types.Int ys :: [SlowBoard.Rank] ->
+                 GHC.Types.:
+                   @ SlowBoard.Rank
+                   (case x1 of wild { GHC.Types.I# a ->
+                    GHC.Prim.tagToEnum# @ SlowBoard.Rank a })
+                   ys) -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank_go :: GHC.Prim.Int# -> [SlowBoard.Rank]
+  {- Arity: 1, Strictness: <L,U> -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank_go1 :: GHC.Prim.Int# -> [SlowBoard.Rank]
+  {- Arity: 1, Strictness: <L,U> -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank_go10 :: GHC.Prim.Int# -> [SlowBoard.Rank]
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank_go11 :: GHC.Prim.Int# -> [SlowBoard.Rank]
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank_go12 :: GHC.Prim.Int# -> [SlowBoard.Rank]
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank_go13 :: GHC.Prim.Int# -> [SlowBoard.Rank]
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank_go14 :: GHC.Prim.Int# -> [SlowBoard.Rank]
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank_go15 :: GHC.Prim.Int# -> [SlowBoard.Rank]
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank_go2 :: GHC.Prim.Int# -> [SlowBoard.Rank]
+  {- Arity: 1, Strictness: <L,U> -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank_go3 :: GHC.Prim.Int# -> [SlowBoard.Rank]
+  {- Arity: 1, Strictness: <L,U> -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank_go4 :: GHC.Prim.Int# -> [SlowBoard.Rank]
+  {- Arity: 1, Strictness: <L,U> -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank_go5 :: GHC.Prim.Int# -> [SlowBoard.Rank]
+  {- Arity: 1, Strictness: <L,U> -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank_go6 :: GHC.Prim.Int# -> [SlowBoard.Rank]
+  {- Arity: 1, Strictness: <L,U> -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank_go7 :: GHC.Prim.Int# -> [SlowBoard.Rank]
+  {- Arity: 1, Strictness: <L,U> -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank_go8 :: GHC.Prim.Int# -> [SlowBoard.Rank]
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEnumRank_go9 :: GHC.Prim.Int# -> [SlowBoard.Rank]
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fEqColor :: GHC.Classes.Eq SlowBoard.Color
+  DFunId[0]
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ SlowBoard.Color
+                  SlowBoard.$fEqColor_$c==
+                  SlowBoard.$fEqColor_$c/= -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fEqColor_$c/= ::
+    SlowBoard.Color -> SlowBoard.Color -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ a :: SlowBoard.Color b :: SlowBoard.Color ->
+                 case a of wild {
+                   SlowBoard.Black
+                   -> case b of wild1 {
+                        SlowBoard.Black -> GHC.Types.False
+                        SlowBoard.White -> GHC.Types.True }
+                   SlowBoard.White
+                   -> case b of wild1 {
+                        SlowBoard.Black -> GHC.Types.True
+                        SlowBoard.White -> GHC.Types.False } }) -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fEqColor_$c== ::
+    SlowBoard.Color -> SlowBoard.Color -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ ds :: SlowBoard.Color ds1 :: SlowBoard.Color ->
+                 case ds of wild {
+                   SlowBoard.Black
+                   -> case ds1 of wild1 {
+                        SlowBoard.Black -> GHC.Types.True
+                        SlowBoard.White -> GHC.Types.False }
+                   SlowBoard.White
+                   -> case ds1 of wild1 {
+                        SlowBoard.Black -> GHC.Types.False
+                        SlowBoard.White -> GHC.Types.True } }) -}
+182e785c545cfdca083d124686f78432
+  $fEqFile :: GHC.Classes.Eq SlowBoard.File
+  DFunId[0]
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ SlowBoard.File SlowBoard.$fEqFile_$c== SlowBoard.$fEqFile_$c/= -}
+182e785c545cfdca083d124686f78432
+  $fEqFile_$c/= :: SlowBoard.File -> SlowBoard.File -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ a :: SlowBoard.File b :: SlowBoard.File ->
+                 case a of wild {
+                   SlowBoard.FA
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True SlowBoard.FA -> GHC.Types.False }
+                   SlowBoard.FB
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True SlowBoard.FB -> GHC.Types.False }
+                   SlowBoard.FC
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True SlowBoard.FC -> GHC.Types.False }
+                   SlowBoard.FD
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True SlowBoard.FD -> GHC.Types.False }
+                   SlowBoard.FE
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True SlowBoard.FE -> GHC.Types.False }
+                   SlowBoard.FF
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True SlowBoard.FF -> GHC.Types.False }
+                   SlowBoard.FG
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True SlowBoard.FG -> GHC.Types.False }
+                   SlowBoard.FH
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True SlowBoard.FH -> GHC.Types.False } }) -}
+182e785c545cfdca083d124686f78432
+  $fEqFile_$c== :: SlowBoard.File -> SlowBoard.File -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ ds :: SlowBoard.File ds1 :: SlowBoard.File ->
+                 case ds of wild {
+                   SlowBoard.FA
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False SlowBoard.FA -> GHC.Types.True }
+                   SlowBoard.FB
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False SlowBoard.FB -> GHC.Types.True }
+                   SlowBoard.FC
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False SlowBoard.FC -> GHC.Types.True }
+                   SlowBoard.FD
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False SlowBoard.FD -> GHC.Types.True }
+                   SlowBoard.FE
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False SlowBoard.FE -> GHC.Types.True }
+                   SlowBoard.FF
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False SlowBoard.FF -> GHC.Types.True }
+                   SlowBoard.FG
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False SlowBoard.FG -> GHC.Types.True }
+                   SlowBoard.FH
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False SlowBoard.FH -> GHC.Types.True } }) -}
+fd6df4ac381446808ac07ea86320ff01
+  $fEqPiece :: GHC.Classes.Eq SlowBoard.Piece
+  DFunId[0]
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ SlowBoard.Piece
+                  SlowBoard.$fEqPiece_$c==
+                  SlowBoard.$fEqPiece_$c/= -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEqPieceType :: GHC.Classes.Eq SlowBoard.PieceType
+  DFunId[0]
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ SlowBoard.PieceType
+                  SlowBoard.$fEqPieceType_$c==
+                  SlowBoard.$fEqPieceType_$c/= -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEqPieceType_$c/= ::
+    SlowBoard.PieceType -> SlowBoard.PieceType -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ a :: SlowBoard.PieceType b :: SlowBoard.PieceType ->
+                 case a of wild {
+                   SlowBoard.Pawn
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True SlowBoard.Pawn -> GHC.Types.False }
+                   SlowBoard.Rook
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True SlowBoard.Rook -> GHC.Types.False }
+                   SlowBoard.Knight
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True SlowBoard.Knight -> GHC.Types.False }
+                   SlowBoard.Bishop
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True SlowBoard.Bishop -> GHC.Types.False }
+                   SlowBoard.Queen
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True SlowBoard.Queen -> GHC.Types.False }
+                   SlowBoard.King
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True SlowBoard.King -> GHC.Types.False } }) -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fEqPieceType_$c== ::
+    SlowBoard.PieceType -> SlowBoard.PieceType -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ ds :: SlowBoard.PieceType
+                   ds1 :: SlowBoard.PieceType ->
+                 case ds of wild {
+                   SlowBoard.Pawn
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False SlowBoard.Pawn -> GHC.Types.True }
+                   SlowBoard.Rook
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False SlowBoard.Rook -> GHC.Types.True }
+                   SlowBoard.Knight
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False SlowBoard.Knight -> GHC.Types.True }
+                   SlowBoard.Bishop
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False SlowBoard.Bishop -> GHC.Types.True }
+                   SlowBoard.Queen
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False SlowBoard.Queen -> GHC.Types.True }
+                   SlowBoard.King
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False SlowBoard.King -> GHC.Types.True } }) -}
+fd6df4ac381446808ac07ea86320ff01
+  $fEqPiece_$c/= ::
+    SlowBoard.Piece -> SlowBoard.Piece -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S(SSSS),1*U(U,U,U,U)><S(SSSS),1*U(U,U,U,U)>,
+     Unfolding: InlineRule (2, True, False)
+                (\ a :: SlowBoard.Piece b :: SlowBoard.Piece ->
+                 case SlowBoard.$fEqPiece_$c== a b of wild {
+                   GHC.Types.False -> GHC.Types.True
+                   GHC.Types.True -> GHC.Types.False }) -}
+fd6df4ac381446808ac07ea86320ff01
+  $fEqPiece_$c== ::
+    SlowBoard.Piece -> SlowBoard.Piece -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S(SSSS),1*U(U,U,U,U)><S(SSSS),1*U(U,U,U,U)>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ w :: SlowBoard.Piece w1 :: SlowBoard.Piece ->
+                 case w of ww { SlowBoard.Piece ww1 ww2 ww3 ww4 ->
+                 case w1 of ww5 { SlowBoard.Piece ww6 ww7 ww8 ww9 ->
+                 SlowBoard.$w$c== ww1 ww2 ww3 ww4 ww6 ww7 ww8 ww9 } }) -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEqRank :: GHC.Classes.Eq SlowBoard.Rank
+  DFunId[0]
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ SlowBoard.Rank SlowBoard.$fEqRank_$c== SlowBoard.$fEqRank_$c/= -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEqRank_$c/= :: SlowBoard.Rank -> SlowBoard.Rank -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ a :: SlowBoard.Rank b :: SlowBoard.Rank ->
+                 case a of wild {
+                   SlowBoard.R1
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True SlowBoard.R1 -> GHC.Types.False }
+                   SlowBoard.R2
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True SlowBoard.R2 -> GHC.Types.False }
+                   SlowBoard.R3
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True SlowBoard.R3 -> GHC.Types.False }
+                   SlowBoard.R4
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True SlowBoard.R4 -> GHC.Types.False }
+                   SlowBoard.R5
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True SlowBoard.R5 -> GHC.Types.False }
+                   SlowBoard.R6
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True SlowBoard.R6 -> GHC.Types.False }
+                   SlowBoard.R7
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True SlowBoard.R7 -> GHC.Types.False }
+                   SlowBoard.R8
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True SlowBoard.R8 -> GHC.Types.False } }) -}
+3bef4c0bef672c22468e1550b74e487b
+  $fEqRank_$c== :: SlowBoard.Rank -> SlowBoard.Rank -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ ds :: SlowBoard.Rank ds1 :: SlowBoard.Rank ->
+                 case ds of wild {
+                   SlowBoard.R1
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False SlowBoard.R1 -> GHC.Types.True }
+                   SlowBoard.R2
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False SlowBoard.R2 -> GHC.Types.True }
+                   SlowBoard.R3
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False SlowBoard.R3 -> GHC.Types.True }
+                   SlowBoard.R4
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False SlowBoard.R4 -> GHC.Types.True }
+                   SlowBoard.R5
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False SlowBoard.R5 -> GHC.Types.True }
+                   SlowBoard.R6
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False SlowBoard.R6 -> GHC.Types.True }
+                   SlowBoard.R7
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False SlowBoard.R7 -> GHC.Types.True }
+                   SlowBoard.R8
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False SlowBoard.R8 -> GHC.Types.True } }) -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fOrdColor :: GHC.Classes.Ord SlowBoard.Color
+  DFunId[0]
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ SlowBoard.Color
+                  SlowBoard.$fEqColor
+                  SlowBoard.$fOrdColor_$ccompare
+                  SlowBoard.$fOrdColor_$c<
+                  SlowBoard.$fOrdColor_$c<=
+                  SlowBoard.$fOrdColor_$c>
+                  SlowBoard.$fOrdColor_$c>=
+                  SlowBoard.$fOrdColor_$cmax
+                  SlowBoard.$fOrdColor_$cmin -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fOrdColor_$c< ::
+    SlowBoard.Color -> SlowBoard.Color -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ a :: SlowBoard.Color b :: SlowBoard.Color ->
+                 case a of wild {
+                   SlowBoard.Black
+                   -> case b of wild1 {
+                        SlowBoard.Black -> GHC.Types.False
+                        SlowBoard.White -> GHC.Types.True }
+                   SlowBoard.White
+                   -> case b of wild1 { DEFAULT -> GHC.Types.False } }) -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fOrdColor_$c<= ::
+    SlowBoard.Color -> SlowBoard.Color -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ a :: SlowBoard.Color b :: SlowBoard.Color ->
+                 case a of wild {
+                   SlowBoard.Black -> case b of wild1 { DEFAULT -> GHC.Types.True }
+                   SlowBoard.White
+                   -> case b of wild1 {
+                        SlowBoard.Black -> GHC.Types.False
+                        SlowBoard.White -> GHC.Types.True } }) -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fOrdColor_$c> ::
+    SlowBoard.Color -> SlowBoard.Color -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ a :: SlowBoard.Color b :: SlowBoard.Color ->
+                 case a of wild {
+                   SlowBoard.Black -> case b of wild1 { DEFAULT -> GHC.Types.False }
+                   SlowBoard.White
+                   -> case b of wild1 {
+                        SlowBoard.Black -> GHC.Types.True
+                        SlowBoard.White -> GHC.Types.False } }) -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fOrdColor_$c>= ::
+    SlowBoard.Color -> SlowBoard.Color -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ a :: SlowBoard.Color b :: SlowBoard.Color ->
+                 case a of wild {
+                   SlowBoard.Black
+                   -> case b of wild1 {
+                        SlowBoard.Black -> GHC.Types.True
+                        SlowBoard.White -> GHC.Types.False }
+                   SlowBoard.White
+                   -> case b of wild1 { DEFAULT -> GHC.Types.True } }) -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fOrdColor_$ccompare ::
+    SlowBoard.Color -> SlowBoard.Color -> GHC.Types.Ordering
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ a :: SlowBoard.Color b :: SlowBoard.Color ->
+                 case a of wild {
+                   SlowBoard.Black
+                   -> case b of wild1 {
+                        SlowBoard.Black -> GHC.Types.EQ SlowBoard.White -> GHC.Types.LT }
+                   SlowBoard.White
+                   -> case b of wild1 {
+                        SlowBoard.Black -> GHC.Types.GT
+                        SlowBoard.White -> GHC.Types.EQ } }) -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fOrdColor_$cmax ::
+    SlowBoard.Color -> SlowBoard.Color -> SlowBoard.Color
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ x1 :: SlowBoard.Color y :: SlowBoard.Color ->
+                 case x1 of wild {
+                   SlowBoard.Black -> y
+                   SlowBoard.White
+                   -> case y of wild1 { DEFAULT -> SlowBoard.White } }) -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fOrdColor_$cmin ::
+    SlowBoard.Color -> SlowBoard.Color -> SlowBoard.Color
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ x1 :: SlowBoard.Color y :: SlowBoard.Color ->
+                 case x1 of wild {
+                   SlowBoard.Black -> case y of wild1 { DEFAULT -> SlowBoard.Black }
+                   SlowBoard.White -> y }) -}
+182e785c545cfdca083d124686f78432
+  $fOrdFile :: GHC.Classes.Ord SlowBoard.File
+  DFunId[0]
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ SlowBoard.File
+                  SlowBoard.$fEqFile
+                  SlowBoard.$fOrdFile_$ccompare
+                  SlowBoard.$fOrdFile_$c<
+                  SlowBoard.$fOrdFile_$c<=
+                  SlowBoard.$fOrdFile_$c>
+                  SlowBoard.$fOrdFile_$c>=
+                  SlowBoard.$fOrdFile_$cmax
+                  SlowBoard.$fOrdFile_$cmin -}
+182e785c545cfdca083d124686f78432
+  $fOrdFile_$c< :: SlowBoard.File -> SlowBoard.File -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ a :: SlowBoard.File b :: SlowBoard.File ->
+                 let {
+                   $j :: GHC.Prim.Int# -> GHC.Types.Bool
+                     {- Arity: 1, Strictness: <L,U> -}
+                   = \ a# :: GHC.Prim.Int#[OneShot] ->
+                     case b of wild {
+                       SlowBoard.FA
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<# a# 0)
+                       SlowBoard.FB
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<# a# 1)
+                       SlowBoard.FC
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<# a# 2)
+                       SlowBoard.FD
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<# a# 3)
+                       SlowBoard.FE
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<# a# 4)
+                       SlowBoard.FF
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<# a# 5)
+                       SlowBoard.FG
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<# a# 6)
+                       SlowBoard.FH
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<# a# 7) }
+                 } in
+                 case a of wild {
+                   SlowBoard.FA -> $j 0
+                   SlowBoard.FB -> $j 1
+                   SlowBoard.FC -> $j 2
+                   SlowBoard.FD -> $j 3
+                   SlowBoard.FE -> $j 4
+                   SlowBoard.FF -> $j 5
+                   SlowBoard.FG -> $j 6
+                   SlowBoard.FH -> $j 7 }) -}
+182e785c545cfdca083d124686f78432
+  $fOrdFile_$c<= ::
+    SlowBoard.File -> SlowBoard.File -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ a :: SlowBoard.File b :: SlowBoard.File ->
+                 let {
+                   $j :: GHC.Prim.Int# -> GHC.Types.Bool
+                     {- Arity: 1, Strictness: <L,U> -}
+                   = \ a# :: GHC.Prim.Int#[OneShot] ->
+                     case b of wild {
+                       SlowBoard.FA
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<=# a# 0)
+                       SlowBoard.FB
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<=# a# 1)
+                       SlowBoard.FC
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<=# a# 2)
+                       SlowBoard.FD
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<=# a# 3)
+                       SlowBoard.FE
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<=# a# 4)
+                       SlowBoard.FF
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<=# a# 5)
+                       SlowBoard.FG
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<=# a# 6)
+                       SlowBoard.FH
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<=# a# 7) }
+                 } in
+                 case a of wild {
+                   SlowBoard.FA -> $j 0
+                   SlowBoard.FB -> $j 1
+                   SlowBoard.FC -> $j 2
+                   SlowBoard.FD -> $j 3
+                   SlowBoard.FE -> $j 4
+                   SlowBoard.FF -> $j 5
+                   SlowBoard.FG -> $j 6
+                   SlowBoard.FH -> $j 7 }) -}
+182e785c545cfdca083d124686f78432
+  $fOrdFile_$c> :: SlowBoard.File -> SlowBoard.File -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ a :: SlowBoard.File b :: SlowBoard.File ->
+                 let {
+                   $j :: GHC.Prim.Int# -> GHC.Types.Bool
+                     {- Arity: 1, Strictness: <L,U> -}
+                   = \ a# :: GHC.Prim.Int#[OneShot] ->
+                     case b of wild {
+                       SlowBoard.FA
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.># a# 0)
+                       SlowBoard.FB
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.># a# 1)
+                       SlowBoard.FC
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.># a# 2)
+                       SlowBoard.FD
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.># a# 3)
+                       SlowBoard.FE
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.># a# 4)
+                       SlowBoard.FF
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.># a# 5)
+                       SlowBoard.FG
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.># a# 6)
+                       SlowBoard.FH
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.># a# 7) }
+                 } in
+                 case a of wild {
+                   SlowBoard.FA -> $j 0
+                   SlowBoard.FB -> $j 1
+                   SlowBoard.FC -> $j 2
+                   SlowBoard.FD -> $j 3
+                   SlowBoard.FE -> $j 4
+                   SlowBoard.FF -> $j 5
+                   SlowBoard.FG -> $j 6
+                   SlowBoard.FH -> $j 7 }) -}
+182e785c545cfdca083d124686f78432
+  $fOrdFile_$c>= ::
+    SlowBoard.File -> SlowBoard.File -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ a :: SlowBoard.File b :: SlowBoard.File ->
+                 let {
+                   $j :: GHC.Prim.Int# -> GHC.Types.Bool
+                     {- Arity: 1, Strictness: <L,U> -}
+                   = \ a# :: GHC.Prim.Int#[OneShot] ->
+                     case b of wild {
+                       SlowBoard.FA
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.>=# a# 0)
+                       SlowBoard.FB
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.>=# a# 1)
+                       SlowBoard.FC
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.>=# a# 2)
+                       SlowBoard.FD
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.>=# a# 3)
+                       SlowBoard.FE
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.>=# a# 4)
+                       SlowBoard.FF
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.>=# a# 5)
+                       SlowBoard.FG
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.>=# a# 6)
+                       SlowBoard.FH
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.>=# a# 7) }
+                 } in
+                 case a of wild {
+                   SlowBoard.FA -> $j 0
+                   SlowBoard.FB -> $j 1
+                   SlowBoard.FC -> $j 2
+                   SlowBoard.FD -> $j 3
+                   SlowBoard.FE -> $j 4
+                   SlowBoard.FF -> $j 5
+                   SlowBoard.FG -> $j 6
+                   SlowBoard.FH -> $j 7 }) -}
+182e785c545cfdca083d124686f78432
+  $fOrdFile_$ccompare ::
+    SlowBoard.File -> SlowBoard.File -> GHC.Types.Ordering
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ a :: SlowBoard.File b :: SlowBoard.File ->
+                 case a of wild {
+                   SlowBoard.FA
+                   -> case b of wild1 {
+                        SlowBoard.FA -> GHC.Types.EQ
+                        SlowBoard.FB -> GHC.Types.LT
+                        SlowBoard.FC -> GHC.Types.LT
+                        SlowBoard.FD -> GHC.Types.LT
+                        SlowBoard.FE -> GHC.Types.LT
+                        SlowBoard.FF -> GHC.Types.LT
+                        SlowBoard.FG -> GHC.Types.LT
+                        SlowBoard.FH -> GHC.Types.LT }
+                   SlowBoard.FB
+                   -> case b of wild1 {
+                        SlowBoard.FA -> GHC.Types.GT
+                        SlowBoard.FB -> GHC.Types.EQ
+                        SlowBoard.FC -> GHC.Types.LT
+                        SlowBoard.FD -> GHC.Types.LT
+                        SlowBoard.FE -> GHC.Types.LT
+                        SlowBoard.FF -> GHC.Types.LT
+                        SlowBoard.FG -> GHC.Types.LT
+                        SlowBoard.FH -> GHC.Types.LT }
+                   SlowBoard.FC
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.GT
+                        SlowBoard.FC -> GHC.Types.EQ
+                        SlowBoard.FD -> GHC.Types.LT
+                        SlowBoard.FE -> GHC.Types.LT
+                        SlowBoard.FF -> GHC.Types.LT
+                        SlowBoard.FG -> GHC.Types.LT
+                        SlowBoard.FH -> GHC.Types.LT }
+                   SlowBoard.FD
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.GT
+                        SlowBoard.FD -> GHC.Types.EQ
+                        SlowBoard.FE -> GHC.Types.LT
+                        SlowBoard.FF -> GHC.Types.LT
+                        SlowBoard.FG -> GHC.Types.LT
+                        SlowBoard.FH -> GHC.Types.LT }
+                   SlowBoard.FE
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.GT
+                        SlowBoard.FE -> GHC.Types.EQ
+                        SlowBoard.FF -> GHC.Types.LT
+                        SlowBoard.FG -> GHC.Types.LT
+                        SlowBoard.FH -> GHC.Types.LT }
+                   SlowBoard.FF
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.GT
+                        SlowBoard.FF -> GHC.Types.EQ
+                        SlowBoard.FG -> GHC.Types.LT
+                        SlowBoard.FH -> GHC.Types.LT }
+                   SlowBoard.FG
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.GT
+                        SlowBoard.FG -> GHC.Types.EQ
+                        SlowBoard.FH -> GHC.Types.LT }
+                   SlowBoard.FH
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.GT SlowBoard.FH -> GHC.Types.EQ } }) -}
+182e785c545cfdca083d124686f78432
+  $fOrdFile_$cmax ::
+    SlowBoard.File -> SlowBoard.File -> SlowBoard.File
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,U><S,U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ x1 :: SlowBoard.File y :: SlowBoard.File ->
+                 case SlowBoard.$fOrdFile_$c<= x1 y of wild {
+                   GHC.Types.False -> x1 GHC.Types.True -> y }) -}
+182e785c545cfdca083d124686f78432
+  $fOrdFile_$cmin ::
+    SlowBoard.File -> SlowBoard.File -> SlowBoard.File
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,U><S,U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ x1 :: SlowBoard.File y :: SlowBoard.File ->
+                 case SlowBoard.$fOrdFile_$c<= x1 y of wild {
+                   GHC.Types.False -> y GHC.Types.True -> x1 }) -}
+fd6df4ac381446808ac07ea86320ff01
+  $fOrdPiece :: GHC.Classes.Ord SlowBoard.Piece
+  DFunId[0]
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ SlowBoard.Piece
+                  SlowBoard.$fEqPiece
+                  SlowBoard.$fOrdPiece_$ccompare
+                  SlowBoard.$fOrdPiece_$c<
+                  SlowBoard.$fOrdPiece_$c<=
+                  SlowBoard.$fOrdPiece_$c>
+                  SlowBoard.$fOrdPiece_$c>=
+                  SlowBoard.$fOrdPiece_$cmax
+                  SlowBoard.$fOrdPiece_$cmin -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fOrdPieceType :: GHC.Classes.Ord SlowBoard.PieceType
+  DFunId[0]
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ SlowBoard.PieceType
+                  SlowBoard.$fEqPieceType
+                  SlowBoard.$fOrdPieceType_$ccompare
+                  SlowBoard.$fOrdPieceType_$c<
+                  SlowBoard.$fOrdPieceType_$c<=
+                  SlowBoard.$fOrdPieceType_$c>
+                  SlowBoard.$fOrdPieceType_$c>=
+                  SlowBoard.$fOrdPieceType_$cmax
+                  SlowBoard.$fOrdPieceType_$cmin -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fOrdPieceType_$c< ::
+    SlowBoard.PieceType -> SlowBoard.PieceType -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ a :: SlowBoard.PieceType b :: SlowBoard.PieceType ->
+                 case a of wild {
+                   SlowBoard.Pawn
+                   -> case b of wild1 {
+                        SlowBoard.Pawn -> GHC.Types.False
+                        SlowBoard.Rook -> GHC.Types.True
+                        SlowBoard.Knight -> GHC.Types.True
+                        SlowBoard.Bishop -> GHC.Types.True
+                        SlowBoard.Queen -> GHC.Types.True
+                        SlowBoard.King -> GHC.Types.True }
+                   SlowBoard.Rook
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.False
+                        SlowBoard.Knight -> GHC.Types.True
+                        SlowBoard.Bishop -> GHC.Types.True
+                        SlowBoard.Queen -> GHC.Types.True
+                        SlowBoard.King -> GHC.Types.True }
+                   SlowBoard.Knight
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.False
+                        SlowBoard.Bishop -> GHC.Types.True
+                        SlowBoard.Queen -> GHC.Types.True
+                        SlowBoard.King -> GHC.Types.True }
+                   SlowBoard.Bishop
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.False
+                        SlowBoard.Queen -> GHC.Types.True
+                        SlowBoard.King -> GHC.Types.True }
+                   SlowBoard.Queen
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.False SlowBoard.King -> GHC.Types.True }
+                   SlowBoard.King
+                   -> case b of wild1 { DEFAULT -> GHC.Types.False } }) -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fOrdPieceType_$c<= ::
+    SlowBoard.PieceType -> SlowBoard.PieceType -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ a :: SlowBoard.PieceType b :: SlowBoard.PieceType ->
+                 case a of wild {
+                   SlowBoard.Pawn -> case b of wild1 { DEFAULT -> GHC.Types.True }
+                   SlowBoard.Rook
+                   -> case b of wild1 {
+                        SlowBoard.Pawn -> GHC.Types.False
+                        SlowBoard.Rook -> GHC.Types.True
+                        SlowBoard.Knight -> GHC.Types.True
+                        SlowBoard.Bishop -> GHC.Types.True
+                        SlowBoard.Queen -> GHC.Types.True
+                        SlowBoard.King -> GHC.Types.True }
+                   SlowBoard.Knight
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.False
+                        SlowBoard.Knight -> GHC.Types.True
+                        SlowBoard.Bishop -> GHC.Types.True
+                        SlowBoard.Queen -> GHC.Types.True
+                        SlowBoard.King -> GHC.Types.True }
+                   SlowBoard.Bishop
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.False
+                        SlowBoard.Bishop -> GHC.Types.True
+                        SlowBoard.Queen -> GHC.Types.True
+                        SlowBoard.King -> GHC.Types.True }
+                   SlowBoard.Queen
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.False
+                        SlowBoard.Queen -> GHC.Types.True
+                        SlowBoard.King -> GHC.Types.True }
+                   SlowBoard.King
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.False SlowBoard.King -> GHC.Types.True } }) -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fOrdPieceType_$c> ::
+    SlowBoard.PieceType -> SlowBoard.PieceType -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ a :: SlowBoard.PieceType b :: SlowBoard.PieceType ->
+                 case a of wild {
+                   SlowBoard.Pawn -> case b of wild1 { DEFAULT -> GHC.Types.False }
+                   SlowBoard.Rook
+                   -> case b of wild1 {
+                        SlowBoard.Pawn -> GHC.Types.True
+                        SlowBoard.Rook -> GHC.Types.False
+                        SlowBoard.Knight -> GHC.Types.False
+                        SlowBoard.Bishop -> GHC.Types.False
+                        SlowBoard.Queen -> GHC.Types.False
+                        SlowBoard.King -> GHC.Types.False }
+                   SlowBoard.Knight
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True
+                        SlowBoard.Knight -> GHC.Types.False
+                        SlowBoard.Bishop -> GHC.Types.False
+                        SlowBoard.Queen -> GHC.Types.False
+                        SlowBoard.King -> GHC.Types.False }
+                   SlowBoard.Bishop
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True
+                        SlowBoard.Bishop -> GHC.Types.False
+                        SlowBoard.Queen -> GHC.Types.False
+                        SlowBoard.King -> GHC.Types.False }
+                   SlowBoard.Queen
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True
+                        SlowBoard.Queen -> GHC.Types.False
+                        SlowBoard.King -> GHC.Types.False }
+                   SlowBoard.King
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True SlowBoard.King -> GHC.Types.False } }) -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fOrdPieceType_$c>= ::
+    SlowBoard.PieceType -> SlowBoard.PieceType -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ a :: SlowBoard.PieceType b :: SlowBoard.PieceType ->
+                 case a of wild {
+                   SlowBoard.Pawn
+                   -> case b of wild1 {
+                        SlowBoard.Pawn -> GHC.Types.True
+                        SlowBoard.Rook -> GHC.Types.False
+                        SlowBoard.Knight -> GHC.Types.False
+                        SlowBoard.Bishop -> GHC.Types.False
+                        SlowBoard.Queen -> GHC.Types.False
+                        SlowBoard.King -> GHC.Types.False }
+                   SlowBoard.Rook
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True
+                        SlowBoard.Knight -> GHC.Types.False
+                        SlowBoard.Bishop -> GHC.Types.False
+                        SlowBoard.Queen -> GHC.Types.False
+                        SlowBoard.King -> GHC.Types.False }
+                   SlowBoard.Knight
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True
+                        SlowBoard.Bishop -> GHC.Types.False
+                        SlowBoard.Queen -> GHC.Types.False
+                        SlowBoard.King -> GHC.Types.False }
+                   SlowBoard.Bishop
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True
+                        SlowBoard.Queen -> GHC.Types.False
+                        SlowBoard.King -> GHC.Types.False }
+                   SlowBoard.Queen
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.True SlowBoard.King -> GHC.Types.False }
+                   SlowBoard.King
+                   -> case b of wild1 { DEFAULT -> GHC.Types.True } }) -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fOrdPieceType_$ccompare ::
+    SlowBoard.PieceType -> SlowBoard.PieceType -> GHC.Types.Ordering
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ a :: SlowBoard.PieceType b :: SlowBoard.PieceType ->
+                 case a of wild {
+                   SlowBoard.Pawn
+                   -> case b of wild1 {
+                        SlowBoard.Pawn -> GHC.Types.EQ
+                        SlowBoard.Rook -> GHC.Types.LT
+                        SlowBoard.Knight -> GHC.Types.LT
+                        SlowBoard.Bishop -> GHC.Types.LT
+                        SlowBoard.Queen -> GHC.Types.LT
+                        SlowBoard.King -> GHC.Types.LT }
+                   SlowBoard.Rook
+                   -> case b of wild1 {
+                        SlowBoard.Pawn -> GHC.Types.GT
+                        SlowBoard.Rook -> GHC.Types.EQ
+                        SlowBoard.Knight -> GHC.Types.LT
+                        SlowBoard.Bishop -> GHC.Types.LT
+                        SlowBoard.Queen -> GHC.Types.LT
+                        SlowBoard.King -> GHC.Types.LT }
+                   SlowBoard.Knight
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.GT
+                        SlowBoard.Knight -> GHC.Types.EQ
+                        SlowBoard.Bishop -> GHC.Types.LT
+                        SlowBoard.Queen -> GHC.Types.LT
+                        SlowBoard.King -> GHC.Types.LT }
+                   SlowBoard.Bishop
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.GT
+                        SlowBoard.Bishop -> GHC.Types.EQ
+                        SlowBoard.Queen -> GHC.Types.LT
+                        SlowBoard.King -> GHC.Types.LT }
+                   SlowBoard.Queen
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.GT
+                        SlowBoard.Queen -> GHC.Types.EQ
+                        SlowBoard.King -> GHC.Types.LT }
+                   SlowBoard.King
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.GT SlowBoard.King -> GHC.Types.EQ } }) -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fOrdPieceType_$cmax ::
+    SlowBoard.PieceType -> SlowBoard.PieceType -> SlowBoard.PieceType
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ x1 :: SlowBoard.PieceType y :: SlowBoard.PieceType ->
+                 case x1 of wild {
+                   SlowBoard.Pawn -> y
+                   SlowBoard.Rook
+                   -> case y of wild1 {
+                        DEFAULT -> SlowBoard.Rook
+                        SlowBoard.Knight -> SlowBoard.Knight
+                        SlowBoard.Bishop -> SlowBoard.Bishop
+                        SlowBoard.Queen -> SlowBoard.Queen
+                        SlowBoard.King -> SlowBoard.King }
+                   SlowBoard.Knight
+                   -> case y of wild1 {
+                        DEFAULT -> SlowBoard.Knight
+                        SlowBoard.Bishop -> SlowBoard.Bishop
+                        SlowBoard.Queen -> SlowBoard.Queen
+                        SlowBoard.King -> SlowBoard.King }
+                   SlowBoard.Bishop
+                   -> case y of wild1 {
+                        DEFAULT -> SlowBoard.Bishop
+                        SlowBoard.Queen -> SlowBoard.Queen
+                        SlowBoard.King -> SlowBoard.King }
+                   SlowBoard.Queen
+                   -> case y of wild1 {
+                        DEFAULT -> SlowBoard.Queen SlowBoard.King -> SlowBoard.King }
+                   SlowBoard.King
+                   -> case y of wild1 { DEFAULT -> SlowBoard.King } }) -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fOrdPieceType_$cmin ::
+    SlowBoard.PieceType -> SlowBoard.PieceType -> SlowBoard.PieceType
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ x1 :: SlowBoard.PieceType y :: SlowBoard.PieceType ->
+                 case x1 of wild {
+                   SlowBoard.Pawn -> case y of wild1 { DEFAULT -> SlowBoard.Pawn }
+                   SlowBoard.Rook
+                   -> case y of wild1 {
+                        SlowBoard.Pawn -> SlowBoard.Pawn
+                        SlowBoard.Rook -> SlowBoard.Rook
+                        SlowBoard.Knight -> SlowBoard.Rook
+                        SlowBoard.Bishop -> SlowBoard.Rook
+                        SlowBoard.Queen -> SlowBoard.Rook
+                        SlowBoard.King -> SlowBoard.Rook }
+                   SlowBoard.Knight
+                   -> case y of wild1 {
+                        DEFAULT -> wild1
+                        SlowBoard.Knight -> SlowBoard.Knight
+                        SlowBoard.Bishop -> SlowBoard.Knight
+                        SlowBoard.Queen -> SlowBoard.Knight
+                        SlowBoard.King -> SlowBoard.Knight }
+                   SlowBoard.Bishop
+                   -> case y of wild1 {
+                        DEFAULT -> wild1
+                        SlowBoard.Bishop -> SlowBoard.Bishop
+                        SlowBoard.Queen -> SlowBoard.Bishop
+                        SlowBoard.King -> SlowBoard.Bishop }
+                   SlowBoard.Queen
+                   -> case y of wild1 {
+                        DEFAULT -> wild1
+                        SlowBoard.Queen -> SlowBoard.Queen
+                        SlowBoard.King -> SlowBoard.Queen }
+                   SlowBoard.King -> y }) -}
+fd6df4ac381446808ac07ea86320ff01
+  $fOrdPiece_$c< ::
+    SlowBoard.Piece -> SlowBoard.Piece -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S(SSSS),1*U(U,U,U,U)><S(SSSS),1*U(U,U,U,U)>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ w :: SlowBoard.Piece w1 :: SlowBoard.Piece ->
+                 case w of ww { SlowBoard.Piece ww1 ww2 ww3 ww4 ->
+                 case w1 of ww5 { SlowBoard.Piece ww6 ww7 ww8 ww9 ->
+                 SlowBoard.$w$c< ww1 ww2 ww3 ww4 ww6 ww7 ww8 ww9 } }) -}
+fd6df4ac381446808ac07ea86320ff01
+  $fOrdPiece_$c<= ::
+    SlowBoard.Piece -> SlowBoard.Piece -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S(SSSS),1*U(U,U,U,U)><S(SSSS),1*U(U,U,U,U)>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ w :: SlowBoard.Piece w1 :: SlowBoard.Piece ->
+                 case w of ww { SlowBoard.Piece ww1 ww2 ww3 ww4 ->
+                 case w1 of ww5 { SlowBoard.Piece ww6 ww7 ww8 ww9 ->
+                 SlowBoard.$w$c<= ww1 ww2 ww3 ww4 ww6 ww7 ww8 ww9 } }) -}
+fd6df4ac381446808ac07ea86320ff01
+  $fOrdPiece_$c> ::
+    SlowBoard.Piece -> SlowBoard.Piece -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S(SSSS),1*U(U,U,U,U)><S(SSSS),1*U(U,U,U,U)>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ w :: SlowBoard.Piece w1 :: SlowBoard.Piece ->
+                 case w of ww { SlowBoard.Piece ww1 ww2 ww3 ww4 ->
+                 case w1 of ww5 { SlowBoard.Piece ww6 ww7 ww8 ww9 ->
+                 SlowBoard.$w$c> ww1 ww2 ww3 ww4 ww6 ww7 ww8 ww9 } }) -}
+fd6df4ac381446808ac07ea86320ff01
+  $fOrdPiece_$c>= ::
+    SlowBoard.Piece -> SlowBoard.Piece -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S(SSSS),1*U(U,U,U,U)><S(SSSS),1*U(U,U,U,U)>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ w :: SlowBoard.Piece w1 :: SlowBoard.Piece ->
+                 case w of ww { SlowBoard.Piece ww1 ww2 ww3 ww4 ->
+                 case w1 of ww5 { SlowBoard.Piece ww6 ww7 ww8 ww9 ->
+                 SlowBoard.$w$c>= ww1 ww2 ww3 ww4 ww6 ww7 ww8 ww9 } }) -}
+fd6df4ac381446808ac07ea86320ff01
+  $fOrdPiece_$ccompare ::
+    SlowBoard.Piece -> SlowBoard.Piece -> GHC.Types.Ordering
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S(SSSS),1*U(U,U,U,U)><S(SSSS),1*U(U,U,U,U)>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ w :: SlowBoard.Piece w1 :: SlowBoard.Piece ->
+                 case w of ww { SlowBoard.Piece ww1 ww2 ww3 ww4 ->
+                 case w1 of ww5 { SlowBoard.Piece ww6 ww7 ww8 ww9 ->
+                 SlowBoard.$w$ccompare ww1 ww2 ww3 ww4 ww6 ww7 ww8 ww9 } }) -}
+fd6df4ac381446808ac07ea86320ff01
+  $fOrdPiece_$cmax ::
+    SlowBoard.Piece -> SlowBoard.Piece -> SlowBoard.Piece
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S(SSSS),U(U,U,U,U)><S(SSSS),U(U,U,U,U)>m,
+     Unfolding: InlineRule (2, True, False)
+                (\ x1 :: SlowBoard.Piece y :: SlowBoard.Piece ->
+                 case SlowBoard.$fOrdPiece_$c<= x1 y of wild {
+                   GHC.Types.False -> x1 GHC.Types.True -> y }) -}
+fd6df4ac381446808ac07ea86320ff01
+  $fOrdPiece_$cmin ::
+    SlowBoard.Piece -> SlowBoard.Piece -> SlowBoard.Piece
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S(SSSS),U(U,U,U,U)><S(SSSS),U(U,U,U,U)>m,
+     Unfolding: InlineRule (2, True, False)
+                (\ x1 :: SlowBoard.Piece y :: SlowBoard.Piece ->
+                 case SlowBoard.$fOrdPiece_$c<= x1 y of wild {
+                   GHC.Types.False -> y GHC.Types.True -> x1 }) -}
+3bef4c0bef672c22468e1550b74e487b
+  $fOrdRank :: GHC.Classes.Ord SlowBoard.Rank
+  DFunId[0]
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ SlowBoard.Rank
+                  SlowBoard.$fEqRank
+                  SlowBoard.$fOrdRank_$ccompare
+                  SlowBoard.$fOrdRank_$c<
+                  SlowBoard.$fOrdRank_$c<=
+                  SlowBoard.$fOrdRank_$c>
+                  SlowBoard.$fOrdRank_$c>=
+                  SlowBoard.$fOrdRank_$cmax
+                  SlowBoard.$fOrdRank_$cmin -}
+3bef4c0bef672c22468e1550b74e487b
+  $fOrdRank_$c< :: SlowBoard.Rank -> SlowBoard.Rank -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ a :: SlowBoard.Rank b :: SlowBoard.Rank ->
+                 let {
+                   $j :: GHC.Prim.Int# -> GHC.Types.Bool
+                     {- Arity: 1, Strictness: <L,U> -}
+                   = \ a# :: GHC.Prim.Int#[OneShot] ->
+                     case b of wild {
+                       SlowBoard.R1
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<# a# 0)
+                       SlowBoard.R2
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<# a# 1)
+                       SlowBoard.R3
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<# a# 2)
+                       SlowBoard.R4
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<# a# 3)
+                       SlowBoard.R5
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<# a# 4)
+                       SlowBoard.R6
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<# a# 5)
+                       SlowBoard.R7
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<# a# 6)
+                       SlowBoard.R8
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<# a# 7) }
+                 } in
+                 case a of wild {
+                   SlowBoard.R1 -> $j 0
+                   SlowBoard.R2 -> $j 1
+                   SlowBoard.R3 -> $j 2
+                   SlowBoard.R4 -> $j 3
+                   SlowBoard.R5 -> $j 4
+                   SlowBoard.R6 -> $j 5
+                   SlowBoard.R7 -> $j 6
+                   SlowBoard.R8 -> $j 7 }) -}
+3bef4c0bef672c22468e1550b74e487b
+  $fOrdRank_$c<= ::
+    SlowBoard.Rank -> SlowBoard.Rank -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ a :: SlowBoard.Rank b :: SlowBoard.Rank ->
+                 let {
+                   $j :: GHC.Prim.Int# -> GHC.Types.Bool
+                     {- Arity: 1, Strictness: <L,U> -}
+                   = \ a# :: GHC.Prim.Int#[OneShot] ->
+                     case b of wild {
+                       SlowBoard.R1
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<=# a# 0)
+                       SlowBoard.R2
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<=# a# 1)
+                       SlowBoard.R3
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<=# a# 2)
+                       SlowBoard.R4
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<=# a# 3)
+                       SlowBoard.R5
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<=# a# 4)
+                       SlowBoard.R6
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<=# a# 5)
+                       SlowBoard.R7
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<=# a# 6)
+                       SlowBoard.R8
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<=# a# 7) }
+                 } in
+                 case a of wild {
+                   SlowBoard.R1 -> $j 0
+                   SlowBoard.R2 -> $j 1
+                   SlowBoard.R3 -> $j 2
+                   SlowBoard.R4 -> $j 3
+                   SlowBoard.R5 -> $j 4
+                   SlowBoard.R6 -> $j 5
+                   SlowBoard.R7 -> $j 6
+                   SlowBoard.R8 -> $j 7 }) -}
+3bef4c0bef672c22468e1550b74e487b
+  $fOrdRank_$c> :: SlowBoard.Rank -> SlowBoard.Rank -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ a :: SlowBoard.Rank b :: SlowBoard.Rank ->
+                 let {
+                   $j :: GHC.Prim.Int# -> GHC.Types.Bool
+                     {- Arity: 1, Strictness: <L,U> -}
+                   = \ a# :: GHC.Prim.Int#[OneShot] ->
+                     case b of wild {
+                       SlowBoard.R1
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.># a# 0)
+                       SlowBoard.R2
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.># a# 1)
+                       SlowBoard.R3
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.># a# 2)
+                       SlowBoard.R4
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.># a# 3)
+                       SlowBoard.R5
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.># a# 4)
+                       SlowBoard.R6
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.># a# 5)
+                       SlowBoard.R7
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.># a# 6)
+                       SlowBoard.R8
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.># a# 7) }
+                 } in
+                 case a of wild {
+                   SlowBoard.R1 -> $j 0
+                   SlowBoard.R2 -> $j 1
+                   SlowBoard.R3 -> $j 2
+                   SlowBoard.R4 -> $j 3
+                   SlowBoard.R5 -> $j 4
+                   SlowBoard.R6 -> $j 5
+                   SlowBoard.R7 -> $j 6
+                   SlowBoard.R8 -> $j 7 }) -}
+3bef4c0bef672c22468e1550b74e487b
+  $fOrdRank_$c>= ::
+    SlowBoard.Rank -> SlowBoard.Rank -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ a :: SlowBoard.Rank b :: SlowBoard.Rank ->
+                 let {
+                   $j :: GHC.Prim.Int# -> GHC.Types.Bool
+                     {- Arity: 1, Strictness: <L,U> -}
+                   = \ a# :: GHC.Prim.Int#[OneShot] ->
+                     case b of wild {
+                       SlowBoard.R1
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.>=# a# 0)
+                       SlowBoard.R2
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.>=# a# 1)
+                       SlowBoard.R3
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.>=# a# 2)
+                       SlowBoard.R4
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.>=# a# 3)
+                       SlowBoard.R5
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.>=# a# 4)
+                       SlowBoard.R6
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.>=# a# 5)
+                       SlowBoard.R7
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.>=# a# 6)
+                       SlowBoard.R8
+                       -> GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.>=# a# 7) }
+                 } in
+                 case a of wild {
+                   SlowBoard.R1 -> $j 0
+                   SlowBoard.R2 -> $j 1
+                   SlowBoard.R3 -> $j 2
+                   SlowBoard.R4 -> $j 3
+                   SlowBoard.R5 -> $j 4
+                   SlowBoard.R6 -> $j 5
+                   SlowBoard.R7 -> $j 6
+                   SlowBoard.R8 -> $j 7 }) -}
+3bef4c0bef672c22468e1550b74e487b
+  $fOrdRank_$ccompare ::
+    SlowBoard.Rank -> SlowBoard.Rank -> GHC.Types.Ordering
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ a :: SlowBoard.Rank b :: SlowBoard.Rank ->
+                 case a of wild {
+                   SlowBoard.R1
+                   -> case b of wild1 {
+                        SlowBoard.R1 -> GHC.Types.EQ
+                        SlowBoard.R2 -> GHC.Types.LT
+                        SlowBoard.R3 -> GHC.Types.LT
+                        SlowBoard.R4 -> GHC.Types.LT
+                        SlowBoard.R5 -> GHC.Types.LT
+                        SlowBoard.R6 -> GHC.Types.LT
+                        SlowBoard.R7 -> GHC.Types.LT
+                        SlowBoard.R8 -> GHC.Types.LT }
+                   SlowBoard.R2
+                   -> case b of wild1 {
+                        SlowBoard.R1 -> GHC.Types.GT
+                        SlowBoard.R2 -> GHC.Types.EQ
+                        SlowBoard.R3 -> GHC.Types.LT
+                        SlowBoard.R4 -> GHC.Types.LT
+                        SlowBoard.R5 -> GHC.Types.LT
+                        SlowBoard.R6 -> GHC.Types.LT
+                        SlowBoard.R7 -> GHC.Types.LT
+                        SlowBoard.R8 -> GHC.Types.LT }
+                   SlowBoard.R3
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.GT
+                        SlowBoard.R3 -> GHC.Types.EQ
+                        SlowBoard.R4 -> GHC.Types.LT
+                        SlowBoard.R5 -> GHC.Types.LT
+                        SlowBoard.R6 -> GHC.Types.LT
+                        SlowBoard.R7 -> GHC.Types.LT
+                        SlowBoard.R8 -> GHC.Types.LT }
+                   SlowBoard.R4
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.GT
+                        SlowBoard.R4 -> GHC.Types.EQ
+                        SlowBoard.R5 -> GHC.Types.LT
+                        SlowBoard.R6 -> GHC.Types.LT
+                        SlowBoard.R7 -> GHC.Types.LT
+                        SlowBoard.R8 -> GHC.Types.LT }
+                   SlowBoard.R5
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.GT
+                        SlowBoard.R5 -> GHC.Types.EQ
+                        SlowBoard.R6 -> GHC.Types.LT
+                        SlowBoard.R7 -> GHC.Types.LT
+                        SlowBoard.R8 -> GHC.Types.LT }
+                   SlowBoard.R6
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.GT
+                        SlowBoard.R6 -> GHC.Types.EQ
+                        SlowBoard.R7 -> GHC.Types.LT
+                        SlowBoard.R8 -> GHC.Types.LT }
+                   SlowBoard.R7
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.GT
+                        SlowBoard.R7 -> GHC.Types.EQ
+                        SlowBoard.R8 -> GHC.Types.LT }
+                   SlowBoard.R8
+                   -> case b of wild1 {
+                        DEFAULT -> GHC.Types.GT SlowBoard.R8 -> GHC.Types.EQ } }) -}
+3bef4c0bef672c22468e1550b74e487b
+  $fOrdRank_$cmax ::
+    SlowBoard.Rank -> SlowBoard.Rank -> SlowBoard.Rank
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,U><S,U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ x1 :: SlowBoard.Rank y :: SlowBoard.Rank ->
+                 case SlowBoard.$fOrdRank_$c<= x1 y of wild {
+                   GHC.Types.False -> x1 GHC.Types.True -> y }) -}
+3bef4c0bef672c22468e1550b74e487b
+  $fOrdRank_$cmin ::
+    SlowBoard.Rank -> SlowBoard.Rank -> SlowBoard.Rank
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,U><S,U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ x1 :: SlowBoard.Rank y :: SlowBoard.Rank ->
+                 case SlowBoard.$fOrdRank_$c<= x1 y of wild {
+                   GHC.Types.False -> y GHC.Types.True -> x1 }) -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fShowColor :: GHC.Show.Show SlowBoard.Color
+  DFunId[0]
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ SlowBoard.Color
+                  SlowBoard.$fShowColor_$cshowsPrec
+                  SlowBoard.$fShowColor_$cshow
+                  SlowBoard.$fShowColor_$cshowList -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fShowColor1 :: SlowBoard.Color -> GHC.Show.ShowS
+  {- Arity: 2, Strictness: <S,1*U><L,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ ds :: SlowBoard.Color eta :: GHC.Base.String ->
+                 case ds of wild {
+                   SlowBoard.Black
+                   -> GHC.Base.augment
+                        @ GHC.Types.Char
+                        (\ @ b c3 :: GHC.Types.Char -> b -> b[OneShot] n1 :: b[OneShot] ->
+                         GHC.Base.foldr @ GHC.Types.Char @ b c3 n1 SlowBoard.$fShowColor3)
+                        eta
+                   SlowBoard.White
+                   -> GHC.Base.augment
+                        @ GHC.Types.Char
+                        (\ @ b c3 :: GHC.Types.Char -> b -> b[OneShot] n1 :: b[OneShot] ->
+                         GHC.Base.foldr @ GHC.Types.Char @ b c3 n1 SlowBoard.$fShowColor2)
+                        eta }) -}
+39647c97d71864292f9f7ce1824d3c1d
+  $fShowColor2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "White"#) -}
+3952396e8c006391deef3920706d5673
+  $fShowColor3 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Black"#) -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fShowColor_$cshow :: SlowBoard.Color -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ x1 :: SlowBoard.Color ->
+                 case x1 of wild {
+                   SlowBoard.Black -> SlowBoard.$fShowColor3
+                   SlowBoard.White -> SlowBoard.$fShowColor2 }) -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fShowColor_$cshowList :: [SlowBoard.Color] -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (GHC.Show.showList__
+                   @ SlowBoard.Color
+                   SlowBoard.$fShowColor1) -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $fShowColor_$cshowsPrec ::
+    GHC.Types.Int -> SlowBoard.Color -> GHC.Show.ShowS
+  {- Arity: 3, Strictness: <L,A><S,1*U><L,1*U>,
+     Unfolding: InlineRule (3, True, False)
+                (\ ds :: GHC.Types.Int
+                   ds1 :: SlowBoard.Color
+                   eta :: GHC.Base.String ->
+                 case ds1 of wild {
+                   SlowBoard.Black
+                   -> GHC.Base.augment
+                        @ GHC.Types.Char
+                        (\ @ b c3 :: GHC.Types.Char -> b -> b[OneShot] n1 :: b[OneShot] ->
+                         GHC.Base.foldr @ GHC.Types.Char @ b c3 n1 SlowBoard.$fShowColor3)
+                        eta
+                   SlowBoard.White
+                   -> GHC.Base.augment
+                        @ GHC.Types.Char
+                        (\ @ b c3 :: GHC.Types.Char -> b -> b[OneShot] n1 :: b[OneShot] ->
+                         GHC.Base.foldr @ GHC.Types.Char @ b c3 n1 SlowBoard.$fShowColor2)
+                        eta }) -}
+182e785c545cfdca083d124686f78432
+  $fShowFile :: GHC.Show.Show SlowBoard.File
+  DFunId[0]
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ SlowBoard.File
+                  SlowBoard.$fShowFile_$cshowsPrec
+                  SlowBoard.$fShowFile_$cshow
+                  SlowBoard.$fShowFile_$cshowList -}
+919d78e10d4f81eb8ec4ae71734bba6c
+  $fShowFile1 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "FH"#) -}
+2a179efd03e52205f331e9bc002d6da3
+  $fShowFile2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "FG"#) -}
+b660b5c39f2293704b481a89d300cb61
+  $fShowFile3 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "FF"#) -}
+52613e27fc0ac7e2028dcdc605d3ef9a
+  $fShowFile4 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "FE"#) -}
+8ce13c536da25a750b56d40b0310f1b3
+  $fShowFile5 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "FD"#) -}
+d63793e665f36ecb7e8c9221dba6ef0a
+  $fShowFile6 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "FC"#) -}
+51c17a00344a5e814db6820597e8ff56
+  $fShowFile7 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "FB"#) -}
+5d38fd194735e39cdf5674b75831a96b
+  $fShowFile8 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "FA"#) -}
+182e785c545cfdca083d124686f78432
+  $fShowFile_$cshow :: SlowBoard.File -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ x1 :: SlowBoard.File ->
+                 SlowBoard.$fShowFile_$cshowsPrec
+                   GHC.Show.shows18
+                   x1
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+182e785c545cfdca083d124686f78432
+  $fShowFile_$cshowList :: [SlowBoard.File] -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (GHC.Show.showList__
+                   @ SlowBoard.File
+                   SlowBoard.$w$cshowsPrec) -}
+182e785c545cfdca083d124686f78432
+  $fShowFile_$cshowsPrec ::
+    GHC.Types.Int -> SlowBoard.File -> GHC.Show.ShowS
+  {- Arity: 3, Strictness: <L,A><S,1*U><L,1*U>, Inline: INLINE[0],
+     Unfolding: InlineRule (3, True, True)
+                (\ w :: GHC.Types.Int w1 :: SlowBoard.File w2 :: GHC.Base.String ->
+                 SlowBoard.$w$cshowsPrec w1 w2) -}
+fd6df4ac381446808ac07ea86320ff01
+  $fShowPiece :: GHC.Show.Show SlowBoard.Piece
+  DFunId[0]
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ SlowBoard.Piece
+                  SlowBoard.$fShowPiece_$cshowsPrec
+                  SlowBoard.$fShowPiece_$cshow
+                  SlowBoard.$fShowPiece_$cshowList -}
+fd6df4ac381446808ac07ea86320ff01
+  $fShowPiece1 :: SlowBoard.Piece -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (\ w :: SlowBoard.Piece w1 :: GHC.Base.String ->
+                 case w of ww { SlowBoard.Piece ww1 ww2 ww3 ww4 ->
+                 SlowBoard.$w$cshowsPrec1 0 ww1 ww2 ww3 ww4 w1 }) -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fShowPieceType :: GHC.Show.Show SlowBoard.PieceType
+  DFunId[0]
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ SlowBoard.PieceType
+                  SlowBoard.$fShowPieceType_$cshowsPrec
+                  SlowBoard.$fShowPieceType_$cshow
+                  SlowBoard.$fShowPieceType_$cshowList -}
+31ac4b68c63a54fb64a86639253d5df4
+  $fShowPieceType1 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "King"#) -}
+3cc0c3319aafc05da68da349b749ef53
+  $fShowPieceType2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Queen"#) -}
+563a6737043d5ed94e584178718d0f65
+  $fShowPieceType3 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Bishop"#) -}
+636729ee68df5e46238645d1693613eb
+  $fShowPieceType4 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Knight"#) -}
+85cead57f7d8b3fd6ddf8f19c395f439
+  $fShowPieceType5 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Rook"#) -}
+b2700b3bd853af38651852dc62781554
+  $fShowPieceType6 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Pawn"#) -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fShowPieceType_$cshow :: SlowBoard.PieceType -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ x1 :: SlowBoard.PieceType ->
+                 SlowBoard.$fShowPieceType_$cshowsPrec
+                   GHC.Show.shows18
+                   x1
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fShowPieceType_$cshowList ::
+    [SlowBoard.PieceType] -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (GHC.Show.showList__
+                   @ SlowBoard.PieceType
+                   SlowBoard.$w$cshowsPrec2) -}
+460e7b99495c709bcd6d28c80c06c94e
+  $fShowPieceType_$cshowsPrec ::
+    GHC.Types.Int -> SlowBoard.PieceType -> GHC.Show.ShowS
+  {- Arity: 3, Strictness: <L,A><S,1*U><L,1*U>, Inline: INLINE[0],
+     Unfolding: InlineRule (3, True, True)
+                (\ w :: GHC.Types.Int
+                   w1 :: SlowBoard.PieceType
+                   w2 :: GHC.Base.String ->
+                 SlowBoard.$w$cshowsPrec2 w1 w2) -}
+fd6df4ac381446808ac07ea86320ff01
+  $fShowPiece_$cshow :: SlowBoard.Piece -> GHC.Base.String
+  {- Arity: 1, Strictness: <S(SSSS),1*U(U,U,U,U)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ x1 :: SlowBoard.Piece ->
+                 SlowBoard.$fShowPiece_$cshowsPrec
+                   GHC.Show.shows18
+                   x1
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+fd6df4ac381446808ac07ea86320ff01
+  $fShowPiece_$cshowList :: [SlowBoard.Piece] -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (GHC.Show.showList__
+                   @ SlowBoard.Piece
+                   SlowBoard.$fShowPiece1) -}
+fd6df4ac381446808ac07ea86320ff01
+  $fShowPiece_$cshowsPrec ::
+    GHC.Types.Int -> SlowBoard.Piece -> GHC.Show.ShowS
+  {- Arity: 3, Strictness: <S,1*U(U)><S(SSSS),1*U(U,U,U,U)><L,U>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (3, True, False)
+                (\ w :: GHC.Types.Int
+                   w1 :: SlowBoard.Piece
+                   w2 :: GHC.Base.String ->
+                 case w of ww { GHC.Types.I# ww1 ->
+                 case w1 of ww2 { SlowBoard.Piece ww3 ww4 ww5 ww6 ->
+                 SlowBoard.$w$cshowsPrec1 ww1 ww3 ww4 ww5 ww6 w2 } }) -}
+3bef4c0bef672c22468e1550b74e487b
+  $fShowRank :: GHC.Show.Show SlowBoard.Rank
+  DFunId[0]
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ SlowBoard.Rank
+                  SlowBoard.$fShowRank_$cshowsPrec
+                  SlowBoard.$fShowRank_$cshow
+                  SlowBoard.$fShowRank_$cshowList -}
+c9b68d289e40ee6eed0d064788c0a745
+  $fShowRank1 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "R8"#) -}
+72164a04486c7d5a04d9d2cb153395db
+  $fShowRank2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "R7"#) -}
+755057aff94423e3c8aa8bafc790d38c
+  $fShowRank3 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "R6"#) -}
+79d1131c73ae585bdb33e7e23746cfad
+  $fShowRank4 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "R5"#) -}
+5b14ae7050c51aae22a615b7b38845f0
+  $fShowRank5 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "R4"#) -}
+4e0d5b7b3c81c457c94e53b450ce1df5
+  $fShowRank6 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "R3"#) -}
+683846cbc41043f89aeeb8e22135eff3
+  $fShowRank7 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "R2"#) -}
+c8f3fb45222634d6eeab47f9562f745e
+  $fShowRank8 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "R1"#) -}
+3bef4c0bef672c22468e1550b74e487b
+  $fShowRank_$cshow :: SlowBoard.Rank -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ x1 :: SlowBoard.Rank ->
+                 SlowBoard.$fShowRank_$cshowsPrec
+                   GHC.Show.shows18
+                   x1
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+3bef4c0bef672c22468e1550b74e487b
+  $fShowRank_$cshowList :: [SlowBoard.Rank] -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (GHC.Show.showList__
+                   @ SlowBoard.Rank
+                   SlowBoard.$w$cshowsPrec3) -}
+3bef4c0bef672c22468e1550b74e487b
+  $fShowRank_$cshowsPrec ::
+    GHC.Types.Int -> SlowBoard.Rank -> GHC.Show.ShowS
+  {- Arity: 3, Strictness: <L,A><S,1*U><L,1*U>, Inline: INLINE[0],
+     Unfolding: InlineRule (3, True, True)
+                (\ w :: GHC.Types.Int w1 :: SlowBoard.Rank w2 :: GHC.Base.String ->
+                 SlowBoard.$w$cshowsPrec3 w1 w2) -}
+d22fd6285a046ebcc9ca1592e4bdc822
+  $w$c< ::
+    SlowBoard.PieceType
+    -> SlowBoard.Color
+    -> SlowBoard.File
+    -> SlowBoard.Rank
+    -> SlowBoard.PieceType
+    -> SlowBoard.Color
+    -> SlowBoard.File
+    -> SlowBoard.Rank
+    -> GHC.Types.Bool
+  {- Arity: 8, HasNoCafRefs,
+     Strictness: <S,U><S,U><S,U><S,U><S,U><S,U><S,U><S,U>,
+     Inline: [0] -}
+61184427cf5cf74cadf0216320572ad1
+  $w$c<= ::
+    SlowBoard.PieceType
+    -> SlowBoard.Color
+    -> SlowBoard.File
+    -> SlowBoard.Rank
+    -> SlowBoard.PieceType
+    -> SlowBoard.Color
+    -> SlowBoard.File
+    -> SlowBoard.Rank
+    -> GHC.Types.Bool
+  {- Arity: 8, HasNoCafRefs,
+     Strictness: <S,U><S,U><S,U><S,U><S,U><S,U><S,U><S,U>,
+     Inline: [0] -}
+5b33bc47467191b06dd7e40b19e58e0a
+  $w$c== ::
+    SlowBoard.PieceType
+    -> SlowBoard.Color
+    -> SlowBoard.File
+    -> SlowBoard.Rank
+    -> SlowBoard.PieceType
+    -> SlowBoard.Color
+    -> SlowBoard.File
+    -> SlowBoard.Rank
+    -> GHC.Types.Bool
+  {- Arity: 8, HasNoCafRefs,
+     Strictness: <S,U><S,U><S,U><S,U><S,U><S,U><S,U><S,U>,
+     Inline: [0] -}
+6342e1a541410eef368ec80d9182ec3d
+  $w$c> ::
+    SlowBoard.PieceType
+    -> SlowBoard.Color
+    -> SlowBoard.File
+    -> SlowBoard.Rank
+    -> SlowBoard.PieceType
+    -> SlowBoard.Color
+    -> SlowBoard.File
+    -> SlowBoard.Rank
+    -> GHC.Types.Bool
+  {- Arity: 8, HasNoCafRefs,
+     Strictness: <S,U><S,U><S,U><S,U><S,U><S,U><S,U><S,U>,
+     Inline: [0] -}
+89092c6f352f6b3baef979ced1ef1b3d
+  $w$c>= ::
+    SlowBoard.PieceType
+    -> SlowBoard.Color
+    -> SlowBoard.File
+    -> SlowBoard.Rank
+    -> SlowBoard.PieceType
+    -> SlowBoard.Color
+    -> SlowBoard.File
+    -> SlowBoard.Rank
+    -> GHC.Types.Bool
+  {- Arity: 8, HasNoCafRefs,
+     Strictness: <S,U><S,U><S,U><S,U><S,U><S,U><S,U><S,U>,
+     Inline: [0] -}
+a40afdde95cc08a65a32b909c6318b26
+  $w$ccompare ::
+    SlowBoard.PieceType
+    -> SlowBoard.Color
+    -> SlowBoard.File
+    -> SlowBoard.Rank
+    -> SlowBoard.PieceType
+    -> SlowBoard.Color
+    -> SlowBoard.File
+    -> SlowBoard.Rank
+    -> GHC.Types.Ordering
+  {- Arity: 8, HasNoCafRefs,
+     Strictness: <S,U><S,U><S,U><S,U><S,U><S,U><S,U><S,U>,
+     Inline: [0] -}
+182e785c545cfdca083d124686f78432
+  $w$cshowsPrec ::
+    SlowBoard.File -> GHC.Base.String -> GHC.Base.String
+  {- Arity: 2, Strictness: <S,1*U><L,1*U>, Inline: [0],
+     Unfolding: (\ w :: SlowBoard.File w1 :: GHC.Base.String ->
+                 case w of wild {
+                   SlowBoard.FA
+                   -> GHC.Base.++ @ GHC.Types.Char SlowBoard.$fShowFile8 w1
+                   SlowBoard.FB
+                   -> GHC.Base.++ @ GHC.Types.Char SlowBoard.$fShowFile7 w1
+                   SlowBoard.FC
+                   -> GHC.Base.++ @ GHC.Types.Char SlowBoard.$fShowFile6 w1
+                   SlowBoard.FD
+                   -> GHC.Base.++ @ GHC.Types.Char SlowBoard.$fShowFile5 w1
+                   SlowBoard.FE
+                   -> GHC.Base.++ @ GHC.Types.Char SlowBoard.$fShowFile4 w1
+                   SlowBoard.FF
+                   -> GHC.Base.++ @ GHC.Types.Char SlowBoard.$fShowFile3 w1
+                   SlowBoard.FG
+                   -> GHC.Base.++ @ GHC.Types.Char SlowBoard.$fShowFile2 w1
+                   SlowBoard.FH
+                   -> GHC.Base.++ @ GHC.Types.Char SlowBoard.$fShowFile1 w1 }) -}
+7b1521f1c13a7cca0aaa9eee79d79978
+  $w$cshowsPrec1 ::
+    GHC.Prim.Int#
+    -> SlowBoard.PieceType
+    -> SlowBoard.Color
+    -> SlowBoard.File
+    -> SlowBoard.Rank
+    -> GHC.Base.String
+    -> GHC.Base.String
+  {- Arity: 6, Strictness: <L,U><S,U><S,U><S,U><S,U><L,U>,
+     Inline: [0] -}
+460e7b99495c709bcd6d28c80c06c94e
+  $w$cshowsPrec2 ::
+    SlowBoard.PieceType -> GHC.Base.String -> GHC.Base.String
+  {- Arity: 2, Strictness: <S,1*U><L,1*U>, Inline: [0],
+     Unfolding: (\ w :: SlowBoard.PieceType w1 :: GHC.Base.String ->
+                 case w of wild {
+                   SlowBoard.Pawn
+                   -> GHC.Base.++ @ GHC.Types.Char SlowBoard.$fShowPieceType6 w1
+                   SlowBoard.Rook
+                   -> GHC.Base.++ @ GHC.Types.Char SlowBoard.$fShowPieceType5 w1
+                   SlowBoard.Knight
+                   -> GHC.Base.++ @ GHC.Types.Char SlowBoard.$fShowPieceType4 w1
+                   SlowBoard.Bishop
+                   -> GHC.Base.++ @ GHC.Types.Char SlowBoard.$fShowPieceType3 w1
+                   SlowBoard.Queen
+                   -> GHC.Base.++ @ GHC.Types.Char SlowBoard.$fShowPieceType2 w1
+                   SlowBoard.King
+                   -> GHC.Base.++ @ GHC.Types.Char SlowBoard.$fShowPieceType1 w1 }) -}
+3bef4c0bef672c22468e1550b74e487b
+  $w$cshowsPrec3 ::
+    SlowBoard.Rank -> GHC.Base.String -> GHC.Base.String
+  {- Arity: 2, Strictness: <S,1*U><L,1*U>, Inline: [0],
+     Unfolding: (\ w :: SlowBoard.Rank w1 :: GHC.Base.String ->
+                 case w of wild {
+                   SlowBoard.R1
+                   -> GHC.Base.++ @ GHC.Types.Char SlowBoard.$fShowRank8 w1
+                   SlowBoard.R2
+                   -> GHC.Base.++ @ GHC.Types.Char SlowBoard.$fShowRank7 w1
+                   SlowBoard.R3
+                   -> GHC.Base.++ @ GHC.Types.Char SlowBoard.$fShowRank6 w1
+                   SlowBoard.R4
+                   -> GHC.Base.++ @ GHC.Types.Char SlowBoard.$fShowRank5 w1
+                   SlowBoard.R5
+                   -> GHC.Base.++ @ GHC.Types.Char SlowBoard.$fShowRank4 w1
+                   SlowBoard.R6
+                   -> GHC.Base.++ @ GHC.Types.Char SlowBoard.$fShowRank3 w1
+                   SlowBoard.R7
+                   -> GHC.Base.++ @ GHC.Types.Char SlowBoard.$fShowRank2 w1
+                   SlowBoard.R8
+                   -> GHC.Base.++ @ GHC.Types.Char SlowBoard.$fShowRank1 w1 }) -}
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  $w$ctoEnum :: GHC.Prim.Int# -> SlowBoard.Color
+  {- Arity: 1, Strictness: <L,U>, Inline: [0],
+     Unfolding: (\ ww :: GHC.Prim.Int# ->
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.>=# ww 0) of wild {
+                   GHC.Types.False -> SlowBoard.$fEnumColor1 ww
+                   GHC.Types.True
+                   -> case GHC.Prim.tagToEnum#
+                             @ GHC.Types.Bool
+                             (GHC.Prim.<=# ww 1) of wild1 {
+                        GHC.Types.False -> SlowBoard.$fEnumColor1 ww
+                        GHC.Types.True -> GHC.Prim.tagToEnum# @ SlowBoard.Color ww } }) -}
+182e785c545cfdca083d124686f78432
+  $w$ctoEnum1 :: GHC.Prim.Int# -> SlowBoard.File
+  {- Arity: 1, Strictness: <L,U>, Inline: [0],
+     Unfolding: (\ ww :: GHC.Prim.Int# ->
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.>=# ww 0) of wild {
+                   GHC.Types.False -> SlowBoard.$fEnumFile9 ww
+                   GHC.Types.True
+                   -> case GHC.Prim.tagToEnum#
+                             @ GHC.Types.Bool
+                             (GHC.Prim.<=# ww 7) of wild1 {
+                        GHC.Types.False -> SlowBoard.$fEnumFile9 ww
+                        GHC.Types.True -> GHC.Prim.tagToEnum# @ SlowBoard.File ww } }) -}
+460e7b99495c709bcd6d28c80c06c94e
+  $w$ctoEnum2 :: GHC.Prim.Int# -> SlowBoard.PieceType
+  {- Arity: 1, Strictness: <L,U>, Inline: [0],
+     Unfolding: (\ ww :: GHC.Prim.Int# ->
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.>=# ww 0) of wild {
+                   GHC.Types.False -> SlowBoard.$fEnumPieceType7 ww
+                   GHC.Types.True
+                   -> case GHC.Prim.tagToEnum#
+                             @ GHC.Types.Bool
+                             (GHC.Prim.<=# ww 5) of wild1 {
+                        GHC.Types.False -> SlowBoard.$fEnumPieceType7 ww
+                        GHC.Types.True
+                        -> GHC.Prim.tagToEnum# @ SlowBoard.PieceType ww } }) -}
+3bef4c0bef672c22468e1550b74e487b
+  $w$ctoEnum3 :: GHC.Prim.Int# -> SlowBoard.Rank
+  {- Arity: 1, Strictness: <L,U>, Inline: [0],
+     Unfolding: (\ ww :: GHC.Prim.Int# ->
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.>=# ww 0) of wild {
+                   GHC.Types.False -> SlowBoard.$fEnumRank9 ww
+                   GHC.Types.True
+                   -> case GHC.Prim.tagToEnum#
+                             @ GHC.Types.Bool
+                             (GHC.Prim.<=# ww 7) of wild1 {
+                        GHC.Types.False -> SlowBoard.$fEnumRank9 ww
+                        GHC.Types.True -> GHC.Prim.tagToEnum# @ SlowBoard.Rank ww } }) -}
+90ba64fcddc5b657d80db690d7d080ec
+  type Board = Data.Vector.Vector SlowBoard.Piece
+fbdee0f8b71faf5f62a7ab5bf1c74bd4
+  data Color = Black | White
+    Promotable
+182e785c545cfdca083d124686f78432
+  data File = FA | FB | FC | FD | FE | FF | FG | FH
+    Promotable
+fd6df4ac381446808ac07ea86320ff01
+  data Piece
+    = Piece !SlowBoard.PieceType
+            !SlowBoard.Color
+            !SlowBoard.File
+            !SlowBoard.Rank
+    Promotable
+460e7b99495c709bcd6d28c80c06c94e
+  data PieceType = Pawn | Rook | Knight | Bishop | Queen | King
+    Promotable
+3bef4c0bef672c22468e1550b74e487b
+  data Rank = R1 | R2 | R3 | R4 | R5 | R6 | R7 | R8
+    Promotable
+c001716c421af64934b3e387b8740398
+  type Turn = SlowBoard.Color
+fd9cfa630fe0fa15a896f1b6dd2328d0
+  pieceChar :: SlowBoard.Piece -> GHC.Types.Char
+  {- Arity: 1, Strictness: <S(SSSS),1*U(U,U,1*H,1*H)>m,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ w :: SlowBoard.Piece ->
+                 case w of ww { SlowBoard.Piece ww1 ww2 ww3 ww4 ->
+                 case ww2 of wild {
+                   SlowBoard.Black
+                   -> case ww1 of wild1 {
+                        SlowBoard.Pawn -> GHC.Types.C# 'p'
+                        SlowBoard.Rook -> GHC.Types.C# 'r'
+                        SlowBoard.Knight -> GHC.Types.C# 'n'
+                        SlowBoard.Bishop -> GHC.Types.C# 'b'
+                        SlowBoard.Queen -> GHC.Types.C# 'q'
+                        SlowBoard.King -> GHC.Types.C# 'k' }
+                   SlowBoard.White
+                   -> case ww1 of wild1 {
+                        SlowBoard.Pawn
+                        -> case {__pkg_ccall base-4.8.1.0 u_towupper GHC.Prim.Int#
+                                                                     -> GHC.Prim.State#
+                                                                          GHC.Prim.RealWorld
+                                                                     -> (# GHC.Prim.State#
+                                                                             GHC.Prim.RealWorld,
+                                                                           GHC.Prim.Int# #)}
+                                  112
+                                  GHC.Prim.realWorld# of wild2 { (#,#) ds ds1 ->
+                           case GHC.Prim.tagToEnum#
+                                  @ GHC.Types.Bool
+                                  (GHC.Prim.leWord#
+                                     (GHC.Prim.int2Word# ds1)
+                                     __word 1114111) of wild3 {
+                             GHC.Types.False -> GHC.Char.chr2 ds1
+                             GHC.Types.True -> GHC.Types.C# (GHC.Prim.chr# ds1) } }
+                        SlowBoard.Rook
+                        -> case {__pkg_ccall base-4.8.1.0 u_towupper GHC.Prim.Int#
+                                                                     -> GHC.Prim.State#
+                                                                          GHC.Prim.RealWorld
+                                                                     -> (# GHC.Prim.State#
+                                                                             GHC.Prim.RealWorld,
+                                                                           GHC.Prim.Int# #)}
+                                  114
+                                  GHC.Prim.realWorld# of wild2 { (#,#) ds ds1 ->
+                           case GHC.Prim.tagToEnum#
+                                  @ GHC.Types.Bool
+                                  (GHC.Prim.leWord#
+                                     (GHC.Prim.int2Word# ds1)
+                                     __word 1114111) of wild3 {
+                             GHC.Types.False -> GHC.Char.chr2 ds1
+                             GHC.Types.True -> GHC.Types.C# (GHC.Prim.chr# ds1) } }
+                        SlowBoard.Knight
+                        -> case {__pkg_ccall base-4.8.1.0 u_towupper GHC.Prim.Int#
+                                                                     -> GHC.Prim.State#
+                                                                          GHC.Prim.RealWorld
+                                                                     -> (# GHC.Prim.State#
+                                                                             GHC.Prim.RealWorld,
+                                                                           GHC.Prim.Int# #)}
+                                  110
+                                  GHC.Prim.realWorld# of wild2 { (#,#) ds ds1 ->
+                           case GHC.Prim.tagToEnum#
+                                  @ GHC.Types.Bool
+                                  (GHC.Prim.leWord#
+                                     (GHC.Prim.int2Word# ds1)
+                                     __word 1114111) of wild3 {
+                             GHC.Types.False -> GHC.Char.chr2 ds1
+                             GHC.Types.True -> GHC.Types.C# (GHC.Prim.chr# ds1) } }
+                        SlowBoard.Bishop
+                        -> case {__pkg_ccall base-4.8.1.0 u_towupper GHC.Prim.Int#
+                                                                     -> GHC.Prim.State#
+                                                                          GHC.Prim.RealWorld
+                                                                     -> (# GHC.Prim.State#
+                                                                             GHC.Prim.RealWorld,
+                                                                           GHC.Prim.Int# #)}
+                                  98
+                                  GHC.Prim.realWorld# of wild2 { (#,#) ds ds1 ->
+                           case GHC.Prim.tagToEnum#
+                                  @ GHC.Types.Bool
+                                  (GHC.Prim.leWord#
+                                     (GHC.Prim.int2Word# ds1)
+                                     __word 1114111) of wild3 {
+                             GHC.Types.False -> GHC.Char.chr2 ds1
+                             GHC.Types.True -> GHC.Types.C# (GHC.Prim.chr# ds1) } }
+                        SlowBoard.Queen
+                        -> case {__pkg_ccall base-4.8.1.0 u_towupper GHC.Prim.Int#
+                                                                     -> GHC.Prim.State#
+                                                                          GHC.Prim.RealWorld
+                                                                     -> (# GHC.Prim.State#
+                                                                             GHC.Prim.RealWorld,
+                                                                           GHC.Prim.Int# #)}
+                                  113
+                                  GHC.Prim.realWorld# of wild2 { (#,#) ds ds1 ->
+                           case GHC.Prim.tagToEnum#
+                                  @ GHC.Types.Bool
+                                  (GHC.Prim.leWord#
+                                     (GHC.Prim.int2Word# ds1)
+                                     __word 1114111) of wild3 {
+                             GHC.Types.False -> GHC.Char.chr2 ds1
+                             GHC.Types.True -> GHC.Types.C# (GHC.Prim.chr# ds1) } }
+                        SlowBoard.King
+                        -> case {__pkg_ccall base-4.8.1.0 u_towupper GHC.Prim.Int#
+                                                                     -> GHC.Prim.State#
+                                                                          GHC.Prim.RealWorld
+                                                                     -> (# GHC.Prim.State#
+                                                                             GHC.Prim.RealWorld,
+                                                                           GHC.Prim.Int# #)}
+                                  107
+                                  GHC.Prim.realWorld# of wild2 { (#,#) ds ds1 ->
+                           case GHC.Prim.tagToEnum#
+                                  @ GHC.Types.Bool
+                                  (GHC.Prim.leWord#
+                                     (GHC.Prim.int2Word# ds1)
+                                     __word 1114111) of wild3 {
+                             GHC.Types.False -> GHC.Char.chr2 ds1
+                             GHC.Types.True -> GHC.Types.C# (GHC.Prim.chr# ds1) } } } } }) -}
+4c48656f823534085febf5d6d8ec3270
+  showBoard :: SlowBoard.Board -> GHC.Base.String
+  {- Arity: 1, Strictness: <L,1*U(U,U,U)> -}
+532721a39e80a4cff4270488cf578258
+  startingBoard :: SlowBoard.Board
+  {- Unfolding: (GHC.ST.runSTRep
+                   @ (Data.Vector.Vector SlowBoard.Piece)
+                   SlowBoard.startingBoard1) -}
+ea1b4339d1a1575032c99a2b06ca0541
+  startingBoard1 ::
+    GHC.Prim.State# s
+    -> (# GHC.Prim.State# s, Data.Vector.Vector SlowBoard.Piece #)
+  {- Arity: 1,
+     Unfolding: (\ @ s s1 :: GHC.Prim.State# s[OneShot] ->
+                 case GHC.Prim.newArray#
+                        @ SlowBoard.Piece
+                        @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s))
+                        0
+                        (Data.Vector.Mutable.uninitialised @ SlowBoard.Piece)
+                        s1
+                          `cast`
+                        (GHC.Prim.State#
+                           (Sym (Control.Monad.Primitive.TFCo:R:PrimStateST[0]
+                                     <s>_N)))_R of ds1 { (#,#) ipv ipv1 ->
+                 case SlowBoard.startingBoard15
+                        @ s
+                        GHC.Types.SPEC
+                        ((Data.Vector.Mutable.MVector
+                            @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s))
+                            @ SlowBoard.Piece
+                            0
+                            0
+                            ipv1)
+                           `cast`
+                         (Sub (Sym (Data.Vector.TFCo:R:MutableVector[0])) <Control.Monad.Primitive.PrimState
+                                                                             (GHC.ST.ST
+                                                                                s)>_N <SlowBoard.Piece>_N),
+                         SlowBoard.startingBoard14)
+                        SlowBoard.startingBoard2
+                        ipv
+                          `cast`
+                        (GHC.Prim.State#
+                           (Control.Monad.Primitive.TFCo:R:PrimStateST[0]
+                                <s>_N))_R of ds2 { (#,#) ipv6 ipv7 ->
+                 case ipv7 of wild5 { (,) v' n1 ->
+                 case v'
+                        `cast`
+                      (Sub (Data.Vector.TFCo:R:MutableVector[0]) <Control.Monad.Primitive.PrimState
+                                                                    (GHC.ST.ST
+                                                                       s)>_N <SlowBoard.Piece>_N) of wild { Data.Vector.Mutable.MVector dt dt1 dt2 ->
+                 case n1 of dt5 { GHC.Types.I# dt6 ->
+                 case GHC.Prim.unsafeFreezeArray#
+                        @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s))
+                        @ SlowBoard.Piece
+                        dt2
+                        ipv6
+                          `cast`
+                        (GHC.Prim.State#
+                           (Sym (Control.Monad.Primitive.TFCo:R:PrimStateST[0]
+                                     <s>_N)))_R of ds4 { (#,#) ipv2 ipv3 ->
+                 (# ipv2
+                      `cast`
+                    (GHC.Prim.State#
+                       (Control.Monad.Primitive.TFCo:R:PrimStateST[0] <s>_N))_R,
+                    Data.Vector.Vector @ SlowBoard.Piece dt dt6 ipv3 #) } } } } } }) -}
+f8ffb51bbe2a17d8291bafbcc96584e0
+  startingBoard10 :: [SlowBoard.PieceType]
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ SlowBoard.PieceType
+                   SlowBoard.King
+                   SlowBoard.startingBoard11) -}
+624bb3a378a6690c575ce4fc893c447d
+  startingBoard11 :: [SlowBoard.PieceType]
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ SlowBoard.PieceType
+                   SlowBoard.Bishop
+                   SlowBoard.startingBoard12) -}
+163938bcfea4ee202f8b16279a3c116e
+  startingBoard12 :: [SlowBoard.PieceType]
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ SlowBoard.PieceType
+                   SlowBoard.Knight
+                   SlowBoard.startingBoard13) -}
+6ce501c27abb49aa84f859d8e492510f
+  startingBoard13 :: [SlowBoard.PieceType]
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ SlowBoard.PieceType
+                   SlowBoard.Rook
+                   (GHC.Types.[] @ SlowBoard.PieceType)) -}
+a3d34b60bb59422e93d200bd63c58aa2
+  startingBoard14 :: GHC.Types.Int
+  {- HasNoCafRefs, Unfolding: (GHC.Types.I# 0) -}
+fa3539a11d5e4eb505ea09ba0ac3f753
+  startingBoard15 ::
+    GHC.Types.SPEC
+    -> (Data.Vector.Generic.Base.Mutable
+          Data.Vector.Vector
+          (Control.Monad.Primitive.PrimState (GHC.ST.ST s))
+          SlowBoard.Piece,
+        GHC.Types.Int)
+    -> [SlowBoard.Piece]
+    -> GHC.Prim.State# s
+    -> (# GHC.Prim.State# s,
+          (Data.Vector.Generic.Base.Mutable
+             Data.Vector.Vector
+             (Control.Monad.Primitive.PrimState (GHC.ST.ST s))
+             SlowBoard.Piece,
+           GHC.Types.Int) #)
+  {- Arity: 4, Strictness: <S,1*U><L,U(U(U,U,U),U(U))><S,1*U><L,U> -}
+7a7c85ce2b53c77111bade2ab52ad480
+  startingBoard2 :: [SlowBoard.Piece]
+  {- Unfolding: (GHC.Base.++
+                   @ SlowBoard.Piece
+                   SlowBoard.startingBoard5
+                   SlowBoard.startingBoard3) -}
+4f45a2656901b5f8803d07e1e37a7120
+  startingBoard3 :: [SlowBoard.Piece]
+  {- Unfolding: (SlowBoard.startingBoard_go
+                   SlowBoard.startingBoard4) -}
+46d30ce2bbd3d898643878ccb2930161
+  startingBoard4 :: [SlowBoard.File]
+  {- Unfolding: (SlowBoard.$fEnumFile_go 0) -}
+d7de6c2139601ab8eae252c8b65c2c5d
+  startingBoard5 :: [SlowBoard.Piece]
+  {- Unfolding: (SlowBoard.startingBoard_backLine
+                   SlowBoard.R1
+                   SlowBoard.White) -}
+da516b3cd1d4de53c6f5a89a92d2423e
+  startingBoard6 :: [SlowBoard.PieceType]
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ SlowBoard.PieceType
+                   SlowBoard.Rook
+                   SlowBoard.startingBoard7) -}
+c359c80103cc72b681a25cd951862ce5
+  startingBoard7 :: [SlowBoard.PieceType]
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ SlowBoard.PieceType
+                   SlowBoard.Knight
+                   SlowBoard.startingBoard8) -}
+4c7cfef274b407ee9f9d7f76ca6bfa64
+  startingBoard8 :: [SlowBoard.PieceType]
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ SlowBoard.PieceType
+                   SlowBoard.Bishop
+                   SlowBoard.startingBoard9) -}
+1dbbe3464a29d68e6dbd0f77f825febb
+  startingBoard9 :: [SlowBoard.PieceType]
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ SlowBoard.PieceType
+                   SlowBoard.Queen
+                   SlowBoard.startingBoard10) -}
+0a39154f0e6100d72e3b1ec20eb4fcad
+  startingBoard_backLine ::
+    SlowBoard.Rank -> SlowBoard.Color -> [SlowBoard.Piece]
+  {- Arity: 2, Strictness: <L,U><L,U>,
+     Unfolding: (\ rank :: SlowBoard.Rank color :: SlowBoard.Color ->
+                 GHC.List.zipWith
+                   @ SlowBoard.PieceType
+                   @ SlowBoard.File
+                   @ SlowBoard.Piece
+                   (\ p :: SlowBoard.PieceType f :: SlowBoard.File[OneShot] ->
+                    SlowBoard.$WPiece p color f rank)
+                   SlowBoard.startingBoard6
+                   SlowBoard.startingBoard4) -}
+933c479e38ca175fcdb4217d78ee8a6f
+  startingBoard_go :: [SlowBoard.File] -> [SlowBoard.Piece]
+  {- Arity: 1, Strictness: <S,1*U> -}
+instance GHC.Enum.Enum [SlowBoard.Color] = SlowBoard.$fEnumColor
+instance GHC.Enum.Enum [SlowBoard.File] = SlowBoard.$fEnumFile
+instance GHC.Enum.Enum [SlowBoard.PieceType]
+  = SlowBoard.$fEnumPieceType
+instance GHC.Enum.Enum [SlowBoard.Rank] = SlowBoard.$fEnumRank
+instance GHC.Classes.Eq [SlowBoard.Color] = SlowBoard.$fEqColor
+instance GHC.Classes.Eq [SlowBoard.File] = SlowBoard.$fEqFile
+instance GHC.Classes.Eq [SlowBoard.Piece] = SlowBoard.$fEqPiece
+instance GHC.Classes.Eq [SlowBoard.PieceType]
+  = SlowBoard.$fEqPieceType
+instance GHC.Classes.Eq [SlowBoard.Rank] = SlowBoard.$fEqRank
+instance GHC.Classes.Ord [SlowBoard.Color] = SlowBoard.$fOrdColor
+instance GHC.Classes.Ord [SlowBoard.File] = SlowBoard.$fOrdFile
+instance GHC.Classes.Ord [SlowBoard.Piece] = SlowBoard.$fOrdPiece
+instance GHC.Classes.Ord [SlowBoard.PieceType]
+  = SlowBoard.$fOrdPieceType
+instance GHC.Classes.Ord [SlowBoard.Rank] = SlowBoard.$fOrdRank
+instance GHC.Show.Show [SlowBoard.Color] = SlowBoard.$fShowColor
+instance GHC.Show.Show [SlowBoard.File] = SlowBoard.$fShowFile
+instance GHC.Show.Show [SlowBoard.Piece] = SlowBoard.$fShowPiece
+instance GHC.Show.Show [SlowBoard.PieceType]
+  = SlowBoard.$fShowPieceType
+instance GHC.Show.Show [SlowBoard.Rank] = SlowBoard.$fShowRank
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: none
+require own pkg trusted: False
+
