@@ -1,5 +1,13 @@
-{-# LANGUAGE TypeFamilies, RankNTypes #-}
-module Board (Board(..), emptyBoard) where 
+module Board (Board(..), 
+              emptyBoard,
+              BlackPieces(..),
+              WhitePieces(..),
+              Pawns(..),
+              Rooks(..),
+              Knights(..),
+              Bishops(..),
+              Queens(..),
+              Kings(..)) where 
 
 import Prelude hiding (takeWhile)
 
@@ -8,49 +16,39 @@ import Data.Bits
 
 import Data.IntMap.Strict hiding (filter)
 
-import Data.Coerce
+import GHC.TypeLits
 
-class Color a where 
-        extractColor :: a -> Word64 
+newtype BlackPieces (n :: Nat) = BC { unBC :: Word64 } 
+        deriving (Bits,FiniteBits,Num,Show,Eq,Ord,Enum)
 
-instance Color BlackPieces where 
-        extractColor = unBC
+newtype WhitePieces (n :: Nat) = WC { unWC :: Word64 } 
+        deriving (Bits,FiniteBits,Num,Show,Eq,Ord,Enum)
 
-instance Color WhitePieces where 
-        extractColor = unWC
+newtype Pawns   (n :: Nat) = P { unP :: Word64 } deriving (Bits,FiniteBits,Num,Show,Eq,Ord,Enum)
 
-newtype BlackPieces = BC { unBC :: Word64 } deriving (Bits,FiniteBits,Num,Show,Eq,Ord,Enum)
+newtype Rooks   (n :: Nat) = R { unR :: Word64 } deriving (Bits,FiniteBits,Num,Show,Eq,Ord,Enum)
 
-newtype WhitePieces = WC { unWC :: Word64 } deriving (Bits,FiniteBits,Num,Show,Eq,Ord,Enum)
+newtype Knights (n :: Nat) = N { unN :: Word64 } deriving (Bits,FiniteBits,Num,Show,Eq,Ord,Enum)
 
-newtype Pawns   = P { unP :: Word64 } deriving (Bits,FiniteBits,Num,Show,Eq,Ord,Enum)
+newtype Bishops (n :: Nat) = B { unB :: Word64 } deriving (Bits,FiniteBits,Num,Show,Eq,Ord,Enum)
 
-newtype Rooks   = R { unR :: Word64 } deriving (Bits,FiniteBits,Num,Show,Eq,Ord,Enum)
+newtype Queens  (n :: Nat) = Q { unQ :: Word64 } deriving (Bits,FiniteBits,Num,Show,Eq,Ord,Enum)
 
-newtype Knights = N { unN :: Word64 } deriving (Bits,FiniteBits,Num,Show,Eq,Ord,Enum)
+newtype Kings   (n :: Nat) = K { unK :: Word64 } deriving (Bits,FiniteBits,Num,Show,Eq,Ord,Enum)
 
-newtype Bishops = B { unB :: Word64 } deriving (Bits,FiniteBits,Num,Show,Eq,Ord,Enum)
+data Board :: (Nat -> Nat -> Nat -> Nat -> Nat -> Nat -> Nat -> Nat -> *) where 
+        Board :: BlackPieces nBP -> WhitePieces nWP -> Pawns nP  -> Rooks nR -> 
+                 Knights nN      -> Bishops nB      -> Queens nQ -> Kings nK -> 
+                 Board nBP nWP nP nR nN nB nQ nK
 
-newtype Queens  = Q { unQ :: Word64 } deriving (Bits,FiniteBits,Num,Show,Eq,Ord,Enum)
-
-newtype Kings   = K { unK :: Word64 } deriving (Bits,FiniteBits,Num,Show,Eq,Ord,Enum)
-
-data Board = Board {-# UNPACK #-} !BlackPieces 
-                   {-# UNPACK #-} !WhitePieces 
-                   {-# UNPACK #-} !Pawns 
-                   {-# UNPACK #-} !Rooks  
-                   {-# UNPACK #-} !Knights  
-                   {-# UNPACK #-} !Bishops
-                   {-# UNPACK #-} !Queens 
-                   {-# UNPACK #-} !Kings 
-
-emptyBoard :: Board 
-emptyBoard = Board 0 0 0 0 0 0 0 0   
+emptyBoard :: Board 0 0 0 0 0 0 0 0  
+emptyBoard =  Board 0 0 0 0 0 0 0 0   
  
-instance Show Board where 
+instance Show (Board wc bc p r n b q k) where 
+        show = showBoard 
         showsPrec _ b = (showBoard b ++) 
 
-showBoard :: Board -> String  
+--showBoard :: Board -> String  
 showBoard (Board bc wc p r n b q k) = (reverse . elems . unions . fmap toIntMap) bitBoards
         where toIntMap :: (Word64,Word64,Char) -> IntMap Char 
               toIntMap (mask,pieces,c) = 
@@ -60,13 +58,3 @@ showBoard (Board bc wc p r n b q k) = (reverse . elems . unions . fmap toIntMap)
                            (unWC wc,unP p,'P'),(unWC wc,unR r,'R'),(unWC wc,unN n,'N'),
                            (unWC wc,unB b,'B'),(unWC wc,unQ q,'Q'),(unWC wc,unK k,'K'),
                            (-1,-1,' ')]
-
-showWord64 :: (FiniteBits a) => a -> String 
-showWord64 w = reverse $ fmap (\i -> if testBit w i then '1' else '0') [0..(finiteBitSize w - 1)]
-
-put8 :: String -> IO ()
-put8 [] = return ()
-put8 s = do
-        putStrLn $ Prelude.take 8 s
-        put8 $ Prelude.drop 8 s
-

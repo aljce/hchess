@@ -11,6 +11,8 @@ import Board
 
 type Turn = Bool --Should this be a Word8 so it can be unpacked?
 
+test = BC 0
+
 data Castling = Castling {
         kingSideW  :: Bool,
         queenSideW :: Bool,
@@ -18,12 +20,12 @@ data Castling = Castling {
         queenSideB :: Bool } deriving (Show)
 
 data FEN = FEN {
-        board          :: forall bc wc p r n b q k. Board bc wc p r n b q k,
+        board          :: Board,
         turn           :: Turn,
         castlingRights :: Castling,
         enPassant      :: Maybe Word64,
         halfMoveClock  :: Int,
-        fullMoveClock  :: Int } 
+        fullMoveClock  :: Int } deriving (Show)
 
 parseFEN :: Parser FEN
 parseFEN = do
