@@ -1,0 +1,71 @@
+
+==================== FINAL INTERFACE ====================
+2015-12-22 17:35:23.361141 UTC
+
+interface hches_BypoOHN0xb7K9M5rFIMmXv:MailBox 7102
+  interface hash: e010ee1b53edbda19942f5b31810cf60
+  ABI hash: cde4e08d26173c88105392cfe621d43f
+  export-list hash: cafe68b82e815096a6586a855f5a7f2b
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: b2869d8fcf4c769a0bf931957519fbbd
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  MailBox.bitBoardToMailBox
+  MailBox.mailBoxToBitBoard
+  MailBox.MailBox
+module dependencies: BitBoard
+package dependencies: array-0.5.1.0@array_E0sTtauuKsGDLZoT7lTbgZ
+                      base-4.8.1.0 containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN
+                      deepseq-1.4.1.1@deeps_LbCWUlehDDeLxurARKDH5o ghc-prim-0.4.0.0
+                      integer-gmp-1.0.0.0 primitive-0.6.1.0@primi_5Jnw7oEuYtM9dmKXelGXVb
+                      transformers-0.4.2.0@trans_3eG64VdP2vzGjP6wJiCp5X
+                      vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF
+orphans: base-4.8.1.0:GHC.Base base-4.8.1.0:GHC.Float
+         transformers-0.4.2.0@trans_3eG64VdP2vzGjP6wJiCp5X:Control.Monad.Trans.Error
+         vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Fusion.Bundle
+         vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Unboxed
+family instance modules: base-4.8.1.0:Control.Applicative
+                         base-4.8.1.0:Data.Either base-4.8.1.0:Data.Functor.Identity
+                         base-4.8.1.0:Data.Monoid base-4.8.1.0:Data.Type.Equality
+                         base-4.8.1.0:Data.Void base-4.8.1.0:GHC.Exts
+                         base-4.8.1.0:GHC.Generics
+                         containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN:Data.IntMap.Base
+                         containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN:Data.IntSet.Base
+                         primitive-0.6.1.0@primi_5Jnw7oEuYtM9dmKXelGXVb:Control.Monad.Primitive
+                         vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Primitive
+                         vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Unboxed
+                         vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Unboxed.Base
+import  -/  base-4.8.1.0:Data.Word 448c480b98a0c18988a37db5ab829b22
+import  -/  base-4.8.1.0:GHC.Word ef6286c279d61931eb675109b4b93579
+import  -/  base-4.8.1.0:Prelude 518f762991bc287d78f21a73c974da1f
+import  -/  BitBoard 68d265c6c1923a37e886a14ffb1288e1
+  exports: ff4a42395a30ecee75fb51dc7afc9234
+  BitBoard f96f3a1944fabe6c6841370dc7ab28fc
+  BitBoard c62610f89699eb56e09bd4ec8ba3a61a
+import  -/  vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Unboxed 8bd91cd1a3cd2cbd12faec978422ccd8
+import  -/  vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Unboxed.Base 0761e27d6792efb778c5ac79292248a5
+import  -/  vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Unboxed.Mutable d0342434d0f49e690fa796e53c38e521
+90d42b0ef938367c117844699f299e31
+  type MailBox = Data.Vector.Unboxed.Base.Vector GHC.Word.Word8
+05d974e4e64a8afa6eb75574087aee63
+  bitBoardToMailBox :: BitBoard.BitBoard -> MailBox.MailBox
+  {- Arity: 1, Strictness: <B,1*H>b,
+     Unfolding: InlineRule (1, True, False)
+                (\ ds :: BitBoard.BitBoard ->
+                 case ds of wild { BitBoard.BitBoard dt dt1 dt2 dt3 dt4 dt5 dt6 dt7 ->
+                 GHC.Err.undefined @ MailBox.MailBox }) -}
+66ddcde2c24dd6cb68d20ba314b6a457
+  mailBoxToBitBoard :: MailBox.MailBox -> BitBoard.BitBoard
+  {- Strictness: b,
+     Unfolding: InlineRule (0, True, True)
+                (GHC.Err.undefined @ (MailBox.MailBox -> BitBoard.BitBoard)) -}
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: none
+require own pkg trusted: False
+

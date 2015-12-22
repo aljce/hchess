@@ -1,0 +1,61 @@
+
+==================== FINAL INTERFACE ====================
+2015-12-22 17:35:23.336278 UTC
+
+interface hches_BypoOHN0xb7K9M5rFIMmXv:MoveGeneration 7102
+  interface hash: 4baf944e20f23fff2a2a485c68e203f3
+  ABI hash: f523e44d7d1d48bff482cb353896711f
+  export-list hash: 695895cb82ad046bfa6b9eabfee4bad4
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: b2869d8fcf4c769a0bf931957519fbbd
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  MoveGeneration.generateMoves
+  MoveGeneration.Move{MoveGeneration.Move}
+module dependencies: BitBoard
+package dependencies: array-0.5.1.0@array_E0sTtauuKsGDLZoT7lTbgZ
+                      base-4.8.1.0 containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN
+                      deepseq-1.4.1.1@deeps_LbCWUlehDDeLxurARKDH5o ghc-prim-0.4.0.0
+                      integer-gmp-1.0.0.0 primitive-0.6.1.0@primi_5Jnw7oEuYtM9dmKXelGXVb
+                      transformers-0.4.2.0@trans_3eG64VdP2vzGjP6wJiCp5X
+                      vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF
+orphans: base-4.8.1.0:GHC.Base base-4.8.1.0:GHC.Float
+         transformers-0.4.2.0@trans_3eG64VdP2vzGjP6wJiCp5X:Control.Monad.Trans.Error
+         vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Fusion.Bundle
+         vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Unboxed
+family instance modules: base-4.8.1.0:Control.Applicative
+                         base-4.8.1.0:Data.Either base-4.8.1.0:Data.Functor.Identity
+                         base-4.8.1.0:Data.Monoid base-4.8.1.0:Data.Type.Equality
+                         base-4.8.1.0:Data.Void base-4.8.1.0:GHC.Exts
+                         base-4.8.1.0:GHC.Generics
+                         containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN:Data.IntMap.Base
+                         containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN:Data.IntSet.Base
+                         primitive-0.6.1.0@primi_5Jnw7oEuYtM9dmKXelGXVb:Control.Monad.Primitive
+                         vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Primitive
+                         vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Unboxed
+                         vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Unboxed.Base
+import  -/  base-4.8.1.0:Data.Bits 5341167fdd5958c2b3f0dac8924f1efd
+import  -/  base-4.8.1.0:Data.Word 448c480b98a0c18988a37db5ab829b22
+import  -/  base-4.8.1.0:GHC.Word ef6286c279d61931eb675109b4b93579
+import  -/  base-4.8.1.0:Prelude 518f762991bc287d78f21a73c974da1f
+import  -/  BitBoard 68d265c6c1923a37e886a14ffb1288e1
+  exports: ff4a42395a30ecee75fb51dc7afc9234
+import  -/  vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Unboxed 8bd91cd1a3cd2cbd12faec978422ccd8
+d6a865369e976c77bfdb23eda610fec3
+  data Move
+    = Move {-# UNPACK #-}GHC.Word.Word64 {-# UNPACK #-}GHC.Word.Word64
+cc8b8fa943f319f731c77c183c77ab95
+  generateMoves :: t -> t1
+  {- Arity: 1, Strictness: <B,A>b,
+     Unfolding: InlineRule (1, True, True)
+                (\ @ t @ t1 b :: t -> GHC.Err.undefined @ t1) -}
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: none
+require own pkg trusted: False
+
