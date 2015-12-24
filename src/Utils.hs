@@ -10,3 +10,7 @@ put8 [] = return ()
 put8 s = do
         putStrLn $ Prelude.take 8 s
         put8 $ Prelude.drop 8 s
+
+bool :: a -> a -> Bool -> a
+bool x _ True  = x
+bool _ y False = y

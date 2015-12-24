@@ -15,6 +15,7 @@ import Data.Word
 import Data.Bits
 
 import Data.IntMap.Strict hiding (filter)
+import Text.PrettyPrint.ANSI.Leijen
 
 newtype BlackPieces = BC { unBC :: Word64 } deriving (Bits,FiniteBits,Num,Show,Eq,Ord,Enum)
 
@@ -59,3 +60,7 @@ showBitBoard (BitBoard bc wc p r n b q k) = (reverse . elems . unions . fmap toI
                            (unWC wc,unB b,'B'),(unWC wc,unQ q,'Q'),(unWC wc,unK k,'K'),
                            (-1,-1,' ')]
 
+bitBoardToDoc :: BitBoard -> [Doc]
+bitBoardToDoc = fmap string . splitEvery8 0 . showBitBoard 
+        where splitEvery8 64 _ = []
+              splitEvery8 n xs = take 8 xs : splitEvery8 (n+8) (drop 8 xs)
