@@ -37,8 +37,8 @@ type HalfMoveClock = Int
 type FullMoveClock = Int
 
 data FEN = FEN {
-        bitBoard       :: BitBoard,
-        mailBox        :: MailBox,
+        bitBoard       :: !BitBoard,
+        mailBox        :: !MailBox,
         turn           :: !Turn,
         castlingRights :: !Castling,
         enPassant      :: !(Maybe Index),
@@ -54,9 +54,7 @@ fenToDoc (FEN _ m t crs ep hc fc) = vsep fen
               turnToDoc False = "Turn: Black"
               turnToDoc True  = "Turn: White"
               enPassantToDoc = maybe "En passant square: -" 
-                                     (\i -> "En passant square: " <> epNoDash i)
-              epNoDash i = let (r,f) = unflattenRF i in 
-                               T.char (toEnum (f + 97)) <> T.char (toEnum (r + 49))
+                                     (\i -> "En passant square: " <> indexToDoc i)
 
 instance Show FEN where
         showsPrec _ = displayS . renderPretty 0.4 80 . fenToDoc 

@@ -1,28 +1,29 @@
 
 ==================== FINAL INTERFACE ====================
-2015-12-22 17:35:22.748315 UTC
+2015-12-22 19:40:23.415498 UTC
 
-interface hches_BypoOHN0xb7K9M5rFIMmXv:FEN 7102
-  interface hash: 3cc024b42a8e7f4cd3dc849876e0e969
-  ABI hash: 4b604315ab03b56d8daa1eb4f1df69ec
-  export-list hash: f6598c494488b597937c430525e5fc32
-  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
-  flag hash: b2869d8fcf4c769a0bf931957519fbbd
+interface hches_KF6MDI5eODG4Q8cKhuw0mn:FEN 7102
+  interface hash: 7c47c78608d61ab803b7653d7808b62f
+  ABI hash: 180c7fb0216e03cb8d8b8180cb241148
+  export-list hash: f1e99858e7cff468c6b459dd52dfaeaf
+  orphan hash: 245c908c583176db4bb74c326c480df2
+  flag hash: 60b0c5c5667f32509f7228bb0f134659
   sig of: Nothing
   used TH splices: False
   where
 exports:
   FEN.charToBool
-  FEN.charUpdate
-  FEN.parseBitBoard
   FEN.parseCastling
   FEN.parseEnPassant
   FEN.parseFEN
   FEN.parseTurn
+  FEN.simplifyFENBoard
+  FEN.toBitBoard
+  FEN.toMailBox
   FEN.Castling{FEN.Castling FEN.kingSideB FEN.kingSideW FEN.queenSideB FEN.queenSideW}
-  FEN.FEN{FEN.FEN FEN.bitBoard FEN.castlingRights FEN.enPassant FEN.fullMoveClock FEN.halfMoveClock FEN.turn}
+  FEN.FEN{FEN.FEN FEN.bitBoard FEN.castlingRights FEN.enPassant FEN.fullMoveClock FEN.halfMoveClock FEN.mailBox FEN.turn}
   FEN.Turn
-module dependencies: BitBoard
+module dependencies: BitBoard MailBox
 package dependencies: array-0.5.1.0@array_E0sTtauuKsGDLZoT7lTbgZ
                       attoparsec-0.13.0.1@attop_FtJZAZu3GDOJSwmSRnXnPH base-4.8.1.0
                       binary-0.7.5.0@binar_IvYoLp9H6Xy3zEH13MmZwd
@@ -30,10 +31,12 @@ package dependencies: array-0.5.1.0@array_E0sTtauuKsGDLZoT7lTbgZ
                       containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN
                       deepseq-1.4.1.1@deeps_LbCWUlehDDeLxurARKDH5o ghc-prim-0.4.0.0
                       hashable-1.2.3.3@hasha_2GTZqecVp8NJZrNuKzGxfy integer-gmp-1.0.0.0
+                      pretty-1.1.2.0@prett_7UQTOB05U7lIYPkFOVraeR
                       primitive-0.6.1.0@primi_5Jnw7oEuYtM9dmKXelGXVb
                       scientific-0.3.4.4@scien_03wvk1zJytY0wVzR42F1U4
-                      text-1.2.1.3@text_1l1AN4I48k37RaQ6fm6CEh
+                      template-haskell-2.10.0.0 text-1.2.1.3@text_1l1AN4I48k37RaQ6fm6CEh
                       transformers-0.4.2.0@trans_3eG64VdP2vzGjP6wJiCp5X
+                      vector-th-unbox-0.2.1.3@vecto_7UKBkJbwJOEKV3lSwERBE0
                       vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF
 orphans: attoparsec-0.13.0.1@attop_FtJZAZu3GDOJSwmSRnXnPH:Data.Attoparsec.ByteString.Char8
          base-4.8.1.0:GHC.Base base-4.8.1.0:GHC.Float
@@ -45,6 +48,7 @@ orphans: attoparsec-0.13.0.1@attop_FtJZAZu3GDOJSwmSRnXnPH:Data.Attoparsec.ByteSt
          text-1.2.1.3@text_1l1AN4I48k37RaQ6fm6CEh:Data.Text.Show
          transformers-0.4.2.0@trans_3eG64VdP2vzGjP6wJiCp5X:Control.Monad.Trans.Error
          vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Fusion.Bundle
+         vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Unboxed
 family instance modules: attoparsec-0.13.0.1@attop_FtJZAZu3GDOJSwmSRnXnPH:Data.Attoparsec.Internal.Types
                          base-4.8.1.0:Control.Applicative base-4.8.1.0:Data.Either
                          base-4.8.1.0:Data.Functor.Identity base-4.8.1.0:Data.Monoid
@@ -55,15 +59,22 @@ family instance modules: attoparsec-0.13.0.1@attop_FtJZAZu3GDOJSwmSRnXnPH:Data.A
                          containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN:Data.Map.Base
                          containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN:Data.Sequence
                          containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN:Data.Set.Base
+                         hches_KF6MDI5eODG4Q8cKhuw0mn:MailBox
+                         pretty-1.1.2.0@prett_7UQTOB05U7lIYPkFOVraeR:Text.PrettyPrint.HughesPJ
                          primitive-0.6.1.0@primi_5Jnw7oEuYtM9dmKXelGXVb:Control.Monad.Primitive
+                         template-haskell-2.10.0.0:Language.Haskell.TH.Syntax
                          text-1.2.1.3@text_1l1AN4I48k37RaQ6fm6CEh:Data.Text
                          text-1.2.1.3@text_1l1AN4I48k37RaQ6fm6CEh:Data.Text.Lazy
                          vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector
+                         vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Primitive
+                         vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Unboxed
+                         vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Unboxed.Base
 import  -/  attoparsec-0.13.0.1@attop_FtJZAZu3GDOJSwmSRnXnPH:Data.Attoparsec.ByteString.Char8 f21f91f244ddfffc85e371a46be7545b
 import  -/  attoparsec-0.13.0.1@attop_FtJZAZu3GDOJSwmSRnXnPH:Data.Attoparsec.ByteString.Internal 78d691ec8f4b47121e5aa69846971d69
 import  -/  attoparsec-0.13.0.1@attop_FtJZAZu3GDOJSwmSRnXnPH:Data.Attoparsec.Combinator 03c4f23f0ef2bb2228cb78afe4805624
 import  -/  base-4.8.1.0:Control.Applicative a283901553892ce761385d18e455c2ce
 import  -/  base-4.8.1.0:Data.Bits 5341167fdd5958c2b3f0dac8924f1efd
+import  -/  base-4.8.1.0:Data.Char ba93ec4ca3776f6d9a8c8a6223b2fb26
 import  -/  base-4.8.1.0:Data.Foldable 2e5acb797cfda6b3b7fabd7052abe290
 import  -/  base-4.8.1.0:Data.Functor 5c701b0af1708f0192a25dfe14ce6274
 import  -/  base-4.8.1.0:Data.Tuple 012ad951a59a9d85fe1de36a2f012986
@@ -76,12 +87,16 @@ import  -/  base-4.8.1.0:GHC.Show b8c65ca3124f92a166c9f05120382442
 import  -/  base-4.8.1.0:GHC.Word ef6286c279d61931eb675109b4b93579
 import  -/  base-4.8.1.0:Prelude 518f762991bc287d78f21a73c974da1f
 import  -/  ghc-prim-0.4.0.0:GHC.Classes e1f4ff80f7b5262008a595d29986fb18
-import  -/  BitBoard 68d265c6c1923a37e886a14ffb1288e1
-  exports: ff4a42395a30ecee75fb51dc7afc9234
-  BitBoard f96f3a1944fabe6c6841370dc7ab28fc
-  BitBoard c62610f89699eb56e09bd4ec8ba3a61a
-  emptyBoard 8f5cc275542b78164727c76b071a111e
-60cc288401b82c1735c99cb16dc10878
+import  -/  BitBoard 7e4576e6f7d0be2ca1ef0ad8232e27f7
+  exports: bdccb0548ea28b40cb7b32788872b4c3
+  BitBoard 8b35b3fefb4a7de2a649ee48f5d18151
+  BitBoard 88003702250f810b8816a2e041c0453f
+  emptyBoard 8cbb3767d78e359afbac3cfe2576fe53
+import  -/  MailBox 24d63f472109eda6b7ba89a63060cf8a
+  exports: ee118c8e7eddc4f779ee085c52fa58ec
+  MailBox e8570aae7bcfd635c2a573fdc068c0a7
+import  -/  vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Unboxed 8bd91cd1a3cd2cbd12faec978422ccd8
+71f61b76676f234b701be112fac0ad31
   $fShowCastling :: GHC.Show.Show FEN.Castling
   DFunId[0]
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -90,49 +105,49 @@ import  -/  BitBoard 68d265c6c1923a37e886a14ffb1288e1
                   FEN.$fShowCastling_$cshowsPrec
                   FEN.$fShowCastling_$cshow
                   FEN.$fShowCastling_$cshowList -}
-60cc288401b82c1735c99cb16dc10878
+71f61b76676f234b701be112fac0ad31
   $fShowCastling1 :: FEN.Castling -> GHC.Show.ShowS
   {- Arity: 2,
      Unfolding: (\ w :: FEN.Castling w1 :: GHC.Base.String ->
                  case w of ww { FEN.Castling ww1 ww2 ww3 ww4 ->
                  FEN.$w$cshowsPrec 0 ww1 ww2 ww3 ww4 w1 }) -}
-101bba3cb4a5e5a80bb6fd75d952dc6c
+11cdfe250d0c2daeb442ee1c0ccf3967
   $fShowCastling2 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "}"#) -}
-f49b3dd6aac6efcd3dddd84316931994
+cadec9dacd8ab40ae75a7c5708d01c57
   $fShowCastling3 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "queenSideB = "#) -}
-75cb8adf5c5bd8dd6118acb1085a255c
+8c568903021e6af890caca1a8a2012aa
   $fShowCastling4 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "kingSideB = "#) -}
-c7e5a67a0819e5978b0a309d66fa29f1
+5051206eda754fe90b52c6ae91fa95ab
   $fShowCastling5 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "queenSideW = "#) -}
-65edb9323ef7fbe252988116ca23dc9d
+baed41273824761f7aa83b472b989183
   $fShowCastling6 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# ", "#) -}
-8f407bd92f1680ce3112dd8a4fb9632a
+bcc79ae3529e3df58349737f3cf107ed
   $fShowCastling7 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "kingSideW = "#) -}
-0ef0e0fd9e64097b45441daa833c1ab6
+c6bf0a116faeb78e640efd0eb4a01210
   $fShowCastling8 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "Castling {"#) -}
-60cc288401b82c1735c99cb16dc10878
+71f61b76676f234b701be112fac0ad31
   $fShowCastling_$cshow :: FEN.Castling -> GHC.Base.String
   {- Arity: 1, Strictness: <S(SSSS),1*U(U,U,U,U)>,
      Unfolding: InlineRule (1, True, False)
-                (\ x1 :: FEN.Castling ->
+                (\ x :: FEN.Castling ->
                  FEN.$fShowCastling_$cshowsPrec
                    GHC.Show.shows18
-                   x1
+                   x
                    (GHC.Types.[] @ GHC.Types.Char)) -}
-60cc288401b82c1735c99cb16dc10878
+71f61b76676f234b701be112fac0ad31
   $fShowCastling_$cshowList :: [FEN.Castling] -> GHC.Show.ShowS
   {- Arity: 2,
      Unfolding: (GHC.Show.showList__
                    @ FEN.Castling
                    FEN.$fShowCastling1) -}
-60cc288401b82c1735c99cb16dc10878
+71f61b76676f234b701be112fac0ad31
   $fShowCastling_$cshowsPrec ::
     GHC.Types.Int -> FEN.Castling -> GHC.Show.ShowS
   {- Arity: 3, Strictness: <S,1*U(U)><S(SSSS),1*U(U,U,U,U)><L,U>,
@@ -142,84 +157,56 @@ c7e5a67a0819e5978b0a309d66fa29f1
                  case w of ww { GHC.Types.I# ww1 ->
                  case w1 of ww2 { FEN.Castling ww3 ww4 ww5 ww6 ->
                  FEN.$w$cshowsPrec ww1 ww3 ww4 ww5 ww6 w2 } }) -}
-6703e9bd65fde80e7413fe1c3bd5578e
+26651fc7d278231d34fb22200a1e880d
   $fShowFEN :: GHC.Show.Show FEN.FEN
   DFunId[0]
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
      Unfolding: DFun:.
                   @ FEN.FEN
-                  FEN.$fShowFEN_$cshowsPrec
-                  FEN.$fShowFEN_$cshow
+                  FEN.$fShowFEN_$s$dmshowsPrec
+                  (GHC.Err.undefined @ (FEN.FEN -> GHC.Base.String))
                   FEN.$fShowFEN_$cshowList -}
-6703e9bd65fde80e7413fe1c3bd5578e
-  $fShowFEN1 :: FEN.FEN -> GHC.Show.ShowS
-  {- Arity: 1,
-     Unfolding: (\ w :: FEN.FEN ->
-                 case w of ww { FEN.FEN ww1 ww2 ww3 ww4 ww5 ww6 ->
-                 case ww1 of ww7 { BitBoard.BitBoard ww8 ww9 ww10 ww11 ww12 ww13 ww14 ww15 ->
-                 case ww3 of ww16 { FEN.Castling ww17 ww18 ww19 ww20 ->
-                 FEN.$w$cshowsPrec1
-                   0
-                   ww8
-                   ww9
-                   ww10
-                   ww11
-                   ww12
-                   ww13
-                   ww14
-                   ww15
-                   ww2
-                   ww17
-                   ww18
-                   ww19
-                   ww20
-                   ww4
-                   ww5
-                   ww6 } } }) -}
-6703e9bd65fde80e7413fe1c3bd5578e
-  $fShowFEN_$cshow :: FEN.FEN -> GHC.Base.String
-  {- Arity: 1,
-     Strictness: <S(SSSSLL),1*U(U(U,U,U,U,U,U,U,U),U,U(U,U,U,U),U,U,U)>,
-     Unfolding: InlineRule (1, True, False)
-                (\ x1 :: FEN.FEN ->
-                 FEN.$fShowFEN_$cshowsPrec
-                   GHC.Show.shows18
-                   x1
-                   (GHC.Types.[] @ GHC.Types.Char)) -}
-6703e9bd65fde80e7413fe1c3bd5578e
+26651fc7d278231d34fb22200a1e880d
   $fShowFEN_$cshowList :: [FEN.FEN] -> GHC.Show.ShowS
-  {- Arity: 2,
-     Unfolding: (GHC.Show.showList__ @ FEN.FEN FEN.$fShowFEN1) -}
-6703e9bd65fde80e7413fe1c3bd5578e
-  $fShowFEN_$cshowsPrec :: GHC.Types.Int -> FEN.FEN -> GHC.Show.ShowS
-  {- Arity: 2,
-     Strictness: <S,1*U(U)><S(SSSSLL),1*U(U(U,U,U,U,U,U,U,U),U,U(U,U,U,U),U,U,U)>,
-     Inline: INLINE[0],
+  {- Arity: 2, Strictness: <S,1*U><L,U>,
      Unfolding: InlineRule (2, True, False)
-                (\ w :: GHC.Types.Int w1 :: FEN.FEN ->
-                 case w of ww { GHC.Types.I# ww1 ->
-                 case w1 of ww2 { FEN.FEN ww3 ww4 ww5 ww6 ww7 ww8 ->
-                 case ww3 of ww9 { BitBoard.BitBoard ww10 ww11 ww12 ww13 ww14 ww15 ww16 ww17 ->
-                 case ww5 of ww18 { FEN.Castling ww19 ww20 ww21 ww22 ->
-                 FEN.$w$cshowsPrec1
-                   ww1
-                   ww10
-                   ww11
-                   ww12
-                   ww13
-                   ww14
-                   ww15
-                   ww16
-                   ww17
-                   ww4
-                   ww19
-                   ww20
-                   ww21
-                   ww22
-                   ww6
-                   ww7
-                   ww8 } } } }) -}
-7ef5314243f01ba819be8ebab83f1f47
+                (\ ls :: [FEN.FEN] s :: GHC.Base.String ->
+                 GHC.Show.showList__
+                   @ FEN.FEN
+                   (\ x :: FEN.FEN s1 :: GHC.Base.String[OneShot] ->
+                    case GHC.Err.undefined ret_ty [GHC.Types.Char] of {})
+                   ls
+                   s) -}
+26651fc7d278231d34fb22200a1e880d
+  $fShowFEN_$s$dmshowsPrec ::
+    GHC.Types.Int -> FEN.FEN -> GHC.Show.ShowS
+  {- Arity: 3, Strictness: <B,A><B,A><B,A>b,
+     Unfolding: InlineRule (-1, True, False)
+                (\ ds :: GHC.Types.Int x :: FEN.FEN s :: GHC.Base.String ->
+                 GHC.Base.augment
+                   @ GHC.Types.Char
+                   (\ @ b c :: GHC.Types.Char -> b -> b[OneShot] n :: b[OneShot] ->
+                    case GHC.Err.undefined ret_ty b of {})
+                   s) -}
+13d3041947f58dd62cf425bc7c27797b
+  $s$dmshowList1 :: FEN.FEN -> GHC.Base.String -> [GHC.Types.Char]
+  {- Arity: 2, Strictness: <L,U><L,U>b -}
+d4b9925ba7e608133a1c5f253e4db3e9
+  $sconcat :: [[a3]] -> [a3]
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
+     Inline: INLINE (sat-args=1),
+     Unfolding: InlineRule (1, False, False)
+                (\ @ a14 xs :: [[a14]] ->
+                 GHC.Base.build
+                   @ a14
+                   (\ @ b c :: a14 -> b -> b[OneShot] n :: b[OneShot] ->
+                    GHC.Base.foldr
+                      @ [a14]
+                      @ b
+                      (\ x :: [a14] y :: b[OneShot] -> GHC.Base.foldr @ a14 @ b c y x)
+                      n
+                      xs)) -}
+cd5bff08c078743c50bfc05561e5cf46
   $w$cshowsPrec ::
     GHC.Prim.Int#
     -> GHC.Types.Bool
@@ -238,7 +225,7 @@ c7e5a67a0819e5978b0a309d66fa29f1
                    w :: GHC.Base.String ->
                  let {
                    p :: GHC.Show.ShowS {- Arity: 1, Strictness: <L,1*U> -}
-                   = \ x1 :: GHC.Base.String[OneShot] ->
+                   = \ x :: GHC.Base.String[OneShot] ->
                      GHC.Base.++
                        @ GHC.Types.Char
                        FEN.$fShowCastling8
@@ -277,7 +264,7 @@ c7e5a67a0819e5978b0a309d66fa29f1
                                                                 (GHC.Base.++
                                                                    @ GHC.Types.Char
                                                                    FEN.$fShowCastling2
-                                                                   x1)
+                                                                   x)
                                                            GHC.Types.True
                                                            -> GHC.Base.++
                                                                 @ GHC.Types.Char
@@ -285,7 +272,7 @@ c7e5a67a0819e5978b0a309d66fa29f1
                                                                 (GHC.Base.++
                                                                    @ GHC.Types.Char
                                                                    FEN.$fShowCastling2
-                                                                   x1) }))
+                                                                   x) }))
                                                } in
                                                case ww3 of wild {
                                                  GHC.Types.False
@@ -320,30 +307,7 @@ c7e5a67a0819e5978b0a309d66fa29f1
                         @ GHC.Types.Char
                         GHC.Show.shows9
                         (p (GHC.Types.: @ GHC.Types.Char GHC.Show.shows8 w)) }) -}
-b6b08305b965df256f194def2a768fb8
-  $w$cshowsPrec1 ::
-    GHC.Prim.Int#
-    -> GHC.Prim.Word#
-    -> GHC.Prim.Word#
-    -> GHC.Prim.Word#
-    -> GHC.Prim.Word#
-    -> GHC.Prim.Word#
-    -> GHC.Prim.Word#
-    -> GHC.Prim.Word#
-    -> GHC.Prim.Word#
-    -> FEN.Turn
-    -> GHC.Types.Bool
-    -> GHC.Types.Bool
-    -> GHC.Types.Bool
-    -> GHC.Types.Bool
-    -> GHC.Base.Maybe GHC.Word.Word64
-    -> GHC.Prim.Int#
-    -> GHC.Prim.Int#
-    -> GHC.Show.ShowS
-  {- Arity: 17,
-     Strictness: <L,U><L,U><L,U><L,U><L,U><L,U><L,U><L,U><L,U><S,U><L,U><L,U><L,U><L,U><S,U><L,U><L,U>,
-     Inline: [0] -}
-8ca1e7e8b1f671c6eb0d8f360472c38d
+20c9663c2f38cd9c3559ac4b6979dcfa
   $wa ::
     GHC.Types.Char
     -> forall r.
@@ -410,7 +374,7 @@ b6b08305b965df256f194def2a768fb8
                            pos' :: Data.Attoparsec.Internal.Types.Pos[OneShot]
                            more' :: Data.Attoparsec.Internal.Types.More[OneShot]
                            strs :: [GHC.Base.String][OneShot]
-                           msg4 :: GHC.Base.String[OneShot] ->
+                           msg2 :: GHC.Base.String[OneShot] ->
                          (Data.Attoparsec.Internal.Types.$w$cpure
                             @ Data.ByteString.Internal.ByteString
                             GHC.Prim.void#
@@ -526,85 +490,8 @@ b6b08305b965df256f194def2a768fb8
                              (Sym (Data.Attoparsec.Internal.Types.NTCo:Pos[0]))
                              w1
                              GHC.Types.True } } } } }) -}
-b9f0b832a89e2b138955e9996f88c41f
+5c96f54e29035853a957075aa134c1a5
   $wa1 ::
-    GHC.Prim.Addr#
-    -> GHC.ForeignPtr.ForeignPtrContents
-    -> GHC.Prim.Int#
-    -> GHC.Prim.Int#
-    -> GHC.Prim.Int#
-    -> GHC.Prim.Int#
-    -> GHC.Prim.Int#
-    -> Data.Attoparsec.Internal.Types.More
-    -> Data.Attoparsec.Internal.Types.Success
-         Data.ByteString.Internal.ByteString
-         (Data.Attoparsec.Internal.Types.State
-            Data.ByteString.Internal.ByteString)
-         BitBoard.BitBoard
-         r
-    -> Data.Attoparsec.Internal.Types.IResult
-         Data.ByteString.Internal.ByteString r
-  {- Arity: 9,
-     Strictness: <L,U><L,U><L,U><L,U><L,U><L,U><L,U><L,U><L,C(C1(C1(C1(U))))>,
-     Inline: [0],
-     Unfolding: (\ @ r
-                   ww :: GHC.Prim.Addr#
-                   ww1 :: GHC.ForeignPtr.ForeignPtrContents
-                   ww2 :: GHC.Prim.Int#
-                   ww3 :: GHC.Prim.Int#
-                   ww4 :: GHC.Prim.Int#
-                   ww5 :: GHC.Prim.Int#
-                   ww6 :: GHC.Prim.Int#
-                   w :: Data.Attoparsec.Internal.Types.More
-                   w1 :: Data.Attoparsec.Internal.Types.Success
-                           Data.ByteString.Internal.ByteString
-                           (Data.Attoparsec.Internal.Types.State
-                              Data.ByteString.Internal.ByteString)
-                           BitBoard.BitBoard
-                           r ->
-                 FEN.$wa2
-                   @ r
-                   ww
-                   ww1
-                   ww2
-                   ww3
-                   ww4
-                   ww5
-                   ww6
-                   w
-                   (\ t' :: Data.Attoparsec.Internal.Types.State
-                              Data.ByteString.Internal.ByteString
-                      pos' :: Data.Attoparsec.Internal.Types.Pos[OneShot]
-                      more' :: Data.Attoparsec.Internal.Types.More[OneShot]
-                      a14 :: [[GHC.Types.Char]][OneShot] ->
-                    w1
-                      t'
-                      pos'
-                      more'
-                      (case FEN.$wgo a14 of ww7 { (#,#) ww8 ww9 -> ww9 }))) -}
-640acd60cc39c711ea47b93bdf18a89c
-  $wa2 ::
-    GHC.Prim.Addr#
-    -> GHC.ForeignPtr.ForeignPtrContents
-    -> GHC.Prim.Int#
-    -> GHC.Prim.Int#
-    -> GHC.Prim.Int#
-    -> GHC.Prim.Int#
-    -> GHC.Prim.Int#
-    -> Data.Attoparsec.Internal.Types.More
-    -> Data.Attoparsec.Internal.Types.Success
-         Data.ByteString.Internal.ByteString
-         (Data.Attoparsec.Internal.Types.State
-            Data.ByteString.Internal.ByteString)
-         [[GHC.Types.Char]]
-         r
-    -> Data.Attoparsec.Internal.Types.IResult
-         Data.ByteString.Internal.ByteString r
-  {- Arity: 9,
-     Strictness: <L,U><L,U><L,U><L,U><L,U><L,U><L,U><L,U><L,C(C1(C1(C1(U))))>,
-     Inline: [0] -}
-5a0b649eabdfa7feb559d116ae75a6cf
-  $wa3 ::
     GHC.Prim.Addr#
     -> GHC.ForeignPtr.ForeignPtrContents
     -> GHC.Prim.Int#
@@ -629,8 +516,8 @@ b9f0b832a89e2b138955e9996f88c41f
   {- Arity: 10,
      Strictness: <L,U><L,U><L,U><L,U><L,U><L,U><L,U><L,U><L,U><L,C(C1(C1(C1(U))))>,
      Inline: [0] -}
-2aae6c31271cf00be861e4bd1dd7c536
-  $wa4 ::
+da3adef0eadf959111149408829fb502
+  $wa2 ::
     GHC.Prim.Addr#
     -> GHC.ForeignPtr.ForeignPtrContents
     -> GHC.Prim.Int#
@@ -653,70 +540,116 @@ b9f0b832a89e2b138955e9996f88c41f
     -> Data.Attoparsec.Internal.Types.IResult
          Data.ByteString.Internal.ByteString r
   {- Arity: 10,
-     Strictness: <L,U><L,U><L,U><L,U><L,U><L,U><L,U><L,U><L,U><L,U>,
+     Strictness: <L,U><L,U><L,U><L,U><L,U><L,U><L,U><L,U><L,C(C1(C1(C1(C1(U)))))><L,C(C1(C1(C1(U))))>,
+     Inline: [0] -}
+172efeddb305096495ad51d390ae27e0
+  $wa3 ::
+    Data.Attoparsec.Internal.Types.State
+      Data.ByteString.Internal.ByteString
+    -> GHC.Prim.Int#
+    -> Data.Attoparsec.Internal.Types.More
+    -> Data.Attoparsec.Internal.Types.Failure
+         Data.ByteString.Internal.ByteString
+         (Data.Attoparsec.Internal.Types.State
+            Data.ByteString.Internal.ByteString)
+         r
+    -> Data.Attoparsec.Internal.Types.Success
+         Data.ByteString.Internal.ByteString
+         (Data.Attoparsec.Internal.Types.State
+            Data.ByteString.Internal.ByteString)
+         FEN.FEN
+         r
+    -> Data.Attoparsec.Internal.Types.IResult
+         Data.ByteString.Internal.ByteString r
+  {- Arity: 5, Strictness: <L,U><L,U><L,U><L,U><L,C(C1(C1(C1(U))))>,
+     Inline: [0] -}
+f5bf05ab0df772219b2f672356051826
+  $wa4 ::
+    GHC.Prim.Addr#
+    -> GHC.ForeignPtr.ForeignPtrContents
+    -> GHC.Prim.Int#
+    -> GHC.Prim.Int#
+    -> GHC.Prim.Int#
+    -> GHC.Prim.Int#
+    -> GHC.Prim.Int#
+    -> Data.Attoparsec.Internal.Types.More
+    -> Data.Attoparsec.Internal.Types.Failure
+         Data.ByteString.Internal.ByteString
+         (Data.Attoparsec.Internal.Types.State
+            Data.ByteString.Internal.ByteString)
+         r
+    -> Data.Attoparsec.Internal.Types.Success
+         Data.ByteString.Internal.ByteString
+         (Data.Attoparsec.Internal.Types.State
+            Data.ByteString.Internal.ByteString)
+         FEN.Turn
+         r
+    -> Data.Attoparsec.Internal.Types.IResult
+         Data.ByteString.Internal.ByteString r
+  {- Arity: 10,
+     Strictness: <L,U><L,U><L,U><L,U><L,U><L,U><L,U><L,U><L,C(C1(C1(C1(C1(U)))))><L,C(C1(C1(C1(U))))>,
+     Inline: [0] -}
+264a2256e01322eceea4736c24693a29
+  $wa5 ::
+    Data.Attoparsec.Internal.Types.State
+      Data.ByteString.Internal.ByteString
+    -> GHC.Prim.Int#
+    -> Data.Attoparsec.Internal.Types.More
+    -> Data.Attoparsec.Internal.Types.Failure
+         Data.ByteString.Internal.ByteString
+         (Data.Attoparsec.Internal.Types.State
+            Data.ByteString.Internal.ByteString)
+         r
+    -> Data.Attoparsec.Internal.Types.Success
+         Data.ByteString.Internal.ByteString
+         (Data.Attoparsec.Internal.Types.State
+            Data.ByteString.Internal.ByteString)
+         [GHC.Types.Char]
+         r
+    -> Data.Attoparsec.Internal.Types.IResult
+         Data.ByteString.Internal.ByteString r
+  {- Arity: 5, Strictness: <L,U><L,U><L,U><L,U><L,C(C1(C1(C1(U))))>,
      Inline: [0],
      Unfolding: (\ @ r
-                   ww :: GHC.Prim.Addr#
-                   ww1 :: GHC.ForeignPtr.ForeignPtrContents
-                   ww2 :: GHC.Prim.Int#
-                   ww3 :: GHC.Prim.Int#
-                   ww4 :: GHC.Prim.Int#
-                   ww5 :: GHC.Prim.Int#
-                   ww6 :: GHC.Prim.Int#
-                   w :: Data.Attoparsec.Internal.Types.More
-                   w1 :: Data.Attoparsec.Internal.Types.Failure
+                   w :: Data.Attoparsec.Internal.Types.State
+                          Data.ByteString.Internal.ByteString
+                   ww :: GHC.Prim.Int#
+                   w1 :: Data.Attoparsec.Internal.Types.More
+                   w2 :: Data.Attoparsec.Internal.Types.Failure
                            Data.ByteString.Internal.ByteString
                            (Data.Attoparsec.Internal.Types.State
                               Data.ByteString.Internal.ByteString)
                            r
-                   w2 :: Data.Attoparsec.Internal.Types.Success
+                   w3 :: Data.Attoparsec.Internal.Types.Success
                            Data.ByteString.Internal.ByteString
                            (Data.Attoparsec.Internal.Types.State
                               Data.ByteString.Internal.ByteString)
-                           (GHC.Base.Maybe GHC.Word.Word64)
+                           [GHC.Types.Char]
                            r ->
-                 let {
-                   a14 :: GHC.Types.Int = GHC.Types.I# ww6
-                 } in
-                 FEN.$wa5
+                 Data.Attoparsec.Combinator.$wa5
+                   @ [GHC.Types.Char]
+                   @ GHC.Types.Char
+                   FEN.simplifyFENBoard6
+                     `cast`
+                   (Sym (Data.Attoparsec.Internal.Types.NTCo:Parser[0]
+                             <Data.ByteString.Internal.ByteString>_N <[GHC.Types.Char]>_R))
+                   FEN.simplifyFENBoard2
+                     `cast`
+                   (Sym (Data.Attoparsec.Internal.Types.NTCo:Parser[0]
+                             <Data.ByteString.Internal.ByteString>_N <GHC.Types.Char>_R))
                    @ r
-                   ww
-                   ww1
-                   ww2
-                   ww3
-                   ww4
-                   ww5
-                   ww6
                    w
+                   ww
+                   w1
+                   w2
                    (\ t' :: Data.Attoparsec.Internal.Types.State
                               Data.ByteString.Internal.ByteString
                       pos' :: Data.Attoparsec.Internal.Types.Pos[OneShot]
                       more' :: Data.Attoparsec.Internal.Types.More[OneShot]
-                      strs :: [GHC.Base.String][OneShot]
-                      msg4 :: GHC.Base.String[OneShot] ->
-                    (Data.Attoparsec.Internal.Types.$w$cpure
-                       @ Data.ByteString.Internal.ByteString
-                       GHC.Prim.void#
-                       @ (GHC.Base.Maybe GHC.Word.Word64)
-                       FEN.parseEnPassant2)
-                      `cast`
-                    (Data.Attoparsec.Internal.Types.NTCo:Parser[0]
-                         <Data.ByteString.Internal.ByteString>_N
-                         <GHC.Base.Maybe GHC.Word.Word64>_R)
-                      @ r
-                      t'
-                      a14 `cast` (Sym (Data.Attoparsec.Internal.Types.NTCo:Pos[0]))
-                      more'
-                      w1
-                      w2)
-                   (\ t' :: Data.Attoparsec.Internal.Types.State
-                              Data.ByteString.Internal.ByteString
-                      pos' :: Data.Attoparsec.Internal.Types.Pos[OneShot]
-                      more' :: Data.Attoparsec.Internal.Types.More[OneShot]
-                      a15 :: GHC.Types.Char[OneShot] ->
-                    w2 t' pos' more' (GHC.Base.Nothing @ GHC.Word.Word64))) -}
-f031dbe864a99aa71f7662e750031880
-  $wa5 ::
+                      a14 :: [[GHC.Types.Char]][OneShot] ->
+                    w3 t' pos' more' (FEN.$sconcat @ GHC.Types.Char a14))) -}
+5bc7effb9b993f9b53fd28c585ef2a96
+  $wa6 ::
     GHC.Prim.Addr#
     -> GHC.ForeignPtr.ForeignPtrContents
     -> GHC.Prim.Int#
@@ -783,16 +716,16 @@ f031dbe864a99aa71f7662e750031880
                               `cast`
                             (Sym (Data.Attoparsec.Internal.Types.NTCo:Pos[0]))
                             w4
-                            (GHC.Types.[] @ GHC.Base.String)
-                            FEN.parseEnPassant5
-                       '-'
+                            FEN.simplifyFENBoard5
+                            FEN.simplifyFENBoard4
+                       ' '
                        -> w2
                             w3
                             (GHC.Types.I# (GHC.Prim.+# ww7 1))
                               `cast`
                             (Sym (Data.Attoparsec.Internal.Types.NTCo:Pos[0]))
                             w4
-                            FEN.parseEnPassant4 }
+                            FEN.simplifyFENBoard3 }
                  } in
                  case GHC.Prim.tagToEnum#
                         @ GHC.Types.Bool
@@ -804,7 +737,18 @@ f031dbe864a99aa71f7662e750031880
                         (Data.Attoparsec.ByteString.Buffer.Buf ww ww1 ww2 ww3 ww4 ww5)
                         ww6
                         w
-                        w1
+                        (\ t' :: Data.Attoparsec.Internal.Types.State
+                                   Data.ByteString.Internal.ByteString
+                           pos' :: Data.Attoparsec.Internal.Types.Pos[OneShot]
+                           more' :: Data.Attoparsec.Internal.Types.More[OneShot]
+                           strs :: [GHC.Base.String][OneShot]
+                           msg2 :: GHC.Base.String[OneShot] ->
+                         w1
+                           t'
+                           pos'
+                           more'
+                           (GHC.Types.: @ GHC.Base.String FEN.simplifyFENBoard_msg0 strs)
+                           msg2)
                           `cast`
                         (Sub (Data.Attoparsec.Internal.Types.TFCo:R:StateByteString[0])
                          ->_R <Data.Attoparsec.Internal.Types.Pos
@@ -854,33 +798,7 @@ f031dbe864a99aa71f7662e750031880
                         ww6
                         w
                         ipv1 } } }) -}
-ce7e6fe69d58f6f018b6724994dbd7c4
-  $wa6 ::
-    GHC.Prim.Addr#
-    -> GHC.ForeignPtr.ForeignPtrContents
-    -> GHC.Prim.Int#
-    -> GHC.Prim.Int#
-    -> GHC.Prim.Int#
-    -> GHC.Prim.Int#
-    -> GHC.Prim.Int#
-    -> Data.Attoparsec.Internal.Types.More
-    -> Data.Attoparsec.Internal.Types.Failure
-         Data.ByteString.Internal.ByteString
-         (Data.Attoparsec.Internal.Types.State
-            Data.ByteString.Internal.ByteString)
-         r
-    -> Data.Attoparsec.Internal.Types.Success
-         Data.ByteString.Internal.ByteString
-         (Data.Attoparsec.Internal.Types.State
-            Data.ByteString.Internal.ByteString)
-         FEN.FEN
-         r
-    -> Data.Attoparsec.Internal.Types.IResult
-         Data.ByteString.Internal.ByteString r
-  {- Arity: 10,
-     Strictness: <L,U><L,U><L,U><L,U><L,U><L,U><L,U><L,U><L,U><L,C(C1(C1(C1(U))))>,
-     Inline: [0] -}
-c26869e9ca0ec84b8a5f847b3681266a
+63e9e3a7b9f75f32e601566589a3cbd5
   $wa7 ::
     GHC.Prim.Addr#
     -> GHC.ForeignPtr.ForeignPtrContents
@@ -899,51 +817,51 @@ c26869e9ca0ec84b8a5f847b3681266a
          Data.ByteString.Internal.ByteString
          (Data.Attoparsec.Internal.Types.State
             Data.ByteString.Internal.ByteString)
-         FEN.Turn
+         [GHC.Types.Char]
          r
     -> Data.Attoparsec.Internal.Types.IResult
          Data.ByteString.Internal.ByteString r
   {- Arity: 10,
      Strictness: <L,U><L,U><L,U><L,U><L,U><L,U><L,U><L,U><L,C(C1(C1(C1(C1(U)))))><L,C(C1(C1(C1(U))))>,
      Inline: [0] -}
-9286726b4d70ea33d59003d7de21baf4
-  $wgo ::
-    [[GHC.Types.Char]] -> (# GHC.Types.Int, BitBoard.BitBoard #)
+ac5b00b3af64845369e34fef25836d37
+  $wgo :: [GHC.Types.Char] -> (# GHC.Types.Int, BitBoard.BitBoard #)
   {- Arity: 1, Strictness: <S,1*U>, Inline: [0] -}
-60cc288401b82c1735c99cb16dc10878
+71f61b76676f234b701be112fac0ad31
   data Castling
     = Castling {kingSideW :: !GHC.Types.Bool,
                 queenSideW :: !GHC.Types.Bool,
                 kingSideB :: !GHC.Types.Bool,
                 queenSideB :: !GHC.Types.Bool}
     Promotable
-6703e9bd65fde80e7413fe1c3bd5578e
+26651fc7d278231d34fb22200a1e880d
   data FEN
     = FEN {bitBoard :: !BitBoard.BitBoard,
+           mailBox :: !MailBox.MailBox,
            turn :: !FEN.Turn,
            castlingRights :: !FEN.Castling,
            enPassant :: !GHC.Base.Maybe GHC.Word.Word64,
            halfMoveClock :: {-# UNPACK #-}GHC.Types.Int,
            fullMoveClock :: {-# UNPACK #-}GHC.Types.Int}
-bdffbcbfeaca132036fb83760544bc1f
+75cd018e2ab78785fd540d1bced363c8
   type Turn = GHC.Types.Bool
-78ba34273a6d31acb839daf82d210330
+228b809294723d6cca31e1644458ac86
   bitBoard :: FEN.FEN -> BitBoard.BitBoard
   RecSel FEN.FEN
   {- Arity: 1, HasNoCafRefs,
-     Strictness: <S(SSSSLL),1*U(U(U,U,U,U,U,U,U,U),1*H,1*H,1*H,A,A)>,
+     Strictness: <S(SSSSSLL),1*U(U(U,U,U,U,U,U,U,U),1*H,1*H,1*H,1*H,A,A)>,
      Unfolding: InlineRule (1, True, False)
                 (\ ds :: FEN.FEN ->
-                 case ds of wild { FEN.FEN ds1 ds2 ds3 ds4 dt dt1 -> ds1 }) -}
-47d24db3428c927669940e7ec29be31f
+                 case ds of wild { FEN.FEN ds1 ds2 ds3 ds4 ds5 dt dt1 -> ds1 }) -}
+a96d49c57de012c6d5c1f1bcc446052e
   castlingRights :: FEN.FEN -> FEN.Castling
   RecSel FEN.FEN
   {- Arity: 1, HasNoCafRefs,
-     Strictness: <S(SSSSLL),1*U(1*H,1*H,U(U,U,U,U),1*H,A,A)>,
+     Strictness: <S(SSSSSLL),1*U(1*H,1*H,1*H,U(U,U,U,U),1*H,A,A)>,
      Unfolding: InlineRule (1, True, False)
                 (\ ds :: FEN.FEN ->
-                 case ds of wild { FEN.FEN ds1 ds2 ds3 ds4 dt dt1 -> ds3 }) -}
-ff244dc7946b544a621282bd9ed36c7c
+                 case ds of wild { FEN.FEN ds1 ds2 ds3 ds4 ds5 dt dt1 -> ds4 }) -}
+329d2da6b4806efb86890be033e4aece
   charToBool ::
     GHC.Types.Char
     -> Data.Attoparsec.ByteString.Internal.Parser GHC.Types.Bool
@@ -955,7 +873,7 @@ ff244dc7946b544a621282bd9ed36c7c
                 (<GHC.Types.Char>_R
                  ->_R Sym (Data.Attoparsec.Internal.Types.NTCo:Parser[0]
                                <Data.ByteString.Internal.ByteString>_N <GHC.Types.Bool>_R)) -}
-a5d44de8b458832927503a0bf246ce39
+c12f644f1ea2235e4a4975880861fb0c
   charToBool1 ::
     GHC.Types.Char
     -> forall r.
@@ -1004,603 +922,36 @@ a5d44de8b458832927503a0bf246ce39
                         `cast`
                       (Data.Attoparsec.Internal.Types.NTCo:Pos[0]) of ww7 { GHC.Types.I# ww8 ->
                  FEN.$wa w @ r ww1 ww2 ww3 ww4 ww5 ww6 ww8 w3 w4 w5 } }) -}
-abc47bbf4b92cf4f17bdde8fe662daf8
+b03400cd41eb570ff19d662bb2707d61
   charToBool2 :: GHC.Types.Int
   {- HasNoCafRefs, Unfolding: (GHC.Types.I# 1) -}
-dfb2cb424430591109f0e488d829b6ba
-  charUpdate ::
-    GHC.Types.Int
-    -> BitBoard.BitBoard -> GHC.Types.Char -> BitBoard.BitBoard
-  {- Arity: 3,
-     Strictness: <L,1*U(U)><S,1*U(U,U,U,U,U,U,U,U)><S(S),1*U(1*U)>m,
-     Inline: INLINE[0],
-     Unfolding: InlineRule (3, True, False)
-                (\ w :: GHC.Types.Int
-                   w1 :: BitBoard.BitBoard
-                   w2 :: GHC.Types.Char ->
-                 case w1 of ww { BitBoard.BitBoard ww1 ww2 ww3 ww4 ww5 ww6 ww7 ww8 ->
-                 case w2 of ww9 { GHC.Types.C# ww10 ->
-                 case ww10 of ds {
-                   DEFAULT -> FEN.charUpdate1
-                   ' ' -> BitBoard.BitBoard ww1 ww2 ww3 ww4 ww5 ww6 ww7 ww8
-                   'B'
-                   -> case w of wild1 { GHC.Types.I# i# ->
-                      case GHC.Prim.tagToEnum#
-                             @ GHC.Types.Bool
-                             (GHC.Prim.>=# i# 64) of wild2 {
-                        GHC.Types.False
-                        -> case GHC.Prim.tagToEnum#
-                                  @ GHC.Types.Bool
-                                  (GHC.Prim.>=# i# 64) of wild4 {
-                             GHC.Types.False
-                             -> BitBoard.BitBoard
-                                  ww1
-                                  (GHC.Prim.or# ww2 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww3
-                                  ww4
-                                  ww5
-                                  (GHC.Prim.or# ww6 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww7
-                                  ww8
-                             GHC.Types.True
-                             -> BitBoard.BitBoard
-                                  ww1
-                                  (GHC.Prim.or# ww2 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww3
-                                  ww4
-                                  ww5
-                                  ww6
-                                  ww7
-                                  ww8 }
-                        GHC.Types.True
-                        -> case GHC.Prim.tagToEnum#
-                                  @ GHC.Types.Bool
-                                  (GHC.Prim.>=# i# 64) of wild4 {
-                             GHC.Types.False
-                             -> BitBoard.BitBoard
-                                  ww1
-                                  ww2
-                                  ww3
-                                  ww4
-                                  ww5
-                                  (GHC.Prim.or# ww6 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww7
-                                  ww8
-                             GHC.Types.True
-                             -> BitBoard.BitBoard ww1 ww2 ww3 ww4 ww5 ww6 ww7 ww8 } } }
-                   'K'
-                   -> case w of wild1 { GHC.Types.I# i# ->
-                      case GHC.Prim.tagToEnum#
-                             @ GHC.Types.Bool
-                             (GHC.Prim.>=# i# 64) of wild2 {
-                        GHC.Types.False
-                        -> case GHC.Prim.tagToEnum#
-                                  @ GHC.Types.Bool
-                                  (GHC.Prim.>=# i# 64) of wild4 {
-                             GHC.Types.False
-                             -> BitBoard.BitBoard
-                                  ww1
-                                  (GHC.Prim.or# ww2 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww3
-                                  ww4
-                                  ww5
-                                  ww6
-                                  ww7
-                                  (GHC.Prim.or# ww8 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                             GHC.Types.True
-                             -> BitBoard.BitBoard
-                                  ww1
-                                  (GHC.Prim.or# ww2 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww3
-                                  ww4
-                                  ww5
-                                  ww6
-                                  ww7
-                                  ww8 }
-                        GHC.Types.True
-                        -> case GHC.Prim.tagToEnum#
-                                  @ GHC.Types.Bool
-                                  (GHC.Prim.>=# i# 64) of wild4 {
-                             GHC.Types.False
-                             -> BitBoard.BitBoard
-                                  ww1
-                                  ww2
-                                  ww3
-                                  ww4
-                                  ww5
-                                  ww6
-                                  ww7
-                                  (GHC.Prim.or# ww8 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                             GHC.Types.True
-                             -> BitBoard.BitBoard ww1 ww2 ww3 ww4 ww5 ww6 ww7 ww8 } } }
-                   'N'
-                   -> case w of wild1 { GHC.Types.I# i# ->
-                      case GHC.Prim.tagToEnum#
-                             @ GHC.Types.Bool
-                             (GHC.Prim.>=# i# 64) of wild2 {
-                        GHC.Types.False
-                        -> case GHC.Prim.tagToEnum#
-                                  @ GHC.Types.Bool
-                                  (GHC.Prim.>=# i# 64) of wild4 {
-                             GHC.Types.False
-                             -> BitBoard.BitBoard
-                                  ww1
-                                  (GHC.Prim.or# ww2 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww3
-                                  ww4
-                                  (GHC.Prim.or# ww5 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww6
-                                  ww7
-                                  ww8
-                             GHC.Types.True
-                             -> BitBoard.BitBoard
-                                  ww1
-                                  (GHC.Prim.or# ww2 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww3
-                                  ww4
-                                  ww5
-                                  ww6
-                                  ww7
-                                  ww8 }
-                        GHC.Types.True
-                        -> case GHC.Prim.tagToEnum#
-                                  @ GHC.Types.Bool
-                                  (GHC.Prim.>=# i# 64) of wild4 {
-                             GHC.Types.False
-                             -> BitBoard.BitBoard
-                                  ww1
-                                  ww2
-                                  ww3
-                                  ww4
-                                  (GHC.Prim.or# ww5 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww6
-                                  ww7
-                                  ww8
-                             GHC.Types.True
-                             -> BitBoard.BitBoard ww1 ww2 ww3 ww4 ww5 ww6 ww7 ww8 } } }
-                   'P'
-                   -> case w of wild1 { GHC.Types.I# i# ->
-                      case GHC.Prim.tagToEnum#
-                             @ GHC.Types.Bool
-                             (GHC.Prim.>=# i# 64) of wild2 {
-                        GHC.Types.False
-                        -> case GHC.Prim.tagToEnum#
-                                  @ GHC.Types.Bool
-                                  (GHC.Prim.>=# i# 64) of wild4 {
-                             GHC.Types.False
-                             -> BitBoard.BitBoard
-                                  ww1
-                                  (GHC.Prim.or# ww2 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  (GHC.Prim.or# ww3 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww4
-                                  ww5
-                                  ww6
-                                  ww7
-                                  ww8
-                             GHC.Types.True
-                             -> BitBoard.BitBoard
-                                  ww1
-                                  (GHC.Prim.or# ww2 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww3
-                                  ww4
-                                  ww5
-                                  ww6
-                                  ww7
-                                  ww8 }
-                        GHC.Types.True
-                        -> case GHC.Prim.tagToEnum#
-                                  @ GHC.Types.Bool
-                                  (GHC.Prim.>=# i# 64) of wild4 {
-                             GHC.Types.False
-                             -> BitBoard.BitBoard
-                                  ww1
-                                  ww2
-                                  (GHC.Prim.or# ww3 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww4
-                                  ww5
-                                  ww6
-                                  ww7
-                                  ww8
-                             GHC.Types.True
-                             -> BitBoard.BitBoard ww1 ww2 ww3 ww4 ww5 ww6 ww7 ww8 } } }
-                   'Q'
-                   -> case w of wild1 { GHC.Types.I# i# ->
-                      case GHC.Prim.tagToEnum#
-                             @ GHC.Types.Bool
-                             (GHC.Prim.>=# i# 64) of wild2 {
-                        GHC.Types.False
-                        -> case GHC.Prim.tagToEnum#
-                                  @ GHC.Types.Bool
-                                  (GHC.Prim.>=# i# 64) of wild4 {
-                             GHC.Types.False
-                             -> BitBoard.BitBoard
-                                  ww1
-                                  (GHC.Prim.or# ww2 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww3
-                                  ww4
-                                  ww5
-                                  ww6
-                                  (GHC.Prim.or# ww7 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww8
-                             GHC.Types.True
-                             -> BitBoard.BitBoard
-                                  ww1
-                                  (GHC.Prim.or# ww2 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww3
-                                  ww4
-                                  ww5
-                                  ww6
-                                  ww7
-                                  ww8 }
-                        GHC.Types.True
-                        -> case GHC.Prim.tagToEnum#
-                                  @ GHC.Types.Bool
-                                  (GHC.Prim.>=# i# 64) of wild4 {
-                             GHC.Types.False
-                             -> BitBoard.BitBoard
-                                  ww1
-                                  ww2
-                                  ww3
-                                  ww4
-                                  ww5
-                                  ww6
-                                  (GHC.Prim.or# ww7 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww8
-                             GHC.Types.True
-                             -> BitBoard.BitBoard ww1 ww2 ww3 ww4 ww5 ww6 ww7 ww8 } } }
-                   'R'
-                   -> case w of wild1 { GHC.Types.I# i# ->
-                      case GHC.Prim.tagToEnum#
-                             @ GHC.Types.Bool
-                             (GHC.Prim.>=# i# 64) of wild2 {
-                        GHC.Types.False
-                        -> case GHC.Prim.tagToEnum#
-                                  @ GHC.Types.Bool
-                                  (GHC.Prim.>=# i# 64) of wild4 {
-                             GHC.Types.False
-                             -> BitBoard.BitBoard
-                                  ww1
-                                  (GHC.Prim.or# ww2 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww3
-                                  (GHC.Prim.or# ww4 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww5
-                                  ww6
-                                  ww7
-                                  ww8
-                             GHC.Types.True
-                             -> BitBoard.BitBoard
-                                  ww1
-                                  (GHC.Prim.or# ww2 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww3
-                                  ww4
-                                  ww5
-                                  ww6
-                                  ww7
-                                  ww8 }
-                        GHC.Types.True
-                        -> case GHC.Prim.tagToEnum#
-                                  @ GHC.Types.Bool
-                                  (GHC.Prim.>=# i# 64) of wild4 {
-                             GHC.Types.False
-                             -> BitBoard.BitBoard
-                                  ww1
-                                  ww2
-                                  ww3
-                                  (GHC.Prim.or# ww4 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww5
-                                  ww6
-                                  ww7
-                                  ww8
-                             GHC.Types.True
-                             -> BitBoard.BitBoard ww1 ww2 ww3 ww4 ww5 ww6 ww7 ww8 } } }
-                   'b'
-                   -> case w of wild1 { GHC.Types.I# i# ->
-                      case GHC.Prim.tagToEnum#
-                             @ GHC.Types.Bool
-                             (GHC.Prim.>=# i# 64) of wild2 {
-                        GHC.Types.False
-                        -> case GHC.Prim.tagToEnum#
-                                  @ GHC.Types.Bool
-                                  (GHC.Prim.>=# i# 64) of wild4 {
-                             GHC.Types.False
-                             -> BitBoard.BitBoard
-                                  (GHC.Prim.or# ww1 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww2
-                                  ww3
-                                  ww4
-                                  ww5
-                                  (GHC.Prim.or# ww6 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww7
-                                  ww8
-                             GHC.Types.True
-                             -> BitBoard.BitBoard
-                                  (GHC.Prim.or# ww1 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww2
-                                  ww3
-                                  ww4
-                                  ww5
-                                  ww6
-                                  ww7
-                                  ww8 }
-                        GHC.Types.True
-                        -> case GHC.Prim.tagToEnum#
-                                  @ GHC.Types.Bool
-                                  (GHC.Prim.>=# i# 64) of wild4 {
-                             GHC.Types.False
-                             -> BitBoard.BitBoard
-                                  ww1
-                                  ww2
-                                  ww3
-                                  ww4
-                                  ww5
-                                  (GHC.Prim.or# ww6 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww7
-                                  ww8
-                             GHC.Types.True
-                             -> BitBoard.BitBoard ww1 ww2 ww3 ww4 ww5 ww6 ww7 ww8 } } }
-                   'k'
-                   -> case w of wild1 { GHC.Types.I# i# ->
-                      case GHC.Prim.tagToEnum#
-                             @ GHC.Types.Bool
-                             (GHC.Prim.>=# i# 64) of wild2 {
-                        GHC.Types.False
-                        -> case GHC.Prim.tagToEnum#
-                                  @ GHC.Types.Bool
-                                  (GHC.Prim.>=# i# 64) of wild4 {
-                             GHC.Types.False
-                             -> BitBoard.BitBoard
-                                  (GHC.Prim.or# ww1 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww2
-                                  ww3
-                                  ww4
-                                  ww5
-                                  ww6
-                                  ww7
-                                  (GHC.Prim.or# ww8 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                             GHC.Types.True
-                             -> BitBoard.BitBoard
-                                  (GHC.Prim.or# ww1 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww2
-                                  ww3
-                                  ww4
-                                  ww5
-                                  ww6
-                                  ww7
-                                  ww8 }
-                        GHC.Types.True
-                        -> case GHC.Prim.tagToEnum#
-                                  @ GHC.Types.Bool
-                                  (GHC.Prim.>=# i# 64) of wild4 {
-                             GHC.Types.False
-                             -> BitBoard.BitBoard
-                                  ww1
-                                  ww2
-                                  ww3
-                                  ww4
-                                  ww5
-                                  ww6
-                                  ww7
-                                  (GHC.Prim.or# ww8 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                             GHC.Types.True
-                             -> BitBoard.BitBoard ww1 ww2 ww3 ww4 ww5 ww6 ww7 ww8 } } }
-                   'n'
-                   -> case w of wild1 { GHC.Types.I# i# ->
-                      case GHC.Prim.tagToEnum#
-                             @ GHC.Types.Bool
-                             (GHC.Prim.>=# i# 64) of wild2 {
-                        GHC.Types.False
-                        -> case GHC.Prim.tagToEnum#
-                                  @ GHC.Types.Bool
-                                  (GHC.Prim.>=# i# 64) of wild4 {
-                             GHC.Types.False
-                             -> BitBoard.BitBoard
-                                  (GHC.Prim.or# ww1 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww2
-                                  ww3
-                                  ww4
-                                  (GHC.Prim.or# ww5 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww6
-                                  ww7
-                                  ww8
-                             GHC.Types.True
-                             -> BitBoard.BitBoard
-                                  (GHC.Prim.or# ww1 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww2
-                                  ww3
-                                  ww4
-                                  ww5
-                                  ww6
-                                  ww7
-                                  ww8 }
-                        GHC.Types.True
-                        -> case GHC.Prim.tagToEnum#
-                                  @ GHC.Types.Bool
-                                  (GHC.Prim.>=# i# 64) of wild4 {
-                             GHC.Types.False
-                             -> BitBoard.BitBoard
-                                  ww1
-                                  ww2
-                                  ww3
-                                  ww4
-                                  (GHC.Prim.or# ww5 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww6
-                                  ww7
-                                  ww8
-                             GHC.Types.True
-                             -> BitBoard.BitBoard ww1 ww2 ww3 ww4 ww5 ww6 ww7 ww8 } } }
-                   'p'
-                   -> case w of wild1 { GHC.Types.I# i# ->
-                      case GHC.Prim.tagToEnum#
-                             @ GHC.Types.Bool
-                             (GHC.Prim.>=# i# 64) of wild2 {
-                        GHC.Types.False
-                        -> case GHC.Prim.tagToEnum#
-                                  @ GHC.Types.Bool
-                                  (GHC.Prim.>=# i# 64) of wild4 {
-                             GHC.Types.False
-                             -> BitBoard.BitBoard
-                                  (GHC.Prim.or# ww1 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww2
-                                  (GHC.Prim.or# ww3 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww4
-                                  ww5
-                                  ww6
-                                  ww7
-                                  ww8
-                             GHC.Types.True
-                             -> BitBoard.BitBoard
-                                  (GHC.Prim.or# ww1 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww2
-                                  ww3
-                                  ww4
-                                  ww5
-                                  ww6
-                                  ww7
-                                  ww8 }
-                        GHC.Types.True
-                        -> case GHC.Prim.tagToEnum#
-                                  @ GHC.Types.Bool
-                                  (GHC.Prim.>=# i# 64) of wild4 {
-                             GHC.Types.False
-                             -> BitBoard.BitBoard
-                                  ww1
-                                  ww2
-                                  (GHC.Prim.or# ww3 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww4
-                                  ww5
-                                  ww6
-                                  ww7
-                                  ww8
-                             GHC.Types.True
-                             -> BitBoard.BitBoard ww1 ww2 ww3 ww4 ww5 ww6 ww7 ww8 } } }
-                   'q'
-                   -> case w of wild1 { GHC.Types.I# i# ->
-                      case GHC.Prim.tagToEnum#
-                             @ GHC.Types.Bool
-                             (GHC.Prim.>=# i# 64) of wild2 {
-                        GHC.Types.False
-                        -> case GHC.Prim.tagToEnum#
-                                  @ GHC.Types.Bool
-                                  (GHC.Prim.>=# i# 64) of wild4 {
-                             GHC.Types.False
-                             -> BitBoard.BitBoard
-                                  (GHC.Prim.or# ww1 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww2
-                                  ww3
-                                  ww4
-                                  ww5
-                                  ww6
-                                  (GHC.Prim.or# ww7 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww8
-                             GHC.Types.True
-                             -> BitBoard.BitBoard
-                                  (GHC.Prim.or# ww1 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww2
-                                  ww3
-                                  ww4
-                                  ww5
-                                  ww6
-                                  ww7
-                                  ww8 }
-                        GHC.Types.True
-                        -> case GHC.Prim.tagToEnum#
-                                  @ GHC.Types.Bool
-                                  (GHC.Prim.>=# i# 64) of wild4 {
-                             GHC.Types.False
-                             -> BitBoard.BitBoard
-                                  ww1
-                                  ww2
-                                  ww3
-                                  ww4
-                                  ww5
-                                  ww6
-                                  (GHC.Prim.or# ww7 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww8
-                             GHC.Types.True
-                             -> BitBoard.BitBoard ww1 ww2 ww3 ww4 ww5 ww6 ww7 ww8 } } }
-                   'r'
-                   -> case w of wild1 { GHC.Types.I# i# ->
-                      case GHC.Prim.tagToEnum#
-                             @ GHC.Types.Bool
-                             (GHC.Prim.>=# i# 64) of wild2 {
-                        GHC.Types.False
-                        -> case GHC.Prim.tagToEnum#
-                                  @ GHC.Types.Bool
-                                  (GHC.Prim.>=# i# 64) of wild4 {
-                             GHC.Types.False
-                             -> BitBoard.BitBoard
-                                  (GHC.Prim.or# ww1 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww2
-                                  ww3
-                                  (GHC.Prim.or# ww4 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww5
-                                  ww6
-                                  ww7
-                                  ww8
-                             GHC.Types.True
-                             -> BitBoard.BitBoard
-                                  (GHC.Prim.or# ww1 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww2
-                                  ww3
-                                  ww4
-                                  ww5
-                                  ww6
-                                  ww7
-                                  ww8 }
-                        GHC.Types.True
-                        -> case GHC.Prim.tagToEnum#
-                                  @ GHC.Types.Bool
-                                  (GHC.Prim.>=# i# 64) of wild4 {
-                             GHC.Types.False
-                             -> BitBoard.BitBoard
-                                  ww1
-                                  ww2
-                                  ww3
-                                  (GHC.Prim.or# ww4 (GHC.Prim.uncheckedShiftL# __word 1 i#))
-                                  ww5
-                                  ww6
-                                  ww7
-                                  ww8
-                             GHC.Types.True
-                             -> BitBoard.BitBoard
-                                  ww1
-                                  ww2
-                                  ww3
-                                  ww4
-                                  ww5
-                                  ww6
-                                  ww7
-                                  ww8 } } } } } }) -}
-4c09288a572c2d708bd018e2288e8bfa
-  charUpdate1 :: BitBoard.BitBoard
-  {- Strictness: b -}
-7271ffc92bbd0321fb63372737e89390
+39567263b91c02c0b50022498a9598ae
   enPassant :: FEN.FEN -> GHC.Base.Maybe GHC.Word.Word64
   RecSel FEN.FEN
   {- Arity: 1, HasNoCafRefs,
-     Strictness: <S(SSSSLL),1*U(1*H,1*H,1*H,U,A,A)>,
+     Strictness: <S(SSSSSLL),1*U(1*H,1*H,1*H,1*H,U,A,A)>,
      Unfolding: InlineRule (1, True, False)
                 (\ ds :: FEN.FEN ->
-                 case ds of wild { FEN.FEN ds1 ds2 ds3 ds4 dt dt1 -> ds4 }) -}
-dd7a20a6d5a1ab1fc8a4e46c41b80fe8
+                 case ds of wild { FEN.FEN ds1 ds2 ds3 ds4 ds5 dt dt1 -> ds5 }) -}
+2686c3e263f18908b9ee526e417c4db1
   fullMoveClock :: FEN.FEN -> GHC.Types.Int
   RecSel FEN.FEN
   {- Arity: 1, HasNoCafRefs,
-     Strictness: <S(SSSSLL),1*U(1*H,1*H,1*H,1*H,A,U)>m,
+     Strictness: <S(SSSSSLL),1*U(1*H,1*H,1*H,1*H,1*H,A,U)>m,
      Unfolding: InlineRule (1, True, False)
                 (\ ds :: FEN.FEN ->
-                 case ds of wild { FEN.FEN ds1 ds2 ds3 ds4 dt dt1 ->
+                 case ds of wild { FEN.FEN ds1 ds2 ds3 ds4 ds5 dt dt1 ->
                  GHC.Types.I# dt1 }) -}
-32c4049bc1f33a550cb3cd28b72426e7
+9083f10ae9187b50f99ffb7f7290de61
   halfMoveClock :: FEN.FEN -> GHC.Types.Int
   RecSel FEN.FEN
   {- Arity: 1, HasNoCafRefs,
-     Strictness: <S(SSSSLL),1*U(1*H,1*H,1*H,1*H,U,A)>m,
+     Strictness: <S(SSSSSLL),1*U(1*H,1*H,1*H,1*H,1*H,U,A)>m,
      Unfolding: InlineRule (1, True, False)
                 (\ ds :: FEN.FEN ->
-                 case ds of wild { FEN.FEN ds1 ds2 ds3 ds4 dt dt1 ->
+                 case ds of wild { FEN.FEN ds1 ds2 ds3 ds4 ds5 dt dt1 ->
                  GHC.Types.I# dt }) -}
-4b665c948ea6c939ee3658f2801ced7b
+19de41307ce200d298eabb5768661736
   kingSideB :: FEN.Castling -> GHC.Types.Bool
   RecSel FEN.Castling
   {- Arity: 1, HasNoCafRefs,
@@ -1608,7 +959,7 @@ dd7a20a6d5a1ab1fc8a4e46c41b80fe8
      Unfolding: InlineRule (1, True, False)
                 (\ ds :: FEN.Castling ->
                  case ds of wild { FEN.Castling ds1 ds2 ds3 ds4 -> ds3 }) -}
-30f303a446a622180eb257bbb5d03e54
+7cb2d4d400cb6f1c2f67e9dd90a59976
   kingSideW :: FEN.Castling -> GHC.Types.Bool
   RecSel FEN.Castling
   {- Arity: 1, HasNoCafRefs,
@@ -1616,62 +967,15 @@ dd7a20a6d5a1ab1fc8a4e46c41b80fe8
      Unfolding: InlineRule (1, True, False)
                 (\ ds :: FEN.Castling ->
                  case ds of wild { FEN.Castling ds1 ds2 ds3 ds4 -> ds1 }) -}
-8609bffd209d718449b2b2f719ed85f3
-  parseBitBoard ::
-    Data.Attoparsec.ByteString.Internal.Parser BitBoard.BitBoard
-  {- Arity: 5,
-     Strictness: <S,1*U(U,U,U,U,U,U)><S,1*U(U)><L,U><L,A><L,C(C1(C1(C1(U))))>,
-     Unfolding: InlineRule (0, True, True)
-                FEN.parseBitBoard1
-                  `cast`
-                (Sym (Data.Attoparsec.Internal.Types.NTCo:Parser[0]
-                          <Data.ByteString.Internal.ByteString>_N <BitBoard.BitBoard>_R)) -}
-8787e359e9a52a66b621d63cf5479695
-  parseBitBoard1 ::
-    Data.Attoparsec.Internal.Types.State
-      Data.ByteString.Internal.ByteString
-    -> Data.Attoparsec.Internal.Types.Pos
-    -> Data.Attoparsec.Internal.Types.More
-    -> Data.Attoparsec.Internal.Types.Failure
-         Data.ByteString.Internal.ByteString
-         (Data.Attoparsec.Internal.Types.State
-            Data.ByteString.Internal.ByteString)
-         r
-    -> Data.Attoparsec.Internal.Types.Success
-         Data.ByteString.Internal.ByteString
-         (Data.Attoparsec.Internal.Types.State
-            Data.ByteString.Internal.ByteString)
-         BitBoard.BitBoard
-         r
-    -> Data.Attoparsec.Internal.Types.IResult
-         Data.ByteString.Internal.ByteString r
-  {- Arity: 5,
-     Strictness: <S,1*U(U,U,U,U,U,U)><S,1*U(U)><L,U><L,A><L,C(C1(C1(C1(U))))>,
-     Inline: INLINE[0],
-     Unfolding: InlineRule (5, True, False)
-                (\ @ r
-                   w :: Data.Attoparsec.Internal.Types.State
-                          Data.ByteString.Internal.ByteString
-                   w1 :: Data.Attoparsec.Internal.Types.Pos
-                   w2 :: Data.Attoparsec.Internal.Types.More
-                   w3 :: Data.Attoparsec.Internal.Types.Failure
-                           Data.ByteString.Internal.ByteString
-                           (Data.Attoparsec.Internal.Types.State
-                              Data.ByteString.Internal.ByteString)
-                           r
-                   w4 :: Data.Attoparsec.Internal.Types.Success
-                           Data.ByteString.Internal.ByteString
-                           (Data.Attoparsec.Internal.Types.State
-                              Data.ByteString.Internal.ByteString)
-                           BitBoard.BitBoard
-                           r ->
-                 case w `cast`
-                      (Sub (Data.Attoparsec.Internal.Types.TFCo:R:StateByteString[0])) of ww { Data.Attoparsec.ByteString.Buffer.Buf ww1 ww2 ww3 ww4 ww5 ww6 ->
-                 case w1
-                        `cast`
-                      (Data.Attoparsec.Internal.Types.NTCo:Pos[0]) of ww7 { GHC.Types.I# ww8 ->
-                 FEN.$wa1 @ r ww1 ww2 ww3 ww4 ww5 ww6 ww8 w2 w4 } }) -}
-5c4ef6d0f02e5468ba8d672db38182dd
+cf089bc4c48a5fff20624ff734b27e80
+  mailBox :: FEN.FEN -> MailBox.MailBox
+  RecSel FEN.FEN
+  {- Arity: 1, HasNoCafRefs,
+     Strictness: <S(SSSSSLL),1*U(1*H,U(U,U,U),1*H,1*H,1*H,A,A)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ ds :: FEN.FEN ->
+                 case ds of wild { FEN.FEN ds1 ds2 ds3 ds4 ds5 dt dt1 -> ds2 }) -}
+e06b5a799a400c9abfbd71f46bcb6d71
   parseCastling ::
     Data.Attoparsec.Internal.Types.Parser
       Data.ByteString.Internal.ByteString FEN.Castling
@@ -1682,7 +986,7 @@ dd7a20a6d5a1ab1fc8a4e46c41b80fe8
                   `cast`
                 (Sym (Data.Attoparsec.Internal.Types.NTCo:Parser[0]
                           <Data.ByteString.Internal.ByteString>_N <FEN.Castling>_R)) -}
-af335e0d651bd53519afd75283943a9a
+3c24d9a8b695e62ccee5524ada45f7d5
   parseCastling1 ::
     Data.Attoparsec.Internal.Types.State
       Data.ByteString.Internal.ByteString
@@ -1726,21 +1030,21 @@ af335e0d651bd53519afd75283943a9a
                  case w1
                         `cast`
                       (Data.Attoparsec.Internal.Types.NTCo:Pos[0]) of ww7 { GHC.Types.I# ww8 ->
-                 FEN.$wa3 @ r ww1 ww2 ww3 ww4 ww5 ww6 ww8 w2 w3 w4 } }) -}
-b66a86faefb59b75c8205cce0ff6157a
+                 FEN.$wa1 @ r ww1 ww2 ww3 ww4 ww5 ww6 ww8 w2 w3 w4 } }) -}
+976465b58627a470ae72e5abc1426e59
   parseEnPassant ::
     Data.Attoparsec.Internal.Types.Parser
       Data.ByteString.Internal.ByteString
       (GHC.Base.Maybe GHC.Word.Word64)
   {- Arity: 5,
-     Strictness: <S,1*U(U,U,U,U,U,U)><S,U(U)><L,U><L,U><L,U>,
+     Strictness: <S,1*U(U,U,U,U,U,U)><S,1*U(U)><L,U><L,C(C1(C1(C1(C1(U)))))><L,C(C1(C1(C1(U))))>,
      Unfolding: InlineRule (0, True, True)
                 FEN.parseEnPassant1
                   `cast`
                 (Sym (Data.Attoparsec.Internal.Types.NTCo:Parser[0]
                           <Data.ByteString.Internal.ByteString>_N
                           <GHC.Base.Maybe GHC.Word.Word64>_R)) -}
-edb0c9e96d6dcccaa9d34f5c30a5b349
+79f83817d9c61da681517056f19011af
   parseEnPassant1 ::
     Data.Attoparsec.Internal.Types.State
       Data.ByteString.Internal.ByteString
@@ -1760,7 +1064,7 @@ edb0c9e96d6dcccaa9d34f5c30a5b349
     -> Data.Attoparsec.Internal.Types.IResult
          Data.ByteString.Internal.ByteString r
   {- Arity: 5,
-     Strictness: <S,1*U(U,U,U,U,U,U)><S,U(U)><L,U><L,U><L,U>,
+     Strictness: <S,1*U(U,U,U,U,U,U)><S,1*U(U)><L,U><L,C(C1(C1(C1(C1(U)))))><L,C(C1(C1(C1(U))))>,
      Inline: INLINE[0],
      Unfolding: InlineRule (5, True, False)
                 (\ @ r
@@ -1784,32 +1088,17 @@ edb0c9e96d6dcccaa9d34f5c30a5b349
                  case w1
                         `cast`
                       (Data.Attoparsec.Internal.Types.NTCo:Pos[0]) of ww7 { GHC.Types.I# ww8 ->
-                 FEN.$wa4 @ r ww1 ww2 ww3 ww4 ww5 ww6 ww8 w2 w3 w4 } }) -}
-502e74580ac5c5dc17b22bd16c8fd4d5
-  parseEnPassant2 :: GHC.Base.Maybe GHC.Word.Word64
-  {- HasNoCafRefs, Strictness: m2,
-     Unfolding: (GHC.Base.Just @ GHC.Word.Word64 FEN.parseEnPassant3) -}
-eddb8f6bbdbdaa6d27971626a08aea4b
-  parseEnPassant3 :: GHC.Word.Word64
-  {- HasNoCafRefs, Strictness: m,
-     Unfolding: (GHC.Word.W64# __word 0) -}
-34a5a39008fdaa7db35e11186c1f899e
-  parseEnPassant4 :: GHC.Types.Char
-  {- HasNoCafRefs, Unfolding: (GHC.Types.C# '-') -}
-5e61e7f4cb9c5995d2f1d904c3466e2c
-  parseEnPassant5 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString#
-                   "Failed reading: satisfyWith"#) -}
-6e48cca37e3a93cb32d4ed25d01012ef
+                 FEN.$wa2 @ r ww1 ww2 ww3 ww4 ww5 ww6 ww8 w2 w3 w4 } }) -}
+5d761c2bb2f2fe16eb5bd564691075e1
   parseFEN :: Data.Attoparsec.ByteString.Internal.Parser FEN.FEN
   {- Arity: 5,
-     Strictness: <S,1*U(U,U,U,U,U,U)><S,1*U(U)><L,U><L,U><L,C(C1(C1(C1(U))))>,
+     Strictness: <L,U><S,1*U(U)><L,U><L,U><L,C(C1(C1(C1(U))))>,
      Unfolding: InlineRule (0, True, True)
                 FEN.parseFEN1
                   `cast`
                 (Sym (Data.Attoparsec.Internal.Types.NTCo:Parser[0]
                           <Data.ByteString.Internal.ByteString>_N <FEN.FEN>_R)) -}
-a8551370b0668b56308705fbd40280da
+b25a90679059802384387e59ad2a47ed
   parseFEN1 ::
     Data.Attoparsec.Internal.Types.State
       Data.ByteString.Internal.ByteString
@@ -1829,7 +1118,7 @@ a8551370b0668b56308705fbd40280da
     -> Data.Attoparsec.Internal.Types.IResult
          Data.ByteString.Internal.ByteString r
   {- Arity: 5,
-     Strictness: <S,1*U(U,U,U,U,U,U)><S,1*U(U)><L,U><L,U><L,C(C1(C1(C1(U))))>,
+     Strictness: <L,U><S,1*U(U)><L,U><L,U><L,C(C1(C1(C1(U))))>,
      Inline: INLINE[0],
      Unfolding: InlineRule (5, True, False)
                 (\ @ r
@@ -1848,13 +1137,11 @@ a8551370b0668b56308705fbd40280da
                               Data.ByteString.Internal.ByteString)
                            FEN.FEN
                            r ->
-                 case w `cast`
-                      (Sub (Data.Attoparsec.Internal.Types.TFCo:R:StateByteString[0])) of ww { Data.Attoparsec.ByteString.Buffer.Buf ww1 ww2 ww3 ww4 ww5 ww6 ->
                  case w1
                         `cast`
-                      (Data.Attoparsec.Internal.Types.NTCo:Pos[0]) of ww7 { GHC.Types.I# ww8 ->
-                 FEN.$wa6 @ r ww1 ww2 ww3 ww4 ww5 ww6 ww8 w2 w3 w4 } }) -}
-3aaa7382a3b2aeb0a2239fbdb1f5a331
+                      (Data.Attoparsec.Internal.Types.NTCo:Pos[0]) of ww { GHC.Types.I# ww1 ->
+                 FEN.$wa3 @ r w ww1 w2 w3 w4 }) -}
+53340a90a45aeb6b1d39267612e6790a
   parseTurn :: Data.Attoparsec.ByteString.Internal.Parser FEN.Turn
   {- Arity: 5,
      Strictness: <S,1*U(U,U,U,U,U,U)><S,1*U(U)><L,U><L,C(C1(C1(C1(C1(U)))))><L,C(C1(C1(C1(U))))>,
@@ -1863,7 +1150,7 @@ a8551370b0668b56308705fbd40280da
                   `cast`
                 (Sym (Data.Attoparsec.Internal.Types.NTCo:Parser[0]
                           <Data.ByteString.Internal.ByteString>_N <FEN.Turn>_R)) -}
-b4c1f8895936f7c33d9f146d05a7095e
+f8fa27998a67aac6f3f992f861c20e29
   parseTurn1 ::
     Data.Attoparsec.Internal.Types.State
       Data.ByteString.Internal.ByteString
@@ -1907,8 +1194,8 @@ b4c1f8895936f7c33d9f146d05a7095e
                  case w1
                         `cast`
                       (Data.Attoparsec.Internal.Types.NTCo:Pos[0]) of ww7 { GHC.Types.I# ww8 ->
-                 FEN.$wa7 @ r ww1 ww2 ww3 ww4 ww5 ww6 ww8 w2 w3 w4 } }) -}
-557e5f74f944271eb3ce2381d1c82686
+                 FEN.$wa4 @ r ww1 ww2 ww3 ww4 ww5 ww6 ww8 w2 w3 w4 } }) -}
+d12df75e9e4c9b943d1a47b0c1189cff
   queenSideB :: FEN.Castling -> GHC.Types.Bool
   RecSel FEN.Castling
   {- Arity: 1, HasNoCafRefs,
@@ -1916,7 +1203,7 @@ b4c1f8895936f7c33d9f146d05a7095e
      Unfolding: InlineRule (1, True, False)
                 (\ ds :: FEN.Castling ->
                  case ds of wild { FEN.Castling ds1 ds2 ds3 ds4 -> ds4 }) -}
-30de796a78dc2576f62a43d030728cb3
+3afef5d2327b56d0b16dd963a6869380
   queenSideW :: FEN.Castling -> GHC.Types.Bool
   RecSel FEN.Castling
   {- Arity: 1, HasNoCafRefs,
@@ -1924,16 +1211,262 @@ b4c1f8895936f7c33d9f146d05a7095e
      Unfolding: InlineRule (1, True, False)
                 (\ ds :: FEN.Castling ->
                  case ds of wild { FEN.Castling ds1 ds2 ds3 ds4 -> ds2 }) -}
-634614bbd7518e5343b6efc541b2c83d
+439d9f3097ceab744a658b7c577f98ad
+  simplifyFENBoard ::
+    Data.Attoparsec.ByteString.Internal.Parser GHC.Base.String
+  {- Arity: 5,
+     Strictness: <L,U><S,1*U(U)><L,U><L,U><L,C(C1(C1(C1(U))))>,
+     Unfolding: InlineRule (0, True, True)
+                FEN.simplifyFENBoard1
+                  `cast`
+                (Sym (Data.Attoparsec.Internal.Types.NTCo:Parser[0]
+                          <Data.ByteString.Internal.ByteString>_N <[GHC.Types.Char]>_R)) -}
+a0155f405a4d05c066a3536d497e1e61
+  simplifyFENBoard1 ::
+    Data.Attoparsec.Internal.Types.State
+      Data.ByteString.Internal.ByteString
+    -> Data.Attoparsec.Internal.Types.Pos
+    -> Data.Attoparsec.Internal.Types.More
+    -> Data.Attoparsec.Internal.Types.Failure
+         Data.ByteString.Internal.ByteString
+         (Data.Attoparsec.Internal.Types.State
+            Data.ByteString.Internal.ByteString)
+         r
+    -> Data.Attoparsec.Internal.Types.Success
+         Data.ByteString.Internal.ByteString
+         (Data.Attoparsec.Internal.Types.State
+            Data.ByteString.Internal.ByteString)
+         [GHC.Types.Char]
+         r
+    -> Data.Attoparsec.Internal.Types.IResult
+         Data.ByteString.Internal.ByteString r
+  {- Arity: 5,
+     Strictness: <L,U><S,1*U(U)><L,U><L,U><L,C(C1(C1(C1(U))))>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (5, True, False)
+                (\ @ r
+                   w :: Data.Attoparsec.Internal.Types.State
+                          Data.ByteString.Internal.ByteString
+                   w1 :: Data.Attoparsec.Internal.Types.Pos
+                   w2 :: Data.Attoparsec.Internal.Types.More
+                   w3 :: Data.Attoparsec.Internal.Types.Failure
+                           Data.ByteString.Internal.ByteString
+                           (Data.Attoparsec.Internal.Types.State
+                              Data.ByteString.Internal.ByteString)
+                           r
+                   w4 :: Data.Attoparsec.Internal.Types.Success
+                           Data.ByteString.Internal.ByteString
+                           (Data.Attoparsec.Internal.Types.State
+                              Data.ByteString.Internal.ByteString)
+                           [GHC.Types.Char]
+                           r ->
+                 case w1
+                        `cast`
+                      (Data.Attoparsec.Internal.Types.NTCo:Pos[0]) of ww { GHC.Types.I# ww1 ->
+                 FEN.$wa5 @ r w ww1 w2 w3 w4 }) -}
+5710e1b1d73d2fc3245c0a5204f6ffa7
+  simplifyFENBoard2 ::
+    Data.Attoparsec.Internal.Types.State
+      Data.ByteString.Internal.ByteString
+    -> Data.Attoparsec.Internal.Types.Pos
+    -> Data.Attoparsec.Internal.Types.More
+    -> Data.Attoparsec.Internal.Types.Failure
+         Data.ByteString.Internal.ByteString
+         (Data.Attoparsec.Internal.Types.State
+            Data.ByteString.Internal.ByteString)
+         r
+    -> Data.Attoparsec.Internal.Types.Success
+         Data.ByteString.Internal.ByteString
+         (Data.Attoparsec.Internal.Types.State
+            Data.ByteString.Internal.ByteString)
+         GHC.Types.Char
+         r
+    -> Data.Attoparsec.Internal.Types.IResult
+         Data.ByteString.Internal.ByteString r
+  {- Arity: 5,
+     Strictness: <S,1*U(U,U,U,U,U,U)><S,1*U(U)><L,U><L,C(C1(C1(C1(C1(U)))))><L,C(C1(C1(C1(U))))>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (5, True, False)
+                (\ @ r
+                   w :: Data.Attoparsec.Internal.Types.State
+                          Data.ByteString.Internal.ByteString
+                   w1 :: Data.Attoparsec.Internal.Types.Pos
+                   w2 :: Data.Attoparsec.Internal.Types.More
+                   w3 :: Data.Attoparsec.Internal.Types.Failure
+                           Data.ByteString.Internal.ByteString
+                           (Data.Attoparsec.Internal.Types.State
+                              Data.ByteString.Internal.ByteString)
+                           r
+                   w4 :: Data.Attoparsec.Internal.Types.Success
+                           Data.ByteString.Internal.ByteString
+                           (Data.Attoparsec.Internal.Types.State
+                              Data.ByteString.Internal.ByteString)
+                           GHC.Types.Char
+                           r ->
+                 case w `cast`
+                      (Sub (Data.Attoparsec.Internal.Types.TFCo:R:StateByteString[0])) of ww { Data.Attoparsec.ByteString.Buffer.Buf ww1 ww2 ww3 ww4 ww5 ww6 ->
+                 case w1
+                        `cast`
+                      (Data.Attoparsec.Internal.Types.NTCo:Pos[0]) of ww7 { GHC.Types.I# ww8 ->
+                 FEN.$wa6 @ r ww1 ww2 ww3 ww4 ww5 ww6 ww8 w2 w3 w4 } }) -}
+d69ffbb24a0266a6402ff1443c3baed9
+  simplifyFENBoard3 :: GHC.Types.Char
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.C# ' ') -}
+47732c35a72dd45a65c64ca4367b5af8
+  simplifyFENBoard4 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   "Failed reading: satisfyWith"#) -}
+4caee03c061b38179e08fde65629912e
+  simplifyFENBoard5 :: [GHC.Base.String]
+  {- HasNoCafRefs,
+     Unfolding: (GHC.Types.:
+                   @ GHC.Base.String
+                   FEN.simplifyFENBoard_msg0
+                   (GHC.Types.[] @ GHC.Base.String)) -}
+cefc0d080fa91a9500ff7ff144283fea
+  simplifyFENBoard6 ::
+    Data.Attoparsec.Internal.Types.State
+      Data.ByteString.Internal.ByteString
+    -> Data.Attoparsec.Internal.Types.Pos
+    -> Data.Attoparsec.Internal.Types.More
+    -> Data.Attoparsec.Internal.Types.Failure
+         Data.ByteString.Internal.ByteString
+         (Data.Attoparsec.Internal.Types.State
+            Data.ByteString.Internal.ByteString)
+         r
+    -> Data.Attoparsec.Internal.Types.Success
+         Data.ByteString.Internal.ByteString
+         (Data.Attoparsec.Internal.Types.State
+            Data.ByteString.Internal.ByteString)
+         [GHC.Types.Char]
+         r
+    -> Data.Attoparsec.Internal.Types.IResult
+         Data.ByteString.Internal.ByteString r
+  {- Arity: 5,
+     Strictness: <S,1*U(U,U,U,U,U,U)><S,1*U(U)><L,U><L,C(C1(C1(C1(C1(U)))))><L,C(C1(C1(C1(U))))>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (5, True, False)
+                (\ @ r
+                   w :: Data.Attoparsec.Internal.Types.State
+                          Data.ByteString.Internal.ByteString
+                   w1 :: Data.Attoparsec.Internal.Types.Pos
+                   w2 :: Data.Attoparsec.Internal.Types.More
+                   w3 :: Data.Attoparsec.Internal.Types.Failure
+                           Data.ByteString.Internal.ByteString
+                           (Data.Attoparsec.Internal.Types.State
+                              Data.ByteString.Internal.ByteString)
+                           r
+                   w4 :: Data.Attoparsec.Internal.Types.Success
+                           Data.ByteString.Internal.ByteString
+                           (Data.Attoparsec.Internal.Types.State
+                              Data.ByteString.Internal.ByteString)
+                           [GHC.Types.Char]
+                           r ->
+                 case w `cast`
+                      (Sub (Data.Attoparsec.Internal.Types.TFCo:R:StateByteString[0])) of ww { Data.Attoparsec.ByteString.Buffer.Buf ww1 ww2 ww3 ww4 ww5 ww6 ->
+                 case w1
+                        `cast`
+                      (Data.Attoparsec.Internal.Types.NTCo:Pos[0]) of ww7 { GHC.Types.I# ww8 ->
+                 FEN.$wa7 @ r ww1 ww2 ww3 ww4 ww5 ww6 ww8 w2 w3 w4 } }) -}
+eb62f6edee970a7208447e977b44e944
+  simplifyFENBoard_msg0 :: GHC.Base.String
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ GHC.Types.Char
+                   FEN.simplifyFENBoard3
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+6b547741dd0f70f90fdad1c548344261
+  toBitBoard :: GHC.Base.String -> BitBoard.BitBoard
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: (\ x :: GHC.Base.String ->
+                 case FEN.$wgo x of ww { (#,#) ww1 ww2 -> ww2 }) -}
+a36824033af87bc02ffbec56ffd49c78
+  toMailBox :: GHC.Base.String -> MailBox.MailBox
+  {- Arity: 1, Strictness: <L,A>,
+     Unfolding: InlineRule (1, True, True)
+                (\ ds :: GHC.Base.String -> FEN.toMailBox1) -}
+db2f4c073363066cf08a79cd3ae217ac
+  toMailBox1 :: Data.Vector.Unboxed.Base.Vector MailBox.Square
+  {- Unfolding: (GHC.ST.runSTRep
+                   @ (Data.Vector.Unboxed.Base.Vector MailBox.Square)
+                   FEN.toMailBox2) -}
+3be582512266f27f842845ee03492476
+  toMailBox2 ::
+    GHC.Prim.State# s
+    -> (# GHC.Prim.State# s,
+          Data.Vector.Unboxed.Base.Vector MailBox.Square #)
+  {- Arity: 1,
+     Unfolding: (\ @ s s1 :: GHC.Prim.State# s[OneShot] ->
+                 case GHC.Classes.divInt# 9223372036854775807 1 of ww4 { DEFAULT ->
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.># 0 ww4) of wild3 {
+                   GHC.Types.False
+                   -> case GHC.Prim.newByteArray#
+                             @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s))
+                             0
+                             s1
+                               `cast`
+                             (GHC.Prim.State#
+                                (Sym (Control.Monad.Primitive.TFCo:R:PrimStateST[0]
+                                          <s>_N)))_R of ds1 { (#,#) ipv ipv1 ->
+                      case GHC.Prim.unsafeFreezeByteArray#
+                             @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s))
+                             ipv1
+                             ipv of ds2 { (#,#) ipv2 ipv3 ->
+                      (# ipv2
+                           `cast`
+                         (GHC.Prim.State#
+                            (Control.Monad.Primitive.TFCo:R:PrimStateST[0] <s>_N))_R,
+                         (Data.Vector.Primitive.Vector @ GHC.Word.Word8 0 0 ipv3)
+                           `cast`
+                         (Trans
+                              (Sym (Data.Vector.Unboxed.Base.NTCo:R:VectorWord8[0]))
+                              (Trans
+                                   (Sub (Sym (Data.Vector.Unboxed.Base.TFCo:R:VectorWord8[0])))
+                                   (Trans
+                                        (Sym (MailBox.NTCo:R:VectorSquare[0]))
+                                        (Sub (Sym (MailBox.TFCo:R:VectorSquare[0])))))) #) } }
+                   GHC.Types.True
+                   -> case GHC.Err.error
+                             @ (GHC.ST.ST
+                                  s
+                                  (Data.Vector.Primitive.Mutable.MVector
+                                     (Control.Monad.Primitive.PrimState (GHC.ST.ST s))
+                                     GHC.Word.Word8))
+                             FEN.toMailBox3
+                      ret_ty (# GHC.Prim.State# s,
+                                Data.Vector.Unboxed.Base.Vector MailBox.Square #)
+                      of {} } }) -}
+e52f63611cbb41df38e44153d812ce98
+  toMailBox3 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackAppendCString#
+                   "Primitive.basicUnsafeNew: length to large: "#
+                   FEN.toMailBox4) -}
+fbd2d3cdf50aeb7b34c4c83aac24c543
+  toMailBox4 :: [GHC.Types.Char]
+  {- Unfolding: (case GHC.Show.$wshowSignedInt
+                        0
+                        0
+                        (GHC.Types.[] @ GHC.Types.Char) of ww4 { (#,#) ww5 ww6 ->
+                 GHC.Types.: @ GHC.Types.Char ww5 ww6 }) -}
+7c1b26cbd80d139d12549a3a4b0d98b2
   turn :: FEN.FEN -> FEN.Turn
   RecSel FEN.FEN
   {- Arity: 1, HasNoCafRefs,
-     Strictness: <S(SSSSLL),1*U(1*H,U,1*H,1*H,A,A)>,
+     Strictness: <S(SSSSSLL),1*U(1*H,1*H,U,1*H,1*H,A,A)>,
      Unfolding: InlineRule (1, True, False)
                 (\ ds :: FEN.FEN ->
-                 case ds of wild { FEN.FEN ds1 ds2 ds3 ds4 dt dt1 -> ds2 }) -}
+                 case ds of wild { FEN.FEN ds1 ds2 ds3 ds4 ds5 dt dt1 -> ds3 }) -}
 instance GHC.Show.Show [FEN.Castling] = FEN.$fShowCastling
 instance GHC.Show.Show [FEN.FEN] = FEN.$fShowFEN
+"SPEC/FEN $dmshowsPrec @ FEN" [ALWAYS] forall $dShow :: GHC.Show.Show
+                                                          FEN.FEN
+  GHC.Show.$dmshowsPrec @ FEN.FEN $dShow
+  = FEN.$fShowFEN_$s$dmshowsPrec
+"SPEC/FEN concat @ [] _" [ALWAYS] forall @ a14
+                                         $dFoldable :: Data.Foldable.Foldable []
+  Data.Foldable.concat @ [] @ a14 $dFoldable = FEN.$sconcat @ a14
 vectorised variables:
 vectorised tycons:
 vectorised reused tycons:

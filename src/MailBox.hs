@@ -63,6 +63,10 @@ derivingUnbox "Square"
 type File    = Int 
 type Rank    = Int
 type Index   = Int 
+
+indexToDoc :: Index -> Doc
+indexToDoc i = let (r,f) = unflattenRF i in char (toEnum (f + 97)) <> char (toEnum (r + 49))
+                   
 type MailBox = Vector Square
 
 {-# INLINE flattenRF #-}

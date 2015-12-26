@@ -1,13 +1,13 @@
 
 ==================== FINAL INTERFACE ====================
-2015-12-22 17:35:23.336278 UTC
+2015-12-22 19:40:22.044441 UTC
 
-interface hches_BypoOHN0xb7K9M5rFIMmXv:MoveGeneration 7102
-  interface hash: 4baf944e20f23fff2a2a485c68e203f3
-  ABI hash: f523e44d7d1d48bff482cb353896711f
-  export-list hash: 695895cb82ad046bfa6b9eabfee4bad4
+interface hches_KF6MDI5eODG4Q8cKhuw0mn:MoveGeneration 7102
+  interface hash: aba4fcfb52c05c7a44fb26c04cecedca
+  ABI hash: 30eed33bc0f9047945cb60803d656073
+  export-list hash: 8d8711719cdff22e4cc65ab1665dd501
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
-  flag hash: b2869d8fcf4c769a0bf931957519fbbd
+  flag hash: 60b0c5c5667f32509f7228bb0f134659
   sig of: Nothing
   used TH splices: False
   where
@@ -40,13 +40,13 @@ import  -/  base-4.8.1.0:Data.Bits 5341167fdd5958c2b3f0dac8924f1efd
 import  -/  base-4.8.1.0:Data.Word 448c480b98a0c18988a37db5ab829b22
 import  -/  base-4.8.1.0:GHC.Word ef6286c279d61931eb675109b4b93579
 import  -/  base-4.8.1.0:Prelude 518f762991bc287d78f21a73c974da1f
-import  -/  BitBoard 68d265c6c1923a37e886a14ffb1288e1
-  exports: ff4a42395a30ecee75fb51dc7afc9234
+import  -/  BitBoard 7e4576e6f7d0be2ca1ef0ad8232e27f7
+  exports: bdccb0548ea28b40cb7b32788872b4c3
 import  -/  vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Unboxed 8bd91cd1a3cd2cbd12faec978422ccd8
-d6a865369e976c77bfdb23eda610fec3
+2b6318db2022372eeb42932c36e6c768
   data Move
     = Move {-# UNPACK #-}GHC.Word.Word64 {-# UNPACK #-}GHC.Word.Word64
-cc8b8fa943f319f731c77c183c77ab95
+b4cd434ebfa9e1edba3cb83ad9e39b82
   generateMoves :: t -> t1
   {- Arity: 1, Strictness: <B,A>b,
      Unfolding: InlineRule (1, True, True)

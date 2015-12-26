@@ -17,7 +17,7 @@ version = Version [0,1,0,0] []
 bindir, libdir, datadir, libexecdir, sysconfdir :: FilePath
 
 bindir     = "/home/kyle/Programming/haskell/hchess/.stack-work/install/x86_64-linux/nightly-2015-12-14/7.10.2/bin"
-libdir     = "/home/kyle/Programming/haskell/hchess/.stack-work/install/x86_64-linux/nightly-2015-12-14/7.10.2/lib/x86_64-linux-ghc-7.10.2/hchess-0.1.0.0-BypoOHN0xb7K9M5rFIMmXv"
+libdir     = "/home/kyle/Programming/haskell/hchess/.stack-work/install/x86_64-linux/nightly-2015-12-14/7.10.2/lib/x86_64-linux-ghc-7.10.2/hchess-0.1.0.0-KF6MDI5eODG4Q8cKhuw0mn"
 datadir    = "/home/kyle/Programming/haskell/hchess/.stack-work/install/x86_64-linux/nightly-2015-12-14/7.10.2/share/x86_64-linux-ghc-7.10.2/hchess-0.1.0.0"
 libexecdir = "/home/kyle/Programming/haskell/hchess/.stack-work/install/x86_64-linux/nightly-2015-12-14/7.10.2/libexec"
 sysconfdir = "/home/kyle/Programming/haskell/hchess/.stack-work/install/x86_64-linux/nightly-2015-12-14/7.10.2/etc"
