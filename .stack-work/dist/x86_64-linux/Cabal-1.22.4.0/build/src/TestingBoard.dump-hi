@@ -1,0 +1,186 @@
+
+==================== FINAL INTERFACE ====================
+2016-01-02 04:04:56.437386 UTC
+
+interface hches_KF6MDI5eODG4Q8cKhuw0mn:TestingBoard 7102
+  interface hash: a126d3ac6e756969e98e77ad7fe68d35
+  ABI hash: 0c4113e4cfb3950083a55bd40ee4e19c
+  export-list hash: 280ed18d60ba4b2138becdbd4324326d
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: 2bfdd69c509df0f94c327e5faec9ae27
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  TestingBoard.tests
+  TestingBoard.unsafeParseFEN
+module dependencies: BitBoard Board FEN Index Utils
+package dependencies: ansi-terminal-0.6.2.3@ansit_KW0LUY2zB7JCYzE4ZYrwBg
+                      ansi-wl-pprint-0.6.7.3@ansiw_KPlSW7tbqXS51Lj59n3FC4
+                      array-0.5.1.0@array_E0sTtauuKsGDLZoT7lTbgZ
+                      attoparsec-0.13.0.1@attop_FtJZAZu3GDOJSwmSRnXnPH base-4.8.1.0
+                      binary-0.7.5.0@binar_IvYoLp9H6Xy3zEH13MmZwd
+                      bytestring-0.10.6.0@bytes_6elQVSg5cWdFrvRnfxTUrH
+                      containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN
+                      deepseq-1.4.1.1@deeps_LbCWUlehDDeLxurARKDH5o ghc-prim-0.4.0.0
+                      hashable-1.2.3.3@hasha_2GTZqecVp8NJZrNuKzGxfy integer-gmp-1.0.0.0
+                      primitive-0.6.1.0@primi_5Jnw7oEuYtM9dmKXelGXVb
+                      scientific-0.3.4.4@scien_03wvk1zJytY0wVzR42F1U4
+                      text-1.2.1.3@text_1l1AN4I48k37RaQ6fm6CEh
+                      transformers-0.4.2.0@trans_3eG64VdP2vzGjP6wJiCp5X
+                      vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF
+orphans: attoparsec-0.13.0.1@attop_FtJZAZu3GDOJSwmSRnXnPH:Data.Attoparsec.ByteString.Char8
+         base-4.8.1.0:GHC.Base base-4.8.1.0:GHC.Float
+         binary-0.7.5.0@binar_IvYoLp9H6Xy3zEH13MmZwd:Data.Binary.Generic
+         bytestring-0.10.6.0@bytes_6elQVSg5cWdFrvRnfxTUrH:Data.ByteString.Builder
+         hashable-1.2.3.3@hasha_2GTZqecVp8NJZrNuKzGxfy:Data.Hashable.Generic
+         text-1.2.1.3@text_1l1AN4I48k37RaQ6fm6CEh:Data.Text
+         text-1.2.1.3@text_1l1AN4I48k37RaQ6fm6CEh:Data.Text.Lazy
+         text-1.2.1.3@text_1l1AN4I48k37RaQ6fm6CEh:Data.Text.Show
+         transformers-0.4.2.0@trans_3eG64VdP2vzGjP6wJiCp5X:Control.Monad.Trans.Error
+         vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Fusion.Bundle
+family instance modules: attoparsec-0.13.0.1@attop_FtJZAZu3GDOJSwmSRnXnPH:Data.Attoparsec.Internal.Types
+                         base-4.8.1.0:Control.Applicative base-4.8.1.0:Data.Either
+                         base-4.8.1.0:Data.Functor.Identity base-4.8.1.0:Data.Monoid
+                         base-4.8.1.0:Data.Type.Equality base-4.8.1.0:Data.Void
+                         base-4.8.1.0:GHC.Exts base-4.8.1.0:GHC.Generics
+                         containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN:Data.IntMap.Base
+                         containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN:Data.IntSet.Base
+                         containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN:Data.Map.Base
+                         containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN:Data.Sequence
+                         containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN:Data.Set.Base
+                         primitive-0.6.1.0@primi_5Jnw7oEuYtM9dmKXelGXVb:Control.Monad.Primitive
+                         text-1.2.1.3@text_1l1AN4I48k37RaQ6fm6CEh:Data.Text
+                         text-1.2.1.3@text_1l1AN4I48k37RaQ6fm6CEh:Data.Text.Lazy
+                         vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector
+import  -/  attoparsec-0.13.0.1@attop_FtJZAZu3GDOJSwmSRnXnPH:Data.Attoparsec.ByteString.Char8 f21f91f244ddfffc85e371a46be7545b
+import  -/  attoparsec-0.13.0.1@attop_FtJZAZu3GDOJSwmSRnXnPH:Data.Attoparsec.ByteString.Internal 78d691ec8f4b47121e5aa69846971d69
+import  -/  base-4.8.1.0:Data.Either bc9482e78cc431fce439b593377aa2e6
+import  -/  base-4.8.1.0:GHC.Base 1db77db5dae73d8c424c85b09fbadb89
+import  -/  base-4.8.1.0:Prelude 518f762991bc287d78f21a73c974da1f
+import  -/  Board 1137853594eeb2bf744304f00d9faa6d
+  exports: 0920de90788b9006e313d85981d5679a
+  fromFEN 485670b57534c61d2b9502ea80dc39b2
+import  -/  FEN 3fce280e977d444bdc87762eb15930b4
+  exports: 61a1675b53e78cf562ba0fa79f29a6ad
+  parseFEN cb9204fb8dd52fa0a776f132848c75e4
+2a17270c9a725ccce304c7a7c71f39c7
+  tests :: [Board.Board]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ Board.Board
+                   TestingBoard.tests4
+                   TestingBoard.tests1) -}
+16d1aad9f674e8441fba6c2eb3fa5caf
+  tests1 :: [Board.Board]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ Board.Board
+                   TestingBoard.tests2
+                   (GHC.Types.[] @ Board.Board)) -}
+affcea9f7195719da08906892618ccf4
+  tests2 :: Board.Board
+  {- Unfolding: (TestingBoard.unsafeParseFEN TestingBoard.tests3) -}
+9d1b42370c5754d8ed5ef32c8bf86c72
+  tests3 :: Data.ByteString.Internal.ByteString
+  {- Unfolding: (case GHC.Prim.newMutVar#
+                        @ GHC.ForeignPtr.Finalizers
+                        @ GHC.Prim.RealWorld
+                        GHC.ForeignPtr.NoFinalizers
+                        GHC.Prim.realWorld# of ds1 { (#,#) ipv ipv1 ->
+                 let {
+                   s :: GHC.Prim.Addr#
+                   = "rnbqkbnr/pp1ppppp/8/2p5/4P3/8/PPPP1PPP/RNBQKBNR w KQkq c6 0 2"#
+                 } in
+                 case {__pkg_ccall bytestring-0.10.6.0@bytes_6elQVSg5cWdFrvRnfxTUrH strlen GHC.Prim.Addr#
+                                                                                           -> GHC.Prim.State#
+                                                                                                GHC.Prim.RealWorld
+                                                                                           -> (# GHC.Prim.State#
+                                                                                                   GHC.Prim.RealWorld,
+                                                                                                 GHC.Prim.Word# #)}
+                        s
+                        ipv of wild { (#,#) ds3 ds4 ->
+                 Data.ByteString.Internal.PS
+                   s
+                   (GHC.ForeignPtr.PlainForeignPtr ipv1)
+                   0
+                   (GHC.Prim.word2Int# ds4) } }) -}
+e49f8ed187af1811d18f9b4c46ca2be5
+  tests4 :: Board.Board
+  {- Unfolding: (TestingBoard.unsafeParseFEN TestingBoard.tests5) -}
+6ccd267a25ec997549ad499ee4fd5654
+  tests5 :: Data.ByteString.Internal.ByteString
+  {- Unfolding: (case GHC.Prim.newMutVar#
+                        @ GHC.ForeignPtr.Finalizers
+                        @ GHC.Prim.RealWorld
+                        GHC.ForeignPtr.NoFinalizers
+                        GHC.Prim.realWorld# of ds1 { (#,#) ipv ipv1 ->
+                 let {
+                   s :: GHC.Prim.Addr#
+                   = "rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1"#
+                 } in
+                 case {__pkg_ccall bytestring-0.10.6.0@bytes_6elQVSg5cWdFrvRnfxTUrH strlen GHC.Prim.Addr#
+                                                                                           -> GHC.Prim.State#
+                                                                                                GHC.Prim.RealWorld
+                                                                                           -> (# GHC.Prim.State#
+                                                                                                   GHC.Prim.RealWorld,
+                                                                                                 GHC.Prim.Word# #)}
+                        s
+                        ipv of wild { (#,#) ds3 ds4 ->
+                 Data.ByteString.Internal.PS
+                   s
+                   (GHC.ForeignPtr.PlainForeignPtr ipv1)
+                   0
+                   (GHC.Prim.word2Int# ds4) } }) -}
+551829e9a1df5c04e371f40c07053cbd
+  unsafeParseFEN ::
+    Data.ByteString.Internal.ByteString -> Board.Board
+  {- Arity: 1, Strictness: <L,1*U(U,U,U,U)>,
+     Unfolding: (\ x :: Data.ByteString.Internal.ByteString ->
+                 case FEN.$wa3
+                        @ FEN.FEN
+                        (Data.Attoparsec.ByteString.Buffer.buffer x)
+                          `cast`
+                        (Sub (Sym (Data.Attoparsec.Internal.Types.TFCo:R:StateByteString[0])))
+                        0
+                        Data.Attoparsec.Internal.Types.Complete
+                        (Data.Attoparsec.ByteString.Internal.failK @ FEN.FEN)
+                          `cast`
+                        (Sub (Sym (Data.Attoparsec.Internal.Types.TFCo:R:StateByteString[0]))
+                         ->_R <Data.Attoparsec.Internal.Types.Pos
+                               -> Data.Attoparsec.Internal.Types.More
+                               -> [GHC.Base.String]
+                               -> GHC.Base.String
+                               -> Data.Attoparsec.Internal.Types.IResult
+                                    Data.ByteString.Internal.ByteString FEN.FEN>_R)
+                        (Data.Attoparsec.ByteString.Internal.successK @ FEN.FEN)
+                          `cast`
+                        (Sub (Sym (Data.Attoparsec.Internal.Types.TFCo:R:StateByteString[0]))
+                         ->_R <Data.Attoparsec.Internal.Types.Pos
+                               -> Data.Attoparsec.Internal.Types.More
+                               -> FEN.FEN
+                               -> Data.Attoparsec.Internal.Types.IResult
+                                    Data.ByteString.Internal.ByteString FEN.FEN>_R) of wild {
+                   Data.Attoparsec.Internal.Types.Fail ds ds1 err
+                   -> case ds1 of wild1 {
+                        [] -> case TestingBoard.unsafeParseFEN2 ret_ty Board.Board of {}
+                        : ipv ipv1
+                        -> case TestingBoard.unsafeParseFEN2 ret_ty Board.Board of {} }
+                   Data.Attoparsec.Internal.Types.Partial ipv
+                   -> case TestingBoard.unsafeParseFEN1 ret_ty Board.Board of {}
+                   Data.Attoparsec.Internal.Types.Done ds a20
+                   -> Board.fromFEN a20 }) -}
+9296d7027ec5dc918018d35fc4bf65bd
+  unsafeParseFEN1 :: Data.Either.Either GHC.Base.String FEN.FEN
+  {- Strictness: b -}
+bdc118a53d29d46ff7b3398c874223a7
+  unsafeParseFEN2 :: GHC.Base.String -> Board.Board
+  {- Strictness: b -}
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: none
+require own pkg trusted: False
+

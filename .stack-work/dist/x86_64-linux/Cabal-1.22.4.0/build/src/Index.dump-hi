@@ -1,0 +1,317 @@
+
+==================== FINAL INTERFACE ====================
+2016-01-02 04:04:54.011629 UTC
+
+interface hches_KF6MDI5eODG4Q8cKhuw0mn:Index 7102
+  interface hash: 54595cb33e3db1e90e0f182ea3d0f9d2
+  ABI hash: 9a6c2fae8693bbf252fe29180f05c4cb
+  export-list hash: f5dacf2693e1be2d2c1d237e19d3ec25
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: 2bfdd69c509df0f94c327e5faec9ae27
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Index.flattenRF
+  Index.indexToDoc
+  Index.parseFileRank
+  Index.parseIndex
+  Index.unflattenRF
+  Index.File
+  Index.Index
+  Index.Rank
+module dependencies:
+package dependencies: ansi-terminal-0.6.2.3@ansit_KW0LUY2zB7JCYzE4ZYrwBg
+                      ansi-wl-pprint-0.6.7.3@ansiw_KPlSW7tbqXS51Lj59n3FC4
+                      array-0.5.1.0@array_E0sTtauuKsGDLZoT7lTbgZ
+                      attoparsec-0.13.0.1@attop_FtJZAZu3GDOJSwmSRnXnPH base-4.8.1.0
+                      binary-0.7.5.0@binar_IvYoLp9H6Xy3zEH13MmZwd
+                      bytestring-0.10.6.0@bytes_6elQVSg5cWdFrvRnfxTUrH
+                      containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN
+                      deepseq-1.4.1.1@deeps_LbCWUlehDDeLxurARKDH5o ghc-prim-0.4.0.0
+                      hashable-1.2.3.3@hasha_2GTZqecVp8NJZrNuKzGxfy integer-gmp-1.0.0.0
+                      primitive-0.6.1.0@primi_5Jnw7oEuYtM9dmKXelGXVb
+                      scientific-0.3.4.4@scien_03wvk1zJytY0wVzR42F1U4
+                      text-1.2.1.3@text_1l1AN4I48k37RaQ6fm6CEh
+                      transformers-0.4.2.0@trans_3eG64VdP2vzGjP6wJiCp5X
+                      vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF
+orphans: attoparsec-0.13.0.1@attop_FtJZAZu3GDOJSwmSRnXnPH:Data.Attoparsec.ByteString.Char8
+         base-4.8.1.0:GHC.Base base-4.8.1.0:GHC.Float
+         binary-0.7.5.0@binar_IvYoLp9H6Xy3zEH13MmZwd:Data.Binary.Generic
+         bytestring-0.10.6.0@bytes_6elQVSg5cWdFrvRnfxTUrH:Data.ByteString.Builder
+         hashable-1.2.3.3@hasha_2GTZqecVp8NJZrNuKzGxfy:Data.Hashable.Generic
+         text-1.2.1.3@text_1l1AN4I48k37RaQ6fm6CEh:Data.Text
+         text-1.2.1.3@text_1l1AN4I48k37RaQ6fm6CEh:Data.Text.Lazy
+         text-1.2.1.3@text_1l1AN4I48k37RaQ6fm6CEh:Data.Text.Show
+         transformers-0.4.2.0@trans_3eG64VdP2vzGjP6wJiCp5X:Control.Monad.Trans.Error
+         vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Fusion.Bundle
+family instance modules: attoparsec-0.13.0.1@attop_FtJZAZu3GDOJSwmSRnXnPH:Data.Attoparsec.Internal.Types
+                         base-4.8.1.0:Control.Applicative base-4.8.1.0:Data.Either
+                         base-4.8.1.0:Data.Functor.Identity base-4.8.1.0:Data.Monoid
+                         base-4.8.1.0:Data.Type.Equality base-4.8.1.0:Data.Void
+                         base-4.8.1.0:GHC.Exts base-4.8.1.0:GHC.Generics
+                         containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN:Data.IntMap.Base
+                         containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN:Data.IntSet.Base
+                         containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN:Data.Map.Base
+                         containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN:Data.Sequence
+                         containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN:Data.Set.Base
+                         primitive-0.6.1.0@primi_5Jnw7oEuYtM9dmKXelGXVb:Control.Monad.Primitive
+                         text-1.2.1.3@text_1l1AN4I48k37RaQ6fm6CEh:Data.Text
+                         text-1.2.1.3@text_1l1AN4I48k37RaQ6fm6CEh:Data.Text.Lazy
+                         vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector
+import  -/  ansi-wl-pprint-0.6.7.3@ansiw_KPlSW7tbqXS51Lj59n3FC4:Text.PrettyPrint.ANSI.Leijen 8c4176551c95005818f5e57d74e5ea69
+import  -/  attoparsec-0.13.0.1@attop_FtJZAZu3GDOJSwmSRnXnPH:Data.Attoparsec.ByteString.Char8 f21f91f244ddfffc85e371a46be7545b
+import  -/  attoparsec-0.13.0.1@attop_FtJZAZu3GDOJSwmSRnXnPH:Data.Attoparsec.ByteString.Internal 78d691ec8f4b47121e5aa69846971d69
+import  -/  base-4.8.1.0:Data.Bits 5341167fdd5958c2b3f0dac8924f1efd
+import  -/  base-4.8.1.0:Data.Functor 5c701b0af1708f0192a25dfe14ce6274
+import  -/  base-4.8.1.0:GHC.Base 1db77db5dae73d8c424c85b09fbadb89
+import  -/  base-4.8.1.0:GHC.Enum d0db4d619cd8916cc7a23444816222af
+import  -/  base-4.8.1.0:GHC.Num 9f42750c866f5832ca565146bd660c60
+import  -/  base-4.8.1.0:Prelude 518f762991bc287d78f21a73c974da1f
+import  -/  ghc-prim-0.4.0.0:GHC.Classes e1f4ff80f7b5262008a595d29986fb18
+e89a81fc57f436627c497eeaaaaee95e
+  $wa ::
+    (GHC.Types.Char -> GHC.Types.Char -> a)
+    -> forall r.
+       GHC.Prim.Addr#
+       -> GHC.ForeignPtr.ForeignPtrContents
+       -> GHC.Prim.Int#
+       -> GHC.Prim.Int#
+       -> GHC.Prim.Int#
+       -> GHC.Prim.Int#
+       -> GHC.Prim.Int#
+       -> Data.Attoparsec.Internal.Types.More
+       -> Data.Attoparsec.Internal.Types.Failure
+            Data.ByteString.Internal.ByteString
+            (Data.Attoparsec.Internal.Types.State
+               Data.ByteString.Internal.ByteString)
+            r
+       -> Data.Attoparsec.Internal.Types.Success
+            Data.ByteString.Internal.ByteString
+            (Data.Attoparsec.Internal.Types.State
+               Data.ByteString.Internal.ByteString)
+            a
+            r
+       -> Data.Attoparsec.Internal.Types.IResult
+            Data.ByteString.Internal.ByteString r
+  {- Arity: 11,
+     Strictness: <L,C(U)><L,U><L,U><L,U><L,U><L,U><L,U><L,U><L,U><L,C(C1(C1(C1(C1(U)))))><L,C(C1(C1(C1(U))))>,
+     Inline: [0] -}
+5470dba26af62e51a68cb1207c500a23
+  $windexToDoc ::
+    Index.Index
+    -> (# Text.PrettyPrint.ANSI.Leijen.Doc,
+          Text.PrettyPrint.ANSI.Leijen.Doc #)
+  {- Arity: 1, Strictness: <L,U(U)>, Inline: [0],
+     Unfolding: (\ w :: Index.Index ->
+                 (# case w of wild { GHC.Types.I# x# ->
+                    let {
+                      i# :: GHC.Prim.Int# = GHC.Prim.+# (GHC.Prim.andI# x# 7) 97
+                    } in
+                    case GHC.Prim.tagToEnum#
+                           @ GHC.Types.Bool
+                           (GHC.Prim.leWord#
+                              (GHC.Prim.int2Word# i#)
+                              __word 1114111) of wild1 {
+                      GHC.Types.False
+                      -> case GHC.Char.chr2 i#
+                         ret_ty Text.PrettyPrint.ANSI.Leijen.Doc
+                         of {}
+                      GHC.Types.True
+                      -> case GHC.Prim.chr# i# of ds2 {
+                           DEFAULT -> Text.PrettyPrint.ANSI.Leijen.Char (GHC.Types.C# ds2)
+                           '\n' -> Text.PrettyPrint.ANSI.Leijen.line } } },
+                    case w of ww { GHC.Types.I# ww1 ->
+                    let {
+                      i# :: GHC.Prim.Int#
+                      = GHC.Prim.+# (GHC.Prim.uncheckedIShiftRA# ww1 3) 49
+                    } in
+                    case GHC.Prim.tagToEnum#
+                           @ GHC.Types.Bool
+                           (GHC.Prim.leWord#
+                              (GHC.Prim.int2Word# i#)
+                              __word 1114111) of wild1 {
+                      GHC.Types.False
+                      -> case GHC.Char.chr2 i#
+                         ret_ty Text.PrettyPrint.ANSI.Leijen.Doc
+                         of {}
+                      GHC.Types.True
+                      -> case GHC.Prim.chr# i# of ds2 {
+                           DEFAULT -> Text.PrettyPrint.ANSI.Leijen.Char (GHC.Types.C# ds2)
+                           '\n' -> Text.PrettyPrint.ANSI.Leijen.line } } } #)) -}
+61f12b71f52ebe1f958e6222364435f5
+  type File = GHC.Types.Int
+117acc87da1ca0c97ed41ed158620142
+  type Index = GHC.Types.Int
+049d301d2dfe22d82668017b9d24c24d
+  type Rank = GHC.Types.Int
+74bf6ca4897fb2d98c985a1d35a6880e
+  flattenRF :: Index.Rank -> Index.File -> Index.Index
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U(U)><S,1*U(U)>m,
+     Unfolding: InlineRule (2, True, False)
+                (\ r :: Index.Rank f :: Index.File ->
+                 case r of wild { GHC.Types.I# x ->
+                 case f of wild1 { GHC.Types.I# y ->
+                 GHC.Types.I# (GHC.Prim.+# (GHC.Prim.*# x 8) y) } }) -}
+95b611e988f9f152a46f50871a4f0423
+  indexToDoc :: Index.Index -> Text.PrettyPrint.ANSI.Leijen.Doc
+  {- Arity: 1, Strictness: <L,U(U)>m7, Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ w :: Index.Index ->
+                 case Index.$windexToDoc w of ww { (#,#) ww1 ww2 ->
+                 Text.PrettyPrint.ANSI.Leijen.Cat ww1 ww2 }) -}
+2d5e965a256a1e8e10bfec9ff4caf7bd
+  parseFileRank ::
+    (GHC.Types.Char -> GHC.Types.Char -> a)
+    -> Data.Attoparsec.ByteString.Internal.Parser a
+  {- Arity: 6,
+     Strictness: <L,C(U)><S,1*U(U,U,U,U,U,U)><S,1*U(U)><L,U><L,C(C1(C1(C1(C1(U)))))><L,C(C1(C1(C1(U))))>,
+     Unfolding: InlineRule (0, True, True)
+                Index.parseFileRank1
+                  `cast`
+                (forall a.
+                 <GHC.Types.Char -> GHC.Types.Char -> a>_R
+                 ->_R Sym (Data.Attoparsec.Internal.Types.NTCo:Parser[0]
+                               <Data.ByteString.Internal.ByteString>_N <a>_R)) -}
+90fc42d59912e979a5217a582be27632
+  parseFileRank1 ::
+    (GHC.Types.Char -> GHC.Types.Char -> a)
+    -> forall r.
+       Data.Attoparsec.Internal.Types.State
+         Data.ByteString.Internal.ByteString
+       -> Data.Attoparsec.Internal.Types.Pos
+       -> Data.Attoparsec.Internal.Types.More
+       -> Data.Attoparsec.Internal.Types.Failure
+            Data.ByteString.Internal.ByteString
+            (Data.Attoparsec.Internal.Types.State
+               Data.ByteString.Internal.ByteString)
+            r
+       -> Data.Attoparsec.Internal.Types.Success
+            Data.ByteString.Internal.ByteString
+            (Data.Attoparsec.Internal.Types.State
+               Data.ByteString.Internal.ByteString)
+            a
+            r
+       -> Data.Attoparsec.Internal.Types.IResult
+            Data.ByteString.Internal.ByteString r
+  {- Arity: 6,
+     Strictness: <L,C(U)><S,1*U(U,U,U,U,U,U)><S,1*U(U)><L,U><L,C(C1(C1(C1(C1(U)))))><L,C(C1(C1(C1(U))))>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (6, True, False)
+                (\ @ a
+                   w :: GHC.Types.Char -> GHC.Types.Char -> a
+                   @ r
+                   w1 :: Data.Attoparsec.Internal.Types.State
+                           Data.ByteString.Internal.ByteString
+                   w2 :: Data.Attoparsec.Internal.Types.Pos
+                   w3 :: Data.Attoparsec.Internal.Types.More
+                   w4 :: Data.Attoparsec.Internal.Types.Failure
+                           Data.ByteString.Internal.ByteString
+                           (Data.Attoparsec.Internal.Types.State
+                              Data.ByteString.Internal.ByteString)
+                           r
+                   w5 :: Data.Attoparsec.Internal.Types.Success
+                           Data.ByteString.Internal.ByteString
+                           (Data.Attoparsec.Internal.Types.State
+                              Data.ByteString.Internal.ByteString)
+                           a
+                           r ->
+                 case w1
+                        `cast`
+                      (Sub (Data.Attoparsec.Internal.Types.TFCo:R:StateByteString[0])) of ww { Data.Attoparsec.ByteString.Buffer.Buf ww1 ww2 ww3 ww4 ww5 ww6 ->
+                 case w2
+                        `cast`
+                      (Data.Attoparsec.Internal.Types.NTCo:Pos[0]) of ww7 { GHC.Types.I# ww8 ->
+                 Index.$wa @ a w @ r ww1 ww2 ww3 ww4 ww5 ww6 ww8 w3 w4 w5 } }) -}
+3519c28aff8e1a006084d6d8d2dc54d9
+  parseIndex ::
+    Data.Attoparsec.ByteString.Internal.Parser Index.Index
+  {- Arity: 5,
+     Unfolding: InlineRule (0, True, True)
+                Index.parseIndex1
+                  `cast`
+                (Sym (Data.Attoparsec.Internal.Types.NTCo:Parser[0]
+                          <Data.ByteString.Internal.ByteString>_N <Index.Index>_R)) -}
+8eb6adcaf88184d7df5f85228ebfddaf
+  parseIndex1 ::
+    Data.Attoparsec.Internal.Types.State
+      Data.ByteString.Internal.ByteString
+    -> Data.Attoparsec.Internal.Types.Pos
+    -> Data.Attoparsec.Internal.Types.More
+    -> Data.Attoparsec.Internal.Types.Failure
+         Data.ByteString.Internal.ByteString
+         (Data.Attoparsec.Internal.Types.State
+            Data.ByteString.Internal.ByteString)
+         r
+    -> Data.Attoparsec.Internal.Types.Success
+         Data.ByteString.Internal.ByteString
+         (Data.Attoparsec.Internal.Types.State
+            Data.ByteString.Internal.ByteString)
+         Index.Index
+         r
+    -> Data.Attoparsec.Internal.Types.IResult
+         Data.ByteString.Internal.ByteString r
+  {- Arity: 5,
+     Unfolding: (\ @ r
+                   w :: Data.Attoparsec.Internal.Types.State
+                          Data.ByteString.Internal.ByteString
+                   w1 :: Data.Attoparsec.Internal.Types.Pos
+                   w2 :: Data.Attoparsec.Internal.Types.More
+                   w3 :: Data.Attoparsec.Internal.Types.Failure
+                           Data.ByteString.Internal.ByteString
+                           (Data.Attoparsec.Internal.Types.State
+                              Data.ByteString.Internal.ByteString)
+                           r
+                   w4 :: Data.Attoparsec.Internal.Types.Success
+                           Data.ByteString.Internal.ByteString
+                           (Data.Attoparsec.Internal.Types.State
+                              Data.ByteString.Internal.ByteString)
+                           Index.Index
+                           r ->
+                 case w `cast`
+                      (Sub (Data.Attoparsec.Internal.Types.TFCo:R:StateByteString[0])) of ww { Data.Attoparsec.ByteString.Buffer.Buf ww1 ww2 ww3 ww4 ww5 ww6 ->
+                 case w1
+                        `cast`
+                      (Data.Attoparsec.Internal.Types.NTCo:Pos[0]) of ww7 { GHC.Types.I# ww8 ->
+                 Index.$wa
+                   @ Index.Index
+                   Index.parseIndex2
+                   @ r
+                   ww1
+                   ww2
+                   ww3
+                   ww4
+                   ww5
+                   ww6
+                   ww8
+                   w2
+                   w3
+                   w4 } }) -}
+f43126f1c911a8bc2d01fcc538007794
+  parseIndex2 :: GHC.Types.Char -> GHC.Types.Char -> Index.Index
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U(U)><S,1*U(U)>m,
+     Unfolding: InlineRule (2, True, False)
+                (\ f :: GHC.Types.Char r :: GHC.Types.Char ->
+                 case r of wild { GHC.Types.C# c# ->
+                 case f of wild1 { GHC.Types.C# c#1 ->
+                 GHC.Types.I#
+                   (GHC.Prim.+#
+                      (GHC.Prim.*# (GHC.Prim.-# (GHC.Prim.ord# c#) 49) 8)
+                      (GHC.Prim.-# (GHC.Prim.ord# c#1) 97)) } }) -}
+4b4d33634ee0a5e605467c17fec1c5c8
+  unflattenRF :: Index.Index -> (Index.Rank, Index.File)
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U(U)>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ i :: Index.Index ->
+                 (case i of ww { GHC.Types.I# ww1 ->
+                  GHC.Types.I# (GHC.Prim.uncheckedIShiftRA# ww1 3) },
+                  case i of wild { GHC.Types.I# x# ->
+                  GHC.Types.I# (GHC.Prim.andI# x# 7) })) -}
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: none
+require own pkg trusted: False
+

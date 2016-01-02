@@ -1,0 +1,187 @@
+
+==================== FINAL INTERFACE ====================
+2016-01-02 04:04:54.812585 UTC
+
+interface hches_KF6MDI5eODG4Q8cKhuw0mn:MoveTables 7102
+  interface hash: 8be6b593ea54efa1abd4f772c30d32ee
+  ABI hash: a8d47fe9d53fdd908cb4f3a3c4e30e25
+  export-list hash: 2900eb61b485134c2d5e467d6886e36a
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: 2bfdd69c509df0f94c327e5faec9ae27
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  MoveTables.knightAttackTable
+  MoveTables.pawnAttackB
+  MoveTables.pawnAttackW
+  MoveTables.Attacks
+module dependencies:
+package dependencies: array-0.5.1.0@array_E0sTtauuKsGDLZoT7lTbgZ
+                      base-4.8.1.0 deepseq-1.4.1.1@deeps_LbCWUlehDDeLxurARKDH5o
+                      ghc-prim-0.4.0.0 integer-gmp-1.0.0.0
+                      primitive-0.6.1.0@primi_5Jnw7oEuYtM9dmKXelGXVb
+                      transformers-0.4.2.0@trans_3eG64VdP2vzGjP6wJiCp5X
+                      vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF
+orphans: base-4.8.1.0:GHC.Base base-4.8.1.0:GHC.Float
+         transformers-0.4.2.0@trans_3eG64VdP2vzGjP6wJiCp5X:Control.Monad.Trans.Error
+         vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Fusion.Bundle
+         vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Unboxed
+family instance modules: base-4.8.1.0:Control.Applicative
+                         base-4.8.1.0:Data.Either base-4.8.1.0:Data.Functor.Identity
+                         base-4.8.1.0:Data.Monoid base-4.8.1.0:Data.Type.Equality
+                         base-4.8.1.0:Data.Void base-4.8.1.0:GHC.Exts
+                         base-4.8.1.0:GHC.Generics
+                         primitive-0.6.1.0@primi_5Jnw7oEuYtM9dmKXelGXVb:Control.Monad.Primitive
+                         vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Primitive
+                         vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Unboxed
+                         vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Unboxed.Base
+import  -/  base-4.8.1.0:Data.Bits 5341167fdd5958c2b3f0dac8924f1efd
+import  -/  base-4.8.1.0:Data.Word 448c480b98a0c18988a37db5ab829b22
+import  -/  base-4.8.1.0:GHC.Word ef6286c279d61931eb675109b4b93579
+import  -/  base-4.8.1.0:Prelude 518f762991bc287d78f21a73c974da1f
+import  -/  vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Unboxed 8bd91cd1a3cd2cbd12faec978422ccd8
+import  -/  vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Unboxed.Base 0761e27d6792efb778c5ac79292248a5
+706c359707103ed0235e213b741c9d96
+  type Attacks = Data.Vector.Unboxed.Base.Vector GHC.Word.Word64
+3b5230c14cccfd94940a1a9a7a7bd6b4
+  knightAttackTable :: MoveTables.Attacks
+7b9973625ad280319149267fee51dd2d
+  pawnAttackB :: MoveTables.Attacks
+  {- Unfolding: (GHC.ST.runSTRep
+                   @ (Data.Vector.Unboxed.Base.Vector GHC.Word.Word64)
+                   MoveTables.pawnAttackB1) -}
+71fd7c14ec312f41682b7a67bc22dde1
+  pawnAttackB1 ::
+    GHC.Prim.State# s
+    -> (# GHC.Prim.State# s,
+          Data.Vector.Unboxed.Base.Vector GHC.Word.Word64 #)
+  {- Arity: 1,
+     Unfolding: (\ @ s s1 :: GHC.Prim.State# s[OneShot] ->
+                 case GHC.Classes.divInt# 9223372036854775807 8 of ww4 { DEFAULT ->
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.># 64 ww4) of wild3 {
+                   GHC.Types.False
+                   -> case GHC.Prim.newByteArray#
+                             @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s))
+                             512
+                             s1
+                               `cast`
+                             (GHC.Prim.State#
+                                (Sym (Control.Monad.Primitive.TFCo:R:PrimStateST[0]
+                                          <s>_N)))_R of ds1 { (#,#) ipv ipv1 ->
+                      letrec {
+                        $wa :: GHC.Types.SPEC
+                               -> GHC.Prim.Int#
+                               -> GHC.Types.Bool
+                               -> GHC.Prim.State# s
+                               -> (# GHC.Prim.State# s, GHC.Types.Int #)
+                          {- Arity: 4, Strictness: <S,1*U><L,U><S,1*U><L,U>, Inline: [0] -}
+                        = \ w :: GHC.Types.SPEC
+                            ww :: GHC.Prim.Int#
+                            w1 :: GHC.Types.Bool
+                            w2 :: GHC.Prim.State# s[OneShot] ->
+                          case w of ds5 { DEFAULT ->
+                          case w1 of wild {
+                            GHC.Types.False -> (# w2, GHC.Types.I# ww #)
+                            GHC.Types.True
+                            -> case {__pkg_ccall primitive-0.6.1.0@primi_5Jnw7oEuYtM9dmKXelGXVb hsprimitive_memset_Word64 forall s.
+                                                                                                                          GHC.Prim.MutableByteArray#
+                                                                                                                            s
+                                                                                                                          -> GHC.Prim.Int#
+                                                                                                                          -> GHC.Prim.Word#
+                                                                                                                          -> GHC.Prim.Word#
+                                                                                                                          -> GHC.Prim.State#
+                                                                                                                               GHC.Prim.RealWorld
+                                                                                                                          -> (# GHC.Prim.State#
+                                                                                                                                  GHC.Prim.RealWorld #)}
+                                      @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s))
+                                      ipv1
+                                      ww
+                                      __word 64
+                                      __word 0
+                                      w2
+                                        `cast`
+                                      (GHC.Prim.State#
+                                         (Trans
+                                              (Sym (Control.Monad.Primitive.TFCo:R:PrimStateST[0]
+                                                        <s>_N))
+                                              (UnivCo mkUnsafeCo nominal (Control.Monad.Primitive.PrimState
+                                                                            (GHC.ST.ST
+                                                                               s)) GHC.Prim.RealWorld)))_R of wild1 { (##) ds8 ->
+                               $wa
+                                 GHC.Types.SPEC
+                                 (GHC.Prim.+# ww 64)
+                                 GHC.Types.False
+                                 ds8
+                                   `cast`
+                                 (GHC.Prim.State#
+                                    (Trans
+                                         (UnivCo mkUnsafeCo nominal GHC.Prim.RealWorld (Control.Monad.Primitive.PrimState
+                                                                                          (GHC.ST.ST
+                                                                                             s)))
+                                         (Control.Monad.Primitive.TFCo:R:PrimStateST[0]
+                                              <s>_N)))_R } } }
+                      } in
+                      case $wa
+                             GHC.Types.SPEC
+                             0
+                             GHC.Types.True
+                             ipv
+                               `cast`
+                             (GHC.Prim.State#
+                                (Control.Monad.Primitive.TFCo:R:PrimStateST[0]
+                                     <s>_N))_R of ds2 { (#,#) ipv6 ipv7 ->
+                      case ipv7 of dt3 { GHC.Types.I# dt4 ->
+                      case GHC.Prim.unsafeFreezeByteArray#
+                             @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s))
+                             ipv1
+                             ipv6
+                               `cast`
+                             (GHC.Prim.State#
+                                (Sym (Control.Monad.Primitive.TFCo:R:PrimStateST[0]
+                                          <s>_N)))_R of ds4 { (#,#) ipv2 ipv3 ->
+                      (# ipv2
+                           `cast`
+                         (GHC.Prim.State#
+                            (Control.Monad.Primitive.TFCo:R:PrimStateST[0] <s>_N))_R,
+                         (Data.Vector.Primitive.Vector @ GHC.Word.Word64 0 dt4 ipv3)
+                           `cast`
+                         (Trans
+                              (Sym (Data.Vector.Unboxed.Base.NTCo:R:VectorWord64[0]))
+                              (Sub (Sym (Data.Vector.Unboxed.Base.TFCo:R:VectorWord64[0])))) #) } } } }
+                   GHC.Types.True
+                   -> case GHC.Err.error
+                             @ (GHC.ST.ST
+                                  s
+                                  (Data.Vector.Primitive.Mutable.MVector
+                                     (Control.Monad.Primitive.PrimState (GHC.ST.ST s))
+                                     GHC.Word.Word64))
+                             MoveTables.pawnAttackB2
+                      ret_ty (# GHC.Prim.State# s,
+                                Data.Vector.Unboxed.Base.Vector GHC.Word.Word64 #)
+                      of {} } }) -}
+dc81d761fcc34f53a24c028a9ecef8a9
+  pawnAttackB2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackAppendCString#
+                   "Primitive.basicUnsafeNew: length to large: "#
+                   MoveTables.pawnAttackB3) -}
+19350cfecdca7964d735a6d7d5f6b85f
+  pawnAttackB3 :: [GHC.Types.Char]
+  {- Unfolding: (case GHC.Show.$wshowSignedInt
+                        0
+                        64
+                        (GHC.Types.[] @ GHC.Types.Char) of ww4 { (#,#) ww5 ww6 ->
+                 GHC.Types.: @ GHC.Types.Char ww5 ww6 }) -}
+ab29e2774ced597fc7bac674779c0056
+  pawnAttackW :: MoveTables.Attacks
+  {- Unfolding: (MoveTables.pawnAttackB) -}
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: none
+require own pkg trusted: False
+

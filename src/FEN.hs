@@ -1,6 +1,8 @@
+{-# LANGUAGE PatternSynonyms #-}
 module FEN where 
 
 import Prelude hiding (takeWhile,take)
+import qualified Prelude as P
 
 import qualified Data.Char as C
 import Data.Attoparsec.ByteString.Char8 hiding (string)
@@ -12,12 +14,8 @@ import BitBoard
 import Data.Bits
 import Data.Word
 
-import MailBox
-import qualified Data.Vector.Unboxed as U
-
+import Index 
 import Utils 
-
-type Turn = Bool --Should this be a Word8 so it can be unpacked?
 
 data Castling = Castling {
         kingSideW  :: !Bool,
@@ -33,12 +31,16 @@ castlingRightsToDoc (Castling ksw qsw ksb qsb) = "Castling Rights: " <> str
               boolToChar c True  = [c]
               boolToChar _ False = []
 
+newtype Turn = Turn Word8 
+
+pattern Black = Turn 0
+pattern White = Turn 1
+
 type HalfMoveClock = Int
 type FullMoveClock = Int
 
 data FEN = FEN {
         bitBoard       :: !BitBoard,
-        mailBox        :: !MailBox,
         turn           :: !Turn,
         castlingRights :: !Castling,
         enPassant      :: !(Maybe Index),
@@ -46,13 +48,18 @@ data FEN = FEN {
         fullMoveClock  :: {-# UNPACK #-} !FullMoveClock } 
 
 fenToDoc :: FEN -> Doc
-fenToDoc (FEN _ m t crs ep hc fc) = vsep fen 
-        where fen = [board, turnToDoc t,castlingRightsToDoc crs, 
-                     enPassantToDoc ep,"Half Move Clock: " <> int hc,
+fenToDoc (FEN bb t crs ep hc fc) = vsep fen 
+        where fen = [board, 
+                     "  ABCDEFGH",
+                     turnToDoc t,
+                     castlingRightsToDoc crs, 
+                     enPassantToDoc ep,
+                     "Half Move Clock: " <> int hc,
                      "Full Move Clock: " <> int fc]
-              board = vsep $ mailBoxToDoc m 
-              turnToDoc False = "Turn: Black"
-              turnToDoc True  = "Turn: White"
+              board = vsep $ zipWith (\r b -> T.char r <> T.space <> b) 
+                        "87654321" (bitBoardToDoc bb) 
+              turnToDoc Black = "Turn: Black"
+              turnToDoc White = "Turn: White"
               enPassantToDoc = maybe "En passant square: -" 
                                      (\i -> "En passant square: " <> indexToDoc i)
 
@@ -60,33 +67,40 @@ instance Show FEN where
         showsPrec _ = displayS . renderPretty 0.4 80 . fenToDoc 
 
 toBitBoard :: String -> BitBoard 
-toBitBoard = snd . foldr (\c (i,b) -> (i+1,charUpdate i b c)) (0,emptyBoard)
-        where charUpdate i (BitBoard bc wc p r n b q k) = \case
-                'p' -> BitBoard (setBit bc i) wc (setBit p i) r n b q k 
-                'r' -> BitBoard (setBit bc i) wc p (setBit r i) n b q k
-                'n' -> BitBoard (setBit bc i) wc p r (setBit n i) b q k
-                'b' -> BitBoard (setBit bc i) wc p r n (setBit b i) q k
-                'q' -> BitBoard (setBit bc i) wc p r n b (setBit q i) k
-                'k' -> BitBoard (setBit bc i) wc p r n b q (setBit k i)
-                'P' -> BitBoard bc (setBit wc i) (setBit p i) r n b q k
-                'R' -> BitBoard bc (setBit wc i) p (setBit r i) n b q k
-                'N' -> BitBoard bc (setBit wc i) p r (setBit n i) b q k
-                'B' -> BitBoard bc (setBit wc i) p r n (setBit b i) q k
-                'Q' -> BitBoard bc (setBit wc i) p r n b (setBit q i) k
-                'K' -> BitBoard bc (setBit wc i) p r n b q (setBit k i) 
-                ' ' -> BitBoard bc wc p r n b q k
-
-toMailBox :: String -> MailBox
-toMailBox = U.map fromLetter . U.reverse . U.fromList 
+toBitBoard = merge . snd . foldr (\c (i,b) -> (i+1,charUpdate i b c)) (0,emptyBoard)  
+        where merge b@(BitBoard _ (AllColors bp wp ap) (AllColors br wr ar) (AllColors bn wn an)
+                                  (AllColors bb wb ab) (AllColors bq wq aq) (AllColors bk wk ak)) =
+                        b { pieces = AllColors (bp .|. br .|. bn .|. bb .|. bq .|. bk)
+                                               (wp .|. wr .|. wn .|. wb .|. wq .|. wk)
+                                               (ap .|. ar .|. an .|. ab .|. aq .|. ak) }
+              updatePiece False i (AllColors b w a) = AllColors (setBit b i) w (setBit a i)
+              updatePiece True  i (AllColors b w a) = AllColors b (setBit w i) (setBit a i)
+              charUpdate i board = \case
+                'p' -> board { pawns   = updatePiece False i (pawns board) } 
+                'r' -> board { rooks   = updatePiece False i (rooks board) }
+                'n' -> board { knights = updatePiece False i (knights board) }
+                'b' -> board { bishops = updatePiece False i (bishops board) }
+                'q' -> board { queens  = updatePiece False i (queens board) }
+                'k' -> board { kings   = updatePiece False i (kings board) }
+                'P' -> board { pawns   = updatePiece True  i (pawns board) }
+                'R' -> board { rooks   = updatePiece True  i (rooks board) }
+                'N' -> board { knights = updatePiece True  i (knights board) }
+                'B' -> board { bishops = updatePiece True  i (bishops board) }
+                'Q' -> board { queens  = updatePiece True  i (queens board) }
+                'K' -> board { kings   = updatePiece True  i (kings board) }
+                _   -> board 
 
 simplifyFENBoard :: Parser String 
-simplifyFENBoard = concat <$> manyTill' (pieces <|> blank <|> slash) (char ' ')
-        where pieces = (:[]) <$> satisfy (\c -> ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z')) 
+simplifyFENBoard = merge <$> manyTill' (pieces <|> blank <|> slash) (char ' ')
+        where merge = concat . fmap reverse . splitEvery8 0 . concat 
+              splitEvery8 8 _ = []
+              splitEvery8 n xs = P.take 8 xs : splitEvery8 (n+1) (P.drop 8 xs)
+              pieces = (:[]) <$> satisfy (\c -> ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z')) 
               blank = (flip replicate ' ' . subtract 48 . fromEnum) <$> satisfy isDigit
               slash = [] <$ char '/'
 
 parseTurn :: Parser Turn
-parseTurn = True <$ char 'w' <|> False <$ char 'b' <?> "no turn parse" 
+parseTurn = White <$ char 'w' <|> Black <$ char 'b' <?> "no turn parse" 
 
 parseCastling = dash <|> noDash <?> "no castling rights parse"
         where noDash = Castling <$> charToBool 'K' <*> charToBool 'Q' 
@@ -97,11 +111,7 @@ charToBool :: Char -> Parser Bool
 charToBool c = True <$ char c <|> pure False 
 
 parseEnPassant :: Parser (Maybe Index)
-parseEnPassant = Nothing <$ char '-' <|> Just <$> parseEPnoDash  <?> "no enpassant parse"
-        where parseEPnoDash = combineFR <$> satisfy (\c -> 'a' <= c && c <= 'h') <*>
-                                            satisfy (\c -> '1' <= c && c <= '8')
-              combineFR :: Char -> Char -> Index
-              combineFR f r = flattenRF (fromEnum r - 49) (fromEnum f - 97)
+parseEnPassant = Nothing <$ char '-' <|> Just <$> parseIndex <?> "no enpassant parse"
 
 parseFEN :: Parser FEN
 parseFEN = do
@@ -115,10 +125,12 @@ parseFEN = do
         halfMoveClock <- decimal
         char ' '
         fullMoveClock <- decimal
-        return (FEN (toBitBoard board) (toMailBox board) turn 
-                castlingRights enPassant halfMoveClock fullMoveClock)
+        return (FEN (toBitBoard board) turn castlingRights 
+                enPassant halfMoveClock fullMoveClock)
 
 startingFEN :: FEN 
 startingFEN = either (error "No startingFEN parse, this is impossible.") id $
                 parseOnly parseFEN "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
 
+testingFEN = either (error "fuck you") id $
+                parseOnly parseFEN "8/ppp1pppp/8/3p4/3P4/8/P7/8 w KQkq - 0 1"

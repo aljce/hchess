@@ -1,56 +1,864 @@
 
 ==================== FINAL INTERFACE ====================
-2015-12-22 19:40:22.044441 UTC
+2016-01-02 04:05:01.356117 UTC
 
 interface hches_KF6MDI5eODG4Q8cKhuw0mn:MoveGeneration 7102
-  interface hash: aba4fcfb52c05c7a44fb26c04cecedca
-  ABI hash: 30eed33bc0f9047945cb60803d656073
-  export-list hash: 8d8711719cdff22e4cc65ab1665dd501
-  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
-  flag hash: 60b0c5c5667f32509f7228bb0f134659
+  interface hash: d356e8023ffea54767c2d425e4dd60f9
+  ABI hash: c45d08ffa4f9871946790684ac9bf0d2
+  export-list hash: 837e31329c5bdedd6b39dc02ce71e154
+  orphan hash: f58dd6c8f52bd1555dd65782da915e04
+  flag hash: 2bfdd69c509df0f94c327e5faec9ae27
   sig of: Nothing
   used TH splices: False
   where
 exports:
+  MoveGeneration.bishopMovement
+  MoveGeneration.expandBitBoard
+  MoveGeneration.gEnPassant
+  MoveGeneration.gPawnPromotion
+  MoveGeneration.gPawnPushAndAttack
+  MoveGeneration.genPromotions
   MoveGeneration.generateMoves
-  MoveGeneration.Move{MoveGeneration.Move}
-module dependencies: BitBoard
-package dependencies: array-0.5.1.0@array_E0sTtauuKsGDLZoT7lTbgZ
-                      base-4.8.1.0 containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN
+  MoveGeneration.kingMovement
+  MoveGeneration.knightMovement
+  MoveGeneration.pawnMovement
+  MoveGeneration.populateVector
+  MoveGeneration.queenMovement
+  MoveGeneration.rookMovement
+  MoveGeneration.serializeBitBoard
+module dependencies: BitBoard Board FEN Index Masks MoveTables
+                     MoveTypes Utils
+package dependencies: ansi-terminal-0.6.2.3@ansit_KW0LUY2zB7JCYzE4ZYrwBg
+                      ansi-wl-pprint-0.6.7.3@ansiw_KPlSW7tbqXS51Lj59n3FC4
+                      array-0.5.1.0@array_E0sTtauuKsGDLZoT7lTbgZ
+                      attoparsec-0.13.0.1@attop_FtJZAZu3GDOJSwmSRnXnPH base-4.8.1.0
+                      binary-0.7.5.0@binar_IvYoLp9H6Xy3zEH13MmZwd
+                      bytestring-0.10.6.0@bytes_6elQVSg5cWdFrvRnfxTUrH
+                      containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN
                       deepseq-1.4.1.1@deeps_LbCWUlehDDeLxurARKDH5o ghc-prim-0.4.0.0
-                      integer-gmp-1.0.0.0 primitive-0.6.1.0@primi_5Jnw7oEuYtM9dmKXelGXVb
+                      hashable-1.2.3.3@hasha_2GTZqecVp8NJZrNuKzGxfy integer-gmp-1.0.0.0
+                      pretty-1.1.2.0@prett_7UQTOB05U7lIYPkFOVraeR
+                      primitive-0.6.1.0@primi_5Jnw7oEuYtM9dmKXelGXVb
+                      scientific-0.3.4.4@scien_03wvk1zJytY0wVzR42F1U4
+                      template-haskell-2.10.0.0 text-1.2.1.3@text_1l1AN4I48k37RaQ6fm6CEh
                       transformers-0.4.2.0@trans_3eG64VdP2vzGjP6wJiCp5X
+                      vector-th-unbox-0.2.1.3@vecto_7UKBkJbwJOEKV3lSwERBE0
                       vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF
-orphans: base-4.8.1.0:GHC.Base base-4.8.1.0:GHC.Float
+orphans: attoparsec-0.13.0.1@attop_FtJZAZu3GDOJSwmSRnXnPH:Data.Attoparsec.ByteString.Char8
+         base-4.8.1.0:GHC.Base base-4.8.1.0:GHC.Float
+         binary-0.7.5.0@binar_IvYoLp9H6Xy3zEH13MmZwd:Data.Binary.Generic
+         bytestring-0.10.6.0@bytes_6elQVSg5cWdFrvRnfxTUrH:Data.ByteString.Builder
+         hashable-1.2.3.3@hasha_2GTZqecVp8NJZrNuKzGxfy:Data.Hashable.Generic
+         text-1.2.1.3@text_1l1AN4I48k37RaQ6fm6CEh:Data.Text
+         text-1.2.1.3@text_1l1AN4I48k37RaQ6fm6CEh:Data.Text.Lazy
+         text-1.2.1.3@text_1l1AN4I48k37RaQ6fm6CEh:Data.Text.Show
          transformers-0.4.2.0@trans_3eG64VdP2vzGjP6wJiCp5X:Control.Monad.Trans.Error
          vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Fusion.Bundle
          vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Unboxed
-family instance modules: base-4.8.1.0:Control.Applicative
-                         base-4.8.1.0:Data.Either base-4.8.1.0:Data.Functor.Identity
-                         base-4.8.1.0:Data.Monoid base-4.8.1.0:Data.Type.Equality
-                         base-4.8.1.0:Data.Void base-4.8.1.0:GHC.Exts
-                         base-4.8.1.0:GHC.Generics
+family instance modules: attoparsec-0.13.0.1@attop_FtJZAZu3GDOJSwmSRnXnPH:Data.Attoparsec.Internal.Types
+                         base-4.8.1.0:Control.Applicative base-4.8.1.0:Data.Either
+                         base-4.8.1.0:Data.Functor.Identity base-4.8.1.0:Data.Monoid
+                         base-4.8.1.0:Data.Type.Equality base-4.8.1.0:Data.Void
+                         base-4.8.1.0:GHC.Exts base-4.8.1.0:GHC.Generics
                          containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN:Data.IntMap.Base
                          containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN:Data.IntSet.Base
+                         containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN:Data.Map.Base
+                         containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN:Data.Sequence
+                         containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN:Data.Set.Base
+                         hches_KF6MDI5eODG4Q8cKhuw0mn:MoveTypes
+                         pretty-1.1.2.0@prett_7UQTOB05U7lIYPkFOVraeR:Text.PrettyPrint.HughesPJ
                          primitive-0.6.1.0@primi_5Jnw7oEuYtM9dmKXelGXVb:Control.Monad.Primitive
+                         template-haskell-2.10.0.0:Language.Haskell.TH.Syntax
+                         text-1.2.1.3@text_1l1AN4I48k37RaQ6fm6CEh:Data.Text
+                         text-1.2.1.3@text_1l1AN4I48k37RaQ6fm6CEh:Data.Text.Lazy
+                         vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector
                          vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Primitive
                          vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Unboxed
                          vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Unboxed.Base
+import  -/  base-4.8.1.0:Control.Monad.ST 8106edce31e42c95a9fdb099a8903634
 import  -/  base-4.8.1.0:Data.Bits 5341167fdd5958c2b3f0dac8924f1efd
 import  -/  base-4.8.1.0:Data.Word 448c480b98a0c18988a37db5ab829b22
+import  -/  base-4.8.1.0:GHC.Base 1db77db5dae73d8c424c85b09fbadb89
+import  -/  base-4.8.1.0:GHC.Num 9f42750c866f5832ca565146bd660c60
 import  -/  base-4.8.1.0:GHC.Word ef6286c279d61931eb675109b4b93579
 import  -/  base-4.8.1.0:Prelude 518f762991bc287d78f21a73c974da1f
-import  -/  BitBoard 7e4576e6f7d0be2ca1ef0ad8232e27f7
-  exports: bdccb0548ea28b40cb7b32788872b4c3
+import  -/  ghc-prim-0.4.0.0:GHC.Classes e1f4ff80f7b5262008a595d29986fb18
+import  -/  BitBoard 3c244b8ec8b253f65c50911201be3573
+  exports: ad24690e2a3640cdb930e8fadfacb8b5
+  All a9926c429622463d41bbdef8a8d2e865
+  AllColors b78f8a8ac248941294bb2e12e1fd188b
+  AllColors 7fafd364ff8efa2da1f30892cf3afe55
+  Bishops 42a10b431a169781c72d3cf15802ef06
+  BitBoard 22287c6bab784c4581a89b3eac47a768
+  Kings 86e8b305e0f13fa51d50c448dd3acf25
+  Knights dee73f733ad8beeb441769735e86aaaa
+  Pawns ccea462a799190ce7f8d9ea55d610786
+  Queens 174b26591d61bf920266f30bab88fbf4
+  Rooks 8fe730c0e2758d78bb974caff7a1bd6e
+import  -/  Board 1137853594eeb2bf744304f00d9faa6d
+  exports: 0920de90788b9006e313d85981d5679a
+  Board e7fb457040cd7698589e02b6d157b700
+  Board 5ba416c737e30bacec3b39258beed05f
+import  -/  FEN 3fce280e977d444bdc87762eb15930b4
+  exports: 61a1675b53e78cf562ba0fa79f29a6ad
+  Black df6f0b864b18a3563efff882b60e7698
+  Turn d8e9966a63c5a5f73393890b7d1a53f6
+  White 0d5737ec2d2b78ecd35a4295262cb232
+import  -/  Index 9a6c2fae8693bbf252fe29180f05c4cb
+  exports: f5dacf2693e1be2d2c1d237e19d3ec25
+  Index 117acc87da1ca0c97ed41ed158620142
+import  -/  Masks 706418babe768ec8b93f1895fb5e448d
+  exports: fd3d3e401ab6244c43134b6d795f0aaa
+  Mask 24268484f57648029359182096f1167b
+import  -/  MoveTables a8d47fe9d53fdd908cb4f3a3c4e30e25
+  exports: 2900eb61b485134c2d5e467d6886e36a
+  Attacks 706c359707103ed0235e213b741c9d96
+  pawnAttackB 7b9973625ad280319149267fee51dd2d
+  pawnAttackW ab29e2774ced597fc7bac674779c0056
+import  -/  MoveTypes 037506a59a7cfcb7817533d6dc2ef4c1
+  exports: 498b71925c658336be41ddd6cd272aaa
+  Bishop 8a6002c8698e00152aa7c46e4c13773e
+  Knight a0d7ff475f502dfb256c6cd7a627a1fb
+  Move 807652a7b9c54760f15ca74ccfab4dce
+  Move f87b40583b48531412a65b59dc7a4f4f
+  Moves e89c565c87c9e2a2adb5f5c2ba60d041
+  Moves bce809b1cf44ac24e1da2727bceb75dc
+  Promotion 1ee13b0c4436bf03791e9b019d18a2aa
+  Promotion 7974ea60cb767d2cccb374fcf473a0ab
+  Queen 750b41bca7a5b7d89b7e2e8ac7ed0294
+  Rook 8f93959a239d06ed8d2a12a3f048135a
 import  -/  vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Unboxed 8bd91cd1a3cd2cbd12faec978422ccd8
-2b6318db2022372eeb42932c36e6c768
-  data Move
-    = Move {-# UNPACK #-}GHC.Word.Word64 {-# UNPACK #-}GHC.Word.Word64
-b4cd434ebfa9e1edba3cb83ad9e39b82
-  generateMoves :: t -> t1
-  {- Arity: 1, Strictness: <B,A>b,
-     Unfolding: InlineRule (1, True, True)
-                (\ @ t @ t1 b :: t -> GHC.Err.undefined @ t1) -}
+import  -/  vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Unboxed.Base 0761e27d6792efb778c5ac79292248a5
+import  -/  vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Unboxed.Mutable d0342434d0f49e690fa796e53c38e521
+23fc631fd2d299d7fba7d0f7ca097215
+  $s!_$slength ::
+    Data.Vector.Unboxed.Base.Vector GHC.Word.Word64 -> GHC.Types.Int
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U(A,U,A)>m,
+     Inline: [NEVER] -}
+630f204044ac062ef8033c697654a443
+  $w$sexpandBitBoard ::
+    (GHC.Word.Word64 -> (GHC.Types.Int, GHC.Word.Word64))
+    -> GHC.Prim.Word#
+    -> Data.Vector.Unboxed.Base.Vector (GHC.Types.Int, GHC.Word.Word64)
+  {- Arity: 2, Strictness: <L,C(U(1*U(U),1*U(U)))><S,U>,
+     Inline: INLINE[0] -}
+dc6b8ccf27fcae74aeb7b39ae416f8db
+  $w$sexpandBitBoard1 ::
+    (GHC.Word.Word64 -> MoveTypes.Move)
+    -> GHC.Prim.Word# -> Data.Vector.Unboxed.Base.Vector MoveTypes.Move
+  {- Arity: 2, Strictness: <L,C(U(U,U))><S,U>, Inline: INLINE[0] -}
+c6d74cfcb9f9537c6c85a01681957968
+  $w$sexpandBitBoard2 ::
+    (GHC.Word.Word64 -> GHC.Word.Word64)
+    -> GHC.Prim.Word#
+    -> Data.Vector.Unboxed.Base.Vector GHC.Word.Word64
+  {- Arity: 2, Strictness: <L,C(U(U))><S,U>, Inline: INLINE[0],
+     Unfolding: (\ w :: GHC.Word.Word64 -> GHC.Word.Word64
+                   ww :: GHC.Prim.Word# ->
+                 GHC.ST.runSTRep
+                   @ (Data.Vector.Unboxed.Base.Vector GHC.Word.Word64)
+                   (\ @ s s1 :: GHC.Prim.State# s[OneShot] ->
+                    let {
+                      x1 :: GHC.Prim.Int# = GHC.Prim.word2Int# (GHC.Prim.popCnt64# ww)
+                    } in
+                    case GHC.Prim.tagToEnum#
+                           @ GHC.Types.Bool
+                           (GHC.Prim.>=# x1 0) of wild2 {
+                      GHC.Types.False
+                      -> case MoveGeneration.expandBitBoard5 @ s x1
+                         ret_ty (# GHC.Prim.State# s,
+                                   Data.Vector.Unboxed.Base.Vector GHC.Word.Word64 #)
+                         of {}
+                      GHC.Types.True
+                      -> case GHC.Prim.tagToEnum#
+                                @ GHC.Types.Bool
+                                (GHC.Prim.<# x1 0) of wild1 {
+                           GHC.Types.False
+                           -> case GHC.Classes.divInt#
+                                     9223372036854775807
+                                     8 of ww4 { DEFAULT ->
+                              case GHC.Prim.tagToEnum#
+                                     @ GHC.Types.Bool
+                                     (GHC.Prim.># x1 ww4) of wild3 {
+                                GHC.Types.False
+                                -> case GHC.Prim.newByteArray#
+                                          @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s))
+                                          (GHC.Prim.*# x1 8)
+                                          s1
+                                            `cast`
+                                          (GHC.Prim.State#
+                                             (Sym (Control.Monad.Primitive.TFCo:R:PrimStateST[0]
+                                                       <s>_N)))_R of ds1 { (#,#) ipv ipv1 ->
+                                   case {__pkg_ccall primitive-0.6.1.0@primi_5Jnw7oEuYtM9dmKXelGXVb hsprimitive_memset_Word8 forall s.
+                                                                                                                             GHC.Prim.MutableByteArray#
+                                                                                                                               s
+                                                                                                                             -> GHC.Prim.Int#
+                                                                                                                             -> GHC.Prim.Word#
+                                                                                                                             -> GHC.Prim.Word#
+                                                                                                                             -> GHC.Prim.State#
+                                                                                                                                  GHC.Prim.RealWorld
+                                                                                                                             -> (# GHC.Prim.State#
+                                                                                                                                     GHC.Prim.RealWorld #)}
+                                          @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s))
+                                          ipv1
+                                          0
+                                          (GHC.Prim.int2Word# (GHC.Prim.*# x1 8))
+                                          __word 0
+                                          ipv
+                                            `cast`
+                                          (GHC.Prim.State#
+                                             (Control.Monad.Primitive.TFCo:R:PrimStateST[0]
+                                                  (Trans
+                                                       (Sym (Control.Monad.Primitive.TFCo:R:PrimStateST[0]
+                                                                 <s>_N))
+                                                       (UnivCo mkUnsafeCo nominal (Control.Monad.Primitive.PrimState
+                                                                                     (GHC.ST.ST
+                                                                                        s)) GHC.Prim.RealWorld))))_R of wild { (##) ds8 ->
+                                   letrec {
+                                     $wa :: GHC.Types.Int
+                                            -> GHC.Prim.Word#
+                                            -> Data.Vector.Unboxed.Base.MVector
+                                                 (Control.Monad.Primitive.PrimState (GHC.ST.ST s))
+                                                 GHC.Word.Word64
+                                            -> GHC.Prim.State# s
+                                            -> (# GHC.Prim.State# s,
+                                                  Data.Vector.Unboxed.Base.MVector
+                                                    (Control.Monad.Primitive.PrimState
+                                                       (GHC.ST.ST s))
+                                                    GHC.Word.Word64 #)
+                                       {- Arity: 4, Strictness: <L,1*U(U)><S,1*U><L,U(U,U,U)><L,U>,
+                                          Inline: [0] -}
+                                     = \ w1 :: GHC.Types.Int
+                                         ww1 :: GHC.Prim.Word#
+                                         w2 :: Data.Vector.Unboxed.Base.MVector
+                                                 (Control.Monad.Primitive.PrimState (GHC.ST.ST s))
+                                                 GHC.Word.Word64
+                                         w3 :: GHC.Prim.State# s[OneShot] ->
+                                       case ww1 of wild4 {
+                                         DEFAULT
+                                         -> case w1 of wild5 { GHC.Types.I# x2 ->
+                                            case GHC.Prim.tagToEnum#
+                                                   @ GHC.Types.Bool
+                                                   (GHC.Prim.>=# x2 0) of wild6 {
+                                              GHC.Types.False
+                                              -> case w2
+                                                        `cast`
+                                                      (Trans
+                                                           (Sub (Data.Vector.Unboxed.Base.TFCo:R:MVectorsWord64[0]
+                                                                     <Control.Monad.Primitive.PrimState
+                                                                        (GHC.ST.ST s)>_N))
+                                                           (Data.Vector.Unboxed.Base.NTCo:R:MVectorsWord64[0]
+                                                                <Control.Monad.Primitive.PrimState
+                                                                   (GHC.ST.ST
+                                                                      s)>_N)) of wild7 { Data.Vector.Primitive.Mutable.MVector dt dt1 dt2 ->
+                                                 case MoveGeneration.expandBitBoard4 @ s dt1 x2
+                                                 ret_ty (# GHC.Prim.State# s,
+                                                           Data.Vector.Unboxed.Base.MVector
+                                                             (Control.Monad.Primitive.PrimState
+                                                                (GHC.ST.ST s))
+                                                             GHC.Word.Word64 #)
+                                                 of {} }
+                                              GHC.Types.True
+                                              -> case w2
+                                                        `cast`
+                                                      (Trans
+                                                           (Sub (Data.Vector.Unboxed.Base.TFCo:R:MVectorsWord64[0]
+                                                                     <Control.Monad.Primitive.PrimState
+                                                                        (GHC.ST.ST s)>_N))
+                                                           (Data.Vector.Unboxed.Base.NTCo:R:MVectorsWord64[0]
+                                                                <Control.Monad.Primitive.PrimState
+                                                                   (GHC.ST.ST
+                                                                      s)>_N)) of wild7 { Data.Vector.Primitive.Mutable.MVector dt dt1 dt2 ->
+                                                 case GHC.Prim.tagToEnum#
+                                                        @ GHC.Types.Bool
+                                                        (GHC.Prim.<# x2 dt1) of wild8 {
+                                                   GHC.Types.False
+                                                   -> case MoveGeneration.expandBitBoard4 @ s dt1 x2
+                                                      ret_ty (# GHC.Prim.State# s,
+                                                                Data.Vector.Unboxed.Base.MVector
+                                                                  (Control.Monad.Primitive.PrimState
+                                                                     (GHC.ST.ST s))
+                                                                  GHC.Word.Word64 #)
+                                                      of {}
+                                                   GHC.Types.True
+                                                   -> case w (GHC.Word.W64#
+                                                                (GHC.Prim.and#
+                                                                   wild4
+                                                                   (GHC.Prim.int2Word#
+                                                                      (GHC.Prim.negateInt#
+                                                                         (GHC.Prim.word2Int#
+                                                                            wild4))))) of wild9 { GHC.Word.W64# x# ->
+                                                      case GHC.Prim.writeWord64Array#
+                                                             @ (Control.Monad.Primitive.PrimState
+                                                                  (GHC.ST.ST s))
+                                                             dt2
+                                                             (GHC.Prim.+# dt x2)
+                                                             x#
+                                                             w3
+                                                               `cast`
+                                                             (GHC.Prim.State#
+                                                                (Sym (Control.Monad.Primitive.TFCo:R:PrimStateST[0]
+                                                                          <s>_N)))_R of s'# { DEFAULT ->
+                                                      $wa
+                                                        (GHC.Types.I# (GHC.Prim.+# x2 1))
+                                                        (GHC.Prim.and#
+                                                           wild4
+                                                           (GHC.Prim.minusWord# wild4 __word 1))
+                                                        wild7
+                                                          `cast`
+                                                        (Trans
+                                                             (Sym (Data.Vector.Unboxed.Base.NTCo:R:MVectorsWord64[0]
+                                                                       <Control.Monad.Primitive.PrimState
+                                                                          (GHC.ST.ST s)>_N))
+                                                             (Sub (Sym (Data.Vector.Unboxed.Base.TFCo:R:MVectorsWord64[0]
+                                                                            <Control.Monad.Primitive.PrimState
+                                                                               (GHC.ST.ST s)>_N))))
+                                                        s'#
+                                                          `cast`
+                                                        (GHC.Prim.State#
+                                                           (Control.Monad.Primitive.TFCo:R:PrimStateST[0]
+                                                                <s>_N))_R } } } } } }
+                                         __word 0
+                                         -> (GHC.ST.$w$cpure
+                                               @ s
+                                               GHC.Prim.void#
+                                               @ (Data.Vector.Unboxed.Base.MVector
+                                                    (Control.Monad.Primitive.PrimState
+                                                       (GHC.ST.ST s))
+                                                    GHC.Word.Word64)
+                                               w2)
+                                              `cast`
+                                            (GHC.ST.NTCo:ST[0]
+                                                 <s>_N
+                                                 <Data.Vector.Unboxed.Base.MVector
+                                                    (Control.Monad.Primitive.PrimState
+                                                       (GHC.ST.ST s))
+                                                    GHC.Word.Word64>_R)
+                                              w3 }
+                                   } in
+                                   case ($wa
+                                           MoveGeneration.expandBitBoard3
+                                           ww
+                                           (Data.Vector.Primitive.Mutable.MVector
+                                              @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s))
+                                              @ GHC.Word.Word64
+                                              0
+                                              x1
+                                              ipv1)
+                                             `cast`
+                                           (Trans
+                                                (Sym (Data.Vector.Unboxed.Base.NTCo:R:MVectorsWord64[0]
+                                                          <Control.Monad.Primitive.PrimState
+                                                             (GHC.ST.ST s)>_N))
+                                                (Trans
+                                                     (Sub (Sym (Data.Vector.Unboxed.Base.TFCo:R:MVectorsWord64[0]
+                                                                    <Control.Monad.Primitive.PrimState
+                                                                       (GHC.ST.ST s)>_N)))
+                                                     (Data.Vector.Unboxed.Base.MVector
+                                                        (Control.Monad.Primitive.TFCo:R:PrimStateST[0]
+                                                             (Sym (Control.Monad.Primitive.TFCo:R:PrimStateST[0]
+                                                                       <s>_N)))
+                                                        <GHC.Word.Word64>_N)_R))
+                                           ds8
+                                             `cast`
+                                           (GHC.Prim.State#
+                                              (Trans
+                                                   (UnivCo mkUnsafeCo nominal GHC.Prim.RealWorld (Control.Monad.Primitive.PrimState
+                                                                                                    (GHC.ST.ST
+                                                                                                       s)))
+                                                   (Control.Monad.Primitive.TFCo:R:PrimStateST[0]
+                                                        <s>_N)))_R)
+                                          `cast`
+                                        ((# <GHC.Prim.State# s>_R,
+                                            Sub (Sym (Data.Vector.Unboxed.Base.TFCo:R:MutableVector[0])) (Control.Monad.Primitive.TFCo:R:PrimStateST[0]
+                                                                                                              <s>_N) <GHC.Word.Word64>_N #))_R of ds2 { (#,#) ipv2 ipv3 ->
+                                   case ipv3
+                                          `cast`
+                                        (Trans
+                                             (Sub (Data.Vector.Unboxed.Base.TFCo:R:MutableVector[0]) (Sym (Control.Monad.Primitive.TFCo:R:PrimStateST[0]
+                                                                                                               <s>_N)) <GHC.Word.Word64>_N)
+                                             (Trans
+                                                  (Sub (Data.Vector.Unboxed.Base.TFCo:R:MVectorsWord64[0]
+                                                            <Control.Monad.Primitive.PrimState
+                                                               (GHC.ST.ST s)>_N))
+                                                  (Data.Vector.Unboxed.Base.NTCo:R:MVectorsWord64[0]
+                                                       <Control.Monad.Primitive.PrimState
+                                                          (GHC.ST.ST
+                                                             s)>_N))) of wild4 { Data.Vector.Primitive.Mutable.MVector dt dt1 dt2 ->
+                                   case GHC.Prim.unsafeFreezeByteArray#
+                                          @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s))
+                                          dt2
+                                          ipv2
+                                            `cast`
+                                          (GHC.Prim.State#
+                                             (Sym (Control.Monad.Primitive.TFCo:R:PrimStateST[0]
+                                                       <s>_N)))_R of ds3 { (#,#) ipv4 ipv5 ->
+                                   (# ipv4
+                                        `cast`
+                                      (GHC.Prim.State#
+                                         (Control.Monad.Primitive.TFCo:R:PrimStateST[0] <s>_N))_R,
+                                      (Data.Vector.Primitive.Vector @ GHC.Word.Word64 dt dt1 ipv5)
+                                        `cast`
+                                      (Trans
+                                           (Sym (Data.Vector.Unboxed.Base.NTCo:R:VectorWord64[0]))
+                                           (Sub (Sym (Data.Vector.Unboxed.Base.TFCo:R:VectorWord64[0])))) #) } } } } }
+                                GHC.Types.True
+                                -> case MoveGeneration.expandBitBoard2 @ s x1
+                                   ret_ty (# GHC.Prim.State# s,
+                                             Data.Vector.Unboxed.Base.Vector GHC.Word.Word64 #)
+                                   of {} } }
+                           GHC.Types.True
+                           -> case MoveGeneration.expandBitBoard1 @ s x1
+                              ret_ty (# GHC.Prim.State# s,
+                                        Data.Vector.Unboxed.Base.Vector GHC.Word.Word64 #)
+                              of {} } })) -}
+0e7858ffad07ee77a6447391a0f82887
+  $wexpandBitBoard ::
+    Data.Vector.Unboxed.Base.Unbox a =>
+    (GHC.Word.Word64 -> a)
+    -> GHC.Prim.Word# -> Data.Vector.Unboxed.Base.Vector a
+  {- Arity: 3,
+     Strictness: <S(S(LC(C(S))LLLLLL)S),U(1*U(A,1*C1(C1(U)),A,A,A,A,A,A),U)><L,C(U)><S,U>,
+     Inline: [0] -}
+162dd19beab59fb6790211f18a808fb2
+  $wgPawnPromotion ::
+    (GHC.Word.Word64 -> GHC.Word.Word64)
+    -> MoveTables.Attacks
+    -> Masks.Mask
+    -> GHC.Prim.Word#
+    -> Data.Vector.Unboxed.Base.Vector MoveTypes.Promotion
+  {- Arity: 4, Strictness: <L,C(U(U))><L,U(U,U,U)><L,U(U)><S,U>,
+     Inline: [0] -}
+a35badaf8206c068a118cb5797394cb8
+  $wgPawnPushAndAttack ::
+    (GHC.Word.Word64 -> GHC.Word.Word64)
+    -> MoveTables.Attacks
+    -> Masks.Mask
+    -> GHC.Prim.Word#
+    -> Data.Vector.Unboxed.Base.Vector MoveTypes.Move
+  {- Arity: 4, Strictness: <L,C(U(U))><L,U(U,U,U)><L,U(U)><S,U>,
+     Inline: [0] -}
+9224ae38c53c961e2b960af12aedb505
+  $wgenPromotions ::
+    Index.Index
+    -> GHC.Prim.Word#
+    -> Data.Vector.Unboxed.Base.Vector MoveTypes.Promotion
+  {- Arity: 2, Strictness: <L,U(U)><S,U>, Inline: [0] -}
+d8d9bf22684a4603bc2d6a7521d54e15
+  $wgenerateMoves ::
+    GHC.Prim.Word#
+    -> GHC.Prim.Word#
+    -> GHC.Prim.Word#
+    -> GHC.Prim.Word#
+    -> GHC.Prim.Word#
+    -> GHC.Prim.Word#
+    -> GHC.Prim.Word#
+    -> GHC.Types.Bool
+    -> GHC.Types.Bool
+    -> GHC.Types.Bool
+    -> GHC.Types.Bool
+    -> GHC.Base.Maybe Index.Index
+    -> (# Data.Vector.Unboxed.Base.Vector MoveTypes.Move,
+          Data.Vector.Unboxed.Base.Vector MoveTypes.Promotion #)
+  {- Arity: 12,
+     Strictness: <L,U><L,U><L,U><L,U><L,U><S,1*U><S,1*U><S,1*H><S,1*H><S,1*H><S,1*H><S,1*H>,
+     Inline: [0] -}
+c7fad3cfffed1addccf0d551592cc2f5
+  $wpawnMovement ::
+    GHC.Prim.Word#
+    -> GHC.Prim.Word#
+    -> GHC.Prim.Word#
+    -> GHC.Prim.Word#
+    -> GHC.Prim.Word#
+    -> GHC.Prim.Word#
+    -> (# Data.Vector.Unboxed.Base.Vector MoveTypes.Move,
+          Data.Vector.Unboxed.Base.Vector MoveTypes.Promotion #)
+  {- Arity: 6, Strictness: <S,1*U><L,U><L,U><L,U><L,U><L,U>,
+     Inline: [0] -}
+f212885416d7323844a1cf37a0fe79bd
+  bishopMovement ::
+    FEN.Turn
+    -> BitBoard.AllColors 'BitBoard.Bishops
+    -> BitBoard.AllColors 'BitBoard.All
+    -> Data.Vector.Unboxed.Base.Vector MoveTypes.Move
+  {- Arity: 3, Strictness: <L,A><S,1*H><S,1*H>,
+     Unfolding: InlineRule (3, True, False)
+                (\ t :: FEN.Turn
+                   ds :: BitBoard.AllColors 'BitBoard.Bishops
+                   ds1 :: BitBoard.AllColors 'BitBoard.All ->
+                 case ds of wild { BitBoard.AllColors dt dt1 dt2 ->
+                 case ds1 of wild1 { BitBoard.AllColors dt3 dt4 dt5 ->
+                 MoveGeneration.bishopMovement1 } }) -}
+083abf3ebf9ff2561514bfc6b0001609
+  bishopMovement1 :: Data.Vector.Unboxed.Base.Vector MoveTypes.Move
+  {- Unfolding: (MoveGeneration.gEnPassant) -}
+d73cfaa19fb7ff93d6e925240e41334e
+  expandBitBoard ::
+    Data.Vector.Unboxed.Base.Unbox a =>
+    (GHC.Word.Word64 -> a)
+    -> GHC.Word.Word64 -> Data.Vector.Unboxed.Base.Vector a
+  {- Arity: 3,
+     Strictness: <S(S(LC(C(S))LLLLLL)S),U(1*U(A,1*C1(C1(U)),A,A,A,A,A,A),U)><L,C(U)><S(S),1*U(U)>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (3, True, False)
+                (\ @ a1
+                   w :: Data.Vector.Unboxed.Base.Unbox a1
+                   w1 :: GHC.Word.Word64 -> a1
+                   w2 :: GHC.Word.Word64 ->
+                 case w2 of ww { GHC.Word.W64# ww1 ->
+                 MoveGeneration.$wexpandBitBoard @ a1 w w1 ww1 }) -}
+44cf3dbc95ad20502d756259eb657767
+  expandBitBoard1 ::
+    GHC.Prim.Int#
+    -> GHC.ST.ST
+         s
+         (Data.Vector.Primitive.Mutable.MVector
+            (Control.Monad.Primitive.PrimState (GHC.ST.ST s)) GHC.Word.Word64)
+  {- Arity: 1, Strictness: <L,U>b -}
+41151cf8161fd6d26315d01aab653b19
+  expandBitBoard2 ::
+    GHC.Prim.Int#
+    -> GHC.ST.ST
+         s
+         (Data.Vector.Primitive.Mutable.MVector
+            (Control.Monad.Primitive.PrimState (GHC.ST.ST s)) GHC.Word.Word64)
+  {- Arity: 1, Strictness: <L,U>b -}
+4ff0686e1efe5d50621e533b3776c4f6
+  expandBitBoard3 :: GHC.Types.Int
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 0) -}
+17272963927b5445dfbb7e62f3253331
+  expandBitBoard4 :: GHC.Prim.Int# -> GHC.Prim.Int# -> GHC.ST.ST s ()
+  {- Arity: 2, Strictness: <L,U><L,U>b -}
+127aadd3d050d72ee9bec5f7a054a164
+  expandBitBoard5 ::
+    GHC.Prim.Int#
+    -> GHC.ST.ST
+         s
+         (Data.Vector.Unboxed.Base.MVector
+            (Control.Monad.Primitive.PrimState (GHC.ST.ST s)) GHC.Word.Word64)
+  {- Arity: 1, Strictness: <L,U>b -}
+9a92e56c826183da0c7a1130173aa5a1
+  expandBitBoard_$sexpandBitBoard ::
+    (GHC.Word.Word64 -> (GHC.Types.Int, GHC.Word.Word64))
+    -> GHC.Word.Word64
+    -> Data.Vector.Unboxed.Base.Vector (GHC.Types.Int, GHC.Word.Word64)
+  {- Arity: 2, Strictness: <L,C(U(1*U(U),1*U(U)))><S(S),1*U(U)>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ w :: GHC.Word.Word64 -> (GHC.Types.Int, GHC.Word.Word64)
+                   w1 :: GHC.Word.Word64 ->
+                 case w1 of ww { GHC.Word.W64# ww1 ->
+                 MoveGeneration.$w$sexpandBitBoard w ww1 }) -}
+f15e226d8e649f9d9497e55db66f7d29
+  expandBitBoard_$sexpandBitBoard1 ::
+    (GHC.Word.Word64 -> MoveTypes.Move)
+    -> GHC.Word.Word64
+    -> Data.Vector.Unboxed.Base.Vector MoveTypes.Move
+  {- Arity: 2, Strictness: <L,C(U(U,U))><S(S),1*U(U)>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ w :: GHC.Word.Word64 -> MoveTypes.Move w1 :: GHC.Word.Word64 ->
+                 case w1 of ww { GHC.Word.W64# ww1 ->
+                 MoveGeneration.$w$sexpandBitBoard1 w ww1 }) -}
+a2cde8a59b20b09c9a0005451eca57a7
+  expandBitBoard_$sexpandBitBoard2 ::
+    (GHC.Word.Word64 -> GHC.Word.Word64)
+    -> GHC.Word.Word64
+    -> Data.Vector.Unboxed.Base.Vector GHC.Word.Word64
+  {- Arity: 2, Strictness: <L,C(U(U))><S(S),1*U(U)>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ w :: GHC.Word.Word64 -> GHC.Word.Word64 w1 :: GHC.Word.Word64 ->
+                 case w1 of ww { GHC.Word.W64# ww1 ->
+                 MoveGeneration.$w$sexpandBitBoard2 w ww1 }) -}
+f06709a488744cea4e800ddea12bc33a
+  gEnPassant :: Data.Vector.Unboxed.Base.Vector MoveTypes.Move
+  {- Unfolding: (GHC.ST.runSTRep
+                   @ (Data.Vector.Unboxed.Base.Vector MoveTypes.Move)
+                   MoveGeneration.gEnPassant1) -}
+9a609c88c0053b5ba5d64031f86abccc
+  gEnPassant1 ::
+    GHC.Prim.State# s
+    -> (# GHC.Prim.State# s,
+          Data.Vector.Unboxed.Base.Vector MoveTypes.Move #)
+  {- Arity: 1,
+     Unfolding: (\ @ s s1 :: GHC.Prim.State# s[OneShot] ->
+                 case GHC.Classes.divInt# 9223372036854775807 8 of ww4 { DEFAULT ->
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.># 0 ww4) of wild3 {
+                   GHC.Types.False
+                   -> case GHC.Prim.newByteArray#
+                             @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s))
+                             0
+                             s1
+                               `cast`
+                             (GHC.Prim.State#
+                                (Sym (Control.Monad.Primitive.TFCo:R:PrimStateST[0]
+                                          <s>_N)))_R of ds1 { (#,#) ipv ipv1 ->
+                      case GHC.Prim.newByteArray#
+                             @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s))
+                             0
+                             ipv of ds2 { (#,#) ipv2 ipv3 ->
+                      case GHC.Prim.unsafeFreezeByteArray#
+                             @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s))
+                             ipv1
+                             ipv2 of ds3 { (#,#) ipv4 ipv5 ->
+                      case GHC.Prim.unsafeFreezeByteArray#
+                             @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s))
+                             ipv3
+                             ipv4 of ds4 { (#,#) ipv6 ipv7 ->
+                      (# ipv6
+                           `cast`
+                         (GHC.Prim.State#
+                            (Control.Monad.Primitive.TFCo:R:PrimStateST[0] <s>_N))_R,
+                         (Data.Vector.Unboxed.Base.V_2
+                            @ GHC.Types.Int
+                            @ GHC.Types.Int
+                            0
+                            (Data.Vector.Primitive.Vector @ GHC.Types.Int 0 0 ipv5)
+                              `cast`
+                            (Trans
+                                 (Sym (Data.Vector.Unboxed.Base.NTCo:R:VectorInt[0]))
+                                 (Sub (Sym (Data.Vector.Unboxed.Base.TFCo:R:VectorInt[0]))))
+                            (Data.Vector.Primitive.Vector @ GHC.Types.Int 0 0 ipv7)
+                              `cast`
+                            (Trans
+                                 (Sym (Data.Vector.Unboxed.Base.NTCo:R:VectorInt[0]))
+                                 (Sub (Sym (Data.Vector.Unboxed.Base.TFCo:R:VectorInt[0])))))
+                           `cast`
+                         (Trans
+                              (Sub (Sym (Data.Vector.Unboxed.Base.TFCo:R:Vector(,)[0]
+                                             <GHC.Types.Int>_N <GHC.Types.Int>_N)))
+                              (Trans
+                                   (Sym (MoveTypes.NTCo:R:VectorMove[0]))
+                                   (Sub (Sym (MoveTypes.TFCo:R:VectorMove[0]))))) #) } } } }
+                   GHC.Types.True
+                   -> case GHC.Err.error
+                             @ (GHC.ST.ST
+                                  s
+                                  (Data.Vector.Primitive.Mutable.MVector
+                                     (Control.Monad.Primitive.PrimState (GHC.ST.ST s))
+                                     GHC.Types.Int))
+                             MoveGeneration.gEnPassant2
+                      ret_ty (# GHC.Prim.State# s,
+                                Data.Vector.Unboxed.Base.Vector MoveTypes.Move #)
+                      of {} } }) -}
+c033e0bf319c2fb460aa172f2fd46c28
+  gEnPassant2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackAppendCString#
+                   "Primitive.basicUnsafeNew: length to large: "#
+                   MoveGeneration.gEnPassant3) -}
+6c8bb1a9c4705f5f9443cc5954cb22d1
+  gEnPassant3 :: [GHC.Types.Char]
+  {- Unfolding: (case GHC.Show.$wshowSignedInt
+                        0
+                        0
+                        (GHC.Types.[] @ GHC.Types.Char) of ww4 { (#,#) ww5 ww6 ->
+                 GHC.Types.: @ GHC.Types.Char ww5 ww6 }) -}
+99c8ea9e2b06aecd1d61e90374da7a66
+  gPawnPromotion ::
+    (GHC.Word.Word64 -> GHC.Word.Word64)
+    -> MoveTables.Attacks
+    -> Masks.Mask
+    -> GHC.Word.Word64
+    -> Data.Vector.Unboxed.Base.Vector MoveTypes.Promotion
+  {- Arity: 4,
+     Strictness: <L,C(U(U))><L,U(U,U,U)><L,U(U)><S(S),1*U(U)>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (4, True, False)
+                (\ w :: GHC.Word.Word64 -> GHC.Word.Word64
+                   w1 :: MoveTables.Attacks
+                   w2 :: Masks.Mask
+                   w3 :: GHC.Word.Word64 ->
+                 case w3 of ww { GHC.Word.W64# ww1 ->
+                 MoveGeneration.$wgPawnPromotion w w1 w2 ww1 }) -}
+d2179269b61857d0f2d4f61c7dc33c26
+  gPawnPushAndAttack ::
+    (GHC.Word.Word64 -> GHC.Word.Word64)
+    -> MoveTables.Attacks
+    -> Masks.Mask
+    -> GHC.Word.Word64
+    -> Data.Vector.Unboxed.Base.Vector MoveTypes.Move
+  {- Arity: 4,
+     Strictness: <L,C(U(U))><L,U(U,U,U)><L,U(U)><S(S),1*U(U)>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (4, True, False)
+                (\ w :: GHC.Word.Word64 -> GHC.Word.Word64
+                   w1 :: MoveTables.Attacks
+                   w2 :: Masks.Mask
+                   w3 :: GHC.Word.Word64 ->
+                 case w3 of ww { GHC.Word.W64# ww1 ->
+                 MoveGeneration.$wgPawnPushAndAttack w w1 w2 ww1 }) -}
+3bbe95a72b99b19013585b83333ab8b7
+  genPromotions ::
+    Index.Index
+    -> GHC.Word.Word64
+    -> Data.Vector.Unboxed.Base.Vector MoveTypes.Promotion
+  {- Arity: 2, Strictness: <L,U(U)><S(S),1*U(U)>, Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ w :: Index.Index w1 :: GHC.Word.Word64 ->
+                 case w1 of ww { GHC.Word.W64# ww1 ->
+                 MoveGeneration.$wgenPromotions w ww1 }) -}
+cdf1c09e2d4580d3a4311ef82fcf1e87
+  generateMoves :: Board.Board -> MoveTypes.Moves
+  {- Arity: 1,
+     Strictness: <S(LLLLLSLLLLLLLLLLLLLLLSSSSSSLLLL),1*U(U,U,U,U,U,1*U,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,1*U,1*H,1*H,1*H,1*H,1*H,A,A,A,A)>m,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ w :: Board.Board ->
+                 case w of ww { Board.Board ww1 ww2 ww3 ww4 ww5 ww6 ww7 ww8 ww9 ww10 ww11 ww12 ww13 ww14 ww15 ww16 ww17 ww18 ww19 ww20 ww21 ww22 ww23 ww24 ww25 ww26 ww27 ww28 ww29 ww30 ww31 ->
+                 case MoveGeneration.$wgenerateMoves
+                        ww1
+                        ww2
+                        ww3
+                        ww4
+                        ww5
+                        ww6
+                        ww22
+                        ww23
+                        ww24
+                        ww25
+                        ww26
+                        ww27 of ww32 { (#,#) ww33 ww34 ->
+                 MoveTypes.Moves ww33 ww34 } }) -}
+6ce02125e28697d0fb233cf66ab6c17f
+  kingMovement ::
+    FEN.Turn
+    -> Index.Index
+    -> Index.Index
+    -> BitBoard.AllColors 'BitBoard.Kings
+    -> BitBoard.AllColors 'BitBoard.All
+    -> Data.Vector.Unboxed.Base.Vector MoveTypes.Move
+  {- Arity: 5, Strictness: <L,A><L,A><L,A><L,A><S,1*H>,
+     Unfolding: InlineRule (5, True, False)
+                (\ t :: FEN.Turn
+                   wk :: Index.Index
+                   bk :: Index.Index
+                   ds :: BitBoard.AllColors 'BitBoard.Kings
+                   ds1 :: BitBoard.AllColors 'BitBoard.All ->
+                 case ds1 of wild { BitBoard.AllColors dt dt1 dt2 ->
+                 MoveGeneration.bishopMovement1 }) -}
+09b82b0806475e59dcb62947c7ddcdc0
+  knightMovement ::
+    FEN.Turn
+    -> BitBoard.AllColors 'BitBoard.Knights
+    -> BitBoard.AllColors 'BitBoard.All
+    -> Data.Vector.Unboxed.Base.Vector MoveTypes.Move
+  {- Arity: 3, Strictness: <L,A><S,1*H><S,1*H>,
+     Unfolding: InlineRule (3, True, False)
+                (\ t :: FEN.Turn
+                   ds :: BitBoard.AllColors 'BitBoard.Knights
+                   ds1 :: BitBoard.AllColors 'BitBoard.All ->
+                 case ds of wild { BitBoard.AllColors dt dt1 dt2 ->
+                 case ds1 of wild1 { BitBoard.AllColors dt3 dt4 dt5 ->
+                 MoveGeneration.bishopMovement1 } }) -}
+a110fbb873bcfd5c7b372e4f42850a72
+  pawnMovement ::
+    FEN.Turn
+    -> GHC.Base.Maybe Index.Index
+    -> BitBoard.AllColors 'BitBoard.Pawns
+    -> BitBoard.AllColors 'BitBoard.All
+    -> (Data.Vector.Unboxed.Base.Vector MoveTypes.Move,
+        Data.Vector.Unboxed.Base.Vector MoveTypes.Promotion)
+  {- Arity: 4,
+     Strictness: <S(S),1*U(1*U)><L,A><S,1*U(U,U,A)><S,1*U(U,U,U)>m,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (4, True, False)
+                (\ w :: FEN.Turn
+                   w1 :: GHC.Base.Maybe Index.Index
+                   w2 :: BitBoard.AllColors 'BitBoard.Pawns
+                   w3 :: BitBoard.AllColors 'BitBoard.All ->
+                 case w `cast` (FEN.NTCo:Turn[0]) of ww { GHC.Word.W8# ww1 ->
+                 case w2 of ww2 { BitBoard.AllColors ww3 ww4 ww5 ->
+                 case w3 of ww6 { BitBoard.AllColors ww7 ww8 ww9 ->
+                 case MoveGeneration.$wpawnMovement
+                        ww1
+                        ww3
+                        ww4
+                        ww7
+                        ww8
+                        ww9 of ww10 { (#,#) ww11 ww12 ->
+                 (ww11, ww12) } } } }) -}
+b3a8826ca8188ab2f837256a48d9b8ff
+  populateVector ::
+    GHC.Word.Word64
+    -> Data.Vector.Unboxed.Base.Vector (GHC.Types.Int, GHC.Word.Word64)
+  {- Arity: 1,
+     Unfolding: (\ w :: GHC.Word.Word64 ->
+                 case w of ww { GHC.Word.W64# ww1 ->
+                 MoveGeneration.$w$sexpandBitBoard
+                   MoveGeneration.populateVector1
+                   ww1 }) -}
+2c68de854e2d85d8c6583bffbc180ff7
+  populateVector1 ::
+    GHC.Word.Word64 -> (GHC.Types.Int, GHC.Word.Word64)
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U(U)>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ b :: GHC.Word.Word64 ->
+                 (GHC.Word.$fFiniteBitsWord64_$ccountTrailingZeros b, b)) -}
+40c961a488e7b89d13fa6f3d58e88893
+  queenMovement ::
+    FEN.Turn
+    -> BitBoard.AllColors 'BitBoard.Queens
+    -> BitBoard.AllColors 'BitBoard.All
+    -> Data.Vector.Unboxed.Base.Vector MoveTypes.Move
+  {- Arity: 3, Strictness: <L,A><S,1*H><S,1*H>,
+     Unfolding: InlineRule (3, True, False)
+                (\ t :: FEN.Turn
+                   ds :: BitBoard.AllColors 'BitBoard.Queens
+                   ds1 :: BitBoard.AllColors 'BitBoard.All ->
+                 case ds of wild { BitBoard.AllColors dt dt1 dt2 ->
+                 case ds1 of wild1 { BitBoard.AllColors dt3 dt4 dt5 ->
+                 MoveGeneration.bishopMovement1 } }) -}
+ed4c8b66d26e7172577443d1d3d077dd
+  rookMovement ::
+    FEN.Turn
+    -> BitBoard.AllColors 'BitBoard.Rooks
+    -> BitBoard.AllColors 'BitBoard.All
+    -> Data.Vector.Unboxed.Base.Vector MoveTypes.Move
+  {- Arity: 3, Strictness: <L,A><S,1*H><S,1*H>,
+     Unfolding: InlineRule (3, True, False)
+                (\ t :: FEN.Turn
+                   ds :: BitBoard.AllColors 'BitBoard.Rooks
+                   ds1 :: BitBoard.AllColors 'BitBoard.All ->
+                 case ds of wild { BitBoard.AllColors dt dt1 dt2 ->
+                 case ds1 of wild1 { BitBoard.AllColors dt3 dt4 dt5 ->
+                 MoveGeneration.bishopMovement1 } }) -}
+581d0834ad0cbe9b5f25f6a877e8b6cd
+  serializeBitBoard ::
+    Index.Index
+    -> GHC.Word.Word64
+    -> Data.Vector.Unboxed.Base.Vector MoveTypes.Move
+  {- Arity: 2, Strictness: <L,U(U)><S(S),1*U(U)>,
+     Unfolding: InlineRule (2, True, False)
+                (\ index :: Index.Index eta :: GHC.Word.Word64 ->
+                 MoveGeneration.expandBitBoard_$sexpandBitBoard1
+                   (\ x :: GHC.Word.Word64 ->
+                    case index of dt { GHC.Types.I# dt1 ->
+                    case x of wild { GHC.Word.W64# x# ->
+                    MoveTypes.Move dt1 (GHC.Prim.word2Int# (GHC.Prim.ctz64# x#)) } })
+                   eta) -}
+"SPEC expandBitBoard" [ALWAYS] forall $dUnbox :: Data.Vector.Unboxed.Base.Unbox
+                                                   GHC.Word.Word64
+  MoveGeneration.expandBitBoard @ GHC.Word.Word64 $dUnbox
+  = MoveGeneration.expandBitBoard_$sexpandBitBoard2
+"SPEC expandBitBoard" [ALWAYS] forall $dUnbox :: Data.Vector.Unboxed.Base.Unbox
+                                                   MoveTypes.Move
+  MoveGeneration.expandBitBoard @ MoveTypes.Move $dUnbox
+  = MoveGeneration.expandBitBoard_$sexpandBitBoard1
+"SPEC expandBitBoard" [ALWAYS] forall $dUnbox :: Data.Vector.Unboxed.Base.Unbox
+                                                   (GHC.Types.Int, GHC.Word.Word64)
+  MoveGeneration.expandBitBoard @ (GHC.Types.Int, GHC.Word.Word64)
+                                $dUnbox
+  = MoveGeneration.expandBitBoard_$sexpandBitBoard
+"SPEC/MoveGeneration length @ Vector @ Word64" [ALWAYS] forall $dVector :: Data.Vector.Generic.Base.Vector
+                                                                             Data.Vector.Unboxed.Base.Vector
+                                                                             GHC.Word.Word64
+  Data.Vector.Generic.length @ Data.Vector.Unboxed.Base.Vector
+                             @ GHC.Word.Word64
+                             $dVector
+  = MoveGeneration.$s!_$slength
 vectorised variables:
 vectorised tycons:
 vectorised reused tycons:

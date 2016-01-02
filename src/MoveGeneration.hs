@@ -2,124 +2,103 @@ module MoveGeneration where
 
 import Prelude hiding ((++))
 
-import Data.Word
 import Data.Bits
+import Data.Word
 
-import Data.Vector hiding ()
-import qualified Data.Vector as V
-import qualified Data.Vector.Mutable as M
+import Data.Vector.Unboxed 
 import qualified Data.Vector.Unboxed as U
+import qualified Data.Vector.Unboxed.Mutable as M
 
-import BitBoard
-import MailBox 
-import FEN hiding (mailBox)
-import Board
+import Control.Monad.ST
 
-import Text.PrettyPrint.ANSI.Leijen
+import BitBoard 
+import Board 
+import FEN
+import Index 
+import MoveTypes
+import Masks 
+import MoveTables
 
-data Move = Move      {-# UNPACK #-} !Index {-# UNPACK #-} !Index  |
-            Promotion {-# UNPACK #-} !Index {-# UNPACK #-} !Square | 
-            Castle    {-# UNPACK #-} !Index {-# UNPACK #-} !Index 
+{-# SPECIALIZE INLINE expandBitBoard :: (Word64 -> Word64) -> Word64 -> Vector Word64 #-}
+{-# SPECIALIZE INLINE expandBitBoard :: (Word64 -> Move  ) -> Word64 -> Vector Move   #-}
+{-# SPECIALIZE INLINE expandBitBoard :: (Word64 -> (Int,Word64)) -> Word64 -> 
+    Vector (Int,Word64) #-}
 
-instance Show Move where 
-        show (Move start end) = show (indexToDoc start <> indexToDoc end) 
+expandBitBoard :: (Unbox a) => (Word64 -> a) -> Word64 -> Vector a
+expandBitBoard f b = create $ M.new (popCount b) >>= go 0 b 
+        where go i b v
+                | b == 0    = pure v
+                | otherwise = do
+                        M.write v i (f (b .&. negate b))
+                        go (i+1) (b .&. (b - 1)) v
 
-type Moves = Vector Move 
+serializeBitBoard :: Index -> Word64 -> Vector Move  
+serializeBitBoard index = expandBitBoard (Move index . countTrailingZeros) 
+
+populateVector :: Word64 -> Vector (Int,Word64)
+populateVector = expandBitBoard (\b -> (countTrailingZeros b,b)) 
+
+genPromotions :: Index -> Word64 -> Vector Promotion
+genPromotions index b = create $ M.new (popCount b * 4) >>= go 0 b 
+        where ctz = countTrailingZeros 
+              go i b v 
+                | b == 0    = pure v
+                | otherwise = do
+                        M.write v i     (Promotion (Move index (ctz (b .&. negate b))) Knight)
+                        M.write v (i+1) (Promotion (Move index (ctz (b .&. negate b))) Bishop)
+                        M.write v (i+2) (Promotion (Move index (ctz (b .&. negate b))) Rook)
+                        M.write v (i+3) (Promotion (Move index (ctz (b .&. negate b))) Queen)
+                        go (i+4) (b .&. (b - 1)) v
+
+gPawnPushAndAttack :: (Word64 -> Word64) -> Attacks -> Mask -> Word64 -> Vector Move 
+gPawnPushAndAttack shiftF attackTable mask = 
+        U.concatMap (\(!i,!b) -> serializeBitBoard i b) . U.map movement . populateVector 
+        where movement (i,b) = (i,shiftF b .|. (mask .&. (attackTable ! i)))
+
+gEnPassant :: Vector Move 
+gEnPassant = empty 
+
+gPawnPromotion :: (Word64 -> Word64) -> Attacks -> Mask -> Word64 -> Vector Promotion 
+gPawnPromotion shiftF attackTable mask = 
+        U.concatMap (\(!i,!b) -> genPromotions i b) . U.map promo . populateVector  
+        where promo (i,b) = (i,shiftF b .|. (mask .&. (attackTable ! i)))
+
+pawnMovement :: Turn -> Maybe Index -> AllColors Pawns -> AllColors All -> 
+                (Vector Move, Vector Promotion)
+pawnMovement Black ep (AllColors bp wp _) (AllColors ba wa aa) = 
+        (gPawnPushAndAttack doublePush pawnAttackB wa (bp .&. 0x00FF000000000000) ++ 
+         gPawnPushAndAttack singlePush pawnAttackB wa (bp .&. 0x0000FFFFFFFF0000) ++ gEnPassant,
+         gPawnPromotion     singlePush pawnAttackB wa (bp .&. 0x000000000000FF00))
+         where singlePush w = (w `shiftR` 8) .&. complement aa
+               doublePush w = let sp = singlePush w in sp .|. singlePush sp 
+pawnMovement White ep (AllColors bp wp _) (AllColors ba wa aa) = 
+        (gPawnPushAndAttack doublePush pawnAttackW ba (wp .&. 0x000000000000FF00) ++ 
+         gPawnPushAndAttack singlePush pawnAttackW ba (wp .&. 0x0000FFFFFFFF0000) ++ gEnPassant,
+         gPawnPromotion     singlePush pawnAttackW ba (wp .&. 0x00FF000000000000))
+         where singlePush w = (w `shiftL` 8) .&. complement aa
+               doublePush w = let sp = singlePush w in sp .|. singlePush sp 
+
+knightMovement :: Turn -> AllColors Knights -> AllColors All -> Vector Move 
+knightMovement t (AllColors bn wn _) (AllColors b w _) = empty   
+
+bishopMovement :: Turn -> AllColors Bishops -> AllColors All -> Vector Move 
+bishopMovement t (AllColors bb wb _) (AllColors b w _) = empty 
+
+rookMovement :: Turn -> AllColors Rooks -> AllColors All -> Vector Move
+rookMovement t (AllColors br wr _) (AllColors b w _) = empty   
+
+queenMovement  :: Turn -> AllColors Queens -> AllColors All -> Vector Move 
+queenMovement t (AllColors bq wq _) (AllColors b w _) = empty
+
+kingMovement :: Turn -> Index -> Index -> AllColors Kings -> AllColors All -> Vector Move 
+kingMovement t wk bk _ (AllColors b w _) = empty 
 
 generateMoves :: Board -> Moves 
-generateMoves b = V.filter (kingNotInCheck b) (traverseMb (U.indexed mbNoEmpty)) 
-        where traverseMb = V.concatMap (uncurry (makeMoves b)) . V.convert
-              mbNoEmpty = U.filter (\(S p) -> p /= 0) (mailBox b)
-
-kingNotInCheck :: Board -> Move -> Bool
-kingNotInCheck (Board _ mb False _ _ _ _) (Move start end) = True 
-kingNotInCheck (Board _ mb True  _ _ _ _) (Move start end) = True 
-
-makeMoves :: Board -> Index -> Square -> Moves
-makeMoves (Board _ mb False crs ep _ _) index (S piece)
-        | piece == 1  = bPawnMoves ep  mb index 
-        | piece == 2  = bRookMoves     mb index 
-        | piece == 3  = bKnightMoves   mb index 
-        | piece == 4  = bBishopMoves   mb index 
-        | piece == 5  = bQueenMoves    mb index 
-        | piece == 6  = bKingMoves crs mb index  
-        | otherwise   = V.empty 
-makeMoves (Board _ mb True  crs ep _ _) index (S piece)
-        | piece == 7  = wPawnMoves ep  mb index
-        | piece == 8  = wRookMoves     mb index 
-        | piece == 9  = wKnightMoves   mb index 
-        | piece == 10 = wBishopMoves   mb index 
-        | piece == 11 = wQueenMoves    mb index 
-        | piece == 12 = wKingMoves crs mb index 
-        | otherwise   = V.empty
-
-type MoveGenFun = MailBox -> Index -> Moves
-
-sqEmpty :: MailBox -> Index -> Bool 
-sqEmpty mb = (\(S p) -> p == 0) . (mb U.!) 
-
-bPawnMoves :: Maybe Index -> MoveGenFun
-bPawnMoves ep mb index = V.empty
-
-bRookMoves :: MoveGenFun
-bRookMoves mb index = V.empty
-
-bKnightMoves :: MoveGenFun 
-bKnightMoves mb index = V.empty
-
-bBishopMoves :: MoveGenFun 
-bBishopMoves mb index = V.empty
-
-bQueenMoves :: MoveGenFun 
-bQueenMoves mb index = V.empty
-
-bKingMoves :: Castling -> MoveGenFun 
-bKingMoves crs mb index = V.empty 
-
-test :: Vector Int
-test = create $ do 
-        v <- M.new 2 
-        M.write v 0 (1:: Int)
-        return v
-
-wPawnMoves :: Maybe Index -> MoveGenFun
-wPawnMoves ep mb index 
-        | index < 24 && sqEmpty mb (index + 8) = create $ do
-                v <- M.new 1
-
-                M.write v 0 (Move index (index + 8))
-                if sqEmpty mb (index + 16)
-                        then do
-                                M.unsafeGrow v 1
-                                M.write v 1 (Move index (index + 16))
-                                return v
-                        else return v
-        | 24 <= index && index < 48 && sqEmpty mb (index + 8) = create $ do
-                v <- M.new 1 
-                M.write v 0 (Move index (index + 8))
-                return v
-        | 48 <= index && index < 56 = undefined 
-        | otherwise  = V.empty
-        where pawnAttack v mb index =
-                if isColor False mb (index + 7) then do
-                        M.unsafeGrow v 1 
-                        M.write v 2 (Move index (index + 7))
-                else if isColor False mb (index + 9) then do
-                                M.unsafeGrow v 1
-                                M.write v 3 (Move index (index + 9))
-                     else return ()
-                        
-wRookMoves :: MoveGenFun
-wRookMoves mb index = V.empty
-
-wKnightMoves :: MoveGenFun 
-wKnightMoves mb index = V.empty
-
-wBishopMoves :: MoveGenFun 
-wBishopMoves mb index = V.empty
-
-wQueenMoves :: MoveGenFun 
-wQueenMoves mb index = V.empty
-
-wKingMoves :: Castling -> MoveGenFun 
-wKingMoves crs mb index = V.empty 
+generateMoves (Board (BitBoard pieces pawns rooks 
+                      knights bishops queens kings) t crs ep _ _ wk bk) = Moves moves promotions 
+        where moves = pawnMoves ++ knightMovement t knights pieces ++ 
+                      bishopMovement t bishops pieces ++ 
+                      rookMovement t rooks pieces ++
+                      queenMovement t queens pieces ++
+                      kingMovement t wk bk kings pieces 
+              (pawnMoves, promotions) = pawnMovement t ep pawns pieces 

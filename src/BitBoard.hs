@@ -1,13 +1,5 @@
-module BitBoard (BitBoard(..), 
-                 emptyBoard,
-                 BlackPieces(..),
-                 WhitePieces(..),
-                 Pawns(..),
-                 Rooks(..),
-                 Knights(..),
-                 Bishops(..),
-                 Queens(..),
-                 Kings(..)) where 
+{-# LANGUAGE DataKinds, KindSignatures, RankNTypes #-}
+module BitBoard  where 
 
 import Prelude hiding (takeWhile)
 
@@ -17,50 +9,41 @@ import Data.Bits
 import Data.IntMap.Strict hiding (filter)
 import Text.PrettyPrint.ANSI.Leijen
 
-newtype BlackPieces = BC { unBC :: Word64 } deriving (Bits,FiniteBits,Num,Show,Eq,Ord,Enum)
+data PieceType = All | Pawns | Rooks | Knights | Bishops | Queens | Kings 
+               deriving (Eq,Ord,Enum,Show)
 
-newtype WhitePieces = WC { unWC :: Word64 } deriving (Bits,FiniteBits,Num,Show,Eq,Ord,Enum)
+data AllColors (p :: PieceType) = AllColors {
+        black :: {-# UNPACK #-} !Word64, 
+        white :: {-# UNPACK #-} !Word64,
+        both  :: {-# UNPACK #-} !Word64 }
 
-newtype Pawns   = P { unP :: Word64 } deriving (Bits,FiniteBits,Num,Show,Eq,Ord,Enum)
-
-newtype Rooks   = R { unR :: Word64 } deriving (Bits,FiniteBits,Num,Show,Eq,Ord,Enum)
-
-newtype Knights = N { unN :: Word64 } deriving (Bits,FiniteBits,Num,Show,Eq,Ord,Enum)
-
-newtype Bishops = B { unB :: Word64 } deriving (Bits,FiniteBits,Num,Show,Eq,Ord,Enum)
-
-newtype Queens  = Q { unQ :: Word64 } deriving (Bits,FiniteBits,Num,Show,Eq,Ord,Enum)
-
-newtype Kings   = K { unK :: Word64 } deriving (Bits,FiniteBits,Num,Show,Eq,Ord,Enum)
-
-data BitBoard = BitBoard {-# UNPACK #-} !BlackPieces 
-                   {-# UNPACK #-} !WhitePieces 
-                   {-# UNPACK #-} !Pawns 
-                   {-# UNPACK #-} !Rooks  
-                   {-# UNPACK #-} !Knights  
-                   {-# UNPACK #-} !Bishops
-                   {-# UNPACK #-} !Queens 
-                   {-# UNPACK #-} !Kings
+data BitBoard = BitBoard {
+        pieces  :: {-# UNPACK #-} !(AllColors All), 
+        pawns   :: {-# UNPACK #-} !(AllColors Pawns),
+        rooks   :: {-# UNPACK #-} !(AllColors Rooks),
+        knights :: {-# UNPACK #-} !(AllColors Knights),
+        bishops :: {-# UNPACK #-} !(AllColors Bishops),
+        queens  :: {-# UNPACK #-} !(AllColors Queens),
+        kings   :: {-# UNPACK #-} !(AllColors Kings) }
 
 emptyBoard :: BitBoard  
-emptyBoard = BitBoard 0 0 0 0 0 0 0 0   
- 
-instance Show BitBoard where 
-        show = showBitBoard 
-        showsPrec _ b = (showBitBoard b ++) 
+emptyBoard = BitBoard (AllColors 0 0 0) (AllColors 0 0 0) (AllColors 0 0 0) (AllColors 0 0 0)
+                      (AllColors 0 0 0) (AllColors 0 0 0) (AllColors 0 0 0)
 
-showBitBoard :: BitBoard -> String  
-showBitBoard (BitBoard bc wc p r n b q k) = (reverse . elems . unions . fmap toIntMap) bitBoards
-        where toIntMap :: (Word64,Word64,Char) -> IntMap Char 
-              toIntMap (mask,pieces,c) = 
-                (fromDistinctAscList . fmap (,c) . filter (testBit (mask .&. pieces))) [0..63] 
-              bitBoards = [(unBC bc,unP p,'p'),(unBC bc,unR r,'r'),(unBC bc,unN n,'n'),
-                           (unBC bc,unB b,'b'),(unBC bc,unQ q,'q'),(unBC bc,unK k,'k'),
-                           (unWC wc,unP p,'P'),(unWC wc,unR r,'R'),(unWC wc,unN n,'N'),
-                           (unWC wc,unB b,'B'),(unWC wc,unQ q,'Q'),(unWC wc,unK k,'K'),
-                           (-1,-1,' ')]
+
+instance Show BitBoard where 
+        show = show . vsep . bitBoardToDoc 
+        showsPrec _ = (++) . show 
 
 bitBoardToDoc :: BitBoard -> [Doc]
-bitBoardToDoc = fmap string . splitEvery8 0 . showBitBoard 
-        where splitEvery8 64 _ = []
-              splitEvery8 n xs = take 8 xs : splitEvery8 (n+8) (drop 8 xs)
+bitBoardToDoc (BitBoard _ (AllColors bP wP _) (AllColors bR wR _) (AllColors bN wN _)
+                          (AllColors bB wB _) (AllColors bQ wQ _) (AllColors bK wK _)) = docs
+        where docs = (fmap (string . reverse) . splitEvery8 0) bitBoardString 
+              splitEvery8 8 _  = [] 
+              splitEvery8 n xs = take 8 xs : splitEvery8 (n+1) (drop 8 xs)
+              bitBoardString = (reverse . elems . unions . fmap toIntMap) bitBoards 
+              toIntMap (pieces,c) = 
+                (fromDistinctAscList . fmap (,c) . filter (testBit pieces)) [0..63]
+              bitBoards = [(bP,'p'),(wP,'P'),(bR,'r'),(wR,'R'),(bN,'n'),(wN,'N'),
+                           (bB,'b'),(wB,'B'),(bQ,'q'),(wQ,'Q'),(bK,'k'),(wK,'K'),(-1,' ')] 
+              
