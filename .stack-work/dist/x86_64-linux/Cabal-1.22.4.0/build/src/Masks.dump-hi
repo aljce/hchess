@@ -1,11 +1,11 @@
 
 ==================== FINAL INTERFACE ====================
-2016-01-02 04:04:55.053436 UTC
+2016-01-03 04:23:14.234911 UTC
 
-interface hches_KF6MDI5eODG4Q8cKhuw0mn:Masks 7102
-  interface hash: 834a380054d118d5873a01e93ed7882f
-  ABI hash: 706418babe768ec8b93f1895fb5e448d
-  export-list hash: fd3d3e401ab6244c43134b6d795f0aaa
+interface hches_3PXdSEAhhp2JIrhYvA7RvZ:Masks 7102
+  interface hash: af475d8ac1ce675b083e70837cbae073
+  ABI hash: 55c4d56f50ab20ffacfc1a39cdfbd49c
+  export-list hash: feaf700f129259df1ad72dc0703830d7
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 2bfdd69c509df0f94c327e5faec9ae27
   sig of: Nothing
@@ -56,54 +56,54 @@ import  -/  base-4.8.1.0:GHC.Word ef6286c279d61931eb675109b4b93579
 import  -/  base-4.8.1.0:Prelude 518f762991bc287d78f21a73c974da1f
 import  -/  vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Unboxed 8bd91cd1a3cd2cbd12faec978422ccd8
 import  -/  vector-0.11.0.0@vecto_A9qWf1eecPQGJD12EBZIxF:Data.Vector.Unboxed.Base 0761e27d6792efb778c5ac79292248a5
-24268484f57648029359182096f1167b
+f38957cdd0de556bb5e3c58d439fe9ff
   type Mask = GHC.Word.Word64
-7acf0376529be01acfc013e0f385f3d3
+8d697ba798a726c1b84db5cdb091bc9e
   fileAM :: Masks.Mask
   {- Strictness: b,
      Unfolding: InlineRule (0, True, True)
                 (GHC.Err.undefined @ Masks.Mask) -}
-8763fdf1d800e9776d6c145bc5ea5c2d
+250196eb18dcb04126d6e2fe4cd8d338
   fileBM :: Masks.Mask
   {- Strictness: b,
      Unfolding: InlineRule (0, True, True)
                 (GHC.Err.undefined @ Masks.Mask) -}
-ca54a93912aa20b731e3d29cf3b4d0ac
+77fb7960ba71448451b5608645b86232
   fileCM :: Masks.Mask
   {- Strictness: b,
      Unfolding: InlineRule (0, True, True)
                 (GHC.Err.undefined @ Masks.Mask) -}
-34e284b967643531a19051361096e728
+178b51cafe3bbcc3512d31f0025eeeed
   fileDM :: Masks.Mask
   {- Strictness: b,
      Unfolding: InlineRule (0, True, True)
                 (GHC.Err.undefined @ Masks.Mask) -}
-bf8054af691c4725f75da0b018f6ed44
+3d5d5419e3da1fa8d8416cb6ef836068
   fileEM :: Masks.Mask
   {- Strictness: b,
      Unfolding: InlineRule (0, True, True)
                 (GHC.Err.undefined @ Masks.Mask) -}
-fcd9a53135605b1f5d65e2d32aeb873d
+e433b3f5e4590a8454451bf2a7846d72
   fileFM :: Masks.Mask
   {- Strictness: b,
      Unfolding: InlineRule (0, True, True)
                 (GHC.Err.undefined @ Masks.Mask) -}
-f14fd372771685b6a09adf819532f521
+0147a8d1f31df8238d411943eaa48333
   fileGM :: Masks.Mask
   {- Strictness: b,
      Unfolding: InlineRule (0, True, True)
                 (GHC.Err.undefined @ Masks.Mask) -}
-42d3e5c651284e9e0fe0410066b80143
+1b7ccdc9ba543e4744546016fa736726
   fileHM :: Masks.Mask
   {- Strictness: b,
      Unfolding: InlineRule (0, True, True)
                 (GHC.Err.undefined @ Masks.Mask) -}
-603749677d00ca36f9831b047fabdc61
+373bce684c24849093eb9b95841a77e1
   fileMasks :: Data.Vector.Unboxed.Base.Vector Masks.Mask
   {- Unfolding: (GHC.ST.runSTRep
                    @ (Data.Vector.Unboxed.Base.Vector Masks.Mask)
                    Masks.fileMasks1) -}
-dfa23e0e3c8ed6eb74558f1988e22125
+e82f10a595b6511d117834aa1b3dbf64
   fileMasks1 ::
     GHC.Prim.State# s
     -> (# GHC.Prim.State# s,
@@ -193,22 +193,22 @@ dfa23e0e3c8ed6eb74558f1988e22125
                       ret_ty (# GHC.Prim.State# s,
                                 Data.Vector.Unboxed.Base.Vector Masks.Mask #)
                       of {} } }) -}
-90b1ffe57bd270ad0864be8acbe4e5d9
+e211d1553146ea87d5a2c246c5fbf3cc
   fileMasks10 :: [Masks.Mask]
   {- Unfolding: (GHC.Types.:
                    @ Masks.Mask
                    (GHC.Err.undefined @ Masks.Mask)
                    Masks.fileMasks11) -}
-337a1a637d5715678d43a86063df7908
+95f64c845ef1ebeca1140f2dc86d1c62
   fileMasks11 :: [Masks.Mask]
   {- Unfolding: (GHC.Types.:
                    @ Masks.Mask
                    (GHC.Err.undefined @ Masks.Mask)
                    (GHC.Types.[] @ Masks.Mask)) -}
-463b7fa988003ffaa64c874e4861c4b7
+f15ae1630c782267073ed38ca6b49cf0
   fileMasks12 :: GHC.Types.Int
   {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 0) -}
-14b1cd479b4376b03c1a8238d7ddf61b
+ea60737d67059427aba37366e3b396e2
   fileMasks13 ::
     GHC.Types.SPEC
     -> (Data.Vector.Generic.Base.Mutable
@@ -225,92 +225,92 @@ dfa23e0e3c8ed6eb74558f1988e22125
              Masks.Mask,
            GHC.Types.Int) #)
   {- Arity: 4, Strictness: <S,1*U><L,U(U(U,U,U),U(U))><S,1*U><L,U> -}
-223a04b55f06732213f31442bf5d8136
+d5f071b080bdfda3bb826a87fd8ca6fd
   fileMasks2 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackAppendCString#
                    "Primitive.basicUnsafeNew: length to large: "#
                    Masks.fileMasks3) -}
-839fc64adb3a6338bd22f42215df3e62
+b5a7061a18968300b629f5f8a4221733
   fileMasks3 :: [GHC.Types.Char]
   {- Unfolding: (case GHC.Show.$wshowSignedInt
                         0
                         0
                         (GHC.Types.[] @ GHC.Types.Char) of ww4 { (#,#) ww5 ww6 ->
                  GHC.Types.: @ GHC.Types.Char ww5 ww6 }) -}
-de99416b98361462eca6656a8b61a1d3
+47a209bc9b2d141961426e48edd72cfb
   fileMasks4 :: [Masks.Mask]
   {- Unfolding: (GHC.Types.:
                    @ Masks.Mask
                    (GHC.Err.undefined @ Masks.Mask)
                    Masks.fileMasks5) -}
-b7d85e3d8531595fec2c22d815b83757
+684d395c873fe8288f254de2a329334b
   fileMasks5 :: [Masks.Mask]
   {- Unfolding: (GHC.Types.:
                    @ Masks.Mask
                    (GHC.Err.undefined @ Masks.Mask)
                    Masks.fileMasks6) -}
-44c9d1b906d90d51d32c64e0182931c9
+608fff7c73ec3a8189e3682178ec7053
   fileMasks6 :: [Masks.Mask]
   {- Unfolding: (GHC.Types.:
                    @ Masks.Mask
                    (GHC.Err.undefined @ Masks.Mask)
                    Masks.fileMasks7) -}
-10a73a220f18a857a30bf01bb2ae0d95
+7208e8052ef965d0f8e3ff933592c8c7
   fileMasks7 :: [Masks.Mask]
   {- Unfolding: (GHC.Types.:
                    @ Masks.Mask
                    (GHC.Err.undefined @ Masks.Mask)
                    Masks.fileMasks8) -}
-529766182a23db1e52ed3f18b2a8baf1
+80c183389269c35e44e22be7381221ff
   fileMasks8 :: [Masks.Mask]
   {- Unfolding: (GHC.Types.:
                    @ Masks.Mask
                    (GHC.Err.undefined @ Masks.Mask)
                    Masks.fileMasks9) -}
-1b1c0629f2cd10c66d9d53bd9568fc7c
+bc471427716def79590ffa2e8c9ae7d4
   fileMasks9 :: [Masks.Mask]
   {- Unfolding: (GHC.Types.:
                    @ Masks.Mask
                    (GHC.Err.undefined @ Masks.Mask)
                    Masks.fileMasks10) -}
-c15c9cf1d882b50f8b9653f6e8bdad90
+146f699f4f121ca7ccbb10b946df0bc3
   rank1M :: Masks.Mask
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Word.W64# __word 18446744073709551360) -}
-f8fb18c84a8fa7dccbd68d3b4cc6ce69
+10df29e520f024cd222e46103e570964
   rank2M :: Masks.Mask
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Word.W64# __word 18446744073709486335) -}
-2a4623799bb1ed9b7798100499ce99be
+4852587a7d03da933c95b37cd9c3ad01
   rank3M :: Masks.Mask
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Word.W64# __word 18446744073692839935) -}
-5af3e0c6c52847f54bc41247519798b5
+8c4aae0427f0ff6fe81e4df86cb58697
   rank4M :: Masks.Mask
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Word.W64# __word 18446744069431361535) -}
-6d611b02cd09c845737212b14154ff66
+7a5a408a8eff745d790f7b79882667a1
   rank5M :: Masks.Mask
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Word.W64# __word 18446742978492891135) -}
-38dd7491126861e0ee7ca5a78b1b1626
+33075704d8f8cd270db91571b257768f
   rank6M :: Masks.Mask
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Word.W64# __word 18446463698244468735) -}
-71a54ee3358e4ffc1152486c5df6c756
+7608130863d0af7c0cd890c352c75ae7
   rank7M :: Masks.Mask
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Word.W64# __word 18374967954648334335) -}
-3c9bf1bed467a65c8ed9707b4ad9410c
+49c7f18d8169b0fe125fe1edd3b4ac2e
   rank8M :: Masks.Mask
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Word.W64# __word 72057594037927935) -}
-19e8f3df2fd2d3310331a8ed7942495e
+4fd17fa15e1b3de86b98e888e5aad31d
   rankMasks :: Data.Vector.Unboxed.Base.Vector GHC.Word.Word64
   {- Unfolding: (GHC.ST.runSTRep
                    @ (Data.Vector.Unboxed.Base.Vector GHC.Word.Word64)
                    Masks.rankMasks1) -}
-199aeb159e2c2eee9721fe141125505c
+298d66c810810f61baba1d52ca6c399b
   rankMasks1 ::
     GHC.Prim.State# s
     -> (# GHC.Prim.State# s,
@@ -400,7 +400,7 @@ f8fb18c84a8fa7dccbd68d3b4cc6ce69
                       ret_ty (# GHC.Prim.State# s,
                                 Data.Vector.Unboxed.Base.Vector GHC.Word.Word64 #)
                       of {} } }) -}
-3ed48675a26744aeea52bf1e8c522e47
+b1b3e3e68ecba284fb1b077fadb6c4a6
   rankMasks10 ::
     GHC.Types.SPEC
     -> (Data.Vector.Generic.Base.Mutable
@@ -417,56 +417,56 @@ f8fb18c84a8fa7dccbd68d3b4cc6ce69
              GHC.Word.Word64,
            GHC.Types.Int) #)
   {- Arity: 4, Strictness: <S,1*U><L,U(U(U,U,U),U(U))><S,1*U><L,U> -}
-0b2d7bd915176757dd5558001b37d167
+7ea6b519941fb565e5bd5de8be5a38b4
   rankMasks2 :: [GHC.Word.Word64]
   {- HasNoCafRefs,
      Unfolding: (GHC.Types.:
                    @ GHC.Word.Word64
                    Masks.rank1M
                    Masks.rankMasks3) -}
-accb4e1a2b28c01a82d3b3332cf172ef
+dba5a989dce0cca6682ca5851b5740dc
   rankMasks3 :: [GHC.Word.Word64]
   {- HasNoCafRefs,
      Unfolding: (GHC.Types.:
                    @ GHC.Word.Word64
                    Masks.rank2M
                    Masks.rankMasks4) -}
-f2628bdd98b2c248a00189fa56a414da
+73a5ac4fdcba64fc466f922777b55a7c
   rankMasks4 :: [GHC.Word.Word64]
   {- HasNoCafRefs,
      Unfolding: (GHC.Types.:
                    @ GHC.Word.Word64
                    Masks.rank3M
                    Masks.rankMasks5) -}
-ba77c6ff1a60427b019aa341951025ce
+3611efa4a6bd694739dd1f2f36f149b6
   rankMasks5 :: [GHC.Word.Word64]
   {- HasNoCafRefs,
      Unfolding: (GHC.Types.:
                    @ GHC.Word.Word64
                    Masks.rank4M
                    Masks.rankMasks6) -}
-cfb1d5c51f8c533374270bde860247c9
+a94e21a9d094f23f08028a6652daba7b
   rankMasks6 :: [GHC.Word.Word64]
   {- HasNoCafRefs,
      Unfolding: (GHC.Types.:
                    @ GHC.Word.Word64
                    Masks.rank5M
                    Masks.rankMasks7) -}
-42092b5d51d2d153e64164052167dc77
+7056dcbf749d60018e819793c3a6b1a3
   rankMasks7 :: [GHC.Word.Word64]
   {- HasNoCafRefs,
      Unfolding: (GHC.Types.:
                    @ GHC.Word.Word64
                    Masks.rank6M
                    Masks.rankMasks8) -}
-0cf06d974e39b7d89b15b46f99e338de
+3ac87e8fb08c894e51e90b362917b082
   rankMasks8 :: [GHC.Word.Word64]
   {- HasNoCafRefs,
      Unfolding: (GHC.Types.:
                    @ GHC.Word.Word64
                    Masks.rank7M
                    Masks.rankMasks9) -}
-db0355d31bf04d7b62cf198fb1bd6239
+da9b3581da2cdb3154f8c16da700f705
   rankMasks9 :: [GHC.Word.Word64]
   {- HasNoCafRefs,
      Unfolding: (GHC.Types.:

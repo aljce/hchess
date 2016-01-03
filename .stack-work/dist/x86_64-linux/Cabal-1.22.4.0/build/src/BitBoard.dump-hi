@@ -1,11 +1,11 @@
 
 ==================== FINAL INTERFACE ====================
-2016-01-02 04:04:55.319635 UTC
+2016-01-03 04:23:15.7855 UTC
 
-interface hches_KF6MDI5eODG4Q8cKhuw0mn:BitBoard 7102
-  interface hash: ce87692e77f1f1f20576da116814b90b
-  ABI hash: 3c244b8ec8b253f65c50911201be3573
-  export-list hash: ad24690e2a3640cdb930e8fadfacb8b5
+interface hches_3PXdSEAhhp2JIrhYvA7RvZ:BitBoard 7102
+  interface hash: 2184decac2b0f77b56b3b3c192c44638
+  ABI hash: 1d34c765e2913aef164a6d247daf4736
+  export-list hash: 6eb44feaf65c4fa3bf03a262b000e28d
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 613f9f74249a44145e3c1e766ddf802d
   sig of: Nothing
@@ -46,7 +46,7 @@ import  -/  containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN:Data.IntMap.Base 412
 import  -/  containers-0.5.6.2@conta_LKCPrTJwOTOLk4OU37YmeN:Data.IntMap.Strict 75157829e2fd1bf3aaf8a4fd3bd7d8f4
 import  -/  ghc-prim-0.4.0.0:GHC.Classes e1f4ff80f7b5262008a595d29986fb18
 import  -/  ghc-prim-0.4.0.0:GHC.Types 6b27fb3fdbd0e3f0925a4496c66513bb
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType :: GHC.Enum.Enum BitBoard.PieceType
   DFunId[0]
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -60,37 +60,37 @@ f417d32df3225e12d27a8db2fbbc5424
                   BitBoard.$fEnumPieceType_$cenumFromThen
                   BitBoard.$fEnumPieceType_$cenumFromTo
                   BitBoard.$fEnumPieceType_$cenumFromThenTo -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType1 :: [BitBoard.PieceType]
   {- Unfolding: (BitBoard.$fEnumPieceType_go7 6) -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType10 :: BitBoard.PieceType
   {- Strictness: b -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType2 :: [BitBoard.PieceType]
   {- Unfolding: (BitBoard.$fEnumPieceType_go8 5) -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType3 :: [BitBoard.PieceType]
   {- Unfolding: (BitBoard.$fEnumPieceType_go9 4) -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType4 :: [BitBoard.PieceType]
   {- Unfolding: (BitBoard.$fEnumPieceType_go10 3) -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType5 :: [BitBoard.PieceType]
   {- Unfolding: (BitBoard.$fEnumPieceType_go11 2) -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType6 :: [BitBoard.PieceType]
   {- Unfolding: (BitBoard.$fEnumPieceType_go12 1) -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType7 :: [BitBoard.PieceType]
   {- Unfolding: (BitBoard.$fEnumPieceType_go13 0) -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType8 :: GHC.Prim.Int# -> BitBoard.PieceType
   {- Arity: 1, Strictness: <L,U>b -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType9 :: BitBoard.PieceType
   {- Strictness: b -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType_$cenumFrom ::
     BitBoard.PieceType -> [BitBoard.PieceType]
   {- Arity: 1, Strictness: <S,1*U>,
@@ -103,7 +103,7 @@ f417d32df3225e12d27a8db2fbbc5424
                    BitBoard.Bishops -> BitBoard.$fEnumPieceType3
                    BitBoard.Queens -> BitBoard.$fEnumPieceType2
                    BitBoard.Kings -> BitBoard.$fEnumPieceType1 }) -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType_$cenumFromThen ::
     BitBoard.PieceType -> BitBoard.PieceType -> [BitBoard.PieceType]
   {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
@@ -162,12 +162,12 @@ f417d32df3225e12d27a8db2fbbc5424
                    BitBoard.Bishops -> $j 4
                    BitBoard.Queens -> $j 5
                    BitBoard.Kings -> $j 6 }) -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType_$cenumFromThenTo ::
     BitBoard.PieceType
     -> BitBoard.PieceType -> BitBoard.PieceType -> [BitBoard.PieceType]
   {- Arity: 3, Strictness: <S,1*U><S,1*U><S,1*U> -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType_$cenumFromTo ::
     BitBoard.PieceType -> BitBoard.PieceType -> [BitBoard.PieceType]
   {- Arity: 2, Strictness: <S,1*U><S,1*U>,
@@ -228,7 +228,7 @@ f417d32df3225e12d27a8db2fbbc5424
                    BitBoard.Bishops -> $j 4
                    BitBoard.Queens -> $j 5
                    BitBoard.Kings -> $j 6 }) -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType_$cfromEnum :: BitBoard.PieceType -> GHC.Types.Int
   {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>m, Inline: INLINE[0],
      Unfolding: InlineRule (1, True, False)
@@ -241,7 +241,7 @@ f417d32df3225e12d27a8db2fbbc5424
                    BitBoard.Bishops -> GHC.Types.I# 4
                    BitBoard.Queens -> GHC.Types.I# 5
                    BitBoard.Kings -> GHC.Types.I# 6 }) -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType_$cpred :: BitBoard.PieceType -> BitBoard.PieceType
   {- Arity: 1, Strictness: <S,1*U>,
      Unfolding: InlineRule (1, True, False)
@@ -254,7 +254,7 @@ f417d32df3225e12d27a8db2fbbc5424
                    BitBoard.Bishops -> BitBoard.Knights
                    BitBoard.Queens -> BitBoard.Bishops
                    BitBoard.Kings -> BitBoard.Queens }) -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType_$csucc :: BitBoard.PieceType -> BitBoard.PieceType
   {- Arity: 1, Strictness: <S,1*U>,
      Unfolding: InlineRule (1, True, False)
@@ -267,13 +267,13 @@ f417d32df3225e12d27a8db2fbbc5424
                    BitBoard.Bishops -> BitBoard.Queens
                    BitBoard.Queens -> BitBoard.Kings
                    BitBoard.Kings -> BitBoard.$fEnumPieceType10 }) -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType_$ctoEnum :: GHC.Types.Int -> BitBoard.PieceType
   {- Arity: 1, Strictness: <S,1*U(U)>, Inline: INLINE[0],
      Unfolding: InlineRule (1, True, False)
                 (\ w :: GHC.Types.Int ->
                  case w of ww { GHC.Types.I# ww1 -> BitBoard.$w$ctoEnum ww1 }) -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType_c ::
     GHC.Types.Int -> [BitBoard.PieceType] -> [BitBoard.PieceType]
   {- Arity: 2, HasNoCafRefs, Strictness: <L,1*U(U)><L,U>,
@@ -284,49 +284,49 @@ f417d32df3225e12d27a8db2fbbc5424
                    (case x of wild { GHC.Types.I# a ->
                     GHC.Prim.tagToEnum# @ BitBoard.PieceType a })
                    ys) -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType_go :: GHC.Prim.Int# -> [BitBoard.PieceType]
   {- Arity: 1, Strictness: <L,U> -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType_go1 :: GHC.Prim.Int# -> [BitBoard.PieceType]
   {- Arity: 1, Strictness: <L,U> -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType_go10 :: GHC.Prim.Int# -> [BitBoard.PieceType]
   {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType_go11 :: GHC.Prim.Int# -> [BitBoard.PieceType]
   {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType_go12 :: GHC.Prim.Int# -> [BitBoard.PieceType]
   {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType_go13 :: GHC.Prim.Int# -> [BitBoard.PieceType]
   {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType_go2 :: GHC.Prim.Int# -> [BitBoard.PieceType]
   {- Arity: 1, Strictness: <L,U> -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType_go3 :: GHC.Prim.Int# -> [BitBoard.PieceType]
   {- Arity: 1, Strictness: <L,U> -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType_go4 :: GHC.Prim.Int# -> [BitBoard.PieceType]
   {- Arity: 1, Strictness: <L,U> -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType_go5 :: GHC.Prim.Int# -> [BitBoard.PieceType]
   {- Arity: 1, Strictness: <L,U> -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType_go6 :: GHC.Prim.Int# -> [BitBoard.PieceType]
   {- Arity: 1, Strictness: <L,U> -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType_go7 :: GHC.Prim.Int# -> [BitBoard.PieceType]
   {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType_go8 :: GHC.Prim.Int# -> [BitBoard.PieceType]
   {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEnumPieceType_go9 :: GHC.Prim.Int# -> [BitBoard.PieceType]
   {- Arity: 1, HasNoCafRefs, Strictness: <L,U> -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEqPieceType :: GHC.Classes.Eq BitBoard.PieceType
   DFunId[0]
   {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -334,7 +334,7 @@ f417d32df3225e12d27a8db2fbbc5424
                   @ BitBoard.PieceType
                   BitBoard.$fEqPieceType_$c==
                   BitBoard.$fEqPieceType_$c/= -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEqPieceType_$c/= ::
     BitBoard.PieceType -> BitBoard.PieceType -> GHC.Types.Bool
   {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
@@ -361,7 +361,7 @@ f417d32df3225e12d27a8db2fbbc5424
                    BitBoard.Kings
                    -> case b of wild1 {
                         DEFAULT -> GHC.Types.True BitBoard.Kings -> GHC.Types.False } }) -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fEqPieceType_$c== ::
     BitBoard.PieceType -> BitBoard.PieceType -> GHC.Types.Bool
   {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
@@ -388,7 +388,7 @@ f417d32df3225e12d27a8db2fbbc5424
                    BitBoard.Kings
                    -> case ds1 of wild1 {
                         DEFAULT -> GHC.Types.False BitBoard.Kings -> GHC.Types.True } }) -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fOrdPieceType :: GHC.Classes.Ord BitBoard.PieceType
   DFunId[0]
   {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -402,7 +402,7 @@ f417d32df3225e12d27a8db2fbbc5424
                   BitBoard.$fOrdPieceType_$c>=
                   BitBoard.$fOrdPieceType_$cmax
                   BitBoard.$fOrdPieceType_$cmin -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fOrdPieceType_$c< ::
     BitBoard.PieceType -> BitBoard.PieceType -> GHC.Types.Bool
   {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
@@ -435,7 +435,7 @@ f417d32df3225e12d27a8db2fbbc5424
                    BitBoard.Bishops -> $j 4
                    BitBoard.Queens -> $j 5
                    BitBoard.Kings -> $j 6 }) -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fOrdPieceType_$c<= ::
     BitBoard.PieceType -> BitBoard.PieceType -> GHC.Types.Bool
   {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
@@ -468,7 +468,7 @@ f417d32df3225e12d27a8db2fbbc5424
                    BitBoard.Bishops -> $j 4
                    BitBoard.Queens -> $j 5
                    BitBoard.Kings -> $j 6 }) -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fOrdPieceType_$c> ::
     BitBoard.PieceType -> BitBoard.PieceType -> GHC.Types.Bool
   {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
@@ -501,7 +501,7 @@ f417d32df3225e12d27a8db2fbbc5424
                    BitBoard.Bishops -> $j 4
                    BitBoard.Queens -> $j 5
                    BitBoard.Kings -> $j 6 }) -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fOrdPieceType_$c>= ::
     BitBoard.PieceType -> BitBoard.PieceType -> GHC.Types.Bool
   {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
@@ -534,7 +534,7 @@ f417d32df3225e12d27a8db2fbbc5424
                    BitBoard.Bishops -> $j 4
                    BitBoard.Queens -> $j 5
                    BitBoard.Kings -> $j 6 }) -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fOrdPieceType_$ccompare ::
     BitBoard.PieceType -> BitBoard.PieceType -> GHC.Types.Ordering
   {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
@@ -587,7 +587,7 @@ f417d32df3225e12d27a8db2fbbc5424
                    BitBoard.Kings
                    -> case b of wild1 {
                         DEFAULT -> GHC.Types.GT BitBoard.Kings -> GHC.Types.EQ } }) -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fOrdPieceType_$cmax ::
     BitBoard.PieceType -> BitBoard.PieceType -> BitBoard.PieceType
   {- Arity: 2, HasNoCafRefs, Strictness: <S,U><S,U>,
@@ -595,7 +595,7 @@ f417d32df3225e12d27a8db2fbbc5424
                 (\ x :: BitBoard.PieceType y :: BitBoard.PieceType ->
                  case BitBoard.$fOrdPieceType_$c<= x y of wild {
                    GHC.Types.False -> x GHC.Types.True -> y }) -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fOrdPieceType_$cmin ::
     BitBoard.PieceType -> BitBoard.PieceType -> BitBoard.PieceType
   {- Arity: 2, HasNoCafRefs, Strictness: <S,U><S,U>,
@@ -603,7 +603,7 @@ f417d32df3225e12d27a8db2fbbc5424
                 (\ x :: BitBoard.PieceType y :: BitBoard.PieceType ->
                  case BitBoard.$fOrdPieceType_$c<= x y of wild {
                    GHC.Types.False -> y GHC.Types.True -> x }) -}
-d9e321f5bae9df77c5aad3bd67235d5d
+76ff291bd5559725ac43a513632ccddc
   $fShowBitBoard :: GHC.Show.Show BitBoard.BitBoard
   DFunId[0]
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -612,50 +612,50 @@ d9e321f5bae9df77c5aad3bd67235d5d
                   BitBoard.$fShowBitBoard_$cshowsPrec
                   BitBoard.$fShowBitBoard_$cshow
                   BitBoard.$fShowBitBoard_$cshowList -}
-d9e321f5bae9df77c5aad3bd67235d5d
+76ff291bd5559725ac43a513632ccddc
   $fShowBitBoard1 :: BitBoard.BitBoard -> GHC.Show.ShowS
   {- Arity: 1,
      Strictness: <L,1*U(A,A,A,U,U,A,U,U,A,U,U,A,U,U,A,U,U,A,U,U,A)>,
      Unfolding: InlineRule (1, True, False)
                 (\ x :: BitBoard.BitBoard ->
                  GHC.Base.++ @ GHC.Types.Char (BitBoard.$fShowBitBoard_$cshow x)) -}
-aa60f02357514ac46edd119ad6d18647
+24c672e07a8701a5505d8b48b7d1f98b
   $fShowBitBoard10 :: GHC.Types.Char
   {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.C# 'q') -}
-8876c2ef993238c8f9f24f786a954393
+a57c7c0761cb946e95881b4ce3d5ae7f
   $fShowBitBoard11 :: GHC.Types.Char
   {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.C# 'B') -}
-84bd62bb9cf66941e0a6635022a111f0
+295473c88c92d9cb5db97cb5ad52de23
   $fShowBitBoard12 :: GHC.Types.Char
   {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.C# 'b') -}
-fa98633598b883c47727f9aac803b806
+4dff05fd496506d77c96131df6fe089a
   $fShowBitBoard13 :: GHC.Types.Char
   {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.C# 'N') -}
-3e8a097ea36fce9ea100c49996479215
+01283de488ea29f8cc57f93efebdb38a
   $fShowBitBoard14 :: GHC.Types.Char
   {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.C# 'n') -}
-9c866cdeead86429f99bb1e5546100d9
+fd49ae45ce4caf93045341c01f1b12c5
   $fShowBitBoard15 :: GHC.Types.Char
   {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.C# 'R') -}
-038da9c2c11d32060b726124cc6a91f8
+04e279458539e4244330f1a879ad1682
   $fShowBitBoard16 :: GHC.Types.Char
   {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.C# 'r') -}
-1701accefa1659987c18c8fd97f1604e
+a1de3bde87d926feaba5d3b4fe138931
   $fShowBitBoard17 :: GHC.Types.Char
   {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.C# 'P') -}
-0511e2e9513fca16ada524f12bd1f769
+3e27f7a8bad584c93dcd5be93ce3c446
   $fShowBitBoard18 :: GHC.Types.Char
   {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.C# 'p') -}
-7f8ae991429afdbde6c3af62100da071
+09552921d46f2b01d7912880eab99d25
   $fShowBitBoard19 :: GHC.Integer.Type.Integer
   {- HasNoCafRefs, Unfolding: (__integer 0) -}
-204c624dd7faea1727e5afe1231e1be1
+39c3eda0b72c11af6378f549a92cdd75
   $fShowBitBoard2 :: [Data.IntMap.Base.IntMap GHC.Types.Char]
   {- Unfolding: (GHC.Types.:
                    @ (Data.IntMap.Base.IntMap GHC.Types.Char)
                    BitBoard.$fShowBitBoard3
                    (GHC.Types.[] @ (Data.IntMap.Base.IntMap GHC.Types.Char))) -}
-62fc8535f25295638c8cc6adb3cf421e
+49e11c3305040ef71ab278892ebfc7aa
   $fShowBitBoard20 ::
     [GHC.Types.Char] -> Text.PrettyPrint.ANSI.Leijen.Doc
   {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
@@ -663,31 +663,31 @@ fa98633598b883c47727f9aac803b806
                 (\ x :: [GHC.Types.Char] ->
                  Text.PrettyPrint.ANSI.Leijen.string
                    (GHC.List.reverse @ GHC.Types.Char x)) -}
-fc9d28c67a00458c82267c625ac2e42f
+1d3ed9abbe05a97d60d5764285591716
   $fShowBitBoard3 :: Data.IntMap.Base.IntMap GHC.Types.Char
   {- Unfolding: (BitBoard.$wlvl
                    BitBoard.$fShowBitBoard5
                    BitBoard.$fShowBitBoard4) -}
-c436de7f8d4b5c272837554e67f75f5c
+beceff0a51e76d95b23bc8421e8e2da9
   $fShowBitBoard4 :: GHC.Types.Char
   {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.C# ' ') -}
-94c7a1b22d82b1f913d26dc35a3cc660
+2331820862e29128e8cf3702761373c3
   $fShowBitBoard5 :: GHC.Word.Word64
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Word.W64# __word 18446744073709551615) -}
-3804680f77b70ebee1e5c3d39cf93936
+b7c5e7f41c77ef8d9eb390f130f27152
   $fShowBitBoard6 :: [GHC.Types.Int]
   {- Unfolding: (GHC.Enum.eftInt 0 63) -}
-33b6319124899d659dc66dc3745dbc54
+97cafe985e76b70e85e270faec4fda27
   $fShowBitBoard7 :: GHC.Types.Char
   {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.C# 'K') -}
-2593111edfa393ed9317b07d632ea523
+36fb2d8b716454e9dee35f5ecd64be5d
   $fShowBitBoard8 :: GHC.Types.Char
   {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.C# 'k') -}
-9c0491e435a81b69e262aebeb2e23318
+cde64a04f1a764fbf7437a3fca2862b4
   $fShowBitBoard9 :: GHC.Types.Char
   {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.C# 'Q') -}
-d9e321f5bae9df77c5aad3bd67235d5d
+76ff291bd5559725ac43a513632ccddc
   $fShowBitBoard_$cshow :: BitBoard.BitBoard -> GHC.Base.String
   {- Arity: 1,
      Strictness: <L,1*U(A,A,A,U,U,A,U,U,A,U,U,A,U,U,A,U,U,A,U,U,A)>,
@@ -719,7 +719,7 @@ d9e321f5bae9df77c5aad3bd67235d5d
                               ipv
                               ipv1 } }))
                    (GHC.Types.[] @ GHC.Types.Char)) -}
-d9e321f5bae9df77c5aad3bd67235d5d
+76ff291bd5559725ac43a513632ccddc
   $fShowBitBoard_$cshowList :: [BitBoard.BitBoard] -> GHC.Show.ShowS
   {- Arity: 2, Strictness: <S,1*U><L,U>,
      Unfolding: InlineRule (2, True, False)
@@ -729,18 +729,18 @@ d9e321f5bae9df77c5aad3bd67235d5d
                    BitBoard.$fShowBitBoard1
                    ls
                    s) -}
-d9e321f5bae9df77c5aad3bd67235d5d
+76ff291bd5559725ac43a513632ccddc
   $fShowBitBoard_$cshowsPrec ::
     GHC.Types.Int -> BitBoard.BitBoard -> GHC.Show.ShowS
   {- Arity: 2, Strictness: <L,A>,
      Unfolding: InlineRule (1, True, True)
                 (\ ds :: GHC.Types.Int eta :: BitBoard.BitBoard ->
                  BitBoard.$fShowBitBoard1 eta) -}
-ddaa618e48b48a87fcd2e90eb8a6f0ac
+8b1dfe624b34a93a8c62d9c611128f3d
   $fShowBitBoard_splitEvery8 ::
     GHC.Integer.Type.Integer -> [GHC.Types.Char] -> [[GHC.Types.Char]]
   {- Arity: 2, Strictness: <S,U><L,U> -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fShowPieceType :: GHC.Show.Show BitBoard.PieceType
   DFunId[0]
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -749,28 +749,28 @@ f417d32df3225e12d27a8db2fbbc5424
                   BitBoard.$fShowPieceType_$cshowsPrec
                   BitBoard.$fShowPieceType_$cshow
                   BitBoard.$fShowPieceType_$cshowList -}
-ca89085a09e38e47125ce923152c3a6b
+bcc505f2e745ed739eed1456388361e2
   $fShowPieceType1 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "Kings"#) -}
-db28c88e8f4d9ad62499e1371938004a
+d9bd60e791c2684f1974edf51ad908fc
   $fShowPieceType2 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "Queens"#) -}
-ac09fe997c752344dd219f8119395557
+9bdc56a7d5eca4ce303dfe6d32e63ab9
   $fShowPieceType3 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "Bishops"#) -}
-958f683feb5aa98556df5c46c9db7e2b
+0660e11e4023df89428991692334c096
   $fShowPieceType4 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "Knights"#) -}
-4ae0f6d8baa861e7ba08444a88445868
+5d5dd0e3534453d7f2c9902089420f51
   $fShowPieceType5 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "Rooks"#) -}
-bc29e98838f8d5add44a1c1a0b1004c8
+64184f0f570170446b91db0e572f93ac
   $fShowPieceType6 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "Pawns"#) -}
-e03c423eea3a35225707d76a93cc074c
+6d9ae9a6cb9548408573fa653da60acd
   $fShowPieceType7 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "All"#) -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fShowPieceType_$cshow :: BitBoard.PieceType -> GHC.Base.String
   {- Arity: 1, Strictness: <S,1*U>,
      Unfolding: InlineRule (1, True, False)
@@ -779,14 +779,14 @@ f417d32df3225e12d27a8db2fbbc5424
                    GHC.Show.shows18
                    x
                    (GHC.Types.[] @ GHC.Types.Char)) -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fShowPieceType_$cshowList ::
     [BitBoard.PieceType] -> GHC.Show.ShowS
   {- Arity: 2,
      Unfolding: (GHC.Show.showList__
                    @ BitBoard.PieceType
                    BitBoard.$w$cshowsPrec) -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $fShowPieceType_$cshowsPrec ::
     GHC.Types.Int -> BitBoard.PieceType -> GHC.Show.ShowS
   {- Arity: 3, Strictness: <L,A><S,1*U><L,1*U>, Inline: INLINE[0],
@@ -795,7 +795,7 @@ f417d32df3225e12d27a8db2fbbc5424
                    w1 :: BitBoard.PieceType
                    w2 :: GHC.Base.String ->
                  BitBoard.$w$cshowsPrec w1 w2) -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $w$cshowsPrec ::
     BitBoard.PieceType -> GHC.Base.String -> GHC.Base.String
   {- Arity: 2, Strictness: <S,1*U><L,1*U>, Inline: [0],
@@ -815,7 +815,7 @@ f417d32df3225e12d27a8db2fbbc5424
                    -> GHC.Base.++ @ GHC.Types.Char BitBoard.$fShowPieceType2 w1
                    BitBoard.Kings
                    -> GHC.Base.++ @ GHC.Types.Char BitBoard.$fShowPieceType1 w1 }) -}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   $w$ctoEnum :: GHC.Prim.Int# -> BitBoard.PieceType
   {- Arity: 1, Strictness: <L,U>, Inline: [0],
      Unfolding: (\ ww :: GHC.Prim.Int# ->
@@ -830,7 +830,7 @@ f417d32df3225e12d27a8db2fbbc5424
                         GHC.Types.False -> BitBoard.$fEnumPieceType8 ww
                         GHC.Types.True
                         -> GHC.Prim.tagToEnum# @ BitBoard.PieceType ww } }) -}
-7ccf2c994eded66d3c115231d1075391
+bb384fbe9c5a6093f0a3369de64110c6
   $wbitBoardToDoc ::
     GHC.Prim.Word#
     -> GHC.Prim.Word#
@@ -934,7 +934,7 @@ f417d32df3225e12d27a8db2fbbc5424
                                                                       BitBoard.$fShowBitBoard7)
                                                                    BitBoard.$fShowBitBoard2))))))))))))))
                          (GHC.Types.[] @ GHC.Types.Char)))) -}
-66412f5fc1a7260c47864b2063aff234
+fdd76e90dc5c324871434df9e54adfce
   $wlvl ::
     GHC.Word.Word64
     -> GHC.Types.Char -> Data.IntMap.Base.IntMap GHC.Types.Char
@@ -975,13 +975,13 @@ f417d32df3225e12d27a8db2fbbc5424
                         ww4
                         zs0
                         (Data.IntMap.Strict.Nada @ GHC.Types.Char) } } }) -}
-7fafd364ff8efa2da1f30892cf3afe55
+bd3c928fdda9b2653a392ef5b2ba3f68
   type role AllColors phantom
   data AllColors (p :: BitBoard.PieceType)
     = AllColors {black :: {-# UNPACK #-}GHC.Word.Word64,
                  white :: {-# UNPACK #-}GHC.Word.Word64,
                  both :: {-# UNPACK #-}GHC.Word.Word64}
-d9e321f5bae9df77c5aad3bd67235d5d
+76ff291bd5559725ac43a513632ccddc
   data BitBoard
     = BitBoard {pieces :: {-# UNPACK #-}BitBoard.AllColors
                                           'BitBoard.All,
@@ -991,11 +991,11 @@ d9e321f5bae9df77c5aad3bd67235d5d
                 bishops :: {-# UNPACK #-}BitBoard.AllColors 'BitBoard.Bishops,
                 queens :: {-# UNPACK #-}BitBoard.AllColors 'BitBoard.Queens,
                 kings :: {-# UNPACK #-}BitBoard.AllColors 'BitBoard.Kings}
-f417d32df3225e12d27a8db2fbbc5424
+34da54d75a2bd913b922a16a181dfcb6
   data PieceType
     = All | Pawns | Rooks | Knights | Bishops | Queens | Kings
     Promotable
-d334d1caee963f2fd02f14ed7dbeb9c2
+ea78c6f9210fc6a7e5aebcdabcbed179
   bishops ::
     BitBoard.BitBoard -> BitBoard.AllColors 'BitBoard.Bishops
   RecSel BitBoard.BitBoard
@@ -1005,7 +1005,7 @@ d334d1caee963f2fd02f14ed7dbeb9c2
                 (\ ds :: BitBoard.BitBoard ->
                  case ds of wild { BitBoard.BitBoard dt dt1 dt2 dt3 dt4 dt5 dt6 dt7 dt8 dt9 dt10 dt11 dt12 dt13 dt14 dt15 dt16 dt17 dt18 dt19 dt20 ->
                  BitBoard.AllColors @ 'BitBoard.Bishops dt12 dt13 dt14 }) -}
-a654da33b6a60b7eb1f3cb3540e4796d
+ccda040b046814faa20de51e68847045
   bitBoardToDoc ::
     BitBoard.BitBoard -> [Text.PrettyPrint.ANSI.Leijen.Doc]
   {- Arity: 1,
@@ -1027,7 +1027,7 @@ a654da33b6a60b7eb1f3cb3540e4796d
                    ww17
                    ww19
                    ww20 }) -}
-d5daa0fbb82f1798fcd35f1fd58b7c7b
+93de7e4417326fde8d7fd70b0bedd77d
   black :: BitBoard.AllColors p -> GHC.Word.Word64
   RecSel BitBoard.AllColors
   {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U(U,A,A)>m,
@@ -1035,7 +1035,7 @@ d5daa0fbb82f1798fcd35f1fd58b7c7b
                 (\ @ (p :: BitBoard.PieceType) ds :: BitBoard.AllColors p ->
                  case ds of wild { BitBoard.AllColors dt dt1 dt2 ->
                  GHC.Word.W64# dt }) -}
-d2481704520df5f8dc0988703848860d
+cbb0ff5a1a592aa59d4e63255ed0e7c8
   both :: BitBoard.AllColors p -> GHC.Word.Word64
   RecSel BitBoard.AllColors
   {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U(A,A,U)>m,
@@ -1043,7 +1043,7 @@ d2481704520df5f8dc0988703848860d
                 (\ @ (p :: BitBoard.PieceType) ds :: BitBoard.AllColors p ->
                  case ds of wild { BitBoard.AllColors dt dt1 dt2 ->
                  GHC.Word.W64# dt2 }) -}
-b5c998c052c85862c40f45127760d2ce
+756949e79230c1ed89f749600eb7ac4d
   emptyBoard :: BitBoard.BitBoard
   {- HasNoCafRefs,
      Unfolding: (BitBoard.BitBoard
@@ -1068,7 +1068,7 @@ b5c998c052c85862c40f45127760d2ce
                    __word 0
                    __word 0
                    __word 0) -}
-5e2d0c6397b39afadf48c9e64c688a52
+8a7ed4ec82aa29aa264f0efbb0962cfd
   kings :: BitBoard.BitBoard -> BitBoard.AllColors 'BitBoard.Kings
   RecSel BitBoard.BitBoard
   {- Arity: 1, HasNoCafRefs,
@@ -1077,7 +1077,7 @@ b5c998c052c85862c40f45127760d2ce
                 (\ ds :: BitBoard.BitBoard ->
                  case ds of wild { BitBoard.BitBoard dt dt1 dt2 dt3 dt4 dt5 dt6 dt7 dt8 dt9 dt10 dt11 dt12 dt13 dt14 dt15 dt16 dt17 dt18 dt19 dt20 ->
                  BitBoard.AllColors @ 'BitBoard.Kings dt18 dt19 dt20 }) -}
-6a9ad008279756688135d058a0ae1ddb
+a901742146a0cff61e376554bb5f24e4
   knights ::
     BitBoard.BitBoard -> BitBoard.AllColors 'BitBoard.Knights
   RecSel BitBoard.BitBoard
@@ -1087,7 +1087,7 @@ b5c998c052c85862c40f45127760d2ce
                 (\ ds :: BitBoard.BitBoard ->
                  case ds of wild { BitBoard.BitBoard dt dt1 dt2 dt3 dt4 dt5 dt6 dt7 dt8 dt9 dt10 dt11 dt12 dt13 dt14 dt15 dt16 dt17 dt18 dt19 dt20 ->
                  BitBoard.AllColors @ 'BitBoard.Knights dt9 dt10 dt11 }) -}
-d4077106a3737c430714c19db657bcfa
+13c4d1d9fa797f50df902028e361be89
   pawns :: BitBoard.BitBoard -> BitBoard.AllColors 'BitBoard.Pawns
   RecSel BitBoard.BitBoard
   {- Arity: 1, HasNoCafRefs,
@@ -1096,7 +1096,7 @@ d4077106a3737c430714c19db657bcfa
                 (\ ds :: BitBoard.BitBoard ->
                  case ds of wild { BitBoard.BitBoard dt dt1 dt2 dt3 dt4 dt5 dt6 dt7 dt8 dt9 dt10 dt11 dt12 dt13 dt14 dt15 dt16 dt17 dt18 dt19 dt20 ->
                  BitBoard.AllColors @ 'BitBoard.Pawns dt3 dt4 dt5 }) -}
-7121cd26a65c44cf2aa8bc4f638b2410
+ef6ca73b277942dc7d1bbb55050b2dcf
   pieces :: BitBoard.BitBoard -> BitBoard.AllColors 'BitBoard.All
   RecSel BitBoard.BitBoard
   {- Arity: 1, HasNoCafRefs,
@@ -1105,7 +1105,7 @@ d4077106a3737c430714c19db657bcfa
                 (\ ds :: BitBoard.BitBoard ->
                  case ds of wild { BitBoard.BitBoard dt dt1 dt2 dt3 dt4 dt5 dt6 dt7 dt8 dt9 dt10 dt11 dt12 dt13 dt14 dt15 dt16 dt17 dt18 dt19 dt20 ->
                  BitBoard.AllColors @ 'BitBoard.All dt dt1 dt2 }) -}
-2db79008e68555eac1950de170da18e7
+540e8234875ba8d3af2e5548e3a2179f
   queens :: BitBoard.BitBoard -> BitBoard.AllColors 'BitBoard.Queens
   RecSel BitBoard.BitBoard
   {- Arity: 1, HasNoCafRefs,
@@ -1114,7 +1114,7 @@ d4077106a3737c430714c19db657bcfa
                 (\ ds :: BitBoard.BitBoard ->
                  case ds of wild { BitBoard.BitBoard dt dt1 dt2 dt3 dt4 dt5 dt6 dt7 dt8 dt9 dt10 dt11 dt12 dt13 dt14 dt15 dt16 dt17 dt18 dt19 dt20 ->
                  BitBoard.AllColors @ 'BitBoard.Queens dt15 dt16 dt17 }) -}
-a9e3fe8319db9539256deb36d6b5861e
+69ad7972fc91adbe8a099867350d3a3f
   rooks :: BitBoard.BitBoard -> BitBoard.AllColors 'BitBoard.Rooks
   RecSel BitBoard.BitBoard
   {- Arity: 1, HasNoCafRefs,
@@ -1123,7 +1123,7 @@ a9e3fe8319db9539256deb36d6b5861e
                 (\ ds :: BitBoard.BitBoard ->
                  case ds of wild { BitBoard.BitBoard dt dt1 dt2 dt3 dt4 dt5 dt6 dt7 dt8 dt9 dt10 dt11 dt12 dt13 dt14 dt15 dt16 dt17 dt18 dt19 dt20 ->
                  BitBoard.AllColors @ 'BitBoard.Rooks dt6 dt7 dt8 }) -}
-0209fc87a578eff868f1191f4604fc35
+96ed533a682ea2fe7c49e56ce66c33f3
   white :: BitBoard.AllColors p -> GHC.Word.Word64
   RecSel BitBoard.AllColors
   {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U(A,U,A)>m,

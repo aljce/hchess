@@ -13,7 +13,3 @@ put8 s = do
 
 ps :: (FiniteBits a) => a -> IO ()
 ps = put8 . showWord64
-
-bool :: a -> a -> Bool -> a
-bool x _ True  = x
-bool _ y False = y

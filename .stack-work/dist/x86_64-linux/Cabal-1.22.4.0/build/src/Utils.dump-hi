@@ -1,18 +1,17 @@
 
 ==================== FINAL INTERFACE ====================
-2016-01-02 04:04:55.148258 UTC
+2016-01-03 04:23:14.411855 UTC
 
-interface hches_KF6MDI5eODG4Q8cKhuw0mn:Utils 7102
-  interface hash: bfcd69f09b111bb1e6ccecdc61179131
-  ABI hash: c1fcca74c7807322d8b03839708375a1
-  export-list hash: 36d236ad7b4c1b7db186f8e2df774189
+interface hches_3PXdSEAhhp2JIrhYvA7RvZ:Utils 7102
+  interface hash: 372bc0756fd9a5da65be600064ce24af
+  ABI hash: 267f220ba9a39a4e6caa3b71e95adf97
+  export-list hash: 6baf6e9fceb75853b9837737ad0c369d
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 2bfdd69c509df0f94c327e5faec9ae27
   sig of: Nothing
   used TH splices: False
   where
 exports:
-  Utils.bool
   Utils.ps
   Utils.put8
   Utils.showWord64
@@ -30,13 +29,7 @@ import  -/  base-4.8.1.0:GHC.Num 9f42750c866f5832ca565146bd660c60
 import  -/  base-4.8.1.0:Prelude 518f762991bc287d78f21a73c974da1f
 import  -/  base-4.8.1.0:System.IO d541b8bdf18c04de3ab7ea0277c4eba3
 import  -/  ghc-prim-0.4.0.0:GHC.Types 6b27fb3fdbd0e3f0925a4496c66513bb
-be303d76d08aee566bc6a591179693c3
-  bool :: a -> a -> GHC.Types.Bool -> a
-  {- Arity: 3, HasNoCafRefs, Strictness: <L,1*U><L,1*U><S,1*U>,
-     Unfolding: InlineRule (3, True, False)
-                (\ @ a x :: a ds :: a ds1 :: GHC.Types.Bool ->
-                 case ds1 of wild { GHC.Types.False -> ds GHC.Types.True -> x }) -}
-ea783c546bebc2e41f7509d153a5ca7f
+a4baf26c87c0ae82d6838c14c721f63c
   ps :: Data.Bits.FiniteBits a => a -> GHC.Types.IO ()
   {- Arity: 3, Strictness: <S(LC(S)LL),U(U,C(U(U)),A,A)><L,U><L,U>,
      Unfolding: InlineRule (0, True, True)
@@ -46,7 +39,7 @@ ea783c546bebc2e41f7509d153a5ca7f
                  <Data.Bits.FiniteBits a>_R
                  ->_R <a>_R
                  ->_R Sym (GHC.Types.NTCo:IO[0] <()>_R)) -}
-f3a17cd41ffc871e3da9af0c8cd1a12e
+69faaa1f8a14ab12af664cce785be2f0
   ps1 ::
     Data.Bits.FiniteBits a =>
     a
@@ -59,32 +52,32 @@ f3a17cd41ffc871e3da9af0c8cd1a12e
                    eta :: a
                    eta1 :: GHC.Prim.State# GHC.Prim.RealWorld[OneShot] ->
                  Utils.ps2 (Utils.showWord64 @ a $dFiniteBits eta) eta1) -}
-72ca950c4a036e728c452cb0e12b5fdf
+8fabfb5c70c69e90f824dc7bfc83fd92
   ps2 ::
     [GHC.Types.Char]
     -> GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
   {- Arity: 2, Strictness: <S,1*U><L,U> -}
-582e26294751770905d4431b99677f5c
+12537958913369626653b0816f1b3b2f
   put8 :: GHC.Base.String -> GHC.Types.IO ()
   {- Arity: 2, Strictness: <S,1*U><L,U>,
      Unfolding: InlineRule (0, True, True)
                 Utils.ps2
                   `cast`
                 (<[GHC.Types.Char]>_R ->_R Sym (GHC.Types.NTCo:IO[0] <()>_R)) -}
-e06ec8be13afa1dda0aca3ab93c9fd8a
+13cfa0949955245b6cb22e8757b37bcd
   showWord1 :: [GHC.Types.Char]
   {- Unfolding: (GHC.List.reverse1
                    @ GHC.Types.Char
                    (GHC.Types.[] @ GHC.Types.Char)
                    (GHC.Types.[] @ GHC.Types.Char)) -}
-e42204498ae82affd202ae94ce151b75
+ec071253a666658c8d9b94da42650fbe
   showWord2 :: GHC.Types.Char
   {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.C# '1') -}
-b109e48f8ca6d3e49e2f1d56958737f1
+741566d696c7ed19e281dd1e7b915b5f
   showWord3 :: GHC.Types.Char
   {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.C# '0') -}
-07d01ce258e0d575e1925a3fc4c4de17
+7d33bf63e7fbe7c878d6552a4a10d3bc
   showWord64 :: Data.Bits.FiniteBits a => a -> GHC.Base.String
   {- Arity: 2, Strictness: <S(LC(S)LL),U(1*U,1*C1(U(U)),A,A)><L,U>,
      Unfolding: (\ @ a

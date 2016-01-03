@@ -21,6 +21,13 @@
   (major1) == 4 && (major2) <  8 || \
   (major1) == 4 && (major2) == 8 && (minor) <= 1)
 
+/* package bool-extras-0.4.0 */
+#define VERSION_bool_extras "0.4.0"
+#define MIN_VERSION_bool_extras(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  4 || \
+  (major1) == 0 && (major2) == 4 && (minor) <= 0)
+
 /* package containers-0.5.6.2 */
 #define VERSION_containers "0.5.6.2"
 #define MIN_VERSION_containers(major1,major2,minor) (\
@@ -98,5 +105,5 @@
   (major1) == 2 && (major2) <  25 || \
   (major1) == 2 && (major2) == 25 && (minor) <= 0)
 
-#define CURRENT_PACKAGE_KEY "hches_KF6MDI5eODG4Q8cKhuw0mn"
+#define CURRENT_PACKAGE_KEY "hches_3PXdSEAhhp2JIrhYvA7RvZ"
 

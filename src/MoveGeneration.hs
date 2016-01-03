@@ -10,6 +10,7 @@ import qualified Data.Vector.Unboxed as U
 import qualified Data.Vector.Unboxed.Mutable as M
 
 import Control.Monad.ST
+import Data.Bool.Extras
 
 import BitBoard 
 import Board 
@@ -19,8 +20,8 @@ import MoveTypes
 import Masks 
 import MoveTables
 
-{-# SPECIALIZE INLINE expandBitBoard :: (Word64 -> Word64) -> Word64 -> Vector Word64 #-}
-{-# SPECIALIZE INLINE expandBitBoard :: (Word64 -> Move  ) -> Word64 -> Vector Move   #-}
+{-# SPECIALIZE INLINE expandBitBoard :: (Word64 -> Int ) -> Word64 -> Vector Int  #-}
+{-# SPECIALIZE INLINE expandBitBoard :: (Word64 -> Move) -> Word64 -> Vector Move #-}
 {-# SPECIALIZE INLINE expandBitBoard :: (Word64 -> (Int,Word64)) -> Word64 -> 
     Vector (Int,Word64) #-}
 
@@ -35,8 +36,11 @@ expandBitBoard f b = create $ M.new (popCount b) >>= go 0 b
 serializeBitBoard :: Index -> Word64 -> Vector Move  
 serializeBitBoard index = expandBitBoard (Move index . countTrailingZeros) 
 
-populateVector :: Word64 -> Vector (Int,Word64)
-populateVector = expandBitBoard (\b -> (countTrailingZeros b,b)) 
+indexedBitBoard :: Word64 -> Vector (Int,Word64)
+indexedBitBoard = expandBitBoard (\b -> (countTrailingZeros b,b)) 
+
+indexedOnly :: Word64 -> Vector Index
+indexedOnly = expandBitBoard countTrailingZeros
 
 genPromotions :: Index -> Word64 -> Vector Promotion
 genPromotions index b = create $ M.new (popCount b * 4) >>= go 0 b 
@@ -50,22 +54,26 @@ genPromotions index b = create $ M.new (popCount b * 4) >>= go 0 b
                         M.write v (i+3) (Promotion (Move index (ctz (b .&. negate b))) Queen)
                         go (i+4) (b .&. (b - 1)) v
 
-gAttackGen :: ((Index,Word64) -> (Index,Word64)) -> Word64 -> Vector Move 
-gAttackGen movement = U.concatMap (\(!i,!b) -> serializeBitBoard i b) . 
-        U.map movement . populateVector 
+gPawnGen :: ((Index,Word64) -> (Index,Word64)) -> Word64 -> Vector Move 
+gPawnGen movement = U.concatMap (\(!i,!b) -> serializeBitBoard i b) . 
+        U.map movement . indexedBitBoard 
+
+gIndexGen :: (Index -> (Index, Word64)) -> Word64 -> Vector Move 
+gIndexGen movement = U.concatMap (\(!i,!b) -> serializeBitBoard i b) . 
+        U.map movement . indexedOnly
 
 gPawnPushAndAttack :: (Word64 -> Word64) -> Attacks -> Mask -> Word64 -> Vector Move 
-gPawnPushAndAttack shiftF attackTable mask = gAttackGen movement 
+gPawnPushAndAttack shiftF attackTable mask = gPawnGen movement 
         where movement (i,b) = (i,shiftF b .|. (mask .&. (attackTable ! i)))
 
 gEnPassant :: Maybe Index -> Attacks -> Word64 -> Vector Move 
-gEnPassant (Just ep) attackTable = gAttackGen movement 
-        where movement (i,b) = (i,bit ep .&. (attackTable ! i))
+gEnPassant (Just ep) attackTable = gIndexGen movement 
+        where movement i = (i,bit ep .&. (attackTable ! i))
 gEnPassant Nothing _ = const empty 
 
 gPawnPromotion :: (Word64 -> Word64) -> Attacks -> Mask -> Word64 -> Vector Promotion 
 gPawnPromotion shiftF attackTable mask = 
-        U.concatMap (\(!i,!b) -> genPromotions i b) . U.map promo . populateVector  
+        U.concatMap (\(!i,!b) -> genPromotions i b) . U.map promo . indexedBitBoard  
         where promo (i,b) = (i,shiftF b .|. (mask .&. (attackTable ! i)))
 
 pawnMovement :: Turn -> Maybe Index -> AllColors Pawns -> AllColors All -> 
@@ -86,10 +94,10 @@ pawnMovement White ep (AllColors bp wp _) (AllColors ba wa aa) =
                doublePush w = let sp = singlePush w in sp .|. singlePush sp 
 
 knightMovement :: Turn -> AllColors Knights -> AllColors All -> Vector Move 
-knightMovement Black (AllColors bn _ _) (AllColors ba _ _) = gAttackGen movement bn 
-        where movement (i,b) = (i,complement ba .&. knightAttack ! i)
-knightMovement White (AllColors _ wn _) (AllColors _ wa _) = gAttackGen movement wn 
-        where movement (i,b) = (i,complement wa .&. knightAttack ! i)
+knightMovement Black (AllColors bn _ _) (AllColors ba _ _) = gIndexGen movement bn 
+        where movement i = (i,complement ba .&. knightAttack ! i)
+knightMovement White (AllColors _ wn _) (AllColors _ wa _) = gIndexGen movement wn 
+        where movement i = (i,complement wa .&. knightAttack ! i)
 
 bishopMovement :: Turn -> AllColors Bishops -> AllColors All -> Vector Move 
 bishopMovement t (AllColors bb wb _) (AllColors b w _) = empty 
@@ -100,8 +108,15 @@ rookMovement t (AllColors br wr _) (AllColors b w _) = empty
 queenMovement  :: Turn -> AllColors Queens -> AllColors All -> Vector Move 
 queenMovement t (AllColors bq wq _) (AllColors b w _) = empty
 
-kingMovement :: Turn -> Index -> Index -> AllColors Kings -> AllColors All -> Vector Move 
-kingMovement t wk bk _ (AllColors b w _) = empty 
+kingMovement :: Turn -> Castling -> Index -> Index -> AllColors All -> Vector Move 
+kingMovement Black crs _ bk (AllColors ba _ _) = bool (castling ++ noCastling) noCastling inCheck 
+        where noCastling = serializeBitBoard bk $ complement ba .&. kingAttack ! bk  
+              castling = empty 
+              inCheck = False 
+kingMovement White crs wk _ (AllColors _ wa _) = bool (castling ++ noCastling) noCastling inCheck
+        where noCastling = serializeBitBoard wk $ complement wa .&. kingAttack ! wk
+              castling = empty 
+              inCheck = False 
 
 generateMoves :: Board -> Moves 
 generateMoves (Board (BitBoard pieces pawns rooks 
@@ -110,5 +125,5 @@ generateMoves (Board (BitBoard pieces pawns rooks
                       bishopMovement t bishops pieces ++ 
                       rookMovement t rooks pieces ++
                       queenMovement t queens pieces ++
-                      kingMovement t wk bk kings pieces 
+                      kingMovement t crs wk bk pieces 
               (pawnMoves, promotions) = pawnMovement t ep pawns pieces 

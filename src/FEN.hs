@@ -9,13 +9,13 @@ import Data.Attoparsec.ByteString.Char8 hiding (string)
 import Control.Applicative
 import Text.PrettyPrint.ANSI.Leijen hiding ((<$>),char,bool)
 import qualified Text.PrettyPrint.ANSI.Leijen as T
+import Data.Bool.Extras
 
 import BitBoard 
 import Data.Bits
 import Data.Word
 
 import Index 
-import Utils 
 
 data Castling = Castling {
         kingSideW  :: !Bool,
@@ -25,7 +25,7 @@ data Castling = Castling {
 
 castlingRightsToDoc :: Castling -> Doc
 castlingRightsToDoc (Castling ksw qsw ksb qsb) = "Castling Rights: " <> str
-        where str = bool noDash "-" (ksw || qsw || ksb || qsb)
+        where str = bool "-" noDash (ksw || qsw || ksb || qsb)
               noDash = string (concat [boolToChar 'K' ksw,boolToChar 'Q' qsw,
                                        boolToChar 'k' ksb,boolToChar 'q' qsb])
               boolToChar c True  = [c]

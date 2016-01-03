@@ -1,11 +1,11 @@
 
 ==================== FINAL INTERFACE ====================
-2016-01-02 04:04:54.011629 UTC
+2016-01-03 04:23:14.533106 UTC
 
-interface hches_KF6MDI5eODG4Q8cKhuw0mn:Index 7102
-  interface hash: 54595cb33e3db1e90e0f182ea3d0f9d2
-  ABI hash: 9a6c2fae8693bbf252fe29180f05c4cb
-  export-list hash: f5dacf2693e1be2d2c1d237e19d3ec25
+interface hches_3PXdSEAhhp2JIrhYvA7RvZ:Index 7102
+  interface hash: 44d1666b6ad60231afa17d2299a13e68
+  ABI hash: d8cad232a279cafde9ae933a407e67d2
+  export-list hash: f2069996af848e99f6e14ee9d6b1f04e
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 2bfdd69c509df0f94c327e5faec9ae27
   sig of: Nothing
@@ -69,7 +69,7 @@ import  -/  base-4.8.1.0:GHC.Enum d0db4d619cd8916cc7a23444816222af
 import  -/  base-4.8.1.0:GHC.Num 9f42750c866f5832ca565146bd660c60
 import  -/  base-4.8.1.0:Prelude 518f762991bc287d78f21a73c974da1f
 import  -/  ghc-prim-0.4.0.0:GHC.Classes e1f4ff80f7b5262008a595d29986fb18
-e89a81fc57f436627c497eeaaaaee95e
+e0b21d5bf057575d46ac94c573d65545
   $wa ::
     (GHC.Types.Char -> GHC.Types.Char -> a)
     -> forall r.
@@ -97,7 +97,7 @@ e89a81fc57f436627c497eeaaaaee95e
   {- Arity: 11,
      Strictness: <L,C(U)><L,U><L,U><L,U><L,U><L,U><L,U><L,U><L,U><L,C(C1(C1(C1(C1(U)))))><L,C(C1(C1(C1(U))))>,
      Inline: [0] -}
-5470dba26af62e51a68cb1207c500a23
+ec3df147f72358b5d6e3ad666e24e67e
   $windexToDoc ::
     Index.Index
     -> (# Text.PrettyPrint.ANSI.Leijen.Doc,
@@ -139,13 +139,13 @@ e89a81fc57f436627c497eeaaaaee95e
                       -> case GHC.Prim.chr# i# of ds2 {
                            DEFAULT -> Text.PrettyPrint.ANSI.Leijen.Char (GHC.Types.C# ds2)
                            '\n' -> Text.PrettyPrint.ANSI.Leijen.line } } } #)) -}
-61f12b71f52ebe1f958e6222364435f5
+95e543a1b3c91f417ddf0d4a30e48cf2
   type File = GHC.Types.Int
-117acc87da1ca0c97ed41ed158620142
+5c8ceb59f924ec508c7fc4cbb0c05d15
   type Index = GHC.Types.Int
-049d301d2dfe22d82668017b9d24c24d
+6f9fe7f9b4931b535f28528bc524abd5
   type Rank = GHC.Types.Int
-74bf6ca4897fb2d98c985a1d35a6880e
+977312828df56b6df3438e721e2c571c
   flattenRF :: Index.Rank -> Index.File -> Index.Index
   {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U(U)><S,1*U(U)>m,
      Unfolding: InlineRule (2, True, False)
@@ -153,14 +153,14 @@ e89a81fc57f436627c497eeaaaaee95e
                  case r of wild { GHC.Types.I# x ->
                  case f of wild1 { GHC.Types.I# y ->
                  GHC.Types.I# (GHC.Prim.+# (GHC.Prim.*# x 8) y) } }) -}
-95b611e988f9f152a46f50871a4f0423
+9af4c8c26f60e46777a61ec4ba1cd744
   indexToDoc :: Index.Index -> Text.PrettyPrint.ANSI.Leijen.Doc
   {- Arity: 1, Strictness: <L,U(U)>m7, Inline: INLINE[0],
      Unfolding: InlineRule (1, True, False)
                 (\ w :: Index.Index ->
                  case Index.$windexToDoc w of ww { (#,#) ww1 ww2 ->
                  Text.PrettyPrint.ANSI.Leijen.Cat ww1 ww2 }) -}
-2d5e965a256a1e8e10bfec9ff4caf7bd
+056ca434c8b90dc17765d191dc6f98d9
   parseFileRank ::
     (GHC.Types.Char -> GHC.Types.Char -> a)
     -> Data.Attoparsec.ByteString.Internal.Parser a
@@ -173,7 +173,7 @@ e89a81fc57f436627c497eeaaaaee95e
                  <GHC.Types.Char -> GHC.Types.Char -> a>_R
                  ->_R Sym (Data.Attoparsec.Internal.Types.NTCo:Parser[0]
                                <Data.ByteString.Internal.ByteString>_N <a>_R)) -}
-90fc42d59912e979a5217a582be27632
+538a441617c4f3f747a14463dcc33694
   parseFileRank1 ::
     (GHC.Types.Char -> GHC.Types.Char -> a)
     -> forall r.
@@ -223,7 +223,7 @@ e89a81fc57f436627c497eeaaaaee95e
                         `cast`
                       (Data.Attoparsec.Internal.Types.NTCo:Pos[0]) of ww7 { GHC.Types.I# ww8 ->
                  Index.$wa @ a w @ r ww1 ww2 ww3 ww4 ww5 ww6 ww8 w3 w4 w5 } }) -}
-3519c28aff8e1a006084d6d8d2dc54d9
+3a67246720b4d4ebb1b7a4971529e9d8
   parseIndex ::
     Data.Attoparsec.ByteString.Internal.Parser Index.Index
   {- Arity: 5,
@@ -232,7 +232,7 @@ e89a81fc57f436627c497eeaaaaee95e
                   `cast`
                 (Sym (Data.Attoparsec.Internal.Types.NTCo:Parser[0]
                           <Data.ByteString.Internal.ByteString>_N <Index.Index>_R)) -}
-8eb6adcaf88184d7df5f85228ebfddaf
+a3b31d2985524a5a275389eb56429989
   parseIndex1 ::
     Data.Attoparsec.Internal.Types.State
       Data.ByteString.Internal.ByteString
@@ -287,7 +287,7 @@ e89a81fc57f436627c497eeaaaaee95e
                    w2
                    w3
                    w4 } }) -}
-f43126f1c911a8bc2d01fcc538007794
+4f8751a01bc0e035baa345074cd2e700
   parseIndex2 :: GHC.Types.Char -> GHC.Types.Char -> Index.Index
   {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U(U)><S,1*U(U)>m,
      Unfolding: InlineRule (2, True, False)
@@ -298,7 +298,7 @@ f43126f1c911a8bc2d01fcc538007794
                    (GHC.Prim.+#
                       (GHC.Prim.*# (GHC.Prim.-# (GHC.Prim.ord# c#) 49) 8)
                       (GHC.Prim.-# (GHC.Prim.ord# c#1) 97)) } }) -}
-4b4d33634ee0a5e605467c17fec1c5c8
+0a722dee797d1fced809260d1f615fec
   unflattenRF :: Index.Index -> (Index.Rank, Index.File)
   {- Arity: 1, HasNoCafRefs, Strictness: <L,U(U)>m,
      Unfolding: InlineRule (1, True, False)
