@@ -50,13 +50,18 @@ genPromotions index b = create $ M.new (popCount b * 4) >>= go 0 b
                         M.write v (i+3) (Promotion (Move index (ctz (b .&. negate b))) Queen)
                         go (i+4) (b .&. (b - 1)) v
 
+gAttackGen :: ((Index,Word64) -> (Index,Word64)) -> Word64 -> Vector Move 
+gAttackGen movement = U.concatMap (\(!i,!b) -> serializeBitBoard i b) . 
+        U.map movement . populateVector 
+
 gPawnPushAndAttack :: (Word64 -> Word64) -> Attacks -> Mask -> Word64 -> Vector Move 
-gPawnPushAndAttack shiftF attackTable mask = 
-        U.concatMap (\(!i,!b) -> serializeBitBoard i b) . U.map movement . populateVector 
+gPawnPushAndAttack shiftF attackTable mask = gAttackGen movement 
         where movement (i,b) = (i,shiftF b .|. (mask .&. (attackTable ! i)))
 
-gEnPassant :: Vector Move 
-gEnPassant = empty 
+gEnPassant :: Maybe Index -> Attacks -> Word64 -> Vector Move 
+gEnPassant (Just ep) attackTable = gAttackGen movement 
+        where movement (i,b) = (i,bit ep .&. (attackTable ! i))
+gEnPassant Nothing _ = const empty 
 
 gPawnPromotion :: (Word64 -> Word64) -> Attacks -> Mask -> Word64 -> Vector Promotion 
 gPawnPromotion shiftF attackTable mask = 
@@ -67,19 +72,24 @@ pawnMovement :: Turn -> Maybe Index -> AllColors Pawns -> AllColors All ->
                 (Vector Move, Vector Promotion)
 pawnMovement Black ep (AllColors bp wp _) (AllColors ba wa aa) = 
         (gPawnPushAndAttack doublePush pawnAttackB wa (bp .&. 0x00FF000000000000) ++ 
-         gPawnPushAndAttack singlePush pawnAttackB wa (bp .&. 0x0000FFFFFFFF0000) ++ gEnPassant,
+         gPawnPushAndAttack singlePush pawnAttackB wa (bp .&. 0x0000FFFFFFFF0000) ++ 
+         gEnPassant ep pawnAttackB (bp .&. 0x00000000FF000000),
          gPawnPromotion     singlePush pawnAttackB wa (bp .&. 0x000000000000FF00))
          where singlePush w = (w `shiftR` 8) .&. complement aa
                doublePush w = let sp = singlePush w in sp .|. singlePush sp 
 pawnMovement White ep (AllColors bp wp _) (AllColors ba wa aa) = 
         (gPawnPushAndAttack doublePush pawnAttackW ba (wp .&. 0x000000000000FF00) ++ 
-         gPawnPushAndAttack singlePush pawnAttackW ba (wp .&. 0x0000FFFFFFFF0000) ++ gEnPassant,
+         gPawnPushAndAttack singlePush pawnAttackW ba (wp .&. 0x0000FFFFFFFF0000) ++ 
+         gEnPassant ep pawnAttackW (wp .&. 0x000000FF00000000),
          gPawnPromotion     singlePush pawnAttackW ba (wp .&. 0x00FF000000000000))
          where singlePush w = (w `shiftL` 8) .&. complement aa
                doublePush w = let sp = singlePush w in sp .|. singlePush sp 
 
 knightMovement :: Turn -> AllColors Knights -> AllColors All -> Vector Move 
-knightMovement t (AllColors bn wn _) (AllColors b w _) = empty   
+knightMovement Black (AllColors bn _ _) (AllColors ba _ _) = gAttackGen movement bn 
+        where movement (i,b) = (i,complement ba .&. knightAttack ! i)
+knightMovement White (AllColors _ wn _) (AllColors _ wa _) = gAttackGen movement wn 
+        where movement (i,b) = (i,complement wa .&. knightAttack ! i)
 
 bishopMovement :: Turn -> AllColors Bishops -> AllColors All -> Vector Move 
 bishopMovement t (AllColors bb wb _) (AllColors b w _) = empty 
