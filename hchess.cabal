@@ -1,24 +1,27 @@
 name:                hchess
 version:             0.1.0.0
-synopsis:            Initial project template from stack
+synopsis:            Haskell Chess Engine 
 description:         Please see README.md
-homepage:            http://github.com/githubuser/hchess#readme
+homepage:            http://github.com/mckeankylej/hchess#readme
 license:             BSD3
 license-file:        LICENSE
-author:              Author name here
-maintainer:          example@example.com
-copyright:           2010 Author Here
-category:            Web
+author:              Kyle McKean
+maintainer:          mckean.kylej@gmail.com
+copyright:           2015 Kyle McKean
+category:            AI
 build-type:          Simple
 -- extra-source-files:
 cabal-version:       >=1.10
 
 library
   hs-source-dirs:      src
-  exposed-modules:     Board,GameTree,Tree,UI
-  build-depends:       base >= 4.7 && < 5, vector >= 0.11.0.0, containers >= 0.5.6.2,
-                       text >= 1.2.1.3, attoparsec >= 0.13.0.1, vector-th-unbox >= 0.2.1.3,
-                       recursion-schemes == 4.1.2, comonad == 4.2.7.2
+  exposed-modules:     BitBoard, FEN, Utils, Index, MoveGeneration, Masks, 
+                       MoveTypes, TestingBoard, Board, MoveTables 
+  build-depends:       base, attoparsec, containers, vector, vector-th-unbox,
+                       ansi-wl-pprint, bool-extras
+  default-extensions:  OverloadedStrings, LambdaCase, TupleSections, 
+                       GeneralizedNewtypeDeriving, BangPatterns, PatternSynonyms,
+                       DataKinds
   default-language:    Haskell2010
 
 executable hchess-exe
@@ -40,4 +43,4 @@ test-suite hchess-test
 
 source-repository head
   type:     git
-  location: https://github.com/githubuser/hchess
+  location: https://github.com/mckeankylej/hchess

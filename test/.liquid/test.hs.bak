@@ -1,0 +1,6 @@
+module Test where
+
+{-@ type Nat = {v:Int | v >= 0} @-}
+{-@ test :: Nat -> {v:Int | v >= -1} @-}
+test :: Int -> Int
+test x = x - 1

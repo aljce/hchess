@@ -1,64 +1,35 @@
-{-# LANGUAGE BangPatterns #-}
-module Board where 
+module Board where
 
-import Data.IntMap.Strict hiding (map,foldr)
-import qualified Data.IntMap.Strict as I
-import Data.Attoparsec.Text
-import Control.Applicative ((<|>))
-import Data.Char (toUpper)
+import Data.Bits
+import Data.Bool.Extras
 
-data PieceType = PieceType {-# UNPACK #-} !Int deriving(Eq,Ord,Show)
+import BitBoard
+import FEN
+import Index
 
-type Color = Bool
+data Board = Board {
+        bitBoard      :: {-# UNPACK #-} !BitBoard,
+        turn          :: !Turn,
+        castling      :: {-# UNPACK #-} !Castling,
+        enPassant     :: !(Maybe Index),
+        halfMoveClock :: {-# UNPACK #-} !HalfMoveClock,
+        fullMoveClock :: {-# UNPACK #-} !FullMoveClock,
+        wKing         :: {-# UNPACK #-} !Index,
+        bKing         :: {-# UNPACK #-} !Index }
 
-data Piece = Piece !Color {-# UNPACK #-} !PieceType deriving(Eq,Ord,Show) 
-
-allPieceTypes :: [PieceType]
-allPieceTypes@[pawn,rook,knight,bishop,queen,king] = fmap PieceType [1..6]
-
-type Board = IntMap Piece
-
-{-# INLINE flattenFileRank #-}
-flattenFileRank :: Int -> Int -> Int
-flattenFileRank !file !rank = 8*(rank - 1) + file 
+instance Show Board where
+        show = show . toFEN
 
 startingBoard :: Board
-startingBoard = fromDistinctAscList board
-        where board = backLine True 1 ++ pawnLine True 2 ++ pawnLine False 7 ++ backLine False 8
-              backLine color r = zipWith (\pt f -> (flattenFileRank f r, Piece color pt))
-                [rook,knight,bishop,queen,king,bishop,knight,rook] [1..8]
-              pawnLine color r = fmap (\f -> (flattenFileRank f r, Piece color pawn)) [1..8]
+startingBoard = fromFEN startingFEN
 
-{-# INLINABLE pieceChar #-}
-pieceChar :: Piece -> Char
-pieceChar (Piece c pt) = if c then toUpper letter else letter
-        where letter
-                | pt == pawn = 'p'
-                | pt == rook = 'r'
-                | pt == knight = 'n'
-                | pt == bishop = 'b'
-                | pt == queen = 'q'
-                | otherwise = 'k'
+--TODO: Two options: 1 We move throwing an error to the parsing function
+--                   2 Change the type sig to FEN -> Maybe Board
+fromFEN :: FEN -> Board
+fromFEN (FEN bb t crs ep hc fc) = Board bb t crs ep hc fc (initKings white) (initKings black)
+        where initKings color = bool ((countTrailingZeros . color . kings) bb)
+                                     (error "King not placed in FEN")
+                                     (((== 0) . color . kings) bb)
 
-showBoard :: Board -> String
-showBoard board = "*--------*\n" ++ centerText ++ "*--------*\n"
-        where centerText = foldr (\line accum -> '|' : line ++ "|\n" ++ accum) [] stringRep 
-              stringRep = (reverse . cutEvery8) (snd <$> toList boardWithBlanks)
-              cutEvery8 [] = []
-              cutEvery8 xs = let (first, second) = splitAt 8 xs in first : cutEvery8 second
-              boardWithBlanks = I.map pieceChar board `union` fromDistinctAscList blanks
-              blanks = zip [1..64] (repeat ' ')
-
-parsePiece :: Color -> Parser Piece
-parsePiece color = Piece color <$> parsePieceType 
-
-parsePieceType :: Parser PieceType 
-parsePieceType = letterToPieceType <$> satisfy letters <|> pure pawn
-        where letterToPieceType c
-                | c == 'N'  = knight
-                | c == 'B'  = bishop
-                | c == 'R'  = rook
-                | c == 'Q'  = queen 
-                | otherwise = king 
-              letters c = c == 'N' || c == 'B' || c == 'R' || c == 'Q' || c == 'K'
-
+toFEN :: Board -> FEN
+toFEN (Board bb t c ep hc fc _ _) = FEN bb t c ep hc fc
