@@ -1,4 +1,4 @@
-{-# LANGUAGE TemplateHaskell, MultiParamTypeClasses, TypeFamilies #-}
+{-# LANGUAGE TemplateHaskell, MultiParamTypeClasses, TypeFamilies, ViewPatterns #-}
 module MoveTypes where 
 
 import Data.Bits
@@ -9,53 +9,50 @@ import Data.Vector.Unboxed.Deriving
 
 import Text.PrettyPrint.ANSI.Leijen
 
+import Data.Coerce
+
 import BitBoard 
 import Board 
 import Index 
 
+newtype MoveData = MoveData Word8 
+
+pattern SinglePush = MoveData 0 
+pattern DoublePush = MoveData 1
+pattern PawnA      = MoveData 2
+pattern EnPassantA = MoveData 3
+pattern KnightM    = MoveData 4
+pattern BishopM    = MoveData 5
+pattern RookM      = MoveData 6
+pattern QueenM     = MoveData 7 
+pattern KingM      = MoveData 8
+pattern CastleL    = MoveData 9
+pattern CastleR    = MoveData 10
+pattern KnightP    = MoveData 11
+pattern BishopP    = MoveData 12 
+pattern RookP      = MoveData 13
+pattern QueenP     = MoveData 14
+
 data Move = Move {
-        from :: {-# UNPACK #-} !Index, 
-        to   :: {-# UNPACK #-} !Index }
+        metaData :: {-# UNPACK #-} !MoveData,
+        from     :: {-# UNPACK #-} !Index, 
+        to       :: {-# UNPACK #-} !Index }
 
 moveToDoc :: Move -> Doc 
-moveToDoc (Move from to) = indexToDoc from <> indexToDoc to
+moveToDoc (Move (MoveData ((<=10) -> True)) from to) = indexToDoc from <> indexToDoc to
+moveToDoc (Move md from to) = indexToDoc from <> indexToDoc to <> "p=" <> mdToDoc md
+        where mdToDoc KnightP = "N"
+              mdToDoc BishopP = "B"
+              mdToDoc RookP   = "R"
+              mdToDoc QueenP  = "Q"
+              mdToDoc _ = ""
 
 instance Show Move where 
         show = show . moveToDoc
 
 derivingUnbox "Move"
-        [t| Move -> (Int,Int) |] 
-        [| \(Move f t) -> (f,t) |]
-        [| uncurry Move |]
+        [t| Move -> (Word8,Int,Int) |] 
+        [| \(Move m f t) -> (coerce m,f,t) |]
+        [| \(m,f,t) -> Move (coerce m) f t |]
 
-newtype PromotionType = PromotionType Word8
-
-pattern Knight = PromotionType 0
-pattern Bishop = PromotionType 1
-pattern Rook   = PromotionType 2
-pattern Queen  = PromotionType 3
-
-promotionTypeToDoc :: PromotionType -> Doc 
-promotionTypeToDoc Knight = "K"
-promotionTypeToDoc Bishop = "B"
-promotionTypeToDoc Rook   = "R"
-promotionTypeToDoc Queen  = "Q"
-
-data Promotion = Promotion {
-        move  :: {-# UNPACK #-} !Move,
-        pType :: {-# UNPACK #-} !PromotionType }
-
-promotionToDoc :: Promotion -> Doc 
-promotionToDoc (Promotion m pt) = moveToDoc m <> "p=" <> promotionTypeToDoc pt
-
-instance Show Promotion where 
-        show = show . promotionToDoc
-
-derivingUnbox "Promotion" 
-        [t| Promotion -> (Int,Int,Word8) |]
-        [| \(Promotion (Move f t) (PromotionType w)) -> (f,t,w) |]
-        [| \(f,t,w) -> Promotion (Move f t) (PromotionType w) |]
-
-data Moves = Moves {
-        moves      :: !(Vector Move), 
-        promotions :: !(Vector Promotion) } deriving Show 
+type Moves = Vector Move 

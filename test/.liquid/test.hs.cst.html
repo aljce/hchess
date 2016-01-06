@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>test.hs</title>
+</head>
+<head>
+<link type='text/css' rel='stylesheet' href='liquid.css' />
+</head>
+
+<body>
+<hr>
+Put mouse over identifiers to see inferred types
+<pre><span class=hs-linenum>1: </span><span class='hs-keyword'>module</span> <span class='hs-conid'>Test</span> <span class='hs-keyword'>where</span>
+<span class=hs-linenum>2: </span>
+<span class=hs-linenum>3: </span><span class='hs-keyword'>{-@</span> <span class='hs-keyword'>type</span> <span class='hs-conid'>Nat</span> <span class='hs-keyglyph'>=</span> <span class='hs-layout'>{</span><span class='hs-varid'>v</span><span class='hs-conop'>:</span><span class='hs-conid'>Int</span> <span class='hs-keyglyph'>|</span> <span class='hs-varid'>v</span> <span class='hs-varop'>&gt;=</span> <span class='hs-num'>0</span><span class='hs-layout'>}</span> <span class='hs-keyword'>@-}</span>
+<span class=hs-linenum>4: </span><span class='hs-keyword'>{-@</span> <span class='hs-varid'>test</span> <span class='hs-keyglyph'>::</span> <span class='hs-conid'>Nat</span> <span class='hs-keyglyph'>-&gt;</span> <span class='hs-keyword'>{v:</span><span class='hs-conid'>Int</span> <span class='hs-keyword'>| v &gt;= -1}</span> <span class='hs-keyword'>@-}</span>
+<span class=hs-linenum>5: </span><span class='hs-definition'>test</span> <span class='hs-keyglyph'>::</span> <span class='hs-conid'>Int</span> <span class='hs-keyglyph'>-&gt;</span> <span class='hs-conid'>Int</span>
+<span class=hs-linenum>6: </span><a class=annot href="#"><span class=annottext>lq_tmp$x#142:{v#16 : GHC.Types.Int | v#16 &gt;= 0} -&gt; {v#2 : GHC.Types.Int | v#2 &gt;= (-1)}</span><span class='hs-definition'>test</span></a> <a class=annot href="#"><span class=annottext>{v#16 : GHC.Types.Int | v#16 &gt;= 0}</span><span class='hs-varid'>x</span></a> <span class='hs-keyglyph'>=</span> <a class=annot href="#"><span class=annottext>{lq_tmp$x#145 : GHC.Types.Int | lq_tmp$x#145 == (1 : int)}</span><span class='hs-varid'>x</span></a> <a class=annot href="#"><span class=annottext>lq_tmp$x#155:GHC.Types.Int -&gt; lq_tmp$x#156:GHC.Types.Int -&gt; {lq_tmp$x#158 : GHC.Types.Int^"lq_tmp$x#157" | lq_tmp$x#158 == lq_tmp$x#155 - lq_tmp$x#156}</span><span class='hs-comment'>-</span></a> <span class='hs-num'>1</span>
+</pre>
+</body>
+</html>

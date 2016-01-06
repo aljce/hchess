@@ -1,0 +1,28 @@
+Configuring intern-0.9.1.4...
+Building intern-0.9.1.4...
+Preprocessing library intern-0.9.1.4...
+[1 of 9] Compiling Data.Interned.Internal ( Data/Interned/Internal.hs, .stack-work/dist/x86_64-linux/Cabal-1.22.4.0/build/Data/Interned/Internal.o )
+
+Data/Interned/Internal.hs:23:1: Warning:
+    The import of ‘Data.Traversable’ is redundant
+      except perhaps to import instances from ‘Data.Traversable’
+    To import instances alone, use: import Data.Traversable()
+[2 of 9] Compiling Data.Interned.IntSet ( Data/Interned/IntSet.hs, .stack-work/dist/x86_64-linux/Cabal-1.22.4.0/build/Data/Interned/IntSet.o )
+
+Data/Interned/IntSet.hs:91:1: Warning: Tab character
+
+Data/Interned/IntSet.hs:114:1: Warning:
+    The import of ‘Data.Monoid’ is redundant
+      except perhaps to import instances from ‘Data.Monoid’
+    To import instances alone, use: import Data.Monoid()
+[3 of 9] Compiling Data.Interned    ( Data/Interned.hs, .stack-work/dist/x86_64-linux/Cabal-1.22.4.0/build/Data/Interned.o )
+[4 of 9] Compiling Data.Interned.Internal.ByteString ( Data/Interned/Internal/ByteString.hs, .stack-work/dist/x86_64-linux/Cabal-1.22.4.0/build/Data/Interned/Internal/ByteString.o )
+[5 of 9] Compiling Data.Interned.ByteString ( Data/Interned/ByteString.hs, .stack-work/dist/x86_64-linux/Cabal-1.22.4.0/build/Data/Interned/ByteString.o )
+[6 of 9] Compiling Data.Interned.Internal.String ( Data/Interned/Internal/String.hs, .stack-work/dist/x86_64-linux/Cabal-1.22.4.0/build/Data/Interned/Internal/String.o )
+[7 of 9] Compiling Data.Interned.String ( Data/Interned/String.hs, .stack-work/dist/x86_64-linux/Cabal-1.22.4.0/build/Data/Interned/String.o )
+[8 of 9] Compiling Data.Interned.Internal.Text ( Data/Interned/Internal/Text.hs, .stack-work/dist/x86_64-linux/Cabal-1.22.4.0/build/Data/Interned/Internal/Text.o )
+[9 of 9] Compiling Data.Interned.Text ( Data/Interned/Text.hs, .stack-work/dist/x86_64-linux/Cabal-1.22.4.0/build/Data/Interned/Text.o )
+In-place registering intern-0.9.1.4...
+Installing library in
+/home/kyle/Programming/haskell/hchess/.stack-work/install/x86_64-linux/nightly-2015-12-14/7.10.2/lib/x86_64-linux-ghc-7.10.2/intern-0.9.1.4-ERojI6lAum40RZ2MOGTagM
+Registering intern-0.9.1.4...
