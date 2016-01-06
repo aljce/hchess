@@ -41,7 +41,7 @@ indexedBitBoard = expandBitBoard (\b -> (countTrailingZeros b,b))
 indexedOnly :: Word64 -> Vector Index
 indexedOnly = expandBitBoard countTrailingZeros
 
-
+test = False + 1
 {-
 genPromotions :: Index -> Word64 -> Vector Move
 genPromotions index b = create $ M.new (popCount b * 4) >>= go 0 b
