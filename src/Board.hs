@@ -31,5 +31,10 @@ fromFEN (FEN bb t crs ep hc fc) = Board bb t crs ep hc fc (initKings white) (ini
                                      (error "King not placed in FEN")
                                      (((== 0) . color . kings) bb)
 
+
+
+test []     = 0
+test (x:xs) = 1
+
 toFEN :: Board -> FEN
 toFEN (Board bb t c ep hc fc _ _) = FEN bb t c ep hc fc

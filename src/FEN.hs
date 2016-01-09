@@ -1,5 +1,5 @@
 {-# LANGUAGE PatternSynonyms #-}
-module FEN where 
+module FEN where
 
 import Prelude hiding (takeWhile,take)
 import qualified Prelude as P
@@ -11,17 +11,17 @@ import Text.PrettyPrint.ANSI.Leijen hiding ((<$>),char,bool)
 import qualified Text.PrettyPrint.ANSI.Leijen as T
 import Data.Bool.Extras
 
-import BitBoard 
+import BitBoard
 import Data.Bits
 import Data.Word
 
-import Index 
+import Index
 
 data Castling = Castling {
         kingSideW  :: !Bool,
         queenSideW :: !Bool,
         kingSideB  :: !Bool,
-        queenSideB :: !Bool } deriving (Show) 
+        queenSideB :: !Bool } deriving (Show)
 
 castlingRightsToDoc :: Castling -> Doc
 castlingRightsToDoc (Castling ksw qsw ksb qsb) = "Castling Rights: " <> str
@@ -31,7 +31,7 @@ castlingRightsToDoc (Castling ksw qsw ksb qsb) = "Castling Rights: " <> str
               boolToChar c True  = [c]
               boolToChar _ False = []
 
-newtype Turn = Turn Word8 
+newtype Turn = Turn Word8
 
 pattern Black = Turn 0
 pattern White = Turn 1
@@ -45,29 +45,29 @@ data FEN = FEN {
         castlingRights :: !Castling,
         enPassant      :: !(Maybe Index),
         halfMoveClock  :: {-# UNPACK #-} !HalfMoveClock,
-        fullMoveClock  :: {-# UNPACK #-} !FullMoveClock } 
+        fullMoveClock  :: {-# UNPACK #-} !FullMoveClock }
 
 fenToDoc :: FEN -> Doc
-fenToDoc (FEN bb t crs ep hc fc) = vsep fen 
-        where fen = [board, 
+fenToDoc (FEN bb t crs ep hc fc) = vsep fen
+        where fen = [board,
                      "  ABCDEFGH",
                      turnToDoc t,
-                     castlingRightsToDoc crs, 
+                     castlingRightsToDoc crs,
                      enPassantToDoc ep,
                      "Half Move Clock: " <> int hc,
                      "Full Move Clock: " <> int fc]
-              board = vsep $ zipWith (\r b -> T.char r <> T.space <> b) 
-                        "87654321" (bitBoardToDoc bb) 
+              board = vsep $ zipWith (\r b -> T.char r <> T.space <> b)
+                        "87654321" (bitBoardToDoc bb)
               turnToDoc Black = "Turn: Black"
               turnToDoc White = "Turn: White"
-              enPassantToDoc = maybe "En passant square: -" 
+              enPassantToDoc = maybe "En passant square: -"
                                      (\i -> "En passant square: " <> indexToDoc i)
 
 instance Show FEN where
-        showsPrec _ = displayS . renderPretty 0.4 80 . fenToDoc 
+        showsPrec _ = displayS . renderPretty 0.4 80 . fenToDoc
 
-toBitBoard :: String -> BitBoard 
-toBitBoard = merge . snd . foldr (\c (i,b) -> (i+1,charUpdate i b c)) (0,emptyBoard)  
+toBitBoard :: String -> BitBoard
+toBitBoard = merge . snd . foldr (\c (i,b) -> (i+1,charUpdate i b c)) (0,emptyBoard)
         where merge b@(BitBoard _ (AllColors bp wp ap) (AllColors br wr ar) (AllColors bn wn an)
                                   (AllColors bb wb ab) (AllColors bq wq aq) (AllColors bk wk ak)) =
                         b { pieces = AllColors (bp .|. br .|. bn .|. bb .|. bq .|. bk)
@@ -76,7 +76,7 @@ toBitBoard = merge . snd . foldr (\c (i,b) -> (i+1,charUpdate i b c)) (0,emptyBo
               updatePiece False i (AllColors b w a) = AllColors (setBit b i) w (setBit a i)
               updatePiece True  i (AllColors b w a) = AllColors b (setBit w i) (setBit a i)
               charUpdate i board = \case
-                'p' -> board { pawns   = updatePiece False i (pawns board) } 
+                'p' -> board { pawns   = updatePiece False i (pawns board) }
                 'r' -> board { rooks   = updatePiece False i (rooks board) }
                 'n' -> board { knights = updatePiece False i (knights board) }
                 'b' -> board { bishops = updatePiece False i (bishops board) }
@@ -88,34 +88,34 @@ toBitBoard = merge . snd . foldr (\c (i,b) -> (i+1,charUpdate i b c)) (0,emptyBo
                 'B' -> board { bishops = updatePiece True  i (bishops board) }
                 'Q' -> board { queens  = updatePiece True  i (queens board) }
                 'K' -> board { kings   = updatePiece True  i (kings board) }
-                _   -> board 
+                _   -> board
 
-simplifyFENBoard :: Parser String 
+simplifyFENBoard :: Parser String
 simplifyFENBoard = merge <$> manyTill' (pieces <|> blank <|> slash) (char ' ')
-        where merge = concat . fmap reverse . splitEvery8 0 . concat 
+        where merge = concat . fmap reverse . splitEvery8 0 . concat
               splitEvery8 8 _ = []
               splitEvery8 n xs = P.take 8 xs : splitEvery8 (n+1) (P.drop 8 xs)
-              pieces = (:[]) <$> satisfy (\c -> ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z')) 
+              pieces = (:[]) <$> satisfy (\c -> ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z'))
               blank = (flip replicate ' ' . subtract 48 . fromEnum) <$> satisfy isDigit
               slash = [] <$ char '/'
 
 parseTurn :: Parser Turn
-parseTurn = White <$ char 'w' <|> Black <$ char 'b' <?> "no turn parse" 
+parseTurn = White <$ char 'w' <|> Black <$ char 'b' <?> "no turn parse"
 
 parseCastling = dash <|> noDash <?> "no castling rights parse"
-        where noDash = Castling <$> charToBool 'K' <*> charToBool 'Q' 
+        where noDash = Castling <$> charToBool 'K' <*> charToBool 'Q'
                                 <*> charToBool 'k' <*> charToBool 'q'
               dash = Castling False False False False <$ char '-'
 
 charToBool :: Char -> Parser Bool
-charToBool c = True <$ char c <|> pure False 
+charToBool c = True <$ char c <|> pure False
 
 parseEnPassant :: Parser (Maybe Index)
 parseEnPassant = Nothing <$ char '-' <|> Just <$> parseIndex <?> "no enpassant parse"
 
 parseFEN :: Parser FEN
 parseFEN = do
-        board <- simplifyFENBoard 
+        board <- simplifyFENBoard
         turn <- parseTurn
         char ' '
         castlingRights <- parseCastling
@@ -125,10 +125,10 @@ parseFEN = do
         halfMoveClock <- decimal
         char ' '
         fullMoveClock <- decimal
-        return (FEN (toBitBoard board) turn castlingRights 
+        return (FEN (toBitBoard board) turn castlingRights
                 enPassant halfMoveClock fullMoveClock)
 
-startingFEN :: FEN 
+startingFEN :: FEN
 startingFEN = either (error "No startingFEN parse, this is impossible.") id $
                 parseOnly parseFEN "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
 

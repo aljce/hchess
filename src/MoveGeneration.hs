@@ -9,7 +9,6 @@ import Data.Vector.Unboxed
 import qualified Data.Vector.Unboxed as U
 import qualified Data.Vector.Unboxed.Mutable as M
 
-import Control.Monad.ST
 import Data.Bool.Extras
 
 import BitBoard
@@ -25,7 +24,7 @@ import MoveTables
 {-# SPECIALIZE INLINE expandBitBoard :: (Word64 -> (Int,Word64)) -> Word64 ->
     Vector (Int,Word64) #-}
 expandBitBoard :: (Unbox a) => (Word64 -> a) -> Word64 -> Vector a
-expandBitBoard f b = create $ M.new (popCount b) >>= go 0 b
+expandBitBoard f w = create $ M.new (popCount w) >>= go 0 w
         where go i b v
                 | b == 0    = pure v
                 | otherwise = do
@@ -33,7 +32,7 @@ expandBitBoard f b = create $ M.new (popCount b) >>= go 0 b
                         go (i+1) (b .&. (b - 1)) v
 
 serializeBitBoard :: MoveData -> Index -> Word64 -> Vector Move
-serializeBitBoard metaData index = expandBitBoard (Move metaData index . countTrailingZeros)
+serializeBitBoard md index = expandBitBoard (Move md index . countTrailingZeros)
 
 indexedBitBoard :: Word64 -> Vector (Int,Word64)
 indexedBitBoard = expandBitBoard (\b -> (countTrailingZeros b,b))
@@ -41,7 +40,6 @@ indexedBitBoard = expandBitBoard (\b -> (countTrailingZeros b,b))
 indexedOnly :: Word64 -> Vector Index
 indexedOnly = expandBitBoard countTrailingZeros
 
-test = False + 1
 {-
 genPromotions :: Index -> Word64 -> Vector Move
 genPromotions index b = create $ M.new (popCount b * 4) >>= go 0 b
@@ -70,8 +68,7 @@ gIndexGen movement md = U.concatMap (\(!i,!b) -> serializeBitBoard md i b) .
 gPawnPushAndAttack :: (Word64 -> Word64) -> Attacks -> Mask -> Word64 -> Vector Move
 gPawnPushAndAttack shiftF attackTable mask w = gPawnGen mPush SinglePush w
                                             ++ gIndexGen mAttack PawnA w
-        where movement (i,b) = (i,shiftF b .|. (mask .&. (attackTable ! i)))
-              mPush (i,b) = (i,shiftF b)
+        where mPush (i,b) = (i,shiftF b)
               mAttack i = (i,mask .&. attackTable ! i)
 
 gEnPassant :: Maybe Index -> Attacks -> Word64 -> Vector Move
@@ -84,22 +81,22 @@ gPawnPromotion shiftF attackTable mask =
         U.concatMap (\(!i,!b) -> genPromotions i b) . U.map promo . indexedBitBoard
         where promo (i,b) = (i,shiftF b .|. (mask .&. (attackTable ! i)))
 
-pawnMovement :: Turn -> Maybe Index -> AllColors Pawns -> AllColors All -> Moves
-pawnMovement Black ep (AllColors bp wp _) (AllColors ba wa aa) =
+pawnMovement :: Turn -> Maybe Index -> AllColors 'Pawns -> AllColors 'All -> Moves
+pawnMovement Black ep (AllColors bp _ _) (AllColors _ wa aa) =
         gPawnPushAndAttack doublePush pawnAttackB wa (bp .&. 0x00FF000000000000) ++
         gPawnPushAndAttack singlePush pawnAttackB wa (bp .&. 0x0000FFFFFFFF0000) ++
         gEnPassant ep pawnAttackB (bp .&. 0x00000000FF000000) ++
         gPawnPromotion     singlePush pawnAttackB wa (bp .&. 0x000000000000FF00)
         where singlePush w = (w `shiftR` 8) .&. complement aa
               doublePush w = let sp = singlePush w in sp .|. singlePush sp
-pawnMovement White ep (AllColors bp wp _) (AllColors ba wa aa) =
+pawnMovement White ep (AllColors _ wp _) (AllColors ba _ aa) =
         gPawnPushAndAttack doublePush pawnAttackW ba (wp .&. 0x000000000000FF00) ++
         gPawnPushAndAttack singlePush pawnAttackW ba (wp .&. 0x0000FFFFFFFF0000) ++
         gEnPassant ep pawnAttackW (wp .&. 0x000000FF00000000) ++
         gPawnPromotion     singlePush pawnAttackW ba (wp .&. 0x00FF000000000000)
          where singlePush w = (w `shiftL` 8) .&. complement aa
                doublePush w = let sp = singlePush w in sp .|. singlePush sp
-
+pawnMovement _ _ _ _ =
 knightMovement :: Turn -> AllColors Knights -> AllColors All -> Vector Move
 knightMovement Black (AllColors bn _ _) (AllColors ba _ _) = gIndexGen movement KnightM bn
         where movement i = (i,complement ba .&. knightAttack ! i)

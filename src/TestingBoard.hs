@@ -1,12 +1,12 @@
-module TestingBoard where 
+module TestingBoard where
 
 import Data.Attoparsec.ByteString.Char8
 
-import FEN 
+import FEN
 import Board hiding ()
 import qualified Board as B
 
-unsafeParseFEN = either (error "unsafeParseFEN failed") fromFEN . parseOnly parseFEN  
+unsafeParseFEN = either (error "unsafeParseFEN failed") fromFEN . parseOnly parseFEN
 
 tests = fmap unsafeParseFEN [
         "rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1",
