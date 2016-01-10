@@ -96,23 +96,24 @@ pawnMovement White ep (AllColors _ wp _) (AllColors ba _ aa) =
         gPawnPromotion     singlePush pawnAttackW ba (wp .&. 0x00FF000000000000)
          where singlePush w = (w `shiftL` 8) .&. complement aa
                doublePush w = let sp = singlePush w in sp .|. singlePush sp
-pawnMovement _ _ _ _ =
-knightMovement :: Turn -> AllColors Knights -> AllColors All -> Vector Move
+pawnMovement _ _ _ _ = turnNonBinaryError
+
+knightMovement :: Turn -> AllColors 'Knights -> AllColors 'All -> Vector Move
 knightMovement Black (AllColors bn _ _) (AllColors ba _ _) = gIndexGen movement KnightM bn
         where movement i = (i,complement ba .&. knightAttack ! i)
 knightMovement White (AllColors _ wn _) (AllColors _ wa _) = gIndexGen movement KnightM wn
         where movement i = (i,complement wa .&. knightAttack ! i)
 
-bishopMovement :: Turn -> AllColors Bishops -> AllColors All -> Vector Move
+bishopMovement :: Turn -> AllColors 'Bishops -> AllColors 'All -> Vector Move
 bishopMovement t (AllColors bb wb _) (AllColors b w _) = empty
 
-rookMovement :: Turn -> AllColors Rooks -> AllColors All -> Vector Move
+rookMovement :: Turn -> AllColors 'Rooks -> AllColors 'All -> Vector Move
 rookMovement t (AllColors br wr _) (AllColors b w _) = empty
 
 queenMovement  :: Turn -> AllColors Queens -> AllColors All -> Vector Move
 queenMovement t (AllColors bq wq _) (AllColors b w _) = empty
 
-kingMovement :: Turn -> Castling -> Index -> Index -> AllColors All -> Vector Move
+kingMovement :: Turn -> Castling -> Index -> Index -> AllColors 'All -> Vector Move
 kingMovement Black (Castling _ _ ksb qsb) _ bk (AllColors ba _ _) = kingMoves
         where kingMoves = bool (castling ++ noCastling) noCastling inCheck
               noCastling = serializeBitBoard KingM bk $ complement ba .&. kingAttack ! bk

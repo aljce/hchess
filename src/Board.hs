@@ -27,14 +27,9 @@ startingBoard = fromFEN startingFEN
 --                   2 Change the type sig to FEN -> Maybe Board
 fromFEN :: FEN -> Board
 fromFEN (FEN bb t crs ep hc fc) = Board bb t crs ep hc fc (initKings white) (initKings black)
-        where initKings color = bool ((countTrailingZeros . color . kings) bb)
+        where initKings color = bool ((countTrailingZeros . color . kingsB) bb)
                                      (error "King not placed in FEN")
-                                     (((== 0) . color . kings) bb)
-
-
-
-test []     = 0
-test (x:xs) = 1
+                                     (((== 0) . color . kingsB) bb)
 
 toFEN :: Board -> FEN
 toFEN (Board bb t c ep hc fc _ _) = FEN bb t c ep hc fc

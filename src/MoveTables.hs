@@ -42,8 +42,6 @@ knightAttack :: Attacks
 knightAttack = gAttack attackTransform
         where attackTransform i = fromList [i+8,i+12,i-8,i-12,i+19,i+21,i-19,i-21]
 
-test = False
-
 kingAttack :: Attacks
 kingAttack = gAttack attackTransform
         where attackTransform i = fromList [i-11,i-10,i-9,i-1,i+1,i+9,i+10,i+11]

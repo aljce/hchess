@@ -2,9 +2,8 @@
 module FEN where
 
 import Prelude hiding (takeWhile,take)
-import qualified Prelude as P
 
-import qualified Data.Char as C
+import Data.Char hiding (isDigit)
 import Data.Attoparsec.ByteString.Char8 hiding (string)
 import Control.Applicative
 import Text.PrettyPrint.ANSI.Leijen hiding ((<$>),char,bool)
@@ -36,6 +35,9 @@ newtype Turn = Turn Word8
 pattern Black = Turn 0
 pattern White = Turn 1
 
+turnNonBinaryError :: a
+turnNonBinaryError = error "The type Turn should only ever be 1 or 0"
+
 type HalfMoveClock = Int
 type FullMoveClock = Int
 
@@ -60,8 +62,9 @@ fenToDoc (FEN bb t crs ep hc fc) = vsep fen
                         "87654321" (bitBoardToDoc bb)
               turnToDoc Black = "Turn: Black"
               turnToDoc White = "Turn: White"
-              enPassantToDoc = maybe "En passant square: -"
-                                     (\i -> "En passant square: " <> indexToDoc i)
+              turnToDoc _     = turnNonBinaryError
+              enPassantToDoc  = maybe "En passant square: -"
+                                      (\i -> "En passant square: " <> indexToDoc i)
 
 instance Show FEN where
         showsPrec _ = displayS . renderPretty 0.4 80 . fenToDoc
@@ -70,38 +73,37 @@ toBitBoard :: String -> BitBoard
 toBitBoard = merge . snd . foldr (\c (i,b) -> (i+1,charUpdate i b c)) (0,emptyBoard)
         where merge b@(BitBoard _ (AllColors bp wp ap) (AllColors br wr ar) (AllColors bn wn an)
                                   (AllColors bb wb ab) (AllColors bq wq aq) (AllColors bk wk ak)) =
-                        b { pieces = AllColors (bp .|. br .|. bn .|. bb .|. bq .|. bk)
-                                               (wp .|. wr .|. wn .|. wb .|. wq .|. wk)
-                                               (ap .|. ar .|. an .|. ab .|. aq .|. ak) }
+                        b { piecesB = AllColors (bp .|. br .|. bn .|. bb .|. bq .|. bk)
+                                                (wp .|. wr .|. wn .|. wb .|. wq .|. wk)
+                                                (ap .|. ar .|. an .|. ab .|. aq .|. ak) }
               updatePiece False i (AllColors b w a) = AllColors (setBit b i) w (setBit a i)
               updatePiece True  i (AllColors b w a) = AllColors b (setBit w i) (setBit a i)
               charUpdate i board = \case
-                'p' -> board { pawns   = updatePiece False i (pawns board) }
-                'r' -> board { rooks   = updatePiece False i (rooks board) }
-                'n' -> board { knights = updatePiece False i (knights board) }
-                'b' -> board { bishops = updatePiece False i (bishops board) }
-                'q' -> board { queens  = updatePiece False i (queens board) }
-                'k' -> board { kings   = updatePiece False i (kings board) }
-                'P' -> board { pawns   = updatePiece True  i (pawns board) }
-                'R' -> board { rooks   = updatePiece True  i (rooks board) }
-                'N' -> board { knights = updatePiece True  i (knights board) }
-                'B' -> board { bishops = updatePiece True  i (bishops board) }
-                'Q' -> board { queens  = updatePiece True  i (queens board) }
-                'K' -> board { kings   = updatePiece True  i (kings board) }
+                'p' -> board { pawnsB   = updatePiece False i (pawnsB board) }
+                'r' -> board { rooksB   = updatePiece False i (rooksB board) }
+                'n' -> board { knightsB = updatePiece False i (knightsB board) }
+                'b' -> board { bishopsB = updatePiece False i (bishopsB board) }
+                'q' -> board { queensB  = updatePiece False i (queensB board) }
+                'k' -> board { kingsB   = updatePiece False i (kingsB board) }
+                'P' -> board { pawnsB   = updatePiece True  i (pawnsB board) }
+                'R' -> board { rooksB   = updatePiece True  i (rooksB board) }
+                'N' -> board { knightsB = updatePiece True  i (knightsB board) }
+                'B' -> board { bishopsB = updatePiece True  i (bishopsB board) }
+                'Q' -> board { queensB  = updatePiece True  i (queensB board) }
+                'K' -> board { kingsB   = updatePiece True  i (kingsB board) }
                 _   -> board
 
 simplifyFENBoard :: Parser String
-simplifyFENBoard = merge <$> manyTill' (pieces <|> blank <|> slash) (char ' ')
-        where merge = concat . fmap reverse . splitEvery8 0 . concat
-              splitEvery8 8 _ = []
-              splitEvery8 n xs = P.take 8 xs : splitEvery8 (n+1) (P.drop 8 xs)
-              pieces = (:[]) <$> satisfy (\c -> ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z'))
+simplifyFENBoard = merge <$> manyTill' (allPieces <|> blank <|> slash) (char ' ')
+        where merge = concat . fmap reverse . splitEveryN 8 . concat
+              allPieces = (:[]) <$> satisfy isAlpha
               blank = (flip replicate ' ' . subtract 48 . fromEnum) <$> satisfy isDigit
               slash = [] <$ char '/'
 
 parseTurn :: Parser Turn
 parseTurn = White <$ char 'w' <|> Black <$ char 'b' <?> "no turn parse"
 
+parseCastling :: Parser Castling
 parseCastling = dash <|> noDash <?> "no castling rights parse"
         where noDash = Castling <$> charToBool 'K' <*> charToBool 'Q'
                                 <*> charToBool 'k' <*> charToBool 'q'
@@ -131,6 +133,3 @@ parseFEN = do
 startingFEN :: FEN
 startingFEN = either (error "No startingFEN parse, this is impossible.") id $
                 parseOnly parseFEN "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
-
-testingFEN = either (error "fuck you") id $
-                parseOnly parseFEN "8/ppp1pppp/8/3p4/3P4/8/P7/8 w KQkq - 0 1"
