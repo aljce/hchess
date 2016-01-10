@@ -1,10 +1,10 @@
 module Masks where
 
-import Prelude
-
+import Data.Bits
 import Data.Word
 
 import Data.Vector.Unboxed
+import qualified Data.Vector.Unboxed as U
 
 type Mask = Word64
 
@@ -33,3 +33,7 @@ fileHM = 0x8080808080808080
 
 fileMasks :: Vector Mask
 fileMasks = fromList [fileAM,fileBM,fileCM,fileDM,fileEM,fileFM,fileGM,fileHM]
+
+rookMasks :: Vector Mask
+rookMasks = U.concatMap (\b1 -> U.map (b1 .|.) fileMasks) rankMasks
+--rookMasks = U.concatMap (\b1 -> U.map (\b2 -> (b1 .|. b2) `xor` (b1 .&. b2)) fileMasks) rankMasks
