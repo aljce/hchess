@@ -6,7 +6,6 @@ import Data.Bits
 
 import MoveGeneration
 import Board
-import MoveTypes
 
 testingMain = print $ U.length $ generateMoves startingBoard
 

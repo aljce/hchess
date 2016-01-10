@@ -1,7 +1,6 @@
 {-# LANGUAGE TemplateHaskell, MultiParamTypeClasses, TypeFamilies, ViewPatterns #-}
 module MoveTypes where
 
-import Data.Bits
 import Data.Word
 
 import Data.Vector.Unboxed
@@ -11,8 +10,6 @@ import Text.PrettyPrint.ANSI.Leijen
 
 import Data.Coerce
 
-import BitBoard
-import Board
 import Index
 
 newtype MoveData = MoveData Word8
@@ -39,8 +36,8 @@ data Move = Move {
         to       :: {-# UNPACK #-} !Index }
 
 moveToDoc :: Move -> Doc
-moveToDoc (Move (MoveData ((<=10) -> True)) from to) = indexToDoc from <> indexToDoc to
-moveToDoc (Move md from to) = indexToDoc from <> indexToDoc to <> "p=" <> mdToDoc md
+moveToDoc (Move (MoveData ((<=10) -> True)) f t) = indexToDoc f <> indexToDoc t
+moveToDoc (Move md f t) = indexToDoc f <> indexToDoc t <> "p=" <> mdToDoc md
         where mdToDoc KnightP = "N"
               mdToDoc BishopP = "B"
               mdToDoc RookP   = "R"
