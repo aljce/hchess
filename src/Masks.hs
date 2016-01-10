@@ -1,12 +1,19 @@
 module Masks where
 
+import Prelude hiding ((++))
+
 import Data.Bits
 import Data.Word
 
 import Data.Vector.Unboxed
 import qualified Data.Vector.Unboxed as U
+import qualified Data.Vector as V
+import MoveTables
 
 type Mask = Word64
+
+makeLine :: Int -> Int -> Word64
+makeLine start delta = U.foldl' setBit 0 $ enumFromStepN start delta 8
 
 rank1M, rank2M, rank3M, rank4M, rank5M, rank6M, rank7M, rank8M :: Mask
 rank1M = 0x00000000000000FF
@@ -37,3 +44,10 @@ fileMasks = fromList [fileAM,fileBM,fileCM,fileDM,fileEM,fileFM,fileGM,fileHM]
 rookMasks :: Vector Mask
 rookMasks = U.concatMap (\b1 -> U.map (b1 .|.) fileMasks) rankMasks
 --rookMasks = U.concatMap (\b1 -> U.map (\b2 -> (b1 .|. b2) `xor` (b1 .&. b2)) fileMasks) rankMasks
+
+bishopMasks :: Vector Mask
+bishopMasks = gSlidingAttack attackTransform
+  where attackTransform i = fmap (fmap (i +)) $ V.fromList [V.enumFromStepN 0 11 8,
+                                                    V.enumFromStepN 0 (-11) 8,
+                                                    V.enumFromStepN 0 9 8,
+                                                    V.enumFromStepN 0 (-9) 8]
