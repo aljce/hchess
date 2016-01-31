@@ -30,7 +30,6 @@ emptyBoard :: BitBoard
 emptyBoard = BitBoard (AllColors 0 0 0) (AllColors 0 0 0) (AllColors 0 0 0) (AllColors 0 0 0)
                       (AllColors 0 0 0) (AllColors 0 0 0) (AllColors 0 0 0)
 
-
 instance Show BitBoard where
         show = show . vsep . bitBoardToDoc
         showsPrec _ = (++) . show
@@ -40,6 +39,7 @@ splitEveryN delta = unfold 0
   where unfold n xs
           | n < delta * delta = take delta xs : unfold (n + delta) (drop delta xs)
           | otherwise         = []
+
 
 bitBoardToDoc :: BitBoard -> [Doc]
 bitBoardToDoc (BitBoard _ (AllColors bP wP _) (AllColors bR wR _) (AllColors bN wN _)

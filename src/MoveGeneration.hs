@@ -67,7 +67,7 @@ gIndexGen movement md = U.concatMap (\(!i,!b) -> serializeBitBoard md i b) .
 
 gPawnPushAndAttack :: (Word64 -> Word64) -> Attacks -> Mask -> Word64 -> Vector Move
 gPawnPushAndAttack shiftF attackTable mask w = gPawnGen mPush SinglePush w
-                                            ++ gIndexGen mAttack PawnA w
+                                             ++ gIndexGen mAttack PawnA w
         where mPush (i,b) = (i,shiftF b)
               mAttack i = (i,mask .&. attackTable ! i)
 

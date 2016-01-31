@@ -1,6 +1,6 @@
 module Masks where
 
-import Prelude hiding ((++))
+import Prelude hiding ((++),takeWhile)
 
 import Data.Bits
 import Data.Word
@@ -8,6 +8,10 @@ import Data.Word
 import Data.Vector.Unboxed
 import qualified Data.Vector.Unboxed as U
 import qualified Data.Vector as V
+
+import Data.Maybe
+
+import Index
 import MoveTables
 
 type Mask = Word64
@@ -41,12 +45,27 @@ fileHM = 0x8080808080808080
 fileMasks :: Vector Mask
 fileMasks = fromList [fileAM,fileBM,fileCM,fileDM,fileEM,fileFM,fileGM,fileHM]
 
+{-
 rookMasks :: Vector Mask
 rookMasks = U.concatMap (\b1 -> U.map (b1 .|.) fileMasks) rankMasks
---rookMasks = U.concatMap (\b1 -> U.map (\b2 -> (b1 .|. b2) `xor` (b1 .&. b2)) fileMasks) rankMasks
+rookMasks = U.concatMap (\b1 -> U.map (\b2 -> (b1 .|. b2) `xor` (b1 .&. b2)) fileMasks) rankMasks
+-}
+
+gMaskGen :: (Index -> V.Vector (V.Vector Index)) -> Attacks
+gMaskGen f = (convert . fmap (combine . transform)) board64
+  where combine = V.foldl' (.|.) 0 . fmap (V.foldl' setBit 0)
+        transform = fmap (fmap fromJust . V.takeWhile isJust .
+                    fmap (\i -> board120 V.!? i >>= id)) . f
+
+rookMasks :: Vector Mask
+rookMasks = gMaskGen attackTransform
+  where attackTransform i = fmap (fmap (i+)) $ V.fromList [V.enumFromStepN 0 (-1) 8,
+                                                   V.enumFromStepN 0 1 8,
+                                                   V.enumFromStepN 0 (-10) 8,
+                                                   V.enumFromStepN 0 (10) 8]
 
 bishopMasks :: Vector Mask
-bishopMasks = gSlidingAttack attackTransform
+bishopMasks = gMaskGen attackTransform
   where attackTransform i = fmap (fmap (i +)) $ V.fromList [V.enumFromStepN 0 11 8,
                                                     V.enumFromStepN 0 (-11) 8,
                                                     V.enumFromStepN 0 9 8,

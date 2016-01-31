@@ -28,12 +28,6 @@ gAttack f = (convert . fmap (V.foldr combine 0 . f)) board64
         where combine :: Index -> Word64 -> Word64
               combine i w = maybe w (setBit w) (board120 !? i >>= id)
 
-gSlidingAttack :: (Index -> Vector (Vector Index)) -> Attacks
-gSlidingAttack f = (convert . fmap (combine . transform)) board64
-  where combine = V.foldl' (.|.) 0 . fmap (V.foldl' setBit 0)
-        transform = fmap (fmap fromJust . takeWhile isJust .
-                    fmap (\i -> board120 !? i >>= id)) . f
-
 pawnAttackW :: Attacks
 pawnAttackW = gAttack attackTransform
         where attackTransform i
