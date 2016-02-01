@@ -1,18 +1,19 @@
 module Masks where
 
-import Prelude hiding ((++),takeWhile)
+import           Prelude             hiding (takeWhile, (++))
 
-import Data.Bits
-import Data.Word
+import           Data.Bits
+import           Data.Word
 
-import Data.Vector.Unboxed
+import qualified Data.Vector         as V
+import           Data.Vector.Unboxed
 import qualified Data.Vector.Unboxed as U
-import qualified Data.Vector as V
 
-import Data.Maybe
+import           Control.Monad
+import           Data.Maybe
 
-import Index
-import MoveTables
+import           Index
+import           MoveTables
 
 type Mask = Word64
 
@@ -55,18 +56,18 @@ gMaskGen :: (Index -> V.Vector (V.Vector Index)) -> Attacks
 gMaskGen f = (convert . fmap (combine . transform)) board64
   where combine = V.foldl' (.|.) 0 . fmap (V.foldl' setBit 0)
         transform = fmap (fmap fromJust . V.takeWhile isJust .
-                    fmap (\i -> board120 V.!? i >>= id)) . f
+                    fmap ((V.!?) board120 >=> id)) . f
 
 rookMasks :: Vector Mask
 rookMasks = gMaskGen attackTransform
-  where attackTransform i = fmap (fmap (i+)) $ V.fromList [V.enumFromStepN 0 (-1) 8,
-                                                   V.enumFromStepN 0 1 8,
-                                                   V.enumFromStepN 0 (-10) 8,
-                                                   V.enumFromStepN 0 (10) 8]
+  where attackTransform i = fmap (i+) <$> V.fromList [V.enumFromStepN 0 (-1) 8,
+                                                      V.enumFromStepN 0 1 8,
+                                                      V.enumFromStepN 0 (-10) 8,
+                                                      V.enumFromStepN 0 10 8]
 
 bishopMasks :: Vector Mask
 bishopMasks = gMaskGen attackTransform
-  where attackTransform i = fmap (fmap (i +)) $ V.fromList [V.enumFromStepN 0 11 8,
-                                                    V.enumFromStepN 0 (-11) 8,
-                                                    V.enumFromStepN 0 9 8,
-                                                    V.enumFromStepN 0 (-9) 8]
+  where attackTransform i = fmap (i +) <$> V.fromList [V.enumFromStepN 0 11 8,
+                                                       V.enumFromStepN 0 (-11) 8,
+                                                       V.enumFromStepN 0 9 8,
+                                                       V.enumFromStepN 0 (-9) 8]
