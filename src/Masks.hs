@@ -53,21 +53,24 @@ rookMasks = U.concatMap (\b1 -> U.map (\b2 -> (b1 .|. b2) `xor` (b1 .&. b2)) fil
 -}
 
 gMaskGen :: (Index -> V.Vector (V.Vector Index)) -> Attacks
-gMaskGen f = (convert . fmap (combine . transform)) board64
-  where combine = V.foldl' (.|.) 0 . fmap (V.foldl' setBit 0)
-        transform = fmap (fmap fromJust . V.takeWhile isJust .
+gMaskGen f = (convert . fmap removePiece . V.indexed . fmap (combine . transform)) board64
+  where removePiece (i,w) = complement (bit i) .&. w
+        combine = V.foldl' (.|.) 0 . fmap (V.foldl' setBit 0)
+        transform = fmap (V.init . fmap fromJust . V.takeWhile isJust .
                     fmap ((V.!?) board120 >=> id)) . f
 
 rookMasks :: Vector Mask
-rookMasks = gMaskGen attackTransform
-  where attackTransform i = fmap (i+) <$> V.fromList [V.enumFromStepN 0 (-1) 8,
-                                                      V.enumFromStepN 0 1 8,
-                                                      V.enumFromStepN 0 (-10) 8,
-                                                      V.enumFromStepN 0 10 8]
+rookMasks = gMaskGen rookAT
+
+rookAT i = fmap (i+) <$> V.fromList [V.enumFromStepN 0 (-1) 8,
+                                     V.enumFromStepN 0 1 8,
+                                     V.enumFromStepN 0 (-10) 8,
+                                     V.enumFromStepN 0 10 8]
 
 bishopMasks :: Vector Mask
-bishopMasks = gMaskGen attackTransform
-  where attackTransform i = fmap (i +) <$> V.fromList [V.enumFromStepN 0 11 8,
-                                                       V.enumFromStepN 0 (-11) 8,
-                                                       V.enumFromStepN 0 9 8,
-                                                       V.enumFromStepN 0 (-9) 8]
+bishopMasks = gMaskGen bishopAT
+
+bishopAT i = fmap (i+) <$> V.fromList [V.enumFromStepN 0 11 8,
+                                       V.enumFromStepN 0 (-11) 8,
+                                       V.enumFromStepN 0 9 8,
+                                       V.enumFromStepN 0 (-9) 8]

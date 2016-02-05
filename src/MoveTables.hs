@@ -2,6 +2,8 @@ module MoveTables where
 
 import Prelude hiding ((++),takeWhile,dropWhile)
 
+import Control.Monad 
+
 import Data.Bits
 import Data.Word
 
@@ -26,7 +28,7 @@ board64 = V.concatMap (`enumFromN` 8) $ enumFromStepN 21 10 8
 gAttack :: (Index -> Vector Index) -> Attacks
 gAttack f = (convert . fmap (V.foldr combine 0 . f)) board64
         where combine :: Index -> Word64 -> Word64
-              combine i w = maybe w (setBit w) (board120 !? i >>= id)
+              combine i w = maybe w (setBit w) (join (board120 !? i))
 
 pawnAttackW :: Attacks
 pawnAttackW = gAttack attackTransform

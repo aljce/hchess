@@ -16,9 +16,11 @@ cabal-version:       >=1.10
 library
   hs-source-dirs:      src
   exposed-modules:     BitBoard, FEN, Utils, Index, MoveGeneration, Masks, 
-                       MoveTypes, TestingBoard, Board, MoveTables, StrictPair 
+                       MoveTypes, TestingBoard, Board, MoveTables, StrictPair,
+                       MagicGeneration, Serialize  
   build-depends:       base, attoparsec, containers, vector, vector-th-unbox,
-                       ansi-wl-pprint, bool-extras
+                       ansi-wl-pprint, bool-extras, random, MonadRandom,
+                       mtl
   default-extensions:  OverloadedStrings, LambdaCase, TupleSections, 
                        GeneralizedNewtypeDeriving, BangPatterns, PatternSynonyms,
                        DataKinds, TypeOperators
