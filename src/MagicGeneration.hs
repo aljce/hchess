@@ -64,8 +64,7 @@ data Magics = Magics {
   magic :: !Word64,
   attackSets :: !(Vector Word64),
   magicShift :: Int,
-  attSetLength :: Int,
-  inferiorMagics :: S.Set Word64} |
+  attSetLength :: Int} |
   MagicError deriving (Generic, Eq, Show)
 
 instance ToJSON Magics where
@@ -73,27 +72,23 @@ instance ToJSON Magics where
 instance FromJSON Magics where
 
 genMagics :: (Index -> Vector (Vector Index)) -> Int -> Vector Word64 -> Int -> Magics -> Int -> IO Magics
-genMagics attackTransform pieceLoc occ size m@(Magics oldMagic _ _ oldMagicSize oldMagics) combinations =
+genMagics attackTransform pieceLoc occ size m@(Magics oldMagic _ _ oldMagicSize) combinations =
   getStdGen >>= checkCombs
   where randMagics :: Int -> RandT StdGen IO Magics
         randMagics i = do
           randMagic <- (\w1 w2 w3 -> w1 .&. w2 .&. w3) <$> getRandom <*> getRandom <*> getRandom
-          if S.member randMagic oldMagics then
-            randMagics i
-          else
-            case testMagic occ attSets size randMagic of
-              Just v ->
-                let shrunkV = (V.reverse . V.dropWhile isNothing . V.reverse) v in
-                if V.length shrunkV < oldMagicSize then do
-                  lift $ putStrLn "Success!" >> ps randMagic 
-                  return (Magics randMagic (fmap (fromMaybe maxBound) shrunkV) (64 - size)
-                          (V.length shrunkV) (S.insert oldMagic oldMagics))
-                else do
+          case testMagic occ attSets size randMagic of
+            Just v ->
+              let shrunkV = (V.reverse . V.dropWhile isNothing . V.reverse) v in
+              if V.length shrunkV < oldMagicSize then do
+                lift $ putStrLn "Success!" >> ps randMagic 
+                return (Magics randMagic (fmap (fromMaybe maxBound) shrunkV) (64 - size) (V.length shrunkV))
+              else do
                   lift $ putStrLn "Failed, new magic makes a larger attack set"
                   return m
-              Nothing -> do
-                when (i `mod` 1000 == 0 && i /= 0) $ lift $ putStrLn $ show i P.++ " possible bitmaps attempted"
-                if i > 100000 then return m else randMagics (i+1)
+            Nothing -> do
+              when (i `mod` 1000 == 0 && i /= 0) $ lift $ putStrLn $ show i P.++ " possible bitmaps attempted"
+              if i > 100000 then return m else randMagics (i+1)
         attSets = attackSet attackTransform pieceLoc <$> occ 
         checkCombs g
           | oldMagicSize <= combinations = do
@@ -108,7 +103,7 @@ genMagics attackTransform pieceLoc occ size MagicError _ = getStdGen >>= evalRan
             Just v -> do
               let v' = (V.reverse . V.dropWhile isNothing . V.reverse) v
               lift $ putStrLn "Success!" >> ps randMagic
-              return (Magics randMagic (fmap (fromMaybe maxBound) v') (64 - size) (V.length v') S.empty)
+              return (Magics randMagic (fmap (fromMaybe maxBound) v') (64 - size) (V.length v'))
             Nothing -> do
               when (i `mod` 1000 == 0 && i /= 0) $ lift $ putStrLn $ show i P.++ " possible bitmaps attempted"
               if i > 1000000 then return MagicError else randMagics (i+1)
@@ -176,7 +171,7 @@ loadMagics = do
         magicsToUseable v
           | V.any (MagicError ==) v = fail "Some magic numbers uninitialized, generate magics"
           | otherwise = (return . toUseable . V.unzip3 . fmap toTuple) v
-        toTuple (Magics mag attSet shft _ _) = (mag, attSet, shft)
+        toTuple (Magics mag attSet shft _) = (mag, attSet, shft)
         toTuple _ = error "impossible"
         toUseable :: (Vector Word64, Vector (Vector Word64), Vector Int) -> UseableMagics
         toUseable (magV, attSetV, shiftV) = UseableMagics (convert magV) (fmap convert attSetV) (convert shiftV)

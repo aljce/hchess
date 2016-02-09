@@ -2,13 +2,10 @@ module MoveGeneration where
 
 import Prelude hiding (concatMap, filter, (++))
 
-import Control.Arrow
-
 import Data.Bits
 import Data.Word
 
 import Data.Vector.Unboxed
-import qualified Data.Vector.Unboxed.Mutable as M
 import qualified Data.Vector as V
 
 import MoveTypes
