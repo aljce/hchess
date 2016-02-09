@@ -11,4 +11,5 @@ unsafeParseFEN = either (error "unsafeParseFEN failed") fromFEN . parseOnly pars
 tests = fmap unsafeParseFEN [
         "rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1",
         "rnbqkbnr/pp1ppppp/8/2p5/4P3/8/PPPP1PPP/RNBQKBNR w KQkq c6 0 2",
-        "8/1P6/8/Pp6/8/3N4/8/K1k5 w - b6 0 3"]
+        "8/1P6/8/Pp6/8/3N4/8/K1k4R w - b6 0 3",
+        "B7/8/8/8/8/8/8/R3K2k w - - 0 1"]

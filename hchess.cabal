@@ -17,16 +17,16 @@ library
   hs-source-dirs:      src
   exposed-modules:     BitBoard, FEN, Utils, Index, MoveGeneration, Masks, 
                        MoveTypes, TestingBoard, Board, MoveTables, StrictPair,
-                       MagicGeneration, Serialize  
+                       MagicGeneration, Serialize, Arguments 
   build-depends:       base, attoparsec, containers, vector, vector-th-unbox,
                        ansi-wl-pprint, bool-extras, random, MonadRandom,
-                       mtl
+                       mtl, bytestring, aeson, text, optparse-applicative
   default-extensions:  OverloadedStrings, LambdaCase, TupleSections, 
                        GeneralizedNewtypeDeriving, BangPatterns, PatternSynonyms,
                        DataKinds, TypeOperators
   default-language:    Haskell2010
 
-executable hchess-exe
+executable jane
   hs-source-dirs:      app
   main-is:             Main.hs
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N

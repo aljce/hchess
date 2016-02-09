@@ -1,12 +1,15 @@
+{-# LANGUAGE DeriveGeneric #-}
 module MagicGeneration where
 
 import Prelude hiding (foldr, takeWhile, break, head, (++), null, replicate)
 import qualified Prelude as P
 
 import Data.Maybe
-import Control.Monad
+import Control.Monad hiding (zipWithM)
 
 import Data.Vector hiding (length)
+import qualified Data.Vector as V
+import qualified Data.Vector.Unboxed as U
 import qualified Data.Set as S
 
 import Data.Bits
@@ -15,6 +18,10 @@ import Data.Word
 import System.Random
 import Control.Monad.Random
 import Control.Monad.Trans
+
+import GHC.Generics
+import Data.Aeson
+import qualified Data.ByteString.Lazy as B
 
 import Masks
 import MoveTables
@@ -44,33 +51,132 @@ attackSet f index occ = removePiece $ combine genAllMoves
                     fmap ((!?) board120 >=> id)) . f $ board64 ! index
 
 testMagic :: Vector Word64 -> Vector Word64 -> Int -> Word64 -> Maybe (Vector (Maybe Word64))
-testMagic occ attSet size magic = ifoldM addOcc (replicate (2^size) Nothing) occ
-  where addOcc v i o = addAttSet (v ! i)
-          where index = fromIntegral $ (o * magic) `shiftR` (64 - size)
+testMagic occ attSet size mag = ifoldM addOcc (replicate (2^size) Nothing) occ
+  where addOcc v i o = addAttSet (v ! index)
+          where index = fromIntegral $ (o * mag) `shiftR` (64 - size)
                 addAttSet (Just as)
                   | as == attSet ! i = Just v
                   | otherwise        = Nothing
                 addAttSet Nothing = Just (v // [(index,Just (attSet ! i))])
                 --safeIndex v1 i1 name = maybe (error $ "Name: " P.++ name P.++ "Size:" P.++ show (length v1) P.++ "Index: " P.++ show i1) id (v1 !? i1)
 
-genMagics :: (Index -> Vector (Vector Index)) -> Vector Word64 -> Int -> IO (Vector (Maybe Word64))
-genMagics attackTransform occ size = getStdGen >>= evalRandT randMagics
-  where randMagics :: RandT StdGen IO (Vector (Maybe Word64))
-        randMagics = do
-          randMagic <- (\w1 w2 w3 -> w1 * w2 * w3) <$> getRandom <*> getRandom <*> getRandom
+data Magics = Magics {
+  magic :: !Word64,
+  attackSets :: !(Vector Word64),
+  magicShift :: Int,
+  attSetLength :: Int,
+  inferiorMagics :: S.Set Word64} |
+  MagicError deriving (Generic, Eq, Show)
+
+instance ToJSON Magics where
+
+instance FromJSON Magics where
+
+genMagics :: (Index -> Vector (Vector Index)) -> Int -> Vector Word64 -> Int -> Magics -> Int -> IO Magics
+genMagics attackTransform pieceLoc occ size m@(Magics oldMagic _ _ oldMagicSize oldMagics) combinations =
+  getStdGen >>= checkCombs
+  where randMagics :: Int -> RandT StdGen IO Magics
+        randMagics i = do
+          randMagic <- (\w1 w2 w3 -> w1 .&. w2 .&. w3) <$> getRandom <*> getRandom <*> getRandom
+          if S.member randMagic oldMagics then
+            randMagics i
+          else
+            case testMagic occ attSets size randMagic of
+              Just v ->
+                let shrunkV = (V.reverse . V.dropWhile isNothing . V.reverse) v in
+                if V.length shrunkV < oldMagicSize then do
+                  lift $ putStrLn "Success!" >> ps randMagic 
+                  return (Magics randMagic (fmap (fromMaybe maxBound) shrunkV) (64 - size)
+                          (V.length shrunkV) (S.insert oldMagic oldMagics))
+                else do
+                  lift $ putStrLn "Failed, new magic makes a larger attack set"
+                  return m
+              Nothing -> do
+                when (i `mod` 1000 == 0 && i /= 0) $ lift $ putStrLn $ show i P.++ " possible bitmaps attempted"
+                if i > 100000 then return m else randMagics (i+1)
+        attSets = attackSet attackTransform pieceLoc <$> occ 
+        checkCombs g
+          | oldMagicSize <= combinations = do
+              putStrLn "Magic Optimal!"
+              return m
+          | otherwise = evalRandT (randMagics 0) g
+genMagics attackTransform pieceLoc occ size MagicError _ = getStdGen >>= evalRandT (randMagics 0)
+  where randMagics :: Int -> RandT StdGen IO Magics
+        randMagics i = do
+          randMagic <- (\w1 w2 w3 -> w1 .&. w2 .&. w3) <$> getRandom <*> getRandom <*> getRandom
           case testMagic occ attSets size randMagic of
             Just v -> do
+              let v' = (V.reverse . V.dropWhile isNothing . V.reverse) v
               lift $ putStrLn "Success!" >> ps randMagic
-              return v
+              return (Magics randMagic (fmap (fromMaybe maxBound) v') (64 - size) (V.length v') S.empty)
             Nothing -> do
-              lift $ putStrLn "Failed, Trying again"
-              randMagics
-        attSets = (\(i,o) -> attackSet attackTransform (i `mod` 64) o) <$> indexed occ
+              when (i `mod` 1000 == 0 && i /= 0) $ lift $ putStrLn $ show i P.++ " possible bitmaps attempted"
+              if i > 1000000 then return MagicError else randMagics (i+1)
+        attSets = attackSet attackTransform pieceLoc <$> occ
 
-test = genMagics rookAT (occupancyPerms rookMasks ! 0) 12 
+data AllMagics = AllMagics {
+  possibleRookAS :: Vector Int,
+  possibleBishopAS :: Vector Int, 
+  rookMagics :: Vector Magics,
+  bishopMagics :: Vector Magics} deriving (Generic, Show)
 
--- rookOccPerms :: Vector (Vector Word64)
--- rookOccPerms = occupancyPerms rookMasks
+instance ToJSON AllMagics where
 
--- bishopOccPerms :: Vector (Vector Word64)
--- bishopOccPerms = occupancyPerms bishopMasks
+instance FromJSON AllMagics where
+
+checkMagics :: Maybe AllMagics -> AllMagics
+checkMagics = fromMaybe (AllMagics prat pbat e e)
+  where prat = imap (\i v -> P.length . V.foldr S.insert S.empty $ fmap (attackSet rookAT i) v)
+          (occupancyPerms rookMasks)
+        pbat = imap (\i v -> P.length . V.foldr S.insert S.empty $ fmap (attackSet bishopAT i) v)
+          (occupancyPerms bishopMasks)
+        e = V.replicate 64 MagicError
+
+sequenceMagics :: (Index -> Vector (Vector Index)) -> U.Vector Word64
+               -> Vector Magics -> Vector Int -> IO (Vector Magics)
+sequenceMagics attackTransform masks mags possibleAS =
+  V.sequence (V.izipWith4 (genMagics attackTransform)
+              (occupancyPerms masks) (fmap popCount (convert masks)) mags possibleAS)
+
+jsonPath :: FilePath
+jsonPath = "/home/kyle/Programming/haskell/hchess/resources/magics.json"
+
+onePass :: AllMagics -> IO AllMagics
+onePass checkedMagics = do
+  allRookMagics   <- sequenceMagics rookAT rookMasks
+    (rookMagics checkedMagics) (possibleRookAS checkedMagics)
+  allBishopMagics <- sequenceMagics bishopAT bishopMasks
+    (bishopMagics checkedMagics) (possibleBishopAS checkedMagics)
+  let ams = AllMagics (possibleRookAS checkedMagics)
+                      (possibleBishopAS checkedMagics) allRookMagics allBishopMagics
+  B.writeFile jsonPath (encode ams)
+  return ams
+
+magicMain :: Int -> IO ()
+magicMain n = do
+  checkedMagics <- (checkMagics . decode) <$> B.readFile jsonPath
+  _ <- (V.foldr (<=<) return $ V.replicate n onePass) checkedMagics
+  return ()
+
+data UseableMagics = UseableMagics {
+  magics :: !(U.Vector Word64),
+  attSets :: !(Vector (U.Vector Word64)),
+  shifts :: !(U.Vector Int)
+}
+
+loadMagics :: IO (UseableMagics, UseableMagics)
+loadMagics = do
+  ms <- decode <$> B.readFile jsonPath
+  case ms of
+    (Just ms') -> splitAllMagics ms'
+    Nothing -> fail "No parse of magics.json, regenerate magic numbers"
+  where splitAllMagics (AllMagics _ _ rookMags bishopMags) =
+          (,) <$> magicsToUseable rookMags <*> magicsToUseable bishopMags
+        magicsToUseable :: Vector Magics -> IO UseableMagics
+        magicsToUseable v
+          | V.any (MagicError ==) v = fail "Some magic numbers uninitialized, generate magics"
+          | otherwise = (return . toUseable . V.unzip3 . fmap toTuple) v
+        toTuple (Magics mag attSet shft _ _) = (mag, attSet, shft)
+        toTuple _ = error "impossible"
+        toUseable :: (Vector Word64, Vector (Vector Word64), Vector Int) -> UseableMagics
+        toUseable (magV, attSetV, shiftV) = UseableMagics (convert magV) (fmap convert attSetV) (convert shiftV)

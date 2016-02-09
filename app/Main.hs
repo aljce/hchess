@@ -1,6 +1,6 @@
 module Main where
 
-import Utils
+import Arguments
 
 main :: IO ()
-main = testingMain
+main = argMain

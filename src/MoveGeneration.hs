@@ -9,6 +9,7 @@ import Data.Word
 
 import Data.Vector.Unboxed
 import qualified Data.Vector.Unboxed.Mutable as M
+import qualified Data.Vector as V
 
 import MoveTypes
 import Index
@@ -18,6 +19,7 @@ import FEN
 import Masks
 import MoveTables
 import Serialize
+import MagicGeneration
 
 gIndexGen :: (Index -> Word64) -> MoveData -> Word64 -> Moves
 gIndexGen movement md = concatMap (\i -> serializeBitBoard md i (movement i)) . indexedOnly
@@ -66,17 +68,45 @@ knightMovement White (AllColors _ wn _) (AllColors _ wa _) = gIndexGen movement 
   where movement i = complement wa .&. knightAttack ! i
 knightMovement _ _ _ = turnNonBinaryError
 
-bishopMovement :: MoveGen 'Bishops
-bishopMovement _ _ _ = empty
+gBishopMove :: UseableMagics -> Word64 -> Word64 -> Word64 -> Moves
+gBishopMove (UseableMagics mags attckSets shfts) bishops sameColor allPieces =
+  concatMap expand (indexedOnly bishops)
+  where expand i = serializeBitBoard BishopM i ((attckSets V.! i ! fromIntegral index) .&. complement sameColor)
+          where index = ((allPieces .&. bishopMasks ! i) * mags ! i) `shiftR` shfts ! i
 
-rookMovement :: MoveGen 'Rooks
-rookMovement _ _ _ = empty
+bishopMovement :: UseableMagics -> MoveGen 'Bishops
+bishopMovement ums Black (AllColors br _ _) (AllColors ba _ aa) = gBishopMove ums br ba aa
+bishopMovement ums White (AllColors _ wr _) (AllColors _ wa aa) = gBishopMove ums wr wa aa
+bishopMovement _ _ _ _ = turnNonBinaryError
 
-queenMovement :: MoveGen 'Queens
-queenMovement _ _ _ = empty
+gRookMove :: UseableMagics -> Word64 -> Word64 -> Word64 -> Moves
+gRookMove (UseableMagics mags attckSets shfts) rooks sameColor allPieces =
+  concatMap expand (indexedOnly rooks)
+  where expand i = serializeBitBoard RookM i ((attckSets V.! i ! fromIntegral index) .&. complement sameColor)
+          where index = ((allPieces .&. rookMasks ! i) * mags ! i) `shiftR` shfts ! i
+
+rookMovement :: UseableMagics -> MoveGen 'Rooks
+rookMovement ums Black (AllColors br _ _) (AllColors ba _ aa) = gRookMove ums br ba aa
+rookMovement ums White (AllColors _ wr _) (AllColors _ wa aa) = gRookMove ums wr wa aa
+rookMovement _ _ _ _ = turnNonBinaryError
+
+gQueenMove :: UseableMagics -> UseableMagics -> Word64 -> Word64 -> Word64 -> Moves
+gQueenMove (UseableMagics rMags rAttckSets rShfts) (UseableMagics bMags bAttckSets bShfts)
+  queens sameColor allPieces = concatMap expand (indexedOnly queens)
+  where expand i = serializeBitBoard QueenM i (rookBitBoard .|. bishopBitBoard)
+          where rookBitBoard = (rAttckSets V.! i ! fromIntegral rIndex) .&. complement sameColor
+                rIndex = ((allPieces .&. rookMasks ! i) * rMags ! i) `shiftR` rShfts ! i
+                bishopBitBoard = (bAttckSets V.! i ! fromIntegral bIndex) .&. complement sameColor
+                bIndex = ((allPieces .&. bishopMasks ! i) * bMags ! i) `shiftR` bShfts ! i
+
+queenMovement :: UseableMagics -> UseableMagics -> MoveGen 'Queens
+queenMovement rums bums Black (AllColors bq _ _) (AllColors ba _ aa) = gQueenMove rums bums bq ba aa
+queenMovement rums bums White (AllColors _ wq _) (AllColors _ wa aa) = gQueenMove rums bums wq wa aa
+queenMovement _ _ _ _ _ = turnNonBinaryError
+
 
 gKingMove :: Index -> Mask -> Moves
-gKingMove k sameColorPieces = serializeBitBoard KingM k (complement sameColorPieces .&. kingAttack ! k) 
+gKingMove k sameColorPieces = serializeBitBoard KingM k (complement sameColorPieces .&. kingAttack ! k)
 
 gCastling :: Bool -> Bool -> Index -> Word64 -> Moves
 gCastling _ _ _ _ = empty
@@ -89,12 +119,12 @@ kingMovement _ _ _ _ _ = turnNonBinaryError
 notInCheck :: Board -> Move -> Bool
 notInCheck _ _ = True
 
-generateMoves :: Board -> Moves
-generateMoves b@(Board (BitBoard pieces pawns rooks knights bishops queens _)
+generateMoves :: UseableMagics -> UseableMagics -> Board -> Moves
+generateMoves rookMags bishopMags b@(Board (BitBoard pieces pawns rooks knights bishops queens _)
                  t crs ep _ _ wk bk) = filter (notInCheck b) moves
   where moves = pawnMovement ep t pawns pieces ++
                 knightMovement t knights pieces ++
-                bishopMovement t bishops pieces ++
-                rookMovement t rooks pieces ++
-                queenMovement t queens pieces ++
+                bishopMovement bishopMags t bishops pieces ++
+                rookMovement rookMags t rooks pieces ++
+                queenMovement rookMags bishopMags t queens pieces ++
                 kingMovement crs wk bk t pieces

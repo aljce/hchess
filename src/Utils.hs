@@ -1,13 +1,6 @@
 module Utils where
 
-import qualified Data.Vector.Unboxed as U
-
 import Data.Bits
-
-import MoveGeneration
-import Board
-
-testingMain = print $ U.length $ generateMoves startingBoard
 
 showWord64 :: (FiniteBits a) => a -> String
 showWord64 w = reverse $ fmap (\i -> if testBit w i then '1' else '0') [0..(finiteBitSize w - 1)]
