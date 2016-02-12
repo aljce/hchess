@@ -12,11 +12,13 @@ import MoveTypes
 import Index
 import BitBoard
 import Board
-import FEN
+import FEN hiding (turn)
 import Masks
 import MoveTables
 import Serialize
 import MagicGeneration
+import Check
+import MoveApplication
 
 gIndexGen :: (Index -> Word64) -> MoveData -> Word64 -> Moves
 gIndexGen movement md = concatMap (\i -> serializeBitBoard md i (movement i)) . indexedOnly
@@ -73,6 +75,7 @@ gBishopMove (UseableMagics mags attckSets shfts) bishops sameColor allPieces =
 
 bishopMovement :: UseableMagics -> MoveGen 'Bishops
 bishopMovement ums Black (AllColors br _ _) (AllColors ba _ aa) = gBishopMove ums br ba aa
+
 bishopMovement ums White (AllColors _ wr _) (AllColors _ wa aa) = gBishopMove ums wr wa aa
 bishopMovement _ _ _ _ = turnNonBinaryError
 
@@ -101,7 +104,6 @@ queenMovement rums bums Black (AllColors bq _ _) (AllColors ba _ aa) = gQueenMov
 queenMovement rums bums White (AllColors _ wq _) (AllColors _ wa aa) = gQueenMove rums bums wq wa aa
 queenMovement _ _ _ _ _ = turnNonBinaryError
 
-
 gKingMove :: Index -> Mask -> Moves
 gKingMove k sameColorPieces = serializeBitBoard KingM k (complement sameColorPieces .&. kingAttack ! k)
 
@@ -113,12 +115,18 @@ kingMovement crs _ bk Black (AllColors ba _ aa) = gKingMove bk ba
 kingMovement crs wk _ White (AllColors _ wa aa) = gKingMove wk wa
 kingMovement _ _ _ _ _ = turnNonBinaryError
 
-notInCheck :: Board -> Move -> Bool
-notInCheck _ _ = True
+notInCheck :: UseableMagics -> UseableMagics -> Board -> Move -> Bool
+notInCheck rookMags bishopMags b@(Board{turn = Black}) move =
+  checkSet rookMags bishopMags bb t wk bk .&. bit wk == 0
+  where (Board bb t _ _ _ _ wk bk) = applyMove move b
+notInCheck rookMags bishopMags b@(Board{turn = White}) move =
+  checkSet rookMags bishopMags bb t wk bk .&. bit bk == 0
+  where (Board bb t _ _ _ _ wk bk) = applyMove move b
+notInCheck _ _ _ _ = turnNonBinaryError
 
 generateMoves :: UseableMagics -> UseableMagics -> Board -> Moves
 generateMoves rookMags bishopMags b@(Board (BitBoard pieces pawns rooks knights bishops queens _)
-                 t crs ep _ _ wk bk) = filter (notInCheck b) moves
+                 t crs ep _ _ wk bk) = filter (notInCheck rookMags bishopMags b) moves
   where moves = pawnMovement ep t pawns pieces ++
                 knightMovement t knights pieces ++
                 bishopMovement bishopMags t bishops pieces ++
