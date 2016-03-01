@@ -24,7 +24,7 @@ import Data.Aeson
 import qualified Data.ByteString.Lazy as B
 
 import Masks
-import MoveTables
+import Move.Tables
 import Serialize
 import Index
 import Utils

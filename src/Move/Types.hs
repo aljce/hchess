@@ -1,5 +1,5 @@
 {-# LANGUAGE TemplateHaskell, MultiParamTypeClasses, TypeFamilies, ViewPatterns #-}
-module MoveTypes where
+module Move.Types where
 
 import Data.Word
 
@@ -29,6 +29,8 @@ pattern KnightP    = MoveData 11
 pattern BishopP    = MoveData 12
 pattern RookP      = MoveData 13
 pattern QueenP     = MoveData 14
+
+moveOutOfBoundsError = error "A value of MoveData was created outside bounds, this error is impossible."
 
 data Move = Move {
         metaData :: {-# UNPACK #-} !MoveData,

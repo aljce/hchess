@@ -1,4 +1,4 @@
-module MoveGeneration where
+module Move.Generation where
 
 import Prelude hiding (concatMap, filter, (++))
 
@@ -8,17 +8,17 @@ import Data.Word
 import Data.Vector.Unboxed
 import qualified Data.Vector as V
 
-import MoveTypes
+import Move.Types
 import Index
 import BitBoard
 import Board
 import FEN hiding (turn)
 import Masks
-import MoveTables
+import Move.Tables
 import Serialize
 import MagicGeneration
 import Check
-import MoveApplication
+import Move.Application
 
 gIndexGen :: (Index -> Word64) -> MoveData -> Word64 -> Moves
 gIndexGen movement md = concatMap (\i -> serializeBitBoard md i (movement i)) . indexedOnly
@@ -116,13 +116,9 @@ kingMovement crs wk _ White (AllColors _ wa aa) = gKingMove wk wa
 kingMovement _ _ _ _ _ = turnNonBinaryError
 
 notInCheck :: UseableMagics -> UseableMagics -> Board -> Move -> Bool
-notInCheck rookMags bishopMags b@(Board{turn = Black}) move =
-  checkSet rookMags bishopMags bb t wk bk .&. bit wk == 0
-  where (Board bb t _ _ _ _ wk bk) = applyMove move b
-notInCheck rookMags bishopMags b@(Board{turn = White}) move =
-  checkSet rookMags bishopMags bb t wk bk .&. bit bk == 0
-  where (Board bb t _ _ _ _ wk bk) = applyMove move b
-notInCheck _ _ _ _ = turnNonBinaryError
+notInCheck rookMags bishopMags (Board bb Black _ _ _ _ wk bk) = moveCheckTest rookMags bishopMags bb Black wk bk
+notInCheck rookMags bishopMags (Board bb White _ _ _ _ wk bk) = moveCheckTest rookMags bishopMags bb White wk bk
+notInCheck _ _ _ = const turnNonBinaryError
 
 generateMoves :: UseableMagics -> UseableMagics -> Board -> Moves
 generateMoves rookMags bishopMags b@(Board (BitBoard pieces pawns rooks knights bishops queens _)

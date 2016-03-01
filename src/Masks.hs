@@ -13,7 +13,7 @@ import           Control.Monad
 import           Data.Maybe
 
 import           Index
-import           MoveTables
+import           Move.Tables
 
 type Mask = Word64
 

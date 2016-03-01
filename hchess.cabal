@@ -15,9 +15,9 @@ cabal-version:       >=1.10
 
 library
   hs-source-dirs:      src
-  exposed-modules:     BitBoard, FEN, Utils, Index, MoveGeneration, Masks, 
-                       MoveTypes, TestingBoard, Board, MoveTables, StrictPair,
-                       MagicGeneration, Serialize, Arguments, Check, MoveApplication
+  exposed-modules:     BitBoard, FEN, Utils, Index, Move.Generation, Masks, 
+                       Move.Types, TestingBoard, Board, Move.Tables, StrictPair,
+                       MagicGeneration, Serialize, Arguments, Check, Move.Application
   build-depends:       base, attoparsec, containers, vector, vector-th-unbox,
                        ansi-wl-pprint, bool-extras, random, MonadRandom,
                        mtl, bytestring, aeson, text, optparse-applicative

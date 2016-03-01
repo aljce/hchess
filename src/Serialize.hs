@@ -8,7 +8,7 @@ import Data.Word
 import Data.Vector.Unboxed
 import qualified Data.Vector.Unboxed.Mutable as M
 
-import MoveTypes
+import Move.Types
 import Index
 
 {-# SPECIALIZE INLINE expandBitBoard :: (Word64 -> Word64) -> Word64 -> Vector Word64 #-}

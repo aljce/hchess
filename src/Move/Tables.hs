@@ -1,4 +1,4 @@
-module MoveTables where
+module Move.Tables where
 
 import Prelude hiding ((++),takeWhile,dropWhile)
 
